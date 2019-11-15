@@ -678,7 +678,8 @@ TITLE: React - Show Data from a JSON Web Service
 LANG: JSX
 -->
 <script type="text/babel">
-import DataFormsJS from 'DataFormsJS/js/react/DataFormsJS.jsx';
+import ErrorBoundary from 'DataFormsJS/js/react/ErrorBoundary.jsx';
+import PolyfillService from 'DataFormsJS/js/react/PolyfillService.jsx';
 import JsonData from 'DataFormsJS/js/react/JsonData.jsx';
 
 function ShowLoading() {
@@ -703,31 +704,35 @@ function ShowData(props) {
     )
 }
 
+{/*
+    <ErrorBoundary> and <PolyfillService> are optional components.
+
+    <ErrorBoundary> can be used to help solve and display React
+    Component Errors and <PolyfillService> will load fetch/Promise
+    and other polyfills for IE and older mobile devices.
+
+    <JsonData> is used to download data and render different
+    components based on the web service fetch state. JSON data from
+    the web service will be passed to the component through [props.data].
+
+    By default <JsonData> calls the web service each time the component
+    is created. When using the optional [loadOnlyOnce] as shown below
+    data will be cached in memory and re-used if the same URL is accessed
+    while the page is open.
+*/}
 class App extends React.Component {
     render() {
         return (
-            {/*
-                <DataFormsJS> is an optional component that uses Error Boundaries
-                to help solve and display React Component Errors and it loads
-                fetch/Promise and other polyfills for IE and older mobile devices.
-
-                <JsonData> is used to download data and render different
-                components based on the web service fetch state. JSON data from
-                the web service will be passed to the component through [props.data].
-
-                By default <JsonData> calls the web service each time the component
-                is created. When using the optional [loadOnlyOnce] as shown below
-                data will be cached in memory and re-used if the same URL is accessed
-                while the page is open.
-            */}
-            <DataFormsJS>
-                <JsonData
-                    url="https://www.dataformsjs.com/data/geonames/countries"
-                    isLoading={<ShowLoading />}
-                    hasError={<ShowError />}
-                    isLoaded={<ShowData />}
-                    loadOnlyOnce={true} />
-            </DataFormsJS>
+            <ErrorBoundary>
+                <PolyfillService>
+                    <JsonData
+                        url="https://www.dataformsjs.com/data/geonames/countries"
+                        isLoading={<ShowLoading />}
+                        hasError={<ShowError />}
+                        isLoaded={<ShowData />}
+                        loadOnlyOnce={true} />
+                </PolyfillService>
+            </ErrorBoundary>
         )
     }
 }
