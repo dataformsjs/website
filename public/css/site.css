@@ -156,10 +156,16 @@ footer a { color:#fff; }
 .home.page h1 { font-size: 3em; }
 .home.page .example-links a { margin-top: 10px; display: inline-block; }
 
+/*
+    [transform: translateZ(0);] is needed for Safari so that the animation
+    renders on a seperate layer from the main page. If not included artifacts
+    are left on the page. Happens on both Desktop and Mobile.
+*/
 #home-page-computer {
     margin: -90px auto;
     max-width:100%;
     filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.2));
+    transform: translateZ(0);
 }
 @media (min-width: 400px) { #home-page-computer { margin:-50px auto; } }
 @media (min-width: 500px) { #home-page-computer { margin:-30px auto; } }
