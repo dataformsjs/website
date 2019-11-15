@@ -1,0 +1,14 @@
+# Directories
+__pycache__/
+.vscode/
+.idea/
+node_modules/
+vendor/
+
+# Files
+*.sqlite
+.DS_Store
+Desktop.ini
+Thumbs.db
+.env
+package-lock.json

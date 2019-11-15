@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>fast</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-2.62953353%" y1="-3.34807961%" x2="103.70455%" y2="102.761635%" id="linearGradient-1">
+            <stop stop-color="#D7E3ED" stop-opacity="0.4" offset="0%"></stop>
+            <stop stop-color="#AEC2D6" stop-opacity="0.6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="fast" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#AEC2D6" stroke-width="4" fill="#FFFFFF" cx="60" cy="60" r="58"></circle>
+        <path d="M60,100 C82.09139,100 100,82.09139 100,60 C100,37.90861 82.09139,20 60,20 C37.90861,20 20,37.90861 20,60" id="Oval" stroke="url(#linearGradient-1)" stroke-width="12" fill="#FFFFFF" stroke-linecap="round" transform="translate(60.000000, 60.000000) rotate(-45.000000) translate(-60.000000, -60.000000) "></path>
+        <circle id="Oval" fill-opacity="0.4" fill="#AEC2D6" cx="60" cy="60" r="16"></circle>
+        <polygon id="Rectangle" fill="#AEC2D6" transform="translate(74.250000, 74.250000) rotate(135.000000) translate(-74.250000, -74.250000) " points="76.3713203 54.0974567 78.4926407 94.4025433 70.0073593 94.4025433 72.1286797 54.0974567"></polygon>
+        <circle id="Oval" fill="#8CA8C5" cx="60" cy="60" r="8"></circle>
+        <circle id="Oval" fill="#8CA8C5" cx="88.5" cy="88.5" r="4"></circle>
+    </g>
+</svg>

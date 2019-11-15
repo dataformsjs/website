@@ -1,0 +1,21 @@
+{
+    "Home": "Home",
+    "Playground": "Playground",
+    "Getting Started": "Getting Started",
+    "Quick Reference": "Quick Reference",
+    "Examples": "Examples",
+    "Documents": "Documents",
+    "API": "API",
+    "Timezone": "Timezone",
+    "Web Components": "Web Components",
+    "Loading...": "Loading...",
+    "Hello World!": "Hello World!",
+    "Hello": "Hello",
+    "Countries": "Countries",
+    "country_code": "Code",
+    "country_name": "Name",
+    "country_size": "Size (KM)",
+    "country_pop": "Population",
+    "country_continent": "Continent",
+    "footer_license": "Site and Source Code provided under MIT License"
+}

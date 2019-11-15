@@ -1,0 +1,60 @@
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;…&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;view&quot;&gt;&lt;/div&gt;
+
+        &lt;script
+            type=&quot;text/x-template&quot;
+            data-engine=&quot;handlebars&quot;
+            data-route=&quot;/&quot;
+            <mark>data-page</mark>=&quot;jsonData&quot;
+            <mark>data-url</mark>=&quot;https://www.dataformsjs.com/data/geonames/countries&quot;&gt;
+
+            <mark>{{#if isLoading}}</mark>&lt;div&gt;[[i18n Loading...]]&lt;/div&gt;{{/if}}
+            <mark>{{#if hasError}}</mark>&lt;div&gt;{{errorMessage}}&lt;/div&gt;{{/if}}
+            <mark>{{#if isLoaded}}</mark>
+                &lt;h1&gt;[[i18n Countries]]&lt;/h1&gt;
+                &lt;input <mark>data-filter-selector</mark>=&quot;table&quot;&gt;
+
+                &lt;table <mark>data-sort</mark>&gt;
+                    &lt;thead&gt;
+                        &lt;tr&gt;
+                            &lt;th&gt;[[i18n country_code]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_name]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_size]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_pop]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_continent]]&lt;/th&gt;
+                        &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                        {{#each countries}}
+                        &lt;tr&gt;
+                            &lt;td&gt;&lt;a href=&quot;#/regions/{{iso}}&quot;&gt;{{iso}}&lt;/a&gt;&lt;/td&gt;
+                            &lt;td&gt;{{country}}&lt;/td&gt;
+                            &lt;td&gt;{{area_km}}&lt;/td&gt;
+                            &lt;td&gt;{{population}}&lt;/td&gt;
+                            &lt;td&gt;{{continent}}&lt;/td&gt;
+                        &lt;/tr&gt;
+                        {{/each}}
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            {{/if}}
+        &lt;/script&gt;
+
+        &lt;script
+            type=&quot;text/x-template&quot;
+            data-engine=&quot;handlebars&quot;
+            data-route=&quot;/regions/<mark>:country</mark>&quot;
+            data-page=&quot;jsonData&quot;
+            data-url=&quot;https://www.dataformsjs.com/data/geonames/regions/<mark>:country</mark>&quot;
+            <mark>src</mark>=&quot;html/country-list.htm&quot;&gt;
+        &lt;/script&gt;
+
+        &lt;script src=&quot;js/DataFormsJS.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/DataFormsJS/pages/jsonData.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/DataFormsJS/plugins/filter.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/DataFormsJS/plugins/sort.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/handlebars.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;

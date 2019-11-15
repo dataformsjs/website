@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>…</head>
+    <body>
+        <div id="view"></div>
+
+        <url-hash-router view-selector="#view">
+            <url-hash-route path="/">
+                <template>
+                    <json-data url="https://www.dataformsjs.com/data/geonames/countries">
+                        <is-loading>
+                            <span class="loading">[[i18n Loading...]]</span>
+                        </is-loading>
+                        <has-error>
+                            <span class="error" data-bind="errorMessage"></span>
+                        </has-error>
+                        <is-loaded>
+                            <h1>[[i18n Countries]]</h1>
+                            <input is="input-filter" filter-selector="table">
+                            <data-table
+                                data-bind="countries"
+                                col-link-template="#/regions/:iso"
+                                table-attr="is=sortable-table">
+                            </data-table>
+                        </is-loaded>
+                    </json-data>
+                </template>
+            </url-hash-route>
+
+            <url-hash-route path="/regions/:country" src="html/regions-web.htm"></url-hash-route>
+        </url-hash-router>
+
+        <script type="module" src="js/web-components/url-hash-router.js"></script>
+        <script type="module" src="js/web-components/json-data.js"></script>
+        <script type="module" src="js/web-components/data-table.js"></script>
+        <script type="module" src="js/web-components/input-filter.js"></script>
+        <script type="module" src="js/web-components/sortable-table.js"></script>
+    </body>
+</html>

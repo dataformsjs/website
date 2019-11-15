@@ -1,0 +1,118 @@
+<!doctype html>
+<html
+    lang="en"
+    data-show-errors
+    data-graphql-url="https://www.dataformsjs.com/graphql">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>[[i18n tmpl_vue_graphql_title]]</title>
+        <link rel="stylesheet" href="https://d2xbd92kui7v97.cloudfront.net/site/css/getting-started.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="active" href="#/">[[i18n Home]]</a>
+                <a href="#/data">[[i18n data_example]]</a>
+            </nav>
+        </header>
+
+        <main id="view" class="container"></main>
+
+        <template data-route="/">
+            <h1>[[i18n tmpl_vue_graphql_title]]</h1>
+        </template>
+
+        <script type="application/graphql" id="graphql-countries">
+            {
+                countries {
+                    iso
+                    country
+                    area_km
+                    population
+                    continent
+                }
+            }
+        </script>
+
+        <script
+            type="text/x-template"
+            data-engine="vue"
+            data-route="/data"
+            data-page="jsonData"
+            data-graphql-id="graphql-countries"
+            data-load-only-once="true"
+            data-lazy-load="jsonData, filter, sort, clickToHighlight, vueDirectives"
+            data-countries>
+
+            <h3 v-if="isLoading" v-cloak class="loading">[[i18n Loading...]]</h3>
+            <h3 v-if="hasError" v-cloak class="error">{{ errorMessage }}</h3>
+            <div v-if="isLoaded" v-cloak>
+                <h1>[[i18n Countries]]</h1>
+
+                <input
+                    data-filter-selector="table"
+                    data-filter-results-text-selector="h1"
+                    data-filter-results-text-all="[[i18n countries_all]]"
+                    data-filter-results-text-filtered="[[i18n countries_filtered]]"
+                    placeholder="[[i18n countries_enter_filer]]">
+
+                <table
+                    data-sort
+                    data-sort-class-odd="row-odd"
+                    data-sort-class-even="row-even">
+                    <thead>
+                        <tr>
+                            <th>[[i18n country_code]]</th>
+                            <th>[[i18n country_name]]</th>
+                            <th class="text-right">[[i18n country_size]]</th>
+                            <th class="text-right">[[i18n country_pop]]</th>
+                            <th>[[i18n country_continent]]</th>
+                        </tr>
+                    </thead>
+                    <tbody class="click-to-highlight">
+                        <tr v-for="country in countries">
+                            <td>{{ country.iso }}</td>
+                            <td>{{ country.country }}</td>
+                            <td class="text-right" v-bind:data-value="country.area_km" v-format-number="country.area_km"></td>
+                            <td class="text-right" v-bind:data-value="country.population" v-format-number="country.population"></td>
+                            <td>{{ country.continent }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </script>
+
+        <!--
+            Vue
+            https://vuejs.org
+
+            [[i18n dev_latest]]
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            [[i18n dev_specific]]
+                <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+            [[i18n prod_latest]]
+                <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+        <!--
+            DataFormsJS
+            https://www.dataformsjs.com
+
+            GraphQL
+            https://graphql.org
+        -->
+        <script src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/DataFormsJS.min.js"></script>
+        <script src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/navLinks.min.js"></script>
+        <script>
+            app.lazyLoad = {
+                jsonData: 'https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/pages/jsonData.min.js',
+                filter: 'https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/filter.min.js',
+                sort: 'https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/sort.min.js',
+                clickToHighlight: 'https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/clickToHighlight.min.js',
+                vueDirectives: 'https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/extensions/vue-directives.min.js',
+            };
+        </script>
+    </body>
+</html>

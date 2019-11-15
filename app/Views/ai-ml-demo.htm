@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AI/ML Prediction Demo</title>
+    <style>
+        /* Reset */
+        * { padding:0; margin:0; }
+
+        /* CSS Variables */
+        :root {
+            --shadow: 0 2px 1px 0 rgba(0,0,0,0.5);
+            --padding: 20px;
+        }
+
+        /* Page Style */
+        body {
+            background-color: #efefef;
+            margin: calc(var(--padding) * 2);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 { margin-bottom:20px; }
+        section { text-align: center; }
+        .content {
+            display: inline-flex;
+            background-color: #fff;
+            box-shadow: var(--shadow);
+            padding: var(--padding) calc(var(--padding) * 2);
+            margin: calc(var(--padding) * 2);
+            text-align: center;
+            flex-direction: column;
+        }
+        .field {
+            text-align:left;
+            padding:10px;
+            display:flex;
+            justify-content: space-between;
+        }
+        .field.last-prediction {
+            flex-direction: column;
+            text-align:left;
+        }
+        .prediction { margin-bottom: calc(var(--padding) / 2); }
+        label { margin-right:var(--padding) }
+        input, button { padding:4px 8px; }
+        h1 { font-size: 2em; }
+        ul.results {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: start;
+        }
+        ul.results li {
+            display: block;
+            box-shadow: var(--shadow);
+            padding: var(--padding);
+            margin: var(--padding);
+            background-color: #fff;
+            max-width:300px;
+        }
+        ul.results li img {
+            max-width: 100%;
+            margin-bottom: calc(var(--padding) / 2);
+        }
+        ul.results li div {
+            box-shadow: 0 0 1px 1px rgba(0,0,0,0.4);
+            padding: 4px 8px;
+            border-radius: 4px;
+            background-color: blue;
+            color: #fff;
+        }
+        ul.results li div.success { background-color: green; }
+        ul.results li div.error { background-color: red; }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="content">
+            <h1>Image Prediction Demo</h1>
+            <input type="file" accept="image/jpg" multiple>
+        </div>
+    </section>
+
+    <ul class="results"></ul>
+
+    <section>
+        <div class="content">
+            <h1>Binary Classification Demo</h1>
+            <div class="field">
+                <label for="Pregnancies">Pregnancies</label>
+                <input type="number" id="Pregnancies" min="0" max="17" value="4">
+            </div>
+            <div class="field">
+                <label for="Glucose">Glucose</label>
+                <input type="number" id="Glucose" min="44" max="199" value="121">
+            </div>
+            <div class="field">
+                <label for="BloodPressure">Blood Pressure</label>
+                <input type="number" id="BloodPressure" min="24" max="122" value="72">
+            </div>
+            <div class="field">
+                <label for="SkinThickness">Skin Thickness</label>
+                <input type="number" id="SkinThickness" min="17" max="48" value="31">
+            </div>
+            <div class="field">
+                <label for="Insulin">Insulin</label>
+                <input type="number" id="Insulin" min="14" max="846" value="155">
+            </div>
+            <div class="field">
+                <label for="BMI">BMI</label>
+                <input type="number" id="BMI" min="18.2" max="67.1" step="0.1" value="32.4">
+            </div>
+            <div class="field">
+                <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function</label>
+                <input type="number" id="DiabetesPedigreeFunction" min="0.078" max="2.42" step="0.001" value="0.472">
+            </div>
+            <div class="field">
+                <label for="Age">Age</label>
+                <input type="number" id="Age" min="21" max="81" value="33">
+            </div>
+            <div class="field">
+                <button type="button" id="submit">Submit</button>
+                <button type="button" id="new-values">New Random Values</button>
+            </div>
+            <div class="field last-prediction" style="display:none;">
+                <div class="prediction"><strong>Prediction:</strong> <span></span></div>
+                <div class="probability"><strong>Probability:</strong> <span></span></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /* Validates online with [jshint] or [eslint] */
+        /* jshint strict: true */
+        /* jshint esversion: 6 */
+        /* eslint strict: ["error", "function"] */
+        /* eslint no-console: ["error", { allow: ["error"] }] */
+        (function() {
+            'use strict'; // Invoke Strict Mode
+
+            // Get elements
+            const fileInput = document.querySelector('input[type="file"]');
+            const resultsUl = document.querySelector('ul.results');
+            const lastPrediction = document.querySelector('.last-prediction');
+            const predictionOutcome = document.querySelector('.prediction span');
+            const probabilityOutcome = document.querySelector('.probability span');
+
+            // Fields used for the Binary Classification Demo.
+            const fields = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age'];
+
+            // Handle image selection
+            function selectImages() {
+                for (let n = 0, m = fileInput.files.length; n < m; n++) {
+                    showAndUploadFile(fileInput.files[n]);
+                }
+            }
+
+            // Show file on screen and start upload
+            function showAndUploadFile(file) {
+                // Create Elements
+                const li = document.createElement('li');
+                const img = document.createElement('img');
+                const div = document.createElement('div');
+
+                // Set Element Content
+                img.src = window.URL.createObjectURL(file);
+                div.textContent = 'Uploading...';
+
+                // Add to Document
+                li.appendChild(img);
+                li.appendChild(div);
+                resultsUl.insertBefore(li, resultsUl.firstChild);
+
+                // Upload
+                uploadFile(file, div);
+            }
+
+            // Upload and show the result
+            function uploadFile(file, div) {
+                var formData = new FormData();
+                formData.append('file', file);
+
+                fetch('predict/resnet50', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(response => {
+                    div.className = 'success';
+                    div.textContent = JSON.stringify(response.predictions).replace(/,/g, ', ');
+                })
+                .catch(error => {
+                    div.className = 'error';
+                    div.textContent = 'Error from Server';
+                    console.error('Error:', error);
+                });
+            }
+
+            // Binary Classification Demo
+            function getPrediction() {
+                const values = fields.map(field => {
+                    const el = document.getElementById(field);
+                    const value = el.value;
+                    return (el.step.includes('.') ? parseFloat(value) : parseInt(value, 10));
+                });
+
+                fetch('predict/pima-indians-diabetes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ values:values }),
+                })
+                .then(response => response.json())
+                .then(response => {
+                    predictionOutcome.textContent = (response.prediction === 1 ? 'Has Diabetes (True)' : 'Does not have Diabetes (False)');
+                    probabilityOutcome.textContent = Number(response.probability * 100).toFixed(2).toString() + ' %';
+                })
+                .catch(error => {
+                    predictionOutcome.textContent = 'Error from Server';
+                    probabilityOutcome.textContent = '';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    lastPrediction.style.display = '';
+                });
+            }
+
+            // Set new random values for the Binary Classification Demo
+            // and run a new prediction after.
+            function newValues() {
+                fields.forEach(field => {
+                    const el = document.getElementById(field);
+                    const isFloat = el.step.includes('.');
+                    if (isFloat) {
+                        let value = getRandomArbitrary(parseFloat(el.min), parseFloat(el.max));
+                        value = Number(value).toFixed(el.step.length - 2);
+                        el.value = value;
+                    } else {
+                        el.value = getRandomIntInclusive(parseInt(el.min, 10), parseInt(el.max, 10));
+                    }
+                });
+                getPrediction();
+            }
+
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+            function getRandomArbitrary(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+            function getRandomIntInclusive(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+			// Called when the page is loaded
+            function setup() {
+                fileInput.addEventListener('change', selectImages);
+                document.querySelector('#submit').addEventListener('click', getPrediction);
+                document.querySelector('#new-values').addEventListener('click', newValues);
+            }
+
+            document.addEventListener('DOMContentLoaded', setup);
+        })();
+    </script>
+</body>
+</html>

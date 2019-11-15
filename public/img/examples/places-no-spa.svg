@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="200px" viewBox="0 0 400 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>places-no-spa</title>
+    <desc>Created with Sketch.</desc>
+    <g id="places-no-spa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F4F6F8" x="0" y="0" width="400" height="200"></rect>
+        <g id="Group" transform="translate(120.000000, 20.000000)">
+            <rect id="Rectangle" stroke="#ABB3BA" fill="#FFFFFF" x="0" y="0" width="160" height="160" rx="4"></rect>
+            <rect id="Rectangle" stroke="#DFE2E5" fill="#F6F8FA" x="10" y="10" width="140" height="140"></rect>
+            <rect id="Rectangle" stroke="#DFE2E5" fill="#FFFFFF" x="10" y="30" width="140" height="20"></rect>
+            <rect id="Rectangle" stroke="#DFE2E5" fill="#FFFFFF" x="10" y="70" width="140" height="20"></rect>
+            <rect id="Rectangle" stroke="#DFE2E5" fill="#FFFFFF" x="10" y="110" width="140" height="20"></rect>
+            <rect id="Rectangle" fill="#FF0000" x="17" y="15" width="20" height="10"></rect>
+            <rect id="Rectangle" fill="#00FF00" x="17" y="35" width="20" height="10"></rect>
+            <rect id="Rectangle" fill="#0000FF" x="17" y="55" width="20" height="10"></rect>
+            <rect id="Rectangle" fill="#FFFF00" x="17" y="76" width="20" height="10"></rect>
+            <rect id="Rectangle" fill="#00FFFF" x="17" y="95" width="20" height="10"></rect>
+            <rect id="Rectangle" fill="#FF00FF" x="17" y="115" width="20" height="10"></rect>
+            <rect id="Rectangle" fill="#FF7F00" x="17" y="135" width="20" height="10"></rect>
+            <rect id="Rectangle" fill="#BDBDBD" x="45" y="17" width="95" height="6" rx="3"></rect>
+            <rect id="Rectangle" fill="#BDBDBD" x="45" y="37" width="95" height="6" rx="3"></rect>
+            <rect id="Rectangle" fill="#BDBDBD" x="45" y="57" width="95" height="6" rx="3"></rect>
+            <rect id="Rectangle" fill="#BDBDBD" x="45" y="77" width="95" height="6" rx="3"></rect>
+            <rect id="Rectangle" fill="#BDBDBD" x="45" y="97" width="95" height="6" rx="3"></rect>
+            <rect id="Rectangle" fill="#BDBDBD" x="45" y="117" width="95" height="6" rx="3"></rect>
+            <rect id="Rectangle" fill="#BDBDBD" x="45" y="137" width="95" height="6" rx="3"></rect>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,21 @@
+{
+    "Home": "ホームページ",
+    "Playground": "遊び場",
+    "Getting Started": "入門",
+    "Quick Reference": "クイックリファレンス",
+    "Examples": "例",
+    "Documents": "書類",
+    "API": "API",
+    "Timezone": "タイムゾーン",
+    "Web Components": "Webコンポーネント",
+    "Loading...": "ロード中....",
+    "Hello World!": "\"こんにちは世界\"",
+    "Hello": "こんにちは",
+    "Countries": "国",
+    "country_code": "コード",
+    "country_name": "名",
+    "country_size": "サイズ（KM）",
+    "country_pop": "人口",
+    "country_continent": "大陸",
+    "footer_license": "MITライセンスの下で提供されるサイトおよびソースコード"
+}

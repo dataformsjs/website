@@ -1,0 +1,26 @@
+
+All JSON and GraphQL Web Services in the Examples and Site Templates are configured to
+use the main server. For local development the following changes can be made.
+
+- Replace [https://www.dataformsjs.com/data/] with [http://localhost:3000/data/] in [*.htm, *.jsx] files
+- Replace [https://www.dataformsjs.com/graphql] with [http://localhost:3000/graphql] in [*.htm] files
+- For local playground development edit [Website\public\js\page-playground.js]
+    and change [urlRoot] so that it uses the [localhost:8888] URL
+- For local AI/ML setup, see comments in the following files, [AI_ML.php] needs to be updated
+  to point to the local server for local AI/ML services.
+    Website\app\app.py
+    Website\app\Controllers\AI_ML.php
+
+The assumes the structure:
+
+| DataFormsJS (Root Folder/Directory)
+|--  DataFormsJS   (Repository)
+|--  Playground    (Repository)
+|--  Static-Files  (Repository)
+|--  Website       (Repository)
+
+Most examples exist under [DataFormsJS]
+
+See comments regarding the GeoNames Database setup in:
+    Website\scripts\geonames.py
+    Website\scripts\geonames.rb

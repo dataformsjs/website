@@ -1,0 +1,7 @@
+# This is a basic Apache config file used for development. The live website
+# does not include this file. For development this file assumes that The
+# site is being hosted under [DataFormsJS/Website]. If your environment
+# is setup differently then simply update the settings.
+
+# FallbackResource /index.php
+FallbackResource /DataFormsJS/Website/public/index.php

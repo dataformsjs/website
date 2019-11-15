@@ -1,0 +1,18 @@
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;…&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;view&quot;&gt;&lt;/div&gt;
+
+        &lt;template data-route=&quot;/&quot;&gt;
+            &lt;h1&gt;[[i18n Hello World!]]&lt;/h1&gt;
+        &lt;/template&gt;
+        
+        &lt;template <mark>data-route=&quot;/:name&quot;</mark>&gt;
+            &lt;h1&gt;[[i18n Hello]] &lt;span <mark>data-bind=&quot;name&quot;</mark>&gt;&lt;/span&gt;!&lt;/h1&gt;
+        &lt;/template&gt;
+
+        &lt;script src=&quot;js/DataFormsJS.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/plugins/dataBind.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;

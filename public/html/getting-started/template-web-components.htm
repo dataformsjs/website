@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>[[i18n tmpl_web_title]]</title>
+        <link rel="stylesheet" href="https://d2xbd92kui7v97.cloudfront.net/site/css/getting-started.css">
+        <style>
+            /* Prevent custom web components from appearing during rendering include the following CSS */
+            json-data:not(:defined),
+            is-loading:not(:defined),
+            has-error:not(:defined),
+            is-loaded:not(:defined) { display:none; }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="active" href="#/">[[i18n Home]]</a>
+                <a href="#/data">[[i18n data_example]]</a>
+            </nav>
+        </header>
+
+        <main id="view" class="container"></main>
+
+        <url-hash-router view-selector="#view">
+            <url-hash-route path="/">
+                <template>
+                    <h1>[[i18n tmpl_web_title]]</h1>
+                </template>
+            </url-hash-route>
+
+            <url-hash-route path="/data">
+                <template>
+                    <h1>[[i18n Countries]]</h1>
+
+                    <json-data url="https://www.dataformsjs.com/data/geonames/countries">
+                        <is-loading>
+                            <span class="loading">[[i18n Loading...]]</span>
+                        </is-loading>
+                        <has-error>
+                            <span class="error" data-bind="errorMessage"></span>
+                        </has-error>
+                        <is-loaded>
+                            <input
+                                is="input-filter"
+                                filter-selector="table"
+                                filter-results-selector="h1"
+                                filter-results-text-all="[[i18n countries_all]]"
+                                filter-results-text-filtered="[[i18n countries_filtered]]"
+                                placeholder="[[i18n countries_enter_filer]]">
+
+                            <data-table
+                                data-bind="countries"
+                                labels="[[i18n countries_field_list]]"
+                                table-attr="is=sortable-table,
+                                            data-sort-class-odd=row-odd,
+                                            data-sort-class-even=row-even">
+                            </data-table>
+                        </is-loaded>
+                    </json-data>
+                </template>
+            </url-hash-route>
+        </url-hash-router>
+
+        <!--
+            [[i18n tmpl_web_title]]
+            https://www.dataformsjs.com
+        -->
+        <script type="module" src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/web-components/url-hash-router.min.js"></script>
+        <script type="module" src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/web-components/json-data.min.js"></script>
+        <script type="module" src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/web-components/data-table.min.js"></script>
+        <script type="module" src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/web-components/input-filter.min.js"></script>
+        <script type="module" src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/web-components/sortable-table.min.js"></script>
+
+        <!-- [[i18n comment_old_browsers]] -->
+        <script nomodule src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/web-components/safari-nomodule.min.js"></script>
+        <script nomodule src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/web-components/old-browser-warning.min.js"></script>
+
+        <!-- [[i18n comment_nav_links]] -->
+        <script type="module">
+            const router = document.querySelector('url-hash-router');
+            router.addEventListener('contentLoaded', updateNavLinks);
+            updateNavLinks();
+
+            function updateNavLinks() {
+                const navLinks = document.querySelectorAll('nav a');
+                const hash = window.location.hash;
+                for (const link of navLinks) {
+                    const href = link.getAttribute('href');
+                    link.className = (hash === href || (hash === '' && href === '#/') ? 'active' : '');
+                }
+            }
+        </script>
+    </body>
+</html>

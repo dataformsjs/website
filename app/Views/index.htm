@@ -1,0 +1,195 @@
+<!doctype html>
+<html
+    data-show-errors
+    data-i18n-default="en"
+    data-i18n-locales="en,jp">
+    <head>
+        <meta charset="utf-8" />
+        <title>DataFormsJS</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link type="text/plain" rel="author" href="humans.txt" />
+        <link href="js/prism-1.17.1/prism.css" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <nav class="site-nav">
+                <div class="mobile-nav">
+                    <a href="#/en/" class="site-title" data-i18n-href>
+                        <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="home" fill="#203040">
+                                    <rect id="Rectangle" x="2" y="10" width="12" height="6"></rect>
+                                    <polygon id="Triangle" points="8 4 14 10 2 10"></polygon>
+                                    <rect id="Rectangle" transform="translate(11.500000, 4.750000) rotate(45.000000) translate(-11.500000, -4.750000) " x="6" y="4" width="11" height="1.5" rx="0.75"></rect>
+                                    <rect id="Rectangle" transform="translate(4.500000, 4.750000) scale(-1, 1) rotate(45.000000) translate(-4.500000, -4.750000) " x="-1" y="4" width="11" height="1.5" rx="0.75"></rect>
+                                    <polygon id="Rectangle" points="12 0 14 0 14 5 12 3"></polygon>
+                                </g>
+                            </g>
+                        </svg>
+                        <span style="margin-left:8px;">DataFormsJS</span>
+                    </a>
+                    <span class="open-menu">
+                        <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="open-menu" transform="translate(0.000000, -1.000000)" fill="#203040">
+                                    <rect id="Rectangle" x="0" y="2" width="16" height="3" rx="1.5"></rect>
+                                    <rect id="Rectangle" x="0" y="8" width="16" height="3" rx="1.5"></rect>
+                                    <rect id="Rectangle" x="0" y="14" width="16" height="3" rx="1.5"></rect>
+                                </g>
+                            </g>
+                        </svg>
+                    </span>
+                </div>
+                <div class="mobile-menu" style="display:none;">
+                    <div>
+                        <span class="close-menu"><a href="#">
+                            <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="close-menu" fill="#203040">
+                                        <rect id="Rectangle" transform="translate(7.707107, 8.207107) rotate(45.000000) translate(-7.707107, -8.207107) " x="-2.29289322" y="6.70710678" width="20" height="3" rx="1.5"></rect>
+                                        <rect id="Rectangle" transform="translate(8.131728, 8.131728) scale(-1, 1) rotate(45.000000) translate(-8.131728, -8.131728) " x="-1.86827202" y="6.63172798" width="20" height="3" rx="1.5"></rect>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a></span>
+                    </div>
+                    <ul>
+                        <li><a href="#/en/" data-i18n="Home" data-i18n-href></a></li>
+                        <li><a href="#/en/playground" data-i18n="Playground" data-i18n-href></a></li>
+                        <li><a href="#/en/getting-started" data-i18n="Getting Started" data-i18n-href></a></li>
+                        <li><a href="#/en/quick-reference" data-i18n="Quick Reference" data-i18n-href></a></li>
+                        <li><a href="#/en/examples" data-i18n="Examples" data-i18n-href></a></li>
+                    </ul>
+                </div>
+                <ul class="desktop-nav">
+                    <li><a href="#/en/" data-i18n="Home" data-i18n-href></a></li>
+                    <li><a href="#/en/playground" data-i18n="Playground" data-i18n-href></a></li>
+                    <li><a href="#/en/getting-started" data-i18n="Getting Started" data-i18n-href></a></li>
+                    <li><a href="#/en/quick-reference" data-i18n="Quick Reference" data-i18n-href></a></li>
+                    <li><a href="#/en/examples" data-i18n="Examples" data-i18n-href></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="view"></main>
+
+        <footer>
+            <p>&copy; <span class="year"></span> <a href="http://www.conradsollitt.com" target="_blank">Conrad Sollitt</a></p>
+            <p data-i18n="footer_license"></p>
+        </footer>
+
+        <!--
+            [home-page.htm] and [getting-started.htm] use <template> rather
+            than Handlebars to prevent nested code templates from being rendered.
+        -->
+        <template
+            data-route="/:lang/"
+            data-default-route
+            data-page="homePage"
+            data-src="html/home-page.htm"
+            data-lazy-load="homePage"
+            data-i18n-file="home-page">
+        </template>
+
+        <script
+            type="text/x-template"
+            data-engine="handlebars"
+            data-route="/:lang/playground"
+            data-src="html/playground.htm"
+            data-page="playground"
+            data-lazy-load="codemirrorCss, codemirrorJs, jshint, playgroundCss, playgroundPage"
+            data-i18n-file="playground">
+        </script>
+
+        <template
+            data-route="/:lang/getting-started"
+            data-src="html/getting-started.htm"
+            data-page="gettingStarted"
+            data-lazy-load="gettingStarted"
+            data-i18n-file="getting-started">
+        </template>
+
+        <script type="text/x-template"
+            data-engine="handlebars"
+            data-page="jsonData"
+            data-route="/:lang/quick-reference"
+            data-url="docs/:lang/quick-reference"
+            data-load-only-once="true"
+            data-src="html/quick-ref.htm"
+            data-lazy-load="jsonData, filter"
+            data-i18n-file="quick-ref">
+        </script>
+
+        <script
+            type="text/x-template"
+            data-engine="handlebars"
+            data-route="/:lang/examples"
+            data-src="html/examples.htm"
+            data-i18n-file="examples">
+        </script>
+
+        <!-- DataFormsJS -->
+        <!--
+            For local development replace the CDN url with 'js/*', example:
+            <script src="js/DataFormsJS.js"></script>
+            app.lazyLoad = {
+                homePage: 'js/pages/jsonData.js',
+        -->
+        <script src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/DataFormsJS.min.js"></script>    
+        <script src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/i18n.min.js"></script>
+        <script src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/navList.min.js"></script>    
+        <script src="https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/prism.min.js"></script>
+        <script>
+            app.lazyLoad = {
+                homePage: 'js/page-home-page.js',
+                gettingStarted: 'js/page-getting-started.js',
+                jsonData: 'https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/pages/jsonData.min.js',
+                filter: 'https://d2xbd92kui7v97.cloudfront.net/js/1.0.0/plugins/filter.min.js',
+                codemirrorCss: "js/codemirror/codemirror-5.48.0.css",
+                codemirrorJs: "js/codemirror/codemirror-5.48.0.min.js",
+                jshint: 'https://cdnjs.cloudflare.com/ajax/libs/jshint/2.10.2/jshint.min.js',
+                playgroundCss: 'css/playground.css',
+                playgroundPage: 'js/page-playground.js',
+            };
+        </script>
+        <script>
+            (function() {
+                'use strict';
+
+                // Mobile Nav Menu
+                var openMenu = document.querySelector('.open-menu');
+                var closeMenu = document.querySelector('.close-menu');
+                var mobileMenu = document.querySelector('.mobile-menu');
+                var mobileLinks = document.querySelectorAll('.mobile-menu a');
+                openMenu.onclick = function(e) { e.preventDefault(); mobileMenu.style.display = ''; };
+                closeMenu.onclick = function(e) { e.preventDefault(); mobileMenu.style.display = 'none'; };
+                Array.prototype.forEach.call(mobileLinks, function(link) {
+                    link.onclick = function() {
+                        mobileMenu.style.display = 'none';
+                    };
+                });
+
+                // Add CSS Variable Support to IE and older Browsers
+                var supportsCssVars = (window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)'));
+                var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
+                app.loadScript(supportsCssVars, polyfillUrl, function() {
+                    if (window.cssVars) {
+                        cssVars({ include:'link[href="css/site.css"]' });
+                    }
+                });
+
+                // Update footer
+                document.querySelector('footer .year').textContent = (new Date()).getFullYear();
+            })();
+        </script>
+
+        <!-- JS Libraries -->
+        <!-- 
+            For local development with Handlebars create a [vendor] dir and modify the URL, example:
+                <script src="vendor/handlebars.min.js"></script> 
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@4.5.1/dist/handlebars.min.js"></script>
+        <script src="js/prism-1.17.1/prism.modified.js"></script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# CRLF for Windows Files
+*.vbs      text eol=crlf
+*.config   text eol=crlf
+
+# LF for *nix files
+*.sh       text eol=lf
+.htaccess  text eol=lf

@@ -1,0 +1,168 @@
+
+# ------------------------------------------------------------------------------------
+#
+#   This file describes the process for setting up the Python Server
+#   for AI/ML Web Services. This assumes that the server [Ubuntu 18.04 LTS]
+#   is used. This can be done entirely through a Web Browser if using
+#   AWS Lightsail and the browser-based Linux Console.
+#
+#   The Webserver file [app.py] will work on any OS that supports 
+#   Python, Keras, TensorFlow, etc. It can be run directly from Python
+#   when using Windows or Mac.
+#
+#   Related Files needed for Setup: 
+#     Website\app\app.py
+#     Website\app\Views\ai-ml-demo.htm
+#
+#   Server Overview
+#   nginx -> Gunicorn -> flask -> [keras, tensorflow, sklearn]
+#
+#   At the time of development sepcific versions of Keras and Tensorflow
+#   are required for this to work. The bug with the latest version of Keras
+#   and TensorFlow will likely be fixed in the future. Based on:
+#   https://github.com/keras-team/keras/issues/13336#issuecomment-533181636
+#
+# ------------------------------------------------------------------------------------
+
+# Dependencies
+sudo apt-get update
+sudo apt-get install python3-pip
+pip3 install numpy keras==2.2.4 tensorflow==1.13.1 flask flask-cors Pillow scikit-learn
+    # or install one at a time
+    pip3 install numpy
+    pip3 install keras==2.2.4
+    pip3 install tensorflow==1.13.1
+    pip3 install flask
+    pip3 install flask-cors
+    pip3 install Pillow
+    pip3 install scikit-learn
+sudo apt-get install gunicorn3
+
+# Create main app python server file
+nano app.py
+* paste contents of file [Website\app\app.py]
+
+# Create the user web page
+nano index.htm
+* paste contents of file [Website\app\Views\ai-ml-demo.htm]
+
+# Download pre-built model for the Binary Classification Demo.
+# The model is built from [Website\scripts\ai-ml-pima-indians-diabetes-build.py]
+wget https://dataformsjs.s3-us-west-1.amazonaws.com/ai_ml/pima-indians-diabetes.sklearn
+
+# Commands to manually run Gunicorn
+# Because Keras/TensorFlow is used the service will generate 
+# many 500 errors if more than 1 worker is used.
+# These commands can be skipped for a server setup.
+gunicorn3 --workers 1 --bind 0.0.0.0:5000 app:app
+gunicorn3 -w 1 -b 0.0.0.0:5000 app:app
+sudo gunicorn3 -w 1 -b 0.0.0.0:80 app:app
+sudo killall gunicorn3
+
+# Create Gunicorn Service
+sudo nano /etc/systemd/system/gunicorn3.service
+# copy file contents form below
+sudo systemctl enable gunicorn3.service
+sudo systemctl start gunicorn3.service
+sudo systemctl status gunicorn3.service
+
+# =================================================================
+# [gunicorn3.service] file:
+# ---------------------------------------
+[Unit]
+Description=gunicorn3 webserver
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/usr/bin/gunicorn3 -w 1 -b 127.0.0.1:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+# ---------------------------------------
+# For public access without nginx use:
+ExecStart=/usr/bin/gunicorn3 -w 1 -b 0.0.0.0:5000 app:app
+# =================================================================
+
+# Other Commands for Gunicorn if needed
+sudo systemctl stop gunicorn3.service
+sudo systemctl disable gunicorn3.service
+sudo systemctl restart gunicorn3.service
+sudo rm /etc/systemd/system/gunicorn3.service
+
+# Install and configure nginx
+sudo apt install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo nano /etc/nginx/sites-available/default
+    # under the block
+    location / {
+        ...
+    }
+    # add
+    location /predict {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+sudo cp ~/index.htm /var/www/html/index.html
+sudo systemctl reload nginx
+
+# To test with larger images add
+sudo nano /etc/nginx/sites-available/default
+    # Under:
+    server {
+    # Add:
+        client_max_body_size 8M;
+sudo systemctl reload nginx
+
+# Other commands if needed
+sudo systemctl start nginx
+sudo systemctl stop nginx
+sudo systemctl restart nginx
+
+# Check Site, Reboot, and check site again to see that everything comes up
+sudo reboot
+
+# Verify that many images can be uploaded at the same time without
+# causing 500 responses or taking up too many server resources.
+# To see how much memory, cpu, and resources are used run:
+top
+
+# Replace the test HTML file
+# The demo HTML page allows unlimited uploads and is intended
+# for testing, it has no info to help users, etc.
+echo "<h1>Hello World</h1>" | sudo tee /var/www/html/index.html
+# View site to verify (clear cache using DevTools if needed)
+
+# --------------------------------------
+# Alternative Webserver using waitress instead of gunicorn3
+
+pip3 install waitress
+
+nano server.py
+from waitress import serve
+import app
+serve(app.app, host='0.0.0.0', port=5000)
+python3 server.py
+
+sudo nano /etc/systemd/system/waitress.service
+sudo systemctl enable waitress.service
+sudo systemctl start waitress.service
+sudo systemctl status waitress.service
+sudo systemctl stop waitress.service
+
+# [waitress.service] file:
+[Unit]
+Description=Python Webserver using Waitress
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/usr/bin/python3 /home/ubuntu/server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

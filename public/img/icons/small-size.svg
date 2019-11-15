@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>small-size</title>
+    <desc>Created with Sketch.</desc>
+    <g id="small-size" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#AEC2D6" stroke-width="4" fill="#FFFFFF" x="2" y="2" width="116" height="116"></rect>
+        <rect id="Rectangle" stroke="#D0DBE7" stroke-width="4" fill="#FFFFFF" x="72" y="82" width="46" height="36"></rect>
+        <text id="MB" font-family="ArialMT, Arial" font-size="28" font-weight="normal" fill="#AEC2D6">
+            <tspan x="9" y="33">MB</tspan>
+        </text>
+        <text id="KB" font-family="ArialMT, Arial" font-size="24" font-weight="normal" fill="#AEC2D6">
+            <tspan x="78.9921875" y="109">KB</tspan>
+        </text>
+        <path id="Line" d="M32.4393398,42.4393398 C33.0251263,41.8535534 33.9748737,41.8535534 34.5606602,42.4393398 L34.5606602,42.4393398 L52.479,60.358 L58.136039,54.7010101 L64.8535534,74.8535534 L44.7010101,68.136039 L50.358,62.479 L32.4393398,44.5606602 C31.890165,44.0114854 31.8558416,43.142423 32.3363696,42.5532622 Z" fill="#C0CEDE" fill-rule="nonzero"></path>
+    </g>
+</svg>
