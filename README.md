@@ -18,9 +18,11 @@ Once PHP is installed you can install FastSitePHP and launch the site from the c
 
 Both [dataformsjs] and this [website] repository need to be downloaded and located in a single directory/folder:
 
+~~~
 dataformsjs {root-directory}
-* dataformsjs [repository]
-* website [repository]
+|  dataformsjs [repository]
+|  website [repository]
+~~~
 
 ~~~
 cd {root-directory} # One directory above the [website] repository
