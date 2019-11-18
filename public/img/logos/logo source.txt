@@ -25,3 +25,10 @@ https://graphql.org/img/logo.svg
 
 javascript.svg
 https://commons.wikimedia.org/wiki/File:Unofficial_JavaScript_logo_2.svg
+
+npm.svg
+https://www.npmjs.com/
+# Logo was embedded directly in the HTML
+
+jsdelivr.svg
+https://www.jsdelivr.com/img/logo-horizontal.svg

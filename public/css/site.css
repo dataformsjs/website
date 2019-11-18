@@ -358,15 +358,33 @@ footer a { color:#fff; }
 
 /*****  Getting Started Page  *****/
 
-.getting-started .github {
+.getting-started .links {
+    display: flex;
+    flex-direction: column;
+    margin: 60px 0 20px 0;
+} 
+@media (min-width: 600px) {
+    .getting-started .links { margin: 60px auto 20px auto; } 
+}
+@media (min-width: 1000px) {
+    .getting-started .links { flex-direction: row; } 
+}
+.getting-started .github,
+.getting-started .npm,
+.getting-started .cdn {
     display: flex;
     align-items: center;
     padding: 10px 20px;
     background-color: var(--lighter-color-3);
-    margin: 60px auto 20px auto;
+    margin: 20px 0;
     border-radius: 4em;
     border: 1px solid var(--lighter-color-1);
     box-shadow: var(--shadow);
+}
+@media (min-width: 600px) {
+    .getting-started .github,
+    .getting-started .npm,
+    .getting-started .cdn { margin: 20px; } 
 }
 
 .getting-started .github span {
@@ -376,6 +394,16 @@ footer a { color:#fff; }
     height: 24px;
     width: 24px;
 }
+.getting-started .npm img {
+    width: 64px;
+    margin-right: 20px;
+}
+.getting-started .npm code {
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 2em;
+}
+
 
 .getting-started .template-menu {
     width: 100%;
