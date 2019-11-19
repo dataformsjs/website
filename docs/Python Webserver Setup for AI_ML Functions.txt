@@ -136,6 +136,13 @@ top
 echo "<h1>Hello World</h1>" | sudo tee /var/www/html/index.html
 # View site to verify (clear cache using DevTools if needed)
 
+# Optionally download favicon and default page used on the live server
+cd /var/www/html
+sudo wget https://raw.githubusercontent.com/dataformsjs/website/master/public/favicon.ico
+sudo wget https://raw.githubusercontent.com/dataformsjs/website/master/app/Views/ai-ml-index.htm
+sudo rm index.html
+sudo mv ai-ml-index.htm index.html
+
 # --------------------------------------
 # Alternative Webserver using waitress instead of gunicorn3
 
