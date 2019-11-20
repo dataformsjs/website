@@ -231,6 +231,7 @@ footer a { color:#fff; }
 
 .home.page .reasons-to-use img {
     width: 60px;
+    flex-shrink: 0;
     margin-right: 20px;
 }
 
