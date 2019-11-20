@@ -16,7 +16,7 @@ Getting started with PHP is extremely easy. If you do not have PHP installed the
 
 Once PHP is installed you can install FastSitePHP and launch the site from the command-line as show below. FastSitePHP is relatively small (under 1 mb).
 
-Both [dataformsjs] and this [website] repository need to be downloaded and located in a single directory/folder:
+For the full site both [dataformsjs] and this [website] repository need to be downloaded and located in a single directory/folder:
 
 ~~~
 dataformsjs {root-directory}
@@ -28,6 +28,14 @@ dataformsjs {root-directory}
 cd {root-directory} # One directory above the [website] repository
 php ./website/scripts/install.php
 php -S localhost:3000 website/public/index.php
+~~~
+
+The main site SPA (exluding example pages) can be ran from this repository directly without downloading the dataformsjs repository:
+
+~~~
+cd {this-directory}
+php ./scripts/install.php
+php -S localhost:3000
 ~~~
 
 Additionally GraphQL services run from Node with Express [app/app.js] and AI/ML Services run from Python with Flask [app/app.py]. For setup of those services refer to comments in each file.
@@ -43,7 +51,7 @@ For local setup of the GeoNames database used in the Places demo see comments in
 
 ## :question: FAQ
 
-**Why was this site developed with PHP instead of Node or another Language?**
+**Why was the main site developed with PHP instead of Node or another Language?**
 
 Primarily because the author of DataFormsJS also created FastSitePHP. That said, FastSitePHP has similar goals to DataFormsJS - high performance, fast development, small size, strong security, and many features out of the box.
 
