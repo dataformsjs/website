@@ -586,8 +586,14 @@ TITLE: Web Components - Show Data from a JSON Web Service
         <template>
             <!--
                 Data is passed from <json-data> to child elements using [data-bind]
+
+                When using the optional [load-only-once] attribute is used as shown below
+                data will be cached in memory and re-used if the same URL is accessed
+                while the page is open.
             -->
-            <json-data url="https://www.dataformsjs.com/data/geonames/countries">
+            <json-data
+                url="https://www.dataformsjs.com/data/geonames/countries"
+                load-only-once="true">
                 <is-loading>
                     <span class="loading">Loading...</span>
                 </is-loading>
@@ -772,9 +778,9 @@ LANG: JSX
         the web service will be passed to the component through [props.data].
 
         By default <JsonData> calls the web service each time the component
-        is created. When using the optional [loadOnlyOnce] as shown below
-        data will be cached in memory and re-used if the same URL is accessed
-        while the page is open.
+        is created. When using the optional [loadOnlyOnce] prop is used as
+        shown below data will be cached in memory and re-used if the same
+        URL is accessed while the page is open.
     */}
     class App extends React.Component {
         render() {
