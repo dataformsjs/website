@@ -809,6 +809,36 @@ LANG: JSX
 
 <!-- ********************************************************************** -->
 <!-- EXAMPLE_CODE_START
+TITLE: React - Using Custom Fetch Options and Request Headers
+LANG: JSX
+-->
+<script type="text/babel">
+{/*
+    [fetchOptions] and [fetchHeaders] allow for the app to control the
+    fetch options and custom send request headers for the component.
+
+    The default [fetchOptions] are shown below.
+*/}
+
+<JsonData
+    url="https://www.dataformsjs.com/data/geonames/countries"
+    isLoading={<ShowLoading />}
+    hasError={<ShowError />}
+    isLoaded={<ShowCountries />}
+    fetchOptions={{
+        mode: 'cors',
+        cache: 'no-store',
+        credentials: 'same-origin',
+    }}
+    fetchHeaders={{
+        Authorization: 'bearer 123abc',
+    }} />
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
 TITLE: React - Filtering and Sorting Data
 LANG: JSX
 -->
