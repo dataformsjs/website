@@ -96,8 +96,6 @@ footer a { color:#fff; }
     text-decoration:none;
     cursor: pointer;
 }
-.site-nav .mobile-nav .site-title:hover,
-.site-nav .mobile-nav .open-menu:hover { background-color:var(--lighter-color-2); }
 
 .mobile-menu {
     display:block;
