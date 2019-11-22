@@ -20,8 +20,9 @@ sudo apt install php
 # Enable PHP for Apache
 sudo apt install libapache2-mod-php
 
-# Add PHP Extensions for SQLite
-sudo apt install php7.2-sqlite
+# Add PHP Extensions for SQLite and Zip/Unzip. SQLite is used on
+# the Data Services and Unzip is used by [scripts/install.php].
+sudo apt install php7.2-sqlite php7.2-zip
 
 # Enable a Fallback page so that [index.php]
 # does not show in the URL.
@@ -31,8 +32,8 @@ sudo nano /etc/apache2/apache2.conf
 # Under it add the line:
 #    FallbackResource /index.php
 # Save using:
-#    {control+x} -> {y} -> {enter}
-#    Or {control+s} -> {control+x}
+#    {control+s} -> {control+x}
+#    Or {control+x} -> {y} -> {enter}
 
 # Enable Gzip Compression for JSON Responses
 #   (This is not enabled by default on Apache)
@@ -54,7 +55,7 @@ sudo chmod 0775 -R /var/www
 cd /var/www/html
 echo "<?php phpinfo(); ?>" | sudo tee phpinfo.php
 # http://your-server.example.com/phpinfo.php
-# http://34.220.182.203/phpinfo.php
+# http://44.224.31.99/phpinfo.php
 
 # Delete file [phpinfo.php] after checking server
 sudo rm phpinfo.php
@@ -62,40 +63,33 @@ sudo rm phpinfo.php
 # Download Site Files
 # In the future, theses will be link to GitHub Repositories
 cd ~
-wget https://dataformsjs.s3-us-west-1.amazonaws.com/tmp/DataFormsJS-2019-11-14.zip
-wget https://dataformsjs.s3-us-west-1.amazonaws.com/tmp/Website-2019-11-14.zip
 sudo apt install unzip
-unzip DataFormsJS-2019-11-14.zip
-unzip Website-2019-11-14.zip
+wget https://github.com/dataformsjs/dataformsjs/archive/master.zip
+unzip master.zip
+rm master.zip
+wget https://github.com/dataformsjs/website/archive/master.zip
+unzip master.zip
 ls
 
-# Copy Files (Overview)
-Website\[app, app_data, scripts, vendor]
-    -> Copy under [/var/www]
-Website\public\*
-    (all directories) and [index.php, robots.txt, favicon.ico, humans.txt, sitemap.xml]
-    -> Copy under [/var/www/html]
-DataFormsJS\examples
-    -> Copy under [/var/www/html]
+# Copy Files
+cp -r ~/website-master/app /var/www/app
+cp -r ~/website-master/app_data /var/www/app_data
+cp -r ~/website-master/scripts /var/www/scripts
+cp -r ~/website-master/public/. /var/www/html
+cp -r ~/dataformsjs-master/examples /var/www/html/examples
 
-# Copy Files (Commands)
-cp -r ~/Website/app /var/www/app
-cp -r ~/Website/app_data /var/www/app_data
-cp -r ~/Website/scripts /var/www/scripts
-cp -r ~/Website/vendor /var/www/vendor
-cp -r ~/Website/public/css /var/www/html/css
-cp -r ~/Website/public/html /var/www/html/html
-cp -r ~/Website/public/i18n /var/www/html/i18n
-cp -r ~/Website/public/img /var/www/html/img
-cp -r ~/Website/public/js /var/www/html/js
-cp ~/Website/public/index.php /var/www/html/index.php
-cp ~/Website/public/robots.txt /var/www/html/robots.txt
-cp ~/Website/public/favicon.ico /var/www/html/favicon.ico
-cp ~/Website/public/humans.txt /var/www/html/humans.txt
-cp ~/Website/public/sitemap.xml /var/www/html/sitemap.xml
-cp -r ~/DataFormsJS/examples /var/www/html/examples
+# Install FastSitePHP (~470 kb) and Dependencies (~20 - 40 kb)
+php /var/www/scripts/install.php
 
-# Delete the Default Apache File
+# View Files
+ls /var/www
+ls -la /var/www/html
+
+# Delete files that are not needed including the Apache default page
+# The [.htaccess] file being deleted is a version for local development
+# that is copied from the downloaded site (it's not needed for production).
+sudo rm /var/www/html/.htaccess
+sudo rm /var/www/html/Web.config
 sudo rm /var/www/html/index.html
 
 # After copying files up, reset permissions
@@ -103,8 +97,8 @@ sudo chown ubuntu:www-data -R /var/www
 sudo chmod 0775 -R /var/www
 
 # Check the Site Home Page and Hello World JSON Service
-# http://34.220.182.203/
-# http://34.220.182.203/data/hello-world
+# http://44.224.31.99/
+# http://44.224.31.99/data/hello-world
 
 # Create Geonames Database
 # About 350 MB to Download, Python Script takes about 3-5 minutes
@@ -118,8 +112,8 @@ python3 geonames.py
 ls -la /var/www/app_data/geonames.sqlite
 
 # Check the Geonames Web Service
-# http://34.220.182.203/data/geonames/countries
-# http://34.220.182.203/data/geonames/regions/US
+# http://44.224.31.99/data/geonames/countries
+# http://44.224.31.99/data/geonames/regions/US
 
 # Remove downloaded Geonames files to clear up space on the server
 sudo rm countryInfo.txt allCountries.zip allCountries.txt
@@ -132,8 +126,8 @@ sudo npm install pm2 -g
 pm2 start app.js
 
 # Test GraphQL Services
-# http://34.220.182.203/graphql?query={countries{iso,country}}
-# http://34.220.182.203/graphql?query=query($country:String!){regions(country:$country){name}}&variables={"country":"US"}
+# http://44.224.31.99/graphql?query={countries{iso,country}}
+# http://44.224.31.99/graphql?query=query($country:String!){regions(country:$country){name}}&variables={"country":"US"}
 
 # Make sure PM2 starts the GraphQL service on reboot
 pm2 startup
@@ -142,3 +136,14 @@ pm2 save
 
 # Restart the server and make sure everything works after a reboot
 sudo reboot
+
+# Additional Steps performmed for the live site
+https://www.dataformsjs.com/#/en/
+
+# 1) Created Static IP in AWS Lightsail for the Sever: 44.224.31.99
+# 2) GoDaddy - Used the IP for the Main A Record in Domain Settings
+# 3) Update AWS to allow HTTPS in the Firewall on the Networking Tab
+# 4) Installed HTTPS Certificate using certbot:
+#    https://certbot.eff.org/lets-encrypt/ubuntubionic-apache
+#    For the Certificate both non-www and www were entered:
+#        dataformsjs.com www.dataformsjs.com

@@ -38,22 +38,18 @@ pip3 install numpy keras==2.2.4 tensorflow==1.13.1 flask flask-cors Pillow sciki
     pip3 install scikit-learn
 sudo apt-get install gunicorn3
 
-# Create main app python server file
-nano app.py
-* paste contents of file [Website\app\app.py]
+# Download files for app and demo and the pre-built model for the Binary Classification Demo
+wget https://raw.githubusercontent.com/dataformsjs/website/master/app/app.py
+wget https://raw.githubusercontent.com/dataformsjs/website/master/app/Views/ai-ml-demo.htm
+wget https://github.com/dataformsjs/static-files/raw/master/ai_ml/models/pima-indians-diabetes.sklearn
 
-# Create the user web page
-nano index.htm
-* paste contents of file [Website\app\Views\ai-ml-demo.htm]
-
-# Download pre-built model for the Binary Classification Demo.
-# The model is built from [Website\scripts\ai-ml-pima-indians-diabetes-build.py]
-wget https://dataformsjs.s3-us-west-1.amazonaws.com/ai_ml/pima-indians-diabetes.sklearn
+# The model was built from the following script:
+#   https://github.com/dataformsjs/website/blob/master/scripts/ai-ml-pima-indians-diabetes-build.py
 
 # Commands to manually run Gunicorn
+# ** These commands can be skipped for a server setup.
 # Because Keras/TensorFlow is used the service will generate 
 # many 500 errors if more than 1 worker is used.
-# These commands can be skipped for a server setup.
 gunicorn3 --workers 1 --bind 0.0.0.0:5000 app:app
 gunicorn3 -w 1 -b 0.0.0.0:5000 app:app
 sudo gunicorn3 -w 1 -b 0.0.0.0:80 app:app
@@ -64,7 +60,6 @@ sudo nano /etc/systemd/system/gunicorn3.service
 # copy file contents form below
 sudo systemctl enable gunicorn3.service
 sudo systemctl start gunicorn3.service
-sudo systemctl status gunicorn3.service
 
 # =================================================================
 # [gunicorn3.service] file:
@@ -87,6 +82,7 @@ ExecStart=/usr/bin/gunicorn3 -w 1 -b 0.0.0.0:5000 app:app
 # =================================================================
 
 # Other Commands for Gunicorn if needed
+sudo systemctl status gunicorn3.service
 sudo systemctl stop gunicorn3.service
 sudo systemctl disable gunicorn3.service
 sudo systemctl restart gunicorn3.service
@@ -106,8 +102,15 @@ sudo nano /etc/nginx/sites-available/default
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-sudo cp ~/index.htm /var/www/html/index.html
+sudo cp ~/ai-ml-demo.htm /var/www/html/index.html
 sudo systemctl reload nginx
+
+# Optionally download favicon
+cd /var/www/html
+sudo wget https://raw.githubusercontent.com/dataformsjs/website/master/public/favicon.ico
+
+# View the site and test
+# http://44.228.52.245/
 
 # To test with larger images add
 sudo nano /etc/nginx/sites-available/default
@@ -136,15 +139,26 @@ top
 echo "<h1>Hello World</h1>" | sudo tee /var/www/html/index.html
 # View site to verify (clear cache using DevTools if needed)
 
-# Optionally download favicon and default page used on the live server
+# Optionally download default page used on the live server
 cd /var/www/html
-sudo wget https://raw.githubusercontent.com/dataformsjs/website/master/public/favicon.ico
 sudo wget https://raw.githubusercontent.com/dataformsjs/website/master/app/Views/ai-ml-index.htm
 sudo rm index.html
 sudo mv ai-ml-index.htm index.html
 
-# --------------------------------------
+# Additional Steps performmed for the live site
+https://ai-ml.dataformsjs.com/
+
+# 1) Created Static IP in AWS Lightsail for the Sever: 44.228.52.245
+# 2) GoDaddy - Added an A Record for 'ai-ml' that points to the IP
+# 3) Update AWS to allow HTTPS in the Firewall on the Networking Tab
+# 4) Installed HTTPS Certificate using certbot:
+#    https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx
+#    Host: ai-ml.dataformsjs
+
+
+# ------------------------------------------------------------------
 # Alternative Webserver using waitress instead of gunicorn3
+# ------------------------------------------------------------------
 
 pip3 install waitress
 
