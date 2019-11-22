@@ -144,6 +144,11 @@ footer a { color:#fff; }
 /************ Prism Override ************/
 :not(pre) > code[class*="language-"], pre[class*="language-"] { background:white; }
 
+code[class*="language-"], pre[class*="language-"] { font-size:12px; }
+@media (min-width:600px) {
+    code[class*="language-"], pre[class*="language-"] { font-size:1em; }
+}
+
 /************ Home Page ************/
 .home.page .logo {
     display: flex;
