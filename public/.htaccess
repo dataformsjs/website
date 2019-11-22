@@ -1,7 +1,11 @@
 # This is a basic Apache config file used for development. The live website
 # does not include this file. For development this file assumes that The
-# site is being hosted under [DataFormsJS/Website]. If your environment
+# site is being hosted under [dataformsjs/website]. If your environment
 # is setup differently then simply update the settings.
 
+# This file will most likely be used on a Mac with Apache.
+# For Apache setup on a Mac see:
+#     https://www.fastsitephp.com/en/documents/install-php-on-mac
+
 # FallbackResource /index.php
-FallbackResource /DataFormsJS/Website/public/index.php
+FallbackResource /dataformsjs/website/public/index.php
