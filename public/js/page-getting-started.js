@@ -207,7 +207,13 @@
          * This gets called each time the view is redrawn.
          */
         onRendered: function() {
-            this.setup();
+            // Check for [this.setup] before calling because on rare
+            // occasions it has caused an error when clicking around
+            // fast while the page is being loade. The reason is not
+            // yet known. It happens during a call to [app.updateView()].
+            if (typeof this.setup === 'function') {
+                this.setup();
+            }
         },
 
         /**
