@@ -115,6 +115,13 @@ $app->get('/*', function() use ($app) {
     $root = __DIR__ . '/../../DataFormsJS';
     $path = $app->requestedPath();
 
+    // To replicate slow pages uncomment and modify the following as needed.
+    // This causes a delay in all non-js files.
+    //
+    // if (strpos($path, '.js') === false) {
+    //     usleep(500000);
+    // }
+    
     // Uncomment to debug if needed (also version below)
     // var_dump($root . $path);
     // exit();

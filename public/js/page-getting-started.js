@@ -1,6 +1,6 @@
 /**
  * Getting Started Page
- * 
+ *
  * The getting started page uses <template> rather than Hanldebars or other
  * rendering engines so that example code is display rather than rendered.
  */
@@ -42,11 +42,11 @@
                 if (e.stopPropagation) {
                     e.stopPropagation();
                 }
-                
+
                 // Update links
                 document.querySelector('.view-template').href = page;
 
-                // Update HTML Control - <code data-template-url="url"> 
+                // Update HTML Control - <code data-template-url="url">
                 var code = document.querySelector('.template code');
                 code.setAttribute('data-template-url', page);
                 code.setAttribute('class', className);
@@ -145,7 +145,7 @@
                     // to another tab by using an <iframe> with "data:" url. Because Browsers
                     // may change security rules for new tabs in the future this could break
                     // at any time but for now it works. The reason that content is written
-                    // to the tab is because the i18n strings need to be updated before 
+                    // to the tab is because the i18n strings need to be updated before
                     // displaying the page and that happens in the browser.
                     //
                     // A possible future alternative option would be to render the templates
@@ -182,7 +182,7 @@
                         var code = document.querySelector('.template code').textContent;
                         var fileName = document.querySelector('.template-page.active').getAttribute('data-page');
                         fileName = fileName.replace('html/getting-started/', '');
-                        
+
                         // Export
                         var blob = new Blob([code], { type: 'text/html; charset=utf-8;' });
                         if (navigator.msSaveBlob !== undefined) {
@@ -207,13 +207,7 @@
          * This gets called each time the view is redrawn.
          */
         onRendered: function() {
-            // Check for [this.setup] before calling because on rare
-            // occasions it has caused an error when clicking around
-            // fast while the page is being loade. The reason is not
-            // yet known. It happens during a call to [app.updateView()].
-            if (typeof this.setup === 'function') {
-                this.setup();
-            }
+            this.setup();
         },
 
         /**

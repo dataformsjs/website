@@ -53,7 +53,7 @@
         state.lang = app.plugins.i18n.currentLocale;
         getSavedSiteKey();
         if (state.siteKey) {
-            if (state.fileList.length === 0) {
+            if (state.fileList.length === 0 || state.selectedFile === null) {
                 // Page reloaded with existing valid site
                 downloadSite('download-site');
             } else {
@@ -149,10 +149,14 @@
             }
         })
         .catch(function(error) {
-            // If there is an error downloading the defualt template
+            // If there is an error downloading the default template
             // so a special message as the serve may be down.
             if (url !== 'download-site') { // ':lang/site-template'
-                var msg = document.querySelector('.error-messages').getAttribute('data-server-down');
+                var errEl = document.querySelector('.error-messages');
+                if (!errEl) {
+                    return; // User clicked to a new page while service was downloading
+                }
+                var msg = errEl.getAttribute('data-server-down');
                 msg += ' Error: ' + error.toString();
                 showError(msg);
             } else {
@@ -166,7 +170,11 @@
             // confirm prompt.
             if (url === 'download-site') {
                 window.setTimeout(function() {
-                    var msg = document.querySelector('.error-messages').getAttribute('data-saved-site');
+                    var errEl = document.querySelector('.error-messages');
+                    if (!errEl) {
+                        return; // User clicked to a new page while service was downloading
+                    }
+                    var msg = errEl.getAttribute('data-saved-site');
                     if (confirm(msg)) {
                         removeSavedSitekey();
                         window.location.reload(true);
@@ -178,6 +186,9 @@
 
     function setupControls() {
         var createButtons = document.querySelectorAll('.btn.create-site');
+        if (createButtons.length === 0) {
+            return; // User clicked to a new page while playground was still loading
+        }
         createButtons[0].onclick = createSite;
         createButtons[1].onclick = createSite;
         document.querySelector('.btn.save-file').onclick = saveFile;
@@ -203,6 +214,7 @@
         var fileType = document.getElementById('file-type');
         fileType.onchange = function() {
             state.cm.toTextArea();
+            state.cm = null;
             var mode = fileType.options[fileType.selectedIndex].getAttribute('data-mode');
             setupCodeMirror(mode);
             setSaveButtonView();
@@ -254,6 +266,9 @@
 
     function showError(error) {
         var container = document.querySelector('.error-message');
+        if (!container) {
+            return; // User clicked to a new page while function was still running
+        }        
         var label = container.querySelector('p .text');
         var message = error;
         if (message.toString().toLowerCase().indexOf('error') === -1) {
@@ -585,6 +600,7 @@
         fileName.style.display = '';
 
         state.cm.toTextArea();
+        state.cm = null;
         document.getElementById('code-editor').value = '';
         var mode = fileType.options[fileType.selectedIndex].getAttribute('data-mode');
         setupCodeMirror(mode);
@@ -662,6 +678,17 @@
             options.mode = { name:'handlebars', base:'htmlmixed' };
         }
 
+        if (state.cm !== null) {
+            // Manually remove previous editors from the screen if they still exist. 
+            // This can happen if clicking on and off the pageground page very fast
+            // while the service to download images or other resources is slow.
+            var editors = document.querySelectorAll('.CodeMirror.cm-s-default');
+            if (editors) {
+                Array.prototype.forEach.call(editors, function(editor) {
+                    editor.parentNode.removeChild(editor);
+                });
+            }
+        }
         state.cm = CodeMirror.fromTextArea(document.getElementById('code-editor'), options);
     }
 
@@ -923,6 +950,7 @@
         // with the vertical scrollbar and allows for custom options per language.
         if (state.cm !== null) {
             state.cm.toTextArea();
+            state.cm = null;
         }
         document.getElementById('code-editor').value = data.content;
         setupCodeMirror(mode);
@@ -936,7 +964,9 @@
     // All page logic is handled by functions and the initial [setup()] function.
     // The controller simply calls [setup()] and a few features for DOM.
     app.addPage('playground', {
-        model: {},
+        model: {
+            getState: function() { return state; } // Used from DevTools to debug UI errors if needed: app.activeModel.getState()
+        },
         onRendered: function() {
             setup();
             document.querySelector('footer').style.display = 'none';
