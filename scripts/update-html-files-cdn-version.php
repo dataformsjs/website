@@ -29,8 +29,7 @@ if (__FILE__ === '/var/www/scripts/update-html-files-cdn-version.php') {
     if (basename($root_dir) !== 'dataformsjs') {
         print('Error - Unexpected file structure, this repository should be under a root [dataformsjs] dir.');
         exit();
-    }
-    
+    }    
     $examples_dir = __DIR__ . '/../../dataformsjs/examples';
     if (!is_dir($examples_dir)) {
         print('Error - Missing [dataformsjs] repository.');
@@ -46,6 +45,7 @@ $files = $search
     ->recursive(true)
     ->fileTypes(['htm', 'txt'])
     ->includeText([SEARCH_TEXT])
+    ->excludeRegExPaths(['/sites/'])
     ->fullPath(true)
     ->files();
 
