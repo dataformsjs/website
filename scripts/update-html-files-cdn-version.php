@@ -43,7 +43,7 @@ $search = new \FastSitePHP\FileSystem\Search();
 $files = $search
     ->dir($root_dir)
     ->recursive(true)
-    ->fileTypes(['htm', 'txt'])
+    ->fileTypes(['htm', 'txt', 'md'])
     ->includeText([SEARCH_TEXT])
     ->excludeRegExPaths(['/sites/'])
     ->fullPath(true)
