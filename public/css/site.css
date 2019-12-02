@@ -128,8 +128,9 @@ footer a { color:#fff; }
 .mobile-menu ul li:hover a { background-color: var(--lighter-color-2); }
 
 .site-nav .desktop-nav {  list-style-type:none; margin:auto; display:none; }
-.site-nav .desktop-nav li { display:inline-block; margin:5px; font-weight:bold; }
+.site-nav .desktop-nav li { display:inline-flex; margin:5px; font-weight:bold; }
 .site-nav .desktop-nav a { color:#fff; text-decoration:none; display:inline-block; padding:10px 25px; }
+.site-nav .desktop-nav a.github { padding:5px 25px 0 25px; }
 .site-nav .desktop-nav a:visited { color:#fff; }
 .site-nav .desktop-nav li:hover { background-color:var(--lighter-color-1); }
 .site-nav .desktop-nav li.active { background-color:var(--highlight-color); }
@@ -138,7 +139,12 @@ footer a { color:#fff; }
 @media (min-width: 500px) {
     .site-nav .mobile-nav { display:none; }
     .mobile-menu ul { margin:0 auto 20px auto; }
-    .site-nav .desktop-nav { display:inline-block; }
+    .site-nav .desktop-nav {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 /************ Prism Override ************/

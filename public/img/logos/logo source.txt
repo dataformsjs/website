@@ -32,3 +32,7 @@ https://www.npmjs.com/
 
 jsdelivr.svg
 https://www.jsdelivr.com/img/logo-horizontal.svg
+
+GitHub-Mark-32px.png
+GitHub-Mark-Light-32px.png
+https://github.com/logos
