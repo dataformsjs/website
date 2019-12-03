@@ -41,6 +41,7 @@ class HelloWorld
         $i18n_file = $root . '/../i18n/hello-world.{lang}.json';
         $i18n = I18N::textFile($i18n_file, $lang);
         $i18n = json_decode($i18n, false);
+        $i18n->lang = $lang;
 
         // 2) Read html file: [dataformsjs\examples\hello-world\{file}]
         $html = file_get_contents($file_path);
