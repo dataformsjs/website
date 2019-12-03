@@ -86,6 +86,16 @@ $app->mount('/graphql', 'routes-graphql.php');
 
 
 /**
+ * Hello World Examples
+ */
+$app->get('/examples/hello-world/:lang/:file', 'HelloWorld');
+$app->get('/examples/hello-world/en-js.htm', function() use ($app) {
+    // Redirect for previously published URL
+    return $app->redirect('/examples/hello-world/en/js.htm');
+});
+
+
+/**
  * Test for the 500 error page
  */
 $app->get('/500', function() {
@@ -112,7 +122,7 @@ $app->get('/*', function() use ($app) {
     // Path for DataFormsJS Repository; this assumes the Repository
     // exists in the same directory as the  Website Repository.
     // Change if needed for local development.
-    $root = __DIR__ . '/../../DataFormsJS';
+    $root = __DIR__ . '/../../dataformsjs';
     $path = $app->requestedPath();
 
     // To replicate slow pages uncomment and modify the following as needed.
