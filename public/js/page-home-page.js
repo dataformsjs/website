@@ -550,10 +550,18 @@ Steps used to create (or re-create the computer)
             // Unless a better method is determined, text position values are hard-coded
             // based on the language. To determine the start screen simply comment out
             // [setupAnimation] below and to determine the "Filter" text temporarily
-            // change [stopScreen: null] to [stopScreen: 4].
-            if (app.plugins.i18n.currentLocale === 'jp') {
-                document.querySelector('#Text-Login tspan').setAttribute('x', '290');
-                document.querySelector('#Text-Filter tspan').setAttribute('x', '310');
+            // change [stopScreen: null] to [stopScreen: 4] and to determine the login
+            // screen set [stopScreen: 2] and wait for a full animation.
+            switch (app.plugins.i18n.currentLocale) {
+                case 'jp':
+                    document.querySelector('#Text-Login tspan').setAttribute('x', '290');
+                    document.querySelector('#Text-Filter tspan').setAttribute('x', '310');
+                    break;
+                case 'es':
+                    document.querySelector('#Text-User-Name tspan').setAttribute('x', '258');
+                    document.querySelector('#Text-Password tspan').setAttribute('x', '295');
+                    document.querySelector('#Text-Login tspan').setAttribute('x', '295');
+                    break;
             }
             this.setupExamples();
             this.setupAnimation();
