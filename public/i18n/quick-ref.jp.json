@@ -1,5 +1,5 @@
 {
     "quick_ref_all": "{totalCount}クイックリファレンスの例",
     "quick_ref_filtered": "{totalCount}の例の{displayCount}を表示する例",
-    "quick_ref_placeholder": "フィルタを入力します。例：「JavaScript」または「Webコンポーネント」"
+    "quick_ref_placeholder": "フィルタを入力します。例：「JavaScript」または「Web Components」"
 }

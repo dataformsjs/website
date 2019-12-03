@@ -7,7 +7,7 @@
     "download": "ダウンロード",
     "tmpl_hbs_title": "DataFormsJS HandlebarsJS テンプレート",
     "tmpl_hbs_graphql_title": "GraphQLテンプレートを使用したDataFormsJS HandlebarsJS",
-    "tmpl_web_title": "DataFormsJS Webコンポーネントテンプレート",
+    "tmpl_web_title": "DataFormsJS Web Componentsテンプレート",
     "tmpl_vue_title": "DataFormsJS Vueテンプレート",
     "tmpl_vue_graphql_title": "GraphQLテンプレートを使用したDataFormsJS Vue",
     "tmpl_underscore_title": "DataFormsJS UnderscoreJS テンプレート",
