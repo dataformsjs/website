@@ -123,18 +123,39 @@ footer a { color:#fff; }
     margin:0 10px 20px 10px;
 }
 .mobile-menu ul li { width:calc(50% - 20px); margin:10px; max-width:200px; }
+.mobile-menu ul.i18n-menu li { width:100%; text-align:center; margin:10px; max-width:400px; }
 .mobile-menu ul li a { text-decoration:none; font-weight:bold; padding:10px 15px; display:block; border-radius:2px; }
 .mobile-menu ul li.active a { background-color: var(--main-color); color: #fff; }
 .mobile-menu ul li:hover a { background-color: var(--lighter-color-2); }
 
 .site-nav .desktop-nav {  list-style-type:none; margin:auto; display:none; }
-.site-nav .desktop-nav li { display:inline-flex; margin:5px; font-weight:bold; }
+.site-nav .desktop-nav > li { display:inline-flex; margin:5px; font-weight:bold; }
+.site-nav .desktop-nav > li.i18n-menu span { display: inline-block; padding:10px 15px; font-weight:bold; color: #fff; text-decoration: none; position:relative; }
 .site-nav .desktop-nav a { color:#fff; text-decoration:none; display:inline-block; padding:10px 25px; }
 .site-nav .desktop-nav a.github { padding:5px 25px 0 25px; }
 .site-nav .desktop-nav a:visited { color:#fff; }
-.site-nav .desktop-nav li:hover { background-color:var(--lighter-color-1); }
-.site-nav .desktop-nav li.active { background-color:var(--highlight-color); }
-.site-nav .desktop-nav li.active a { color:var(--main-color); }
+.site-nav .desktop-nav > li:hover { background-color:var(--lighter-color-1); }
+.site-nav .desktop-nav > li.active { background-color:var(--highlight-color); }
+.site-nav .desktop-nav > li.active a { color:var(--main-color); }
+
+.site-nav .desktop-nav > li.i18n-menu { position:relative; }
+.site-nav .desktop-nav > li.i18n-menu ul {
+    display:none;
+    position:absolute;
+    background-color: white;
+    white-space: nowrap;
+    border: 1px solid var(--main-color);
+    box-shadow: var(--shadow);
+    list-style-type: none;
+    left: -30px;
+    top: 40px;
+}
+.site-nav .desktop-nav > li.i18n-menu ul li.active { background-color:var(--highlight-color); }
+.site-nav .desktop-nav > li.i18n-menu ul li:hover { background-color:var(--lighter-color-1); }
+.site-nav .desktop-nav > li.i18n-menu:hover ul { display:block; }
+.site-nav .desktop-nav > li.i18n-menu a,
+.site-nav .desktop-nav > li.i18n-menu a:visited { color:var(--main-color); }
+.site-nav .desktop-nav > li.i18n-menu a:hover { color:#fff; }
 
 @media (min-width: 500px) {
     .site-nav .mobile-nav { display:none; }
