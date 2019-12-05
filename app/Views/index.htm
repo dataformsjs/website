@@ -206,6 +206,21 @@
                     }
                 });
 
+                // Custom Site Plugin to update GitHub Links
+                app.addPlugin('github', function() {
+                    var links = document.querySelectorAll('nav a.github');
+                    var url = 'https://github.com/dataformsjs/dataformsjs';
+                    switch (app.plugins.i18n.currentLocale) {
+                        case 'es':
+                        case 'pt-BR':
+                            url = 'https://github.com/dataformsjs/dataformsjs/blob/master/docs/i18n-readme/README.' + app.plugins.i18n.currentLocale + '.md';
+                            break;
+                    }
+                    Array.prototype.forEach.call(links, function(link) {
+                        link.href = url;
+                    });
+                });
+
                 // Update footer
                 document.querySelector('footer .year').textContent = (new Date()).getFullYear();
             })();
