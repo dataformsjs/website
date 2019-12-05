@@ -20,8 +20,8 @@ For the full site both [dataformsjs] and this [website] repository need to be do
 
 ~~~
 dataformsjs {root-directory}
-|  dataformsjs [repository]
-|  website [repository]
+├── dataformsjs [repository]
+└── website [repository]
 ~~~
 
 ~~~
