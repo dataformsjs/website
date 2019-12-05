@@ -14,7 +14,7 @@ Getting started with PHP is extremely easy. If you do not have PHP installed the
 
 <a href="https://www.fastsitephp.com/en/getting-started" target="_blank">https://www.fastsitephp.com/en/getting-started</a>
 
-Once PHP is installed you can install FastSitePHP and launch the site from the command-line as show below. FastSitePHP is relatively small (under 1 mb).
+Once PHP is installed you can install FastSitePHP and launch the site from the command-line as show below. FastSitePHP is relatively small (~470 kb).
 
 For the full site both [dataformsjs] and this [website] repository need to be downloaded and located in a single directory/folder:
 
