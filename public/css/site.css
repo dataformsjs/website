@@ -147,8 +147,9 @@ footer a { color:#fff; }
     border: 1px solid var(--main-color);
     box-shadow: var(--shadow);
     list-style-type: none;
-    left: -30px;
+    left: -120px;
     top: 40px;
+    z-index: 1000;
 }
 .site-nav .desktop-nav > li.i18n-menu ul li.active { background-color:var(--highlight-color); }
 .site-nav .desktop-nav > li.i18n-menu ul li:hover { background-color:var(--lighter-color-1); }

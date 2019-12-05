@@ -1,0 +1,21 @@
+{
+    "Home": "Casa",
+    "Playground": "Parque infantil",
+    "Getting Started": "Começando",
+    "Quick Reference": "Referência rápida",
+    "Examples": "Exemplos",
+    "Documents": "Documentos",
+    "API": "API",
+    "Timezone": "Fuso horário",
+    "Web Components": "Web Components",
+    "Loading...": "Carregando...",
+    "Hello World!": "Olá Mundo!",
+    "Hello": "Olá",
+    "Countries": "Países",
+    "country_code": "Código",
+    "country_name": "Nome",
+    "country_size": "Tamanho (KM)",
+    "country_pop": "População",
+    "country_continent": "Continente",
+    "footer_license": "Site e código-fonte fornecido sob a licença MIT"
+}
