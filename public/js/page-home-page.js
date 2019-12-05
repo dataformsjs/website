@@ -562,6 +562,11 @@ Steps used to create (or re-create the computer)
                     document.querySelector('#Text-Password tspan').setAttribute('x', '295');
                     document.querySelector('#Text-Login tspan').setAttribute('x', '295');
                     break;
+                case 'pt-BR':
+                    document.querySelector('#Text-User-Name tspan').setAttribute('x', '270');
+                    document.querySelector('#Text-Password tspan').setAttribute('x', '330');
+                    document.querySelector('#Text-Login tspan').setAttribute('x', '325');
+                    break;
             }
             this.setupExamples();
             this.setupAnimation();
