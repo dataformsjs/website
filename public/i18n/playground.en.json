@@ -29,7 +29,7 @@
     "one_second_remaining": "1 Second Remaining",
     "file_limit_reached": "File limit reached",
     "mobile_layout": "Try this page on a desktop 🖥️ or laptop computer 💻 to use the full editor and all features. 👍🌠😃",
-    "narrow_layout": "Make your screen wider to see the full editor. If you have a narrow monitor or screen then try this page on another computer ️️🖥️💻 to use the full editor and all features. 👍🌠😃",
+    "narrow_layout": "Make your screen wider to see the full editor (the higher the screen resolution the better). If you have a narrow monitor or screen then try this page on another computer ️️🖥️💻 to use the full editor and all features. 👍🌠😃",
     "error_saved_site": "There was an error downloading your saved site. Would you like to create a new site?",
     "error_server_down": "The playground server may be temporarily down because there was an error downloading the site template. Please try this page again in the near future!",
     "try_other_site": "Or try a PHP version of this site at FastSitePHP",
