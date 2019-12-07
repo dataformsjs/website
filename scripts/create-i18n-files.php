@@ -20,6 +20,10 @@ const LANG_COPY_TO = 'jp';
 // *** Additional Options ***/
 const COPY_QUICK_REF = true;
 
+// In case autoloader is not found or unexpected error:
+error_reporting(-1);
+ini_set('display_errors', 'on');
+
 // PHP Autoloader (dynamically load classes)
 include __DIR__ . '/../vendor/autoload.php';
 
