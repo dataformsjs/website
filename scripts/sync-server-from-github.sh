@@ -15,16 +15,16 @@
 #
 # -----------------------------------------------------------------------------
 
-wget https://github.com/dataformsjs/dataformsjs/archive/master.zip -O /home/ubuntu/master.zip
-unzip -q master.zip
-rm master.zip
-wget https://github.com/dataformsjs/website/archive/master.zip -O /home/ubuntu/master.zip
-unzip -q master.zip
-rm master.zip
+wget https://github.com/dataformsjs/dataformsjs/archive/master.zip -O ~/master.zip
+unzip -q ~/master.zip
+rm ~/master.zip
+wget https://github.com/dataformsjs/website/archive/master.zip -O ~/master.zip
+unzip -q ~/master.zip
+rm ~/master.zip
 rsync -rcv --delete ~/dataformsjs-master/examples/ /var/www/html/examples
 rsync -rcv --delete --exclude node_modules ~/website-master/app/ /var/www/app
 rsync -rcv --delete --exclude geonames.sqlite ~/website-master/app_data/ /var/www/app_data
 rsync -rcv --delete ~/website-master/scripts/ /var/www/scripts
-rsync -rcv --delete --exclude examples --exclude .htaccess ~/website-master/public/ /var/www/html
-rm -r website-master
-rm -r dataformsjs-master
+rsync -rcv --delete --exclude examples --exclude .htaccess --exclude Web.config ~/website-master/public/ /var/www/html
+rm -r ~/website-master
+rm -r ~/dataformsjs-master
