@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.dataformsjs.com/#/en/</loc>
+        <loc>https://www.dataformsjs.com/en/</loc>
     </url>
     <url>
-        <loc>https://www.dataformsjs.com/#/en/playground</loc>
+        <loc>https://www.dataformsjs.com/en/playground</loc>
     </url>
     <url>
-        <loc>https://www.dataformsjs.com/#/en/getting-started</loc>
+        <loc>https://www.dataformsjs.com/en/getting-started</loc>
     </url>
     <url>
-        <loc>https://www.dataformsjs.com/#/en/quick-reference</loc>
+        <loc>https://www.dataformsjs.com/en/quick-reference</loc>
     </url>
     <url>
-        <loc>https://www.dataformsjs.com/#/en/examples</loc>
+        <loc>https://www.dataformsjs.com/en/examples</loc>
     </url>
     <url>
         <loc>https://www.dataformsjs.com/examples/places-demo-hbs.htm#/en/</loc>
