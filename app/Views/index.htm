@@ -219,7 +219,7 @@
                 var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
                 app.loadScript(supportsCssVars, polyfillUrl, function() {
                     if (window.cssVars) {
-                        cssVars({ include:'link[href="css/site.css"]' });
+                        cssVars({ include:'link[href="/css/site.css"]' });
                     }
                 });
 
