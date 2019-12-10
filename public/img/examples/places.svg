@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="400px" height="200px" viewBox="0 0 400 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
     <title>places</title>
     <desc>Created with Sketch.</desc>
     <defs>
@@ -72,6 +72,9 @@
             <rect id="Rectangle" fill="#BDBDBD" x="45" y="117" width="95" height="6" rx="3"></rect>
             <rect id="Rectangle" fill="#BDBDBD" x="45" y="137" width="95" height="6" rx="3"></rect>
         </g>
+        <polygon id="Rectangle" stroke="#CFCDCD" fill="#FFFFFF" points="196 40.2418301 260 20 260 161.69281 196 183"></polygon>
+        <polygon id="Rectangle" stroke="#CFCDCD" fill="#FFFFFF" transform="translate(290.000000, 100.500000) scale(-1, 1) translate(-290.000000, -100.500000) " points="260 39 320 20 320 162 260 181"></polygon>
+        <polygon id="Rectangle" stroke="#CFCDCD" fill="#FFFFFF" points="320 39.2418301 384 19 384 160.69281 320 181"></polygon>
         <polygon id="Rectangle" stroke="#979797" fill="url(#linearGradient-1)" points="200 43 260 24 260 157 200 177"></polygon>
         <polygon id="Rectangle" stroke="#979797" fill="url(#linearGradient-2)" transform="translate(290.000000, 100.500000) scale(1, -1) translate(-290.000000, -100.500000) " points="260 43 320 24 320 157 260 177"></polygon>
         <polygon id="Rectangle" stroke="#979797" fill="url(#linearGradient-3)" transform="translate(290.000000, 133.500000) scale(1, -1) translate(-290.000000, -133.500000) " points="260 109 320 90 320 157 260 177"></polygon>

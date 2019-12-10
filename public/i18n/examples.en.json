@@ -6,7 +6,7 @@
     "log_desc": "Log reporting demo app showing various Framework plugins.",
 
     "entry_form_title": "Entry Form Demo",
-    "entry_form_desc": "Demo entry form app that uses Authentication, [entryForm.js], [listEditor.js] and other features. All entry form features are defined through HTML and Templating while Authentication uses a custom JavaScript plugin.",
+    "entry_form_desc": "Demo entry form app that uses authentication, [entryForm.js], [listEditor.js] and other features. All entry form features are defined through HTML and Templating while authentication uses a custom JavaScript plugin.",
 
     "image_class_title": "AI/ML - Image Classification",
     "image_class_desc": "Demo app that calls a TensorFlow web service to classify uploaded images. These apps demonstrate how to use [jsonData.js] and <JsonData> with custom JavaScript code.",

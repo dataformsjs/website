@@ -147,3 +147,6 @@ https://www.dataformsjs.com/#/en/
 #    https://certbot.eff.org/lets-encrypt/ubuntubionic-apache
 #    For the Certificate both non-www and www were entered:
 #        dataformsjs.com www.dataformsjs.com
+
+# Additionally a shell script is used to sync changes from GitHub back to the server
+https://github.com/dataformsjs/website/blob/master/scripts/sync-server-from-github.sh
