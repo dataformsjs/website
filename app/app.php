@@ -71,7 +71,6 @@ $app->get('/', function() use ($app) {
     return file_get_contents(__DIR__ . '/Views/index.htm');
 });
 
-
 /**
  * Additional Routes
  */
@@ -94,14 +93,12 @@ $app->get('/examples/hello-world/en-js.htm', function() use ($app) {
     return $app->redirect('/examples/hello-world/en/js.htm');
 });
 
-
 /**
  * Test for the 500 error page
  */
 $app->get('/500', function() {
     throw new \Exception('Example Error');
 });
-
 
 /**
  * Show PHP Version and Server Info
@@ -111,6 +108,16 @@ $app->get('/phpinfo', function() {
 })
 ->filter($is_localhost);
 
+/**
+ * HTML5 History Routes handled by JavaScript.
+ * Return the main web page.
+ */
+$app_html = function() { return file_get_contents(__DIR__ . '/Views/index.htm'); };
+$app->get('/:lang', $app_html);
+$app->get('/:lang/playground', $app_html);
+$app->get('/:lang/getting-started', $app_html);
+$app->get('/:lang/quick-reference', $app_html);
+$app->get('/:lang/examples', $app_html);
 
 /**
  * Fallback URL for local development, all other files are
