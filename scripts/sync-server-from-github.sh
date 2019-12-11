@@ -28,3 +28,10 @@ rsync -rcv --delete ~/website-master/scripts/ /var/www/scripts
 rsync -rcv --delete --exclude examples --exclude .htaccess --exclude Web.config ~/website-master/public/ /var/www/html
 rm -r ~/website-master
 rm -r ~/dataformsjs-master
+
+# FastSitePHP Framework Updates are manual only if needed:
+# wget https://github.com/fastsitephp/fastsitephp/archive/master.zip -O ~/master.zip
+# unzip -q ~/master.zip
+# rm ~/master.zip
+# rsync -rcv --delete ~/fastsitephp-master/src/ /var/www/vendor/fastsitephp/src
+# rm -r ~/fastsitephp-master
