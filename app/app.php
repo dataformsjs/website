@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------
 
 use FastSitePHP\FileSystem\Security;
-use FastSitePHP\Lang\I18n;
+use FastSitePHP\Lang\I18N;
 use FastSitePHP\Web\Request;
 use FastSitePHP\Web\Response;
 
