@@ -27,7 +27,7 @@
                 </template>
             </url-hash-route>
 
-            <url-hash-route path="/regions/:country" src="html/regions-web.htm"></url-hash-route>
+            <url-hash-route path="/regions/:country" src="/html/regions-web.htm"></url-hash-route>
         </url-hash-router>
 
         <script type="module" src="js/web-components/url-hash-router.js"></script>

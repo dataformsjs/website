@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------
 
 use FastSitePHP\FileSystem\Security;
+use FastSitePHP\Lang\I18n;
 use FastSitePHP\Web\Request;
 use FastSitePHP\Web\Response;
 
@@ -61,39 +62,41 @@ $is_localhost = function() {
 //------------------------------------------------------------
 
 /**
- * Home Page, simply return the contents of [index.htm]
+ * Root URL, redirect to the user's default language based the 'Accept-Language'
+ * request header. Defaults to 'en = English' if no language is matched.
+ * 
+ * For example if the user's defualt language is Spanish then they will be
+ * redirected to '/es/'.
  */
 $app->get('/', function() use ($app) {
-    $contains_index_php = (strpos($app->rootUrl(), 'index.php') !== false);
-    if ($contains_index_php) {
-        $app->redirect('/');
+    // Use FastSitePHP's i18n API to determine this.
+    // It uses the same format '_.{lang}.json' as DataFormsJS.
+    // First point to the i18n directory for JSON files.
+    $dir = __DIR__ . '/../html/i18n';
+    if (!is_dir($dir)) {
+        $dir = __DIR__ . '/../public/i18n'; // Local development
     }
-    return file_get_contents(__DIR__ . '/Views/index.htm');
+    $app->config['I18N_DIR'] = $dir;
+
+    // Redirect
+    $app->redirect('/' . I18n::getUserDefaultLang() . '/');
 });
 
-
 /**
- * Additional Routes
- */
-$app->get('/docs/:lang/quick-reference', 'QuickReference');
-
-
-/**
- * Load additional route files if the requested URL matches.
+ * Load route files if the requested URL matches.
  */
 $app->mount('/data', 'routes-data.php');
 $app->mount('/graphql', 'routes-graphql.php');
 
-
 /**
- * Hello World Examples
+ * Additional routes
  */
+$app->get('/docs/:lang/quick-reference', 'QuickReference');
 $app->get('/examples/hello-world/:lang/:file', 'HelloWorld');
 $app->get('/examples/hello-world/en-js.htm', function() use ($app) {
     // Redirect for previously published URL
     return $app->redirect('/examples/hello-world/en/js.htm');
 });
-
 
 /**
  * Test for the 500 error page
@@ -102,21 +105,30 @@ $app->get('/500', function() {
     throw new \Exception('Example Error');
 });
 
-
 /**
- * Show PHP Version and Server Info
+ * Show PHP Version and Server Info, runs on localhost only
  */
 $app->get('/phpinfo', function() {
     phpinfo();
 })
 ->filter($is_localhost);
 
+/**
+ * Home Page and HTML5 History Routes handled by JavaScript.
+ * Return the main web page [index.htm].
+ */
+$app_html = function() { return file_get_contents(__DIR__ . '/Views/index.htm'); };
+$app->get('/:lang', $app_html);
+$app->get('/:lang/playground', $app_html);
+$app->get('/:lang/getting-started', $app_html);
+$app->get('/:lang/quick-reference', $app_html);
+$app->get('/:lang/examples', $app_html);
 
 /**
  * Fallback URL for local development, all other files are
  * pulled directly from the DataFormsJS Framework examples.
  *
- * On the production server the files are copied.
+ * On the production server the needed files are copied.
  */
 $app->get('/*', function() use ($app) {
     // Path for DataFormsJS Repository; this assumes the Repository
