@@ -12,8 +12,8 @@
 // This script is copied to both the main sever and playground server.
 
 const CDN = 'https://cdn.jsdelivr.net/npm/dataformsjs@';
-const PREV_VER = '3.1.5';
-const NEW_VER = '3.2.0';
+const PREV_VER = '3.2.0';
+const NEW_VER = '3.3.0';
 const SEARCH_TEXT = CDN . PREV_VER;
 const REPLACE_TEXT = CDN . NEW_VER;
 
