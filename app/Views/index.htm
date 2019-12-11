@@ -2,7 +2,7 @@
 <html
     data-show-errors
     data-i18n-default="en"
-    data-i18n-locales="en,jp,es,pt-BR"
+    data-i18n-locales="en,ja,es,pt-BR"
     data-i18n-dir="/i18n"
     data-routing-mode="history">
     <head>
@@ -78,7 +78,7 @@
                         <li><a data-i18n-nav-lang="en">English</a></li>
                         <li><a data-i18n-nav-lang="es">Español</a></li>
                         <li><a data-i18n-nav-lang="pt-BR">Português (do Brasil)</a></li>
-                        <li><a data-i18n-nav-lang="jp">日本語</a></li>
+                        <li><a data-i18n-nav-lang="ja">日本語</a></li>
                     </ul>
                 </div>
                 <ul class="desktop-nav">
@@ -109,7 +109,7 @@
                             <li><a data-i18n-nav-lang="en">English</a></li>
                             <li><a data-i18n-nav-lang="es">Español</a></li>
                             <li><a data-i18n-nav-lang="pt-BR">Português (do Brasil)</a></li>
-                            <li><a data-i18n-nav-lang="jp">日本語</a></li>
+                            <li><a data-i18n-nav-lang="ja">日本語</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -233,7 +233,7 @@
                     switch (app.plugins.i18n.currentLocale) {
                         case 'es':
                         case 'pt-BR':
-                        case 'jp':
+                        case 'ja':
                             url = 'https://github.com/dataformsjs/dataformsjs/blob/master/docs/i18n-readme/README.' + app.plugins.i18n.currentLocale + '.md';
                             break;
                     }
@@ -267,6 +267,6 @@
                 <script src="vendor/handlebars.min.js"></script>
         -->
         <script src="https://cdn.jsdelivr.net/npm/handlebars@4.5.1/dist/handlebars.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.0/js/prism-1.17.1/prism.modified.js"></script>
+        <script src="/js/prism-1.17.1/prism.modified.js"></script>
     </body>
 </html>
