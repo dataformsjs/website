@@ -48,7 +48,7 @@
             data-route="/regions/:country"
             data-page="jsonData"
             data-url="https://www.dataformsjs.com/data/geonames/regions/:country"
-            src="html/country-list.htm">
+            src="/html/country-list.htm">
         </script>
 
         <script src="js/DataFormsJS.js"></script>

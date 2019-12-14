@@ -553,7 +553,7 @@ Steps used to create (or re-create the computer)
             // change [stopScreen: null] to [stopScreen: 4] and to determine the login
             // screen set [stopScreen: 2] and wait for a full animation.
             switch (app.plugins.i18n.currentLocale) {
-                case 'jp':
+                case 'ja':
                     document.querySelector('#Text-Login tspan').setAttribute('x', '290');
                     document.querySelector('#Text-Filter tspan').setAttribute('x', '310');
                     break;

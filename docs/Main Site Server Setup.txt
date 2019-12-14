@@ -138,7 +138,7 @@ pm2 save
 sudo reboot
 
 # Additional Steps performmed for the live site
-https://www.dataformsjs.com/#/en/
+https://www.dataformsjs.com/en/
 
 # 1) Created Static IP in AWS Lightsail for the Sever: 44.224.31.99
 # 2) GoDaddy - Used the IP for the Main A Record in Domain Settings
