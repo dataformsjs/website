@@ -57,6 +57,18 @@ $is_localhost = function() {
     return $is_localhost;
 };
 
+// Some routes use server-side I18N functions.
+// Use FastSitePHP's i18n API for this.
+// It uses the same format '_.{lang}.json' as DataFormsJS.
+$use_i18n = function() use ($app) {
+    $dir = __DIR__ . '/../html/i18n';
+    if (!is_dir($dir)) {
+        // Local development
+        $dir = __DIR__ . '/../public/i18n';
+    }
+    $app->config['I18N_DIR'] = $dir;
+};
+
 //------------------------------------------------------------
 // Define Routes
 //------------------------------------------------------------
@@ -69,18 +81,9 @@ $is_localhost = function() {
  * redirected to '/es/'.
  */
 $app->get('/', function() use ($app) {
-    // Use FastSitePHP's i18n API to determine this.
-    // It uses the same format '_.{lang}.json' as DataFormsJS.
-    // First point to the i18n directory for JSON files.
-    $dir = __DIR__ . '/../html/i18n';
-    if (!is_dir($dir)) {
-        $dir = __DIR__ . '/../public/i18n'; // Local development
-    }
-    $app->config['I18N_DIR'] = $dir;
-
-    // Redirect
-    $app->redirect('/' . I18n::getUserDefaultLang() . '/');
-});
+    $app->redirect('/' . I18N::getUserDefaultLang() . '/');
+})
+->filter($use_i18n);
 
 /**
  * Load route files if the requested URL matches.
@@ -117,7 +120,11 @@ $app->get('/phpinfo', function() {
  * Home Page and HTML5 History Routes handled by JavaScript.
  * Return the main web page [index.htm].
  */
-$app_html = function() { return file_get_contents(__DIR__ . '/Views/index.htm'); };
+$app_html = function($lang) use ($use_i18n) {
+    $use_i18n();
+    I18N::langFile('_', $lang);
+    return file_get_contents(__DIR__ . '/Views/index.htm');
+};
 $app->get('/:lang', $app_html);
 $app->get('/:lang/playground', $app_html);
 $app->get('/:lang/getting-started', $app_html);
