@@ -60,6 +60,8 @@ $is_localhost = function() {
 // Some routes use server-side I18N functions.
 // Use FastSitePHP's i18n API for this.
 // It uses the same format '_.{lang}.json' as DataFormsJS.
+// This is in a seperate function to avoid unnecessary [is_dir()]
+// calls for routes that do not need server-side i18n.
 $use_i18n = function() use ($app) {
     $dir = __DIR__ . '/../html/i18n';
     if (!is_dir($dir)) {
@@ -124,7 +126,7 @@ $app_html = function($lang) use ($use_i18n) {
     // will result in a 404 page being sent to the client.
     $use_i18n();
     I18N::langFile('_', $lang);
-    
+
     // Return the main web page [index.htm].
     return file_get_contents(__DIR__ . '/Views/index.htm');
 };
