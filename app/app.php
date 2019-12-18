@@ -118,11 +118,14 @@ $app->get('/phpinfo', function() {
 
 /**
  * Home Page and HTML5 History Routes handled by JavaScript.
- * Return the main web page [index.htm].
  */
 $app_html = function($lang) use ($use_i18n) {
+    // Calling [I18N::langFile] with an unknown language
+    // will result in a 404 page being sent to the client.
     $use_i18n();
     I18N::langFile('_', $lang);
+    
+    // Return the main web page [index.htm].
     return file_get_contents(__DIR__ . '/Views/index.htm');
 };
 $app->get('/:lang', $app_html);
