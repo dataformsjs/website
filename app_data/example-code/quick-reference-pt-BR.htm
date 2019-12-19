@@ -4,44 +4,46 @@ TITLE: DataFormsJS Framework JavaScript Files
 <!--
     DataFormsJS Core Framework Files
 
-    Framework JavaScript files work with templating and view engines
-    (Handlebars, Vue, Nunjucks, and Underscore). In addition to
-    the standard DataFormsJS Framework standalone classes for React and
-    Web Components are available which provide similar functionality.
+    Este framework JavaScript funciona com engines de templating e visualização
+    (Handlebars, Vue, Nunjucks, and Underscore). Além das classes autônomas
+    padrão do framework DataFormsJS para React e Web Components, estão
+    disponíveis, as quais fornecem funcionalidade semelhante
 
-    [pages/jsonData.js] is optional but will be included in most apps.
+    [pages/jsonData.js] é opcional mas será incluída na marioria dos apps.
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/DataFormsJS.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/pages/jsonData.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/DataFormsJS.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/jsonData.min.js"></script>
 
 <!--
-    To view the full source of any file replace [.min.js] with [.js].
-    DataFormsJS is designed to be small in size and easy to use.
-    All files are small enough that you can step through them with a debugger.
+    Par visualizar o fonte completo de qualquer arquivo, substitua [.min.js]
+    com [.js]. DataFormsJS é desenvolvido para ser pequeno em tamanho e de
+    fácil utlização.
+    Todos os arquivos sendo tão pequenos torna fácil depurá-los.
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/DataFormsJS.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/DataFormsJS.js"></script>
 
 <!--
-    JavaScript files can be loaded only when used by using [app.lazyLoad]
-    along with [data-lazy-load] on the related route/controller.
+    Arquivos JavaScript só podem ser carregados quando usando [app.lazyLoad]
+    juntamente com [data-lazy-load] na rota ou no controllador relacionado.
 
-    Additionally this allows for common polyfills such as [fetch, Promise, Object.assign]
-    to be loaded first when using IE or older mobile devices.
+    Além disso, faz com que os polyfills comuns, como [fetch, Promise,
+    Object.assign], sejam carregados primeiro ao usar o IE ou dispositivos
+    móveis mais antigos.
 -->
 <script>
     app.lazyLoad = {
-        entryForm: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/pages/entryForm.min.js',
-        filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/filter.min.js',
-        sort: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/sort.min.js',
-        // All lazy load scripts are downloaded asynchronously at the same time,
-        // however when an array is used the related scripts will be downloaded
-        // in the order specified.
+        entryForm: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/entryForm.min.js',
+        filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/filter.min.js',
+        sort: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/sort.min.js',
+        // Todos os scripts lazyLoad são baixandos the forma assíncrona ao mesmo
+        // tempo, no entanto quando um array é utilizado os scripts relacionados
+        // serão baixados na ordem especificada.
         chosen: [
             'https://code.jquery.com/jquery-3.4.1.min.js',
             'https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.css',
             'https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js',
         ],
-        chosenPlugin: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/chosen.js',
+        chosenPlugin: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/chosen.js',
     };
 </script>
 
@@ -53,14 +55,14 @@ TITLE: DataFormsJS Framework JavaScript Files
 </template>
 
 <!--
-    Handlebars Helpers and Vue Directives are available
-    and can be used without the Framework.
+    Handlebars Helpers e Vue Directives estão disponíveis
+    e podem ser utilizadas sem o Framework.
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/extensions/handlebars-helpers.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/extensions/vue-directives.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/handlebars-helpers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/vue-directives.min.js"></script>
 
 <!--
-    Using relative URL’s is recommended if hosting files locally.
+    URL relativa é recomendada se os arquivos estão hospedados localmente.
 -->
 <script src="js/DataFormsJS.js"></script>
 <script>
@@ -71,17 +73,18 @@ TITLE: DataFormsJS Framework JavaScript Files
 </script>
 
 <!--
-    DataFormsJS is developed in a manner so that script order does not matter for
-    most scripts as long as the core [DataFormsJS.js] is included first, however if a
-    custom page object is based on another page then they need to be included in the
-    correct order. For core files [entryForm.js] must be included after [jsonData.js].
+    DataFormsJS é desenvolvido de forma que a ordem de script não importa para
+    a maioria dos scripts desde que o core [DataFormsJS.js] for incluído primeiro,
+    no entanto se um objeto de página personalizada for baseado em outra página então
+    eles devem ser incluídos na ordem correta. Para arquivos do core [entryForm.js]
+    devem ser incluídos depois do [jsonData.js].
 -->
 <script src="js/DataFormsJS.js"></script>
 <script src="js/pages/jsonData.js"></script>
 <script src="js/pages/entryForm.js"></script>
 
 <!--
-    CDN links for supported Template and View Engines
+    Links de CDN para Template e View Engines
 -->
 <script src="https://cdn.jsdelivr.net/npm/handlebars@4.5.1/dist/handlebars.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.0/browser/nunjucks.min.js"></script>
@@ -92,40 +95,41 @@ TITLE: DataFormsJS Framework JavaScript Files
 
 <!-- ********************************************************************** -->
 <!-- EXAMPLE_CODE_START
-TITLE: DataFormsJS React Components for Web Development
+TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 -->
 <!--
-    Individual React Components and JavaScript Classes for Web Development with Babel Standalone
+    Componentes Individuais de React e Classes JavaScript para Desenvolvimento Web com Babel Standalone
 -->
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/ErrorBoundary.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/PolyfillService.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/JsonData.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/InputFilter.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/SortableTable.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/I18n.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/Format.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/LeafletMap.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/ErrorBoundary.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/PolyfillService.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/JsonData.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/InputFilter.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/SortableTable.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/I18n.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/Format.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/LeafletMap.js"></script>
 
 <!--
-    All Components also include a [*.min.js] version of the file
+    Todos os components também incluem uma versão [*.min.js] do arquivo
 -->
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es6/JsonData.min.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/JsonData.min.js"></script>
 
 <!--
-    All [es6] files also has a related [es5] file that can be used in the Browser without Babel
+    Todos arquivos [es6] também têm uma versão [es5] que pode ser usada num navegador sem o Babel
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es5/JsonData.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es5/JsonData.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/JsonData.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/JsonData.min.js"></script>
 
 <!--
+PAREI AQUI
     ES5 build with all React Components and Classes can be used in the Browser without Babel
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/es5/DataFormsJS.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/DataFormsJS.min.js"></script>
 
 <!--
     Standard Framework Plugins are supported with React when using an API from [jsPlugins.js]
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/react/jsPlugins.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/jsPlugins.min.js"></script>
 
 <!--
     Include React
@@ -205,25 +209,25 @@ TITLE: DataFormsJS Web Components
     Web Components
     Including [type="module"] is required for Web Component Scripts.
 -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/url-hash-router.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/json-data.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/data-list.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/data-table.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/input-filter.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/sortable-table.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/leaflet-map.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/url-hash-router.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/json-data.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/data-list.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/data-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/input-filter.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/sortable-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/leaflet-map.min.js"></script>
 
 <!--
     [nomodule] Scripts are available to provide users with a friendly message that
     the site will not work if they are using IE or older mobile devices and browsers.
 -->
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/safari-nomodule.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/old-browser-warning.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/safari-nomodule.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/old-browser-warning.min.js"></script>
 
 <!--
     Standard Framework Plugins are supported with Web Components when using an API from [jsPlugins.js]
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/jsPlugins.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/jsPlugins.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -231,36 +235,36 @@ TITLE: DataFormsJS Web Components
 <!-- EXAMPLE_CODE_START
 TITLE: All Framework Files
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/DataFormsJS.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/DataFormsJS.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/controls/data-list.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/controls/data-table.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/controls/json-data.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/controls/data-list.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/controls/data-table.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/controls/json-data.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/extensions/events.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/extensions/handlebars-helpers.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/extensions/validation.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/extensions/vue-directives.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/events.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/handlebars-helpers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/validation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/vue-directives.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/pages/jsonData.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/pages/entryForm.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/jsonData.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/entryForm.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/chosen.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/clickToHighlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/clickUrlAction.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/codemirror.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/dataBind.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/exportToCsv.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/filter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/highlighter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/i18n.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/keydownAction.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/leaflet.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/listEditor.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/navLinks.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/navList.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/prism.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/sort.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/chosen.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/clickToHighlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/clickUrlAction.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/dataBind.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/exportToCsv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/filter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/highlighter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/i18n.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/keydownAction.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/listEditor.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/navLinks.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/navList.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/sort.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -631,8 +635,8 @@ TITLE: Framework Plugins - Filtering and Sorting
     The Framework provides many plugins; two commonly used plugins that allow
     for end users to work with data on a page are [filter.js] and [sort.js].
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/filter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/sort.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/filter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/sort.min.js"></script>
 <script
     type="text/x-template"
     data-engine="underscore"
@@ -709,8 +713,8 @@ TITLE: Web Components - Filtering and Sorting
 <!--
     Two Web Components provide similar functionality to the standard Framework [filter.js] and [sort.js].
 -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/input-filter.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/web-components/sortable-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/input-filter.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/sortable-table.min.js"></script>
 
 <!--
     The [input-filter.js] component is inherited from the standard <input> element.
@@ -1001,7 +1005,7 @@ LANG: JavaScript
         // ----------------------------------------------------------
 
         // Controller function that is called once before the route
-        // will be loaded. This is useful for calling web services
+        // will be loaded. This is usefull for calling web services
         // before any rendering happens. For example, see usage on the
         // core [pages/jsonData.js] file.
         onRouteLoad: function() { },
@@ -1053,7 +1057,7 @@ LANG: JavaScript
 
     // Add new properties and functions for the page to the Model
     Object.assign(page.model, {
-        // Properties
+        // Propeties
         property1: 'Example Property',
         property2: null,
         property3: 123,

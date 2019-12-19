@@ -129,7 +129,7 @@ function createVendorDir() {
 /**
  * Download and verify a [cacert.pem] file for HTTPS requests.
  * The file will downloaded via an HTTP request and then saved
- * to the system's temp directory. Everytime the file is used
+ * to the system's temp directory. Every time the file is used
  * the contents are verified using a SHA-256 hash.
  */
 function downloadCACert() {
