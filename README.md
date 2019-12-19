@@ -30,7 +30,7 @@ php ./website/scripts/install.php
 php -S localhost:3000 website/public/index.php
 ~~~
 
-The main site SPA (exluding example pages) can be ran from this repository directly without downloading the dataformsjs repository:
+The main site SPA (excluding example pages) can be ran from this repository directly without downloading the dataformsjs repository:
 
 ~~~
 cd {this-directory}
