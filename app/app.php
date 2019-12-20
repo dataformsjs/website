@@ -86,11 +86,15 @@ $use_i18n = function() use ($app) {
  * negotiation to let bots know that the content will change based
  * on language. For example this applies to Googlebot and Bingbot.
  */
-$app->get('/', function() use ($app) {
-    $res = new Response();
-    return $res
-        ->vary('Accept-Language')
-        ->redirect($app->rootUrl() . I18n::getUserDefaultLang() . '/');
+$app->get('/', function() use ($app, $is_localhost) {
+    if ($is_localhost()) {
+        $app->redirect('/' . I18N::getUserDefaultLang() . '/');
+    } else {
+        $res = new Response();
+        return $res
+            ->vary('Accept-Language')
+            ->redirect($app->rootUrl() . I18n::getUserDefaultLang() . '/');
+    }
 })
 ->filter($use_i18n);
 
