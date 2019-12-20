@@ -94,7 +94,7 @@ echo "<?php phpinfo(); ?>" | sudo tee phpinfo.php
 sudo rm phpinfo.php
 
 # Download Site Files
-# In the future, theses will be link to GitHub Repositories
+# In the future, these will be link to GitHub Repositories
 cd ~
 sudo apt install unzip
 wget https://github.com/dataformsjs/dataformsjs/archive/master.zip

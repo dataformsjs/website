@@ -16,7 +16,7 @@ mark {
 /* IE 10+ Responsive, Rather than [meta name="viewport"] IE uses this in CSS */
 @-ms-viewport { width: device-width; }            
 
-/* CSS Variables, for IE a Polyfill from JavaScript is used to update the style sheet */
+/* CSS Variables, for IE a Polyfill from JavaScript is used to update the stylesheet */
 :root {
     /* rgb(32, 48, 64) = hsl(210, 33%, 19%) */
     --main-color: rgb(32, 48, 64);
@@ -191,7 +191,7 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; }
 
 /*
     [transform: translateZ(0);] is needed for Safari so that the animation
-    renders on a seperate layer from the main page. If not included artifacts
+    renders on a separate layer from the main page. If not included artifacts
     are left on the page. Happens on both Desktop and Mobile.
 */
 #home-page-computer {
