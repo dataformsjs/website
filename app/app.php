@@ -81,9 +81,16 @@ $use_i18n = function() use ($app) {
  * 
  * For example if the user's defualt language is Spanish then they will be
  * redirected to '/es/'.
+ * 
+ * The response header [Vary: Accept-Language] is used for Content
+ * negotiation to let bots know that the content will change based
+ * on language. For example this applies to Googlebot and Bingbot.
  */
 $app->get('/', function() use ($app) {
-    $app->redirect('/' . I18N::getUserDefaultLang() . '/');
+    $res = new Response();
+    return $res
+        ->vary('Accept-Language')
+        ->redirect($app->rootUrl() . I18n::getUserDefaultLang() . '/');
 })
 ->filter($use_i18n);
 
