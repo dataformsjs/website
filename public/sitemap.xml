@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- English -->
     <url>
         <loc>https://www.dataformsjs.com/en/</loc>
     </url>
@@ -26,5 +27,34 @@
     </url>
     <url>
         <loc>https://www.dataformsjs.com/examples/hello-world/en/web.htm</loc>
+    </url>
+
+    <!-- Português (do Brasil) -->
+    <url>
+        <loc>https://www.dataformsjs.com/pt-BR/</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/pt-BR/playground</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/pt-BR/getting-started</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/pt-BR/quick-reference</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/pt-BR/examples</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/places-demo-hbs.htm#/pt-BR/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-classification-react.htm#/pt-BR/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/pt-BR/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/hello-world/pt-BR/web.htm</loc>
     </url>
 </urlset>
