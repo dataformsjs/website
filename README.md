@@ -1,10 +1,38 @@
 # 🌟 Welcome to DataFormsJS!
 
-**Thanks for visiting!**
+**Thanks for visiting!** 🌠👍
 
-_If you are seeing this message then you are one of the earliest visitors!_ 🌠👍
-
-This repository contains the main Website for DataFormsJS and not the DataFormsJS Framework or Web Components. DataFormsJS is used client side and linked from a CDN.
+<table>
+  <tbody>
+    <tr>
+      <td>en</td>
+      <td>English</td>
+      <td>This repository contains the main Website for DataFormsJS and not the DataFormsJS Framework or Web Components. DataFormsJS is used client side and linked from a CDN. If you have questions or need help please open an issue.</td>
+    </tr>
+    <tr>
+      <td>es</td>
+      <td>Español</td>
+      <td>Este repositorio contiene el sitio web principal de DataFormsJS y no el Marco de datos de DataFormsJS o los Componentes web. DataFormsJS se usa del lado del cliente y se vincula desde una CDN. Si tiene preguntas o necesita ayuda, abra un problema.</td>
+    </tr>
+    <tr>
+      <td>pt-BR</td>
+      <td>Português (do Brasil)</td>
+      <td>Este repositório contém o site principal do DataFormsJS e não o DataFormsJS Framework ou Web Components. DataFormsJS é usado no lado do cliente e vinculado a partir de uma CDN. Se você tiver dúvidas ou precisar de ajuda, abra um problema.</td>
+    </tr>
+    <tr>
+      <td>ja</td>
+      <td>日本語</td>
+      <td>このリポジトリには、DataFormsJSフレームワークまたはWebコンポーネントではなく、DataFormsJSのメインWebサイトが含まれます。 DataFormsJSはクライアント側で使用され、CDNからリンクされます。 ご質問がある場合やサポートが必要な場合は、問題を開いてください。</td>
+    </tr>
+    <!--
+    <tr>
+      <td>{iso}</td>
+      <td>{lang}</td>
+      <td>{content}</td>
+    </tr>
+    -->
+  </tbody>
+</table>
 
 ## 🚀 Getting Started
 
