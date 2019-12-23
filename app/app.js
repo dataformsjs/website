@@ -88,7 +88,25 @@ var schema = buildSchema(`
 const root = {
     countries: async function({orderBy}) {
         const sortOrder = (orderBy === 'country' ? 'country' : 'population DESC, country');
-        const sql = `SELECT iso, country, area_km, population, continent FROM countries ORDER BY ${sortOrder}`;
+        const sql = `
+            SELECT
+                iso,
+                country,
+                area_km,
+                population,
+                CASE continent
+                    WHEN 'AF' THEN 'Africa'
+                    WHEN 'AS' THEN 'Asia '
+                    WHEN 'EU' THEN 'Europe'
+                    WHEN 'NA' THEN 'North America'
+                    WHEN 'OC' THEN 'Oceania'
+                    WHEN 'SA' THEN 'South America'
+                    WHEN 'AN' THEN 'Antarctica'
+                    ELSE continent
+                END AS continent
+            FROM countries
+            ORDER BY
+                ${sortOrder}`;
         const db = await dbPromise;
         return await db.all(sql);
     },
