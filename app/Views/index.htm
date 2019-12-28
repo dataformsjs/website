@@ -2,7 +2,7 @@
 <html
     data-show-errors
     data-i18n-default="en"
-    data-i18n-locales="en,ja,es,pt-BR"
+    data-i18n-locales="en,ja,es,pt-BR,ar"
     data-i18n-dir="/i18n"
     data-routing-mode="history">
     <head>
@@ -78,6 +78,7 @@
                         <li><a data-i18n-nav-lang="es">Español</a></li>
                         <li><a data-i18n-nav-lang="pt-BR">Português (do Brasil)</a></li>
                         <li><a data-i18n-nav-lang="ja">日本語</a></li>
+                        <li><a data-i18n-nav-lang="ar">العربية</a></li>
                     </ul>
                 </div>
                 <ul class="desktop-nav">
@@ -109,6 +110,7 @@
                             <li><a data-i18n-nav-lang="es">Español</a></li>
                             <li><a data-i18n-nav-lang="pt-BR">Português (do Brasil)</a></li>
                             <li><a data-i18n-nav-lang="ja">日本語</a></li>
+                            <li><a data-i18n-nav-lang="ar">العربية</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -240,6 +242,20 @@
                     Array.prototype.forEach.call(links, function(link) {
                         link.href = url;
                     });
+                });
+
+                // Custom Site Plugin for right-to-left languages (example: Arabic, Persian, Hebrew).
+                // The [site.css] file also contains query selectors starting with "html[dir='rtl']"
+                // to handle the layout.
+                app.addPlugin('htmlDir', {
+                    onRouteLoad: function(next) {
+                        if (app.plugins.i18n.currentLocale === 'ar') {
+                            document.documentElement.setAttribute('dir', 'rtl');
+                        } else {
+                            document.documentElement.removeAttribute('dir');
+                        }
+                        next();
+                    },
                 });
 
                 // The site was orignally published using #hash URL's. If the
