@@ -18,9 +18,7 @@
     </tr>
     <!--
     <tr>
-      <td>{iso}</td>
-      <td>{lang}</td>
-      <td>{content}</td>
+      <td lang="{iso}"><strong>{iso} - {lang}</strong><br> {content}</td>
     </tr>
     -->
   </tbody>
