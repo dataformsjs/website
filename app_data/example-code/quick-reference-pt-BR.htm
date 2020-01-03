@@ -963,10 +963,10 @@ LANG: JavaScript
 (function () {
     'use strict';
 
-    app.addPlugin('name', function(element) {
-        // Element is an optional parameter and used when HTML controls
+    app.addPlugin('name', function(rootElement) {
+        // [rootElement] is an optional parameter and used when HTML controls
         // are refreshed from [app.refreshHtmlControl()].
-        element = (element === undefined ? document : element);
+        rootElement = (rootElement === undefined ? document : rootElement);
         console.log('plugin function called');
     });
 })();
