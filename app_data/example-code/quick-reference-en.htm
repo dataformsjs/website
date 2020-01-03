@@ -186,7 +186,7 @@ import ErrorBoundary from 'dataformsjs/js/react/es6/ErrorBoundary.js';
 // the default settings or config from your project.
 //
 // [es5] Components are intended for Browser Development. For all individual
-// Components you can simply chagne the directory path [es6] to [es5] and for
+// components you can simply change the directory path [es6] to [es5] and for
 // the default namespace the syntax varies slightly by using [import { DataFormsJS } from ...].
 import { ErrorBoundary, PolyfillService, JsonData } from 'dataformsjs/js/react/es5/DataFormsJS.js';
 import { DataFormsJS } from 'dataformsjs/js/react/es5/DataFormsJS.js';
@@ -280,7 +280,7 @@ TITLE: Framework Routes
 <script type="text/x-template" data-engine="handlebars" data-route="/path">...</script>
 
 <!--
-    When using [src] template content will be downloaded dynamically the
+    When using [src], template content will be downloaded dynamically the
     first time the route is used.
 -->
 <template data-route="/path" src="https://example.com/"></template>
@@ -374,7 +374,7 @@ LANG: Handlebars
 
 <!--
     Then to render the HTML control under an element use the [data-template-id]
-    attribute with the ID of the control to render.
+    attribute with the ID of the control.
 -->
 <script
     type="text/x-template"
@@ -413,11 +413,11 @@ LANG: Handlebars
 </template>
 
 <script>
-    // The core [DataFormsJS/app] object provides a JavaScript API to refresh controls.
-    // This is commonly used for dynamic pages that need to refresh page content
-    // after the model is updated when using templating [Handlebars, Nunjucks,
-    // or Underscore]. These methods should not be called for most sites when
-    // using Vue for rendering.
+    // The core [DataFormsJS/app] object provides a JavaScript API to refresh
+    // controls. This is commonly used for dynamic pages that need to refresh
+    // their content after the model is updated when using templating
+    // [Handlebars, Nunjucks or Underscore]. These methods should not be called
+    // for most sites when using Vue for rendering.
 
     // Refresh all HTML Controls on the page. All elements with either
     // [data-template-id] or [data-template-url].
@@ -435,8 +435,8 @@ LANG: Handlebars
         console.log('Refreshed all HTML Controls and Plugins');
     });
 
-    // When [app.refreshHtmlControl] plugins under the specific control
-    // will be called using [app.refreshPlugins(control)].
+    // When [app.refreshHtmlControl] is called, plugins under the specific
+    // control will be called using [app.refreshPlugins(control)].
     app.refreshHtmlControl(control, function() {
         console.log('Refreshed HTML Control:');
         console.log(control);
@@ -587,7 +587,7 @@ TITLE: Web Components - Show Data from a JSON Web Service
             <!--
                 Data is passed from <json-data> to child elements using [data-bind]
 
-                When using the optional [load-only-once] attribute is used as shown below
+                When the optional [load-only-once] attribute is used as shown below,
                 data will be cached in memory and re-used if the same URL is accessed
                 while the page is open.
             -->
@@ -778,9 +778,9 @@ function ShowData(props) {
     the web service will be passed to the component through [props.data].
 
     By default <JsonData> calls the web service each time the component
-    is created. When using the optional [loadOnlyOnce] prop is used as
-    shown below data will be cached in memory and re-used if the same
-    URL is accessed while the page is open.
+    is created. When using the optional [loadOnlyOnce] prop, as shown
+    below, data will be cached in memory and re-used if the same URL
+    is accessed while the page is open.
 */}
 class App extends React.Component {
     render() {
@@ -869,8 +869,8 @@ function ShowCountries(props) {
                 determined based on the data and sorted based on data type.
 
                 Both <InputFilter> and <SortableTable> have "side effects" for
-                related elements because they changes the sort and display order of
-                each row however it does not cause issues with most apps and pages.
+                related elements because they change the sort and display order of
+                each row, however, it does not cause issues with most apps and pages.
             */}
             <SortableTable
                 className="data-table"
@@ -943,7 +943,7 @@ LANG: JavaScript
         // Event that runs only once per hash change and before the view is
         // rendered. This event would typically be used to download resources
         // needed by the page that are not part of the page's controller. Since
-        // this blocks the view from updating is should only be used with very
+        // this blocks the view from updating, it should only be used with very
         // fast web services, for example downloading simple JSON files.
         onRouteLoad: function(next) {
             next();
@@ -1008,7 +1008,7 @@ LANG: JavaScript
 
         // Define the Controller [onBeforeRender()] function.
         // This gets called each time the view is redrawn before
-        // the the HTML is rendered.
+        // the HTML is rendered.
         //
         // When using Vue this function will not be called so instead
         // use [onRouteLoad()] to handle early controller logic.
@@ -1040,7 +1040,7 @@ TITLE: JavaScript Template - Create a Framework Page Object based on [jsonData]
 LANG: JavaScript
 -->
 <script>
-// When creating pages based on other pages script load order is important.
+// When creating pages based on other pages script load order is important:
 // Load this file first:
 //     <script src="js/pages/jsonData.js">
 // Then load your custom file:
@@ -1093,7 +1093,7 @@ LANG: JavaScript
 <!-- EXAMPLE_CODE_END -->
 
 
-<!-- NOTE - Use this as a template for new routes, spaces need to be added between '// EXAMPLE_', etc -->
+<!-- NOTE - Use this as a template for new routes, spaces need to be added between '<!-- EXAMPLE_', etc -->
 <!-- ********************************************************************** -->
 <!--EXAMPLE_CODE_START
 TITLE: New Route Template, Fix Spaces to work
