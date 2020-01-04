@@ -10,10 +10,13 @@
 //     php /var/www/scripts/update-html-files-cdn-version.php
 //
 // This script is copied to both the main sever and playground server.
+//
+// NOTE - on the main servers the file [sync-server-from-github.sh] is now used
+// instead to sync all changes from GitHub.
 
 const CDN = 'https://cdn.jsdelivr.net/npm/dataformsjs@';
-const PREV_VER = '3.3.1';
-const NEW_VER = '3.3.3';
+const PREV_VER = '3.4.1';
+const NEW_VER = '3.4.2';
 const SEARCH_TEXT = CDN . PREV_VER;
 const REPLACE_TEXT = CDN . NEW_VER;
 

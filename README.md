@@ -1,12 +1,30 @@
-# 🌟 Welcome to DataFormsJS!
+# :star2: Welcome to DataFormsJS!
 
-**Thanks for visiting!**
+**Thanks for visiting!** 🌠👍
 
-_If you are seeing this message then you are one of the earliest visitors!_ 🌠👍
+<table>
+  <tbody>
+    <tr>
+      <td><strong>en - English</strong><br> This repository contains the main Website for DataFormsJS and not the DataFormsJS Framework or Web Components. DataFormsJS is used client side and linked from a CDN. If you have questions or need help please open an issue.</td>
+    </tr>
+    <tr>
+      <td lang="es"><strong>es - Español</strong><br> Este repositorio contiene el sitio web principal de DataFormsJS y no el Marco de datos de DataFormsJS o los Componentes web. DataFormsJS se usa del lado del cliente y se vincula desde una CDN. Si tiene preguntas o necesita ayuda, abra un problema.</td>
+    </tr>
+    <tr>
+      <td lang="pt-BR"><strong>pt-BR - Português (do Brasil)</strong><br> Este repositório contém o site principal do DataFormsJS e não o DataFormsJS Framework ou Web Components. DataFormsJS é usado no lado do cliente e vinculado a partir de uma CDN. Se você tiver dúvidas ou precisar de ajuda, abra um problema.</td>
+    </tr>
+    <tr>
+      <td lang="ja"><strong>ja - 日本語</strong><br> このリポジトリには、DataFormsJSフレームワークまたはWebコンポーネントではなく、DataFormsJSのメインWebサイトが含まれます。 DataFormsJSはクライアント側で使用され、CDNからリンクされます。 ご質問がある場合やサポートが必要な場合は、問題を開いてください。</td>
+    </tr>
+    <!--
+    <tr>
+      <td lang="{iso}"><strong>{iso} - {lang}</strong><br> {content}</td>
+    </tr>
+    -->
+  </tbody>
+</table>
 
-This repository contains the main Website for DataFormsJS and not the DataFormsJS Framework or Web Components. DataFormsJS is used client side and linked from a CDN.
-
-## 🚀 Getting Started
+## :rocket: Getting Started
 
 While the main DataFormsJS repository uses Node for server code, the main web site uses PHP with FastSitePHP so you need to have PHP installed in order to run it.
 
@@ -45,7 +63,7 @@ For local setup of the GeoNames database used in the Places demo see comments in
 * scripts/geonames.py
 * scripts/geonames.rb
 
-## 🤝 Contributing and Translations
+## :handshake: Contributing and Translations
 
 **All contributions are welcome.** Please see comments in the main DataFormsJS repository. 
 

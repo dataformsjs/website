@@ -1,0 +1,5 @@
+{
+    "quick_ref_all": "{totalCount} أمثلة مرجعية سريعة",
+    "quick_ref_filtered": "عرض {displayCount} أمثلة {totalCount}",
+    "quick_ref_placeholder": "أدخل الفلتر ، مثال \"JavaScript\" أو \"Web Components\""
+}

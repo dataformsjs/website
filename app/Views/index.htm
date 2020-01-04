@@ -2,14 +2,13 @@
 <html
     data-show-errors
     data-i18n-default="en"
-    data-i18n-locales="en,ja,es,pt-BR"
+    data-i18n-locales="en,ja,es,pt-BR,ar"
     data-i18n-dir="/i18n"
     data-routing-mode="history">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>DataFormsJS</title>
-        <meta name="description" content="DataFormsJS - A minimal JavaScript Framework and Standalone Components for development of high quality Websites and Single Page Applications. DataFormsJS works with popular view and template engines and handles controller logic and model state.">
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/img/favicons/apple-touch-icon-120.png">
         <link rel="apple-touch-icon" sizes="152x152" href="/img/favicons/apple-touch-icon-152.png">
@@ -79,6 +78,7 @@
                         <li><a data-i18n-nav-lang="es">Español</a></li>
                         <li><a data-i18n-nav-lang="pt-BR">Português (do Brasil)</a></li>
                         <li><a data-i18n-nav-lang="ja">日本語</a></li>
+                        <li><a data-i18n-nav-lang="ar">العربية</a></li>
                     </ul>
                 </div>
                 <ul class="desktop-nav">
@@ -110,6 +110,7 @@
                             <li><a data-i18n-nav-lang="es">Español</a></li>
                             <li><a data-i18n-nav-lang="pt-BR">Português (do Brasil)</a></li>
                             <li><a data-i18n-nav-lang="ja">日本語</a></li>
+                            <li><a data-i18n-nav-lang="ar">العربية</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -180,15 +181,15 @@
             app.lazyLoad = {
                 homePage: '/js/pages/jsonData.js',
         -->
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/DataFormsJS.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/i18n.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/navList.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.4.2/js/DataFormsJS.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.4.2/js/plugins/i18n.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.4.2/js/plugins/navList.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.4.2/js/plugins/prism.min.js"></script>
         <script>
             app.lazyLoad = {
                 // DataFormsJS Framework Objects
-                jsonData: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/pages/jsonData.min.js',
-                filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.3.3/js/plugins/filter.min.js',
+                jsonData: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.4.2/js/pages/jsonData.min.js',
+                filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.4.2/js/plugins/filter.min.js',
                 // Site Files
                 homePage: '/js/page-home-page.js',
                 gettingStarted: '/js/page-getting-started.js',
@@ -234,12 +235,37 @@
                         case 'es':
                         case 'pt-BR':
                         case 'ja':
+                        case 'zh-CN':
                             url = 'https://github.com/dataformsjs/dataformsjs/blob/master/docs/i18n-readme/README.' + app.plugins.i18n.currentLocale + '.md';
                             break;
                     }
                     Array.prototype.forEach.call(links, function(link) {
                         link.href = url;
                     });
+                });
+
+                // Custom Site Plugin for right-to-left languages (example: Arabic, Persian, Hebrew).
+                // The [site.css] file also contains query selectors starting with "html[dir='rtl']"
+                // to handle the layout.
+                app.addPlugin('htmlDir', {
+                    onRouteLoad: function(next) {
+                        if (app.plugins.i18n.currentLocale === 'ar') {
+                            document.documentElement.setAttribute('dir', 'rtl');
+                        } else {
+                            if (document.documentElement.hasAttribute('dir')) {
+                                document.documentElement.removeAttribute('dir');
+                                // The code below is a hack for iOS 11 with Safari.
+                                // If changing languages from ltr to rtl and back
+                                // the nav menu will appear out of order.
+                                // Example: ('en' -> 'ar' -> 'en')
+                                window.setTimeout(function() {
+                                    document.documentElement.style.direction = 'ltr';
+                                    document.documentElement.style.direction = '';
+                                }, 100);
+                            }
+                        }
+                        next();
+                    },
                 });
 
                 // The site was orignally published using #hash URL's. If the

@@ -281,7 +281,7 @@ TITLE: Rotas do Framework
     <script type="text/x-template">.
 
     [data-engine] é utilizado para especificar o tipo de modelo:
-     ['handlebars', 'vue', 'underscore' ou 'nunjucks'].
+    ['handlebars', 'vue', 'underscore' ou 'nunjucks'].
     [data-route] define o caminho da rota local depois da hahs '#' da URL'.
 -->
 <template data-route="/path">...</template>
@@ -323,7 +323,6 @@ TITLE: Rotas do Framework
     ];
 </script>
 
-
 <!--
     Atributos HTML personalizados 'data-*' são passados para o controller via
     um objeto de configurações. Valores serão boleano ou string. Exemplo:
@@ -358,6 +357,49 @@ TITLE: Rotas do Framework
     data-default-route
     data-route="/:lang/">
 </script>
+
+<!--
+    To link to a route when using the default hash URL’s
+    simply use a standard <a> element:
+-->
+<a href="#/info">Info</a>
+
+<!--
+    Using HTML5 History API
+
+    By default DataFormsJS uses URL hash routing for routes (example "#/page").
+    This works well for static sites that use web services. For example a
+    single page with related content can be hosted on AWS S3.
+
+    The HTML5 History API can be used to define routes without a hash
+    (“/page” instead of “/page”). Typically when using this method server code
+    will be used so a 404 page can be returned to the user for missing routes.
+    If server code is not used then DataFormsJS will redirect to the default
+    route for an unknown URL. The main DataFormsJS site uses the HTML5 History
+    API and can be referenced as an example app.
+
+    To use specifiy the [data-routing-mode="history"] in the root <html> element.
+-->
+<html data-routing-mode="history">...</html>
+
+<!--
+    Then for navigation links on the site use start the href with “/”:
+-->
+<a href="/info">Info</a>
+
+<!--
+    Instead of using a hash “#” URL:
+-->
+<a href="#/info">Info</a>
+
+<!--
+    By default when using the HTML5 History API for routing all links starting with
+    href="/..." will be updated to use JavaScript Routing. If you have relative pages
+    for the site that need to point to a separate page include the [data-no-pushstate]
+    attribute on the related links so that the links will not be processed for
+    JavaScript routing.
+-->
+<a href="/other-app/page.htm" data-no-pushstate>App</a>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -939,10 +981,10 @@ LANG: JavaScript
 (function () {
     'use strict';
 
-    app.addPlugin('name', function(element) {
-        // [element] é um parâmetro opcional e utilizando quando controles HTML
+    app.addPlugin('name', function(rootElement) {
+        // [rootElement] é um parâmetro opcional e utilizando quando controles HTML
         // são recarregados de [app.refreshHtmlControl()].
-        element = (element === undefined ? document : element);
+        rootElement = (rootElement === undefined ? document : rootElement);
         console.log('função plugin chamada');
     });
 })();

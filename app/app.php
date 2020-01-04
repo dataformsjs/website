@@ -79,22 +79,18 @@ $use_i18n = function() use ($app) {
  * Root URL, redirect to the user's default language based the 'Accept-Language'
  * request header. Defaults to 'en = English' if no language is matched.
  * 
- * For example if the user's defualt language is Spanish then they will be
+ * For example if the user's default language is Spanish then they will be
  * redirected to '/es/'.
  * 
  * The response header [Vary: Accept-Language] is used for Content
  * negotiation to let bots know that the content will change based
  * on language. For example this applies to Googlebot and Bingbot.
  */
-$app->get('/', function() use ($app, $is_localhost) {
-    if ($is_localhost()) {
-        $app->redirect('/' . I18N::getUserDefaultLang() . '/');
-    } else {
-        $res = new Response();
-        return $res
-            ->vary('Accept-Language')
-            ->redirect($app->rootUrl() . I18n::getUserDefaultLang() . '/');
-    }
+$app->get('/', function() use ($app) {
+    $res = new Response();
+    return $res
+        ->vary('Accept-Language')
+        ->redirect('/' . I18n::getUserDefaultLang() . '/');
 })
 ->filter($use_i18n);
 
@@ -131,6 +127,8 @@ $app->get('/phpinfo', function() {
 
 /**
  * Home Page and HTML5 History Routes handled by JavaScript.
+ * These routes are defined after other routes such as ['/graphql'] 
+ * so that ['/:lang'] does not get matched to them.
  */
 $app_html = function($lang) use ($use_i18n) {
     // Calling [I18N::langFile] with an unknown language
@@ -152,6 +150,7 @@ $app->get('/:lang/examples', $app_html);
  * pulled directly from the DataFormsJS Framework examples.
  *
  * On the production server the needed files are copied.
+ * See server setup in [docs\Main Site Server Setup.txt].
  */
 $app->get('/*', function() use ($app) {
     // Path for DataFormsJS Repository; this assumes the Repository

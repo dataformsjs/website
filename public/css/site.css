@@ -3,6 +3,7 @@
 img { border-style: none; }
 input, select, button, textarea { margin: 0; padding: 4px; }
 p { text-align: left; line-height: 1.4em; }
+html[dir='rtl'] p { text-align:right; }
 code { font-family: monospace; white-space: pre; }
 
 mark {
@@ -68,8 +69,11 @@ footer {
     background-color: var(--lighter-color-1);
     color: #fff;
 }
-footer p { text-align:center; }
+footer p,
+html[dir='rtl'] footer p { text-align:center; }
 footer a { color:#fff; }
+
+svg { direction:ltr; }
 
 /************ General ************/
 
@@ -151,6 +155,10 @@ footer a { color:#fff; }
     top: 38px;
     z-index: 1000;
 }
+html[dir='rtl'] .site-nav .desktop-nav > li.i18n-menu ul {
+    right: auto;
+    left: 0;
+}
 .site-nav .desktop-nav > li.i18n-menu div { display:flex; align-items:center; margin-left: 15px; }
 .site-nav .desktop-nav > li.i18n-menu a { display:block; }
 .site-nav .desktop-nav > li.i18n-menu ul li.active { background-color:var(--highlight-color); }
@@ -174,7 +182,7 @@ footer a { color:#fff; }
 /************ Prism Override ************/
 :not(pre) > code[class*="language-"], pre[class*="language-"] { background:white; }
 
-code[class*="language-"], pre[class*="language-"] { font-size:12px; }
+code[class*="language-"], pre[class*="language-"] { font-size:12px; direction:ltr; }
 @media (min-width:600px) {
     code[class*="language-"], pre[class*="language-"] { font-size:1em; }
 }
@@ -184,6 +192,7 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; }
     display: flex;
     align-items: center;
     justify-content: center;
+    direction: ltr;
 }
 .home.page .logo img { margin-right: 24px; }
 .home.page h1 { font-size: 3em; }
@@ -251,6 +260,9 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; }
     display: flex;
     align-items: flex-start;
 }
+html[dir='rtl'] .home.page .reasons-to-use > div {
+    text-align: right;
+}
 @media (min-width: 600px) {
     .home.page .reasons-to-use > div {
         width: calc(50% - 60px);
@@ -267,6 +279,7 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; }
     flex-shrink: 0;
     margin-right: 20px;
 }
+html[dir='rtl'] .home.page .reasons-to-use img { margin-left:20px; margin-right:0; }
 
 .home.page .reasons-to-use p {
     padding: 10px 0;
@@ -366,6 +379,12 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; }
     display:flex;
     align-items:center;
 }
+html[dir='rtl'] .btn.create-site .icon-container {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+}
 .btn.create-site .arrow {
     display: inline-block;
     width: 0;
@@ -375,6 +394,10 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; }
     border-bottom: 8px solid transparent;
     margin: 16px;
     transition: all 0.2s;
+}
+html[dir='rtl'] .btn.create-site .arrow {
+    border-left: 0;
+    border-right: 16px solid white;
 }
 .btn.create-site:hover,
 .page.playground .btn.create-site:hover {
@@ -392,6 +415,7 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; }
 
 /*****  Getting Started Page  *****/
 
+.getting-started { direction:ltr; }
 .getting-started .links {
     display: flex;
     flex-direction: column;
