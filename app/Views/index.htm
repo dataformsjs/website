@@ -258,8 +258,8 @@
                                 // If changing languages from ltr to rtl and back
                                 // the nav menu will appear out of order.
                                 // Example: ('en' -> 'ar' -> 'en')
+                                document.documentElement.style.direction = 'ltr';
                                 window.setTimeout(function() {
-                                    document.documentElement.style.direction = 'ltr';
                                     document.documentElement.style.direction = '';
                                 }, 100);
                             }
