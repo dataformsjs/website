@@ -252,7 +252,15 @@
                         if (app.plugins.i18n.currentLocale === 'ar') {
                             document.documentElement.setAttribute('dir', 'rtl');
                         } else {
-                            document.documentElement.removeAttribute('dir');
+                            if (document.documentElement.hasAttribute('dir')) {
+                                document.documentElement.removeAttribute('dir');
+                                // The code below is a hack for iOS 11 with Safari.
+                                // If changing languages from ltr to rtl and back
+                                // the nav menu will appear out of order.
+                                // Example: ('en' -> 'ar' -> 'en')
+                                document.documentElement.style.direction = 'ltr';
+                                document.documentElement.style.direction = '';
+                            }
                         }
                         next();
                     },
