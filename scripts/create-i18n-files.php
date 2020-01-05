@@ -15,7 +15,7 @@
 
 // **** MODIFY here to add a new Language ****
 const LANG_COPY_FROM = 'en';
-const LANG_COPY_TO = 'ja';
+const LANG_COPY_TO = 'fr';
 
 // *** Additional Options ***/
 const COPY_QUICK_REF = true;

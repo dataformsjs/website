@@ -1,0 +1,21 @@
+{
+    "Home": "Accueil",
+    "Playground": "Aire de jeux de Code",
+    "Getting Started": "Commencer",
+    "Quick Reference": "Référence Rapide",
+    "Examples": "Exemples",
+    "Documents": "Les Documents",
+    "API": "API",
+    "Timezone": "Fuseau Horaire",
+    "Web Components": "Composants Web",
+    "Loading...": "Chargement...",
+    "Hello World!": "Bonjour le Monde!",
+    "Hello": "Bonjour",
+    "Countries": "Des pays",
+    "country_code": "Code",
+    "country_name": "Nom",
+    "country_size": "Taille (KM)",
+    "country_pop": "Population",
+    "country_continent": "Continent",
+    "footer_license": "Site et code source fournis sous licence MIT"
+}
