@@ -220,6 +220,13 @@
                     };
                 });
 
+                // Handle desktop menu hover for wide-screen mobile devices (iPad, Android Tablets, etc)
+                var i18nMenu = document.querySelector('.site-nav .desktop-nav > li.i18n-menu');
+                i18nMenu.onclick = function() {
+                    var ul = i18nMenu.querySelector('ul'); 
+                    ul.style.display = (ul.style.display === '' ? 'block' : '');
+                };
+
                 // Add CSS Variable Support to IE and older Browsers
                 var supportsCssVars = (window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)'));
                 var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
