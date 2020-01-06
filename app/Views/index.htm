@@ -221,10 +221,16 @@
                 });
 
                 // Handle desktop menu hover for wide-screen mobile devices (iPad, Android Tablets, etc)
+                var desktopNav = document.querySelector('.site-nav .desktop-nav');
                 var i18nMenu = document.querySelector('.site-nav .desktop-nav > li.i18n-menu');
-                i18nMenu.onclick = function() {
-                    var ul = i18nMenu.querySelector('ul'); 
-                    ul.style.display = (ul.style.display === '' ? 'block' : '');
+                var i18nUL = i18nMenu.querySelector('ul');
+                i18nMenu.onclick = function(e) {
+                    i18nUL.style.display = (i18nUL.style.display === '' ? 'block' : '');
+                    e.preventDefault();
+                    e.cancelBubble = true;
+                };
+                desktopNav.onclick = function() {
+                    i18nUL.style.display = '';
                 };
 
                 // Add CSS Variable Support to IE and older Browsers
