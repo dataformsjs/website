@@ -165,13 +165,13 @@ const root = {
         let params = [];
 
         // country_code is optional
-        if (country) {
+        if (country.trim()) {
             where = 'country_code = ? AND name = ?';
-            params.push(country);
+            params.push(country.trim());
         } else {
             where = 'name = ?';
         }
-        params.push(city);
+        params.push(city.trim());
 
         let sql = `
             SELECT *
