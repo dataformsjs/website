@@ -60,7 +60,7 @@ class Geonames
 
         // Query Db
         $sql = $app->getSql('geonames-search.sql');
-        $records = $app->geonames->query($sql, [':country_code'=>$country, ':name'=>$city]);
+        $records = $app->geonames->query($sql, [':country_code'=>trim($country), ':name'=>trim($city)]);
         return ['cities' => $records];
     }
 }
