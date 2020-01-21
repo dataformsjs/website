@@ -1,10 +1,10 @@
 {
     "h1": "Playground de Programação do DataFormsJS",
     "info_1": "Você pode utilizar esta página para criar um site que desaparecerá.",
-    "info_2": "Os sites são temporários e serão deletados após aproimandamente 1 (uma) hora.",
-    "info_3": "O site e o conteúdo criado por você é priado e disponível somente para você a não ser que você compartilhe a URL. No entanto, se houver suspeita de atividades maliciosas, então seu código poderá ser arquivado e compartilhado com especialistas de segurança.",
-    "info_4": "A intenção deste site é ser recurso útil para você e qualquer um que deseja desenvolver utilizando HTML, CSS e JavaScript. Por favor não ataque este site nem utilie-o para propósitos maliciosos.",
-    "btn_create": "Criar um Site Instantaneo agora!",
+    "info_2": "Os sites são temporários e serão deletados após aproximadamente 1 (uma) hora.",
+    "info_3": "O site e o conteúdo criado por você é privado e disponível somente para você a não ser que você compartilhe a URL. No entanto, se houver suspeita de atividades maliciosas, então seu código poderá ser arquivado e compartilhado com especialistas de segurança.",
+    "info_4": "A intenção deste site é ser recurso útil para você e qualquer um que deseja desenvolver utilizando HTML, CSS e JavaScript. Por favor não ataque este site nem utilize-o para propósitos maliciosos.",
+    "btn_create": "Criar um Site Instantâneo agora!",
     "thank_you": "Obrigado por utilizar o Playground de Programação DataFormsJS!",
     "please_share": "Por favor compartilhe este site se você gostou. 👍🌠😃",
     "btn_create_another": "Criar Outro Site!",
@@ -29,9 +29,9 @@
     "one_second_remaining": "1 Segundo Restante",
     "file_limit_reached": "Limite de arquivo atingido",
     "mobile_layout": "Teste esta página num computador, desktop 🖥️ ou laptop 💻, para utilizar o editor completo e todas suas funcionalidades. 👍🌠😃",
-    "narrow_layout": "Aumente a largura de sua tela para visualizar o editor integralmente. Se seu monitor não tiver lagura  grande (resolução alta) o suficiente, teste esta página noutro computador 🖥️💻 para que possa utilizar o editor completo e todas suas funcionalidades. 👍🌠😃",
+    "narrow_layout": "Aumente a largura de sua tela para visualizar o editor integralmente. Se seu monitor não tiver largura  grande (resolução alta) o suficiente, teste esta página noutro computador 🖥️💻 para que possa utilizar o editor completo e todas suas funcionalidades. 👍🌠😃",
     "error_saved_site": "Houve um erro ao baixar o seu site salvo. Gostaria de criar um novo site?",
-    "error_server_down": "O servidor do Playground pode ficar temporariamente indisponível porque houve um erro ao baixar o modelo de site. Por favor tente acessar esta página novamenete num futuro próximo!",
+    "error_server_down": "O servidor do Playground pode ficar temporariamente indisponível porque houve um erro ao baixar o modelo de site. Por favor tente acessar esta página novamente num futuro próximo!",
     "try_other_site": "Ou tente uma versão PHP deste site no FastSitePHP",
     "site_expired": "Seu site expirou e não pode mais ser editado. Todos os arquivos devem ser excluídos automaticamente em 1 minuto."
 }
