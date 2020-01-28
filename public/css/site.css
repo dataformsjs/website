@@ -53,6 +53,12 @@ body {
 
 #view { text-align:center; flex: 1 0 auto; }
 
+/* Older iOS - iOS 9 (example iPad2) */
+@supports (-webkit-overflow-scrolling: touch) {
+    header,
+    footer { flex: 1 0 auto; }
+}
+
 .page {
     margin: 20px;
     display: flex;
