@@ -223,6 +223,7 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; direction:lt
 
 .home.page .overview {
     padding: 20px;
+    font-size: 1.2em;
 } 
 
 .home.page .overview p { padding:10px 0; }
