@@ -193,6 +193,12 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; direction:lt
     code[class*="language-"], pre[class*="language-"] { font-size:1em; }
 }
 
+/* Upate code based on High-Contrast Warnings from DevTools */
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: #667482; }
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted { color:#547d00; }
+.token.punctuation { color:#6d6d6d; }
+.token.regex, .token.important, .token.variable { color: #986303; }
+
 /************ Home Page ************/
 .home.page .logo {
     display: flex;
