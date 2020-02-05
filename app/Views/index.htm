@@ -285,6 +285,33 @@
                     },
                 });
 
+                // Custom Site Plugin to add or remove the <meta name="Description" content="{content}">
+                // tag. It only is inlcuded on the home page and removed from other pages.
+                app.addPlugin('metaDescription', {
+                    onRouteLoad: function(next) {
+                        var element = document.querySelector('meta[name="Description"]');
+                        var text = null;
+                        if (app.activeController && app.activeController.path === '/:lang/') {
+                            text = app.plugins.i18n.getText('overview_1');
+                        }
+                        if (text === null) {
+                            if (element !== null) {
+                                element.parentNode.removeChild(element);
+                            }
+                        } else {
+                            if (element === null) {
+                                element = document.createElement('meta');
+                                element.name = 'Description';
+                                element.content = 'DataFormsJS - ' + text;
+                                document.querySelector('head').appendChild(element);
+                            } else {
+                                element.content = 'DataFormsJS - ' + text;
+                            }
+                        }
+                        next();
+                    },
+                });
+
                 // The site was orignally published using #hash URL's. If the
                 // page loaded uses a hash URL then navigate to the path.
                 //
