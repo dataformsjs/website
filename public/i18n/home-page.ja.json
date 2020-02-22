@@ -24,6 +24,7 @@
     "hello_world_hbs_desc": "DataFormsJSフレームワークは、シングルページアプリケーション（SPA）に最適です。 [data-route]を含む<template>および<script>要素は、さまざまなルート（ウェブページ）を定義するために使用され、URLからページのモデルに変数を渡すことができます。 この例では、テンプレートのレンダリングにハンドルバーを使用しています。",
     "hello_world_js_desc": "ハンドルバーやVueなどのテンプレートまたはビューエンジンを使用する必要はありません。 この例では、プラグイン[dataBind.js]を属性[data-bind]とともに使用して、URLから変数を表示します。",
     "hello_world_web_desc": "DataFormsJSには、最新のブラウザーで使用できるWeb Componentsが含まれており、古いブラウザーを使用しているユーザーにわかりやすい警告を提供します。 Web Componentsは、よく定義された標準であり、より少ないコードを使用しながらJavaScriptフレームワークと機能的に類似しているため、Web開発の将来としてしばしば説明されます。",
+    "hello_world_react_desc": "DataFormsJSは、Babelの代替として使用できるWebベースのコンパイラ[jsxLoader.js]を提供します。 これにより、ビルドプロセスを必要とせずに、JSXをWebページ内で使用できます。 コンパイラーはダウンロードが小さく、実行が非常に高速です。",
     "json_data_example": "WebサービスからJSONデータを表示する",
     "json_data_hbs_desc": "DataFormsJSでは、マークアップ（HTMLおよびテンプレート）のみを使用してWebサービスからデータを表示できます。 [data-page]で指定されたさまざまなページオブジェクトを開発して、コントローラーロジックとモデルの状態を処理できます。 組み込みのページオブジェクト[jsonData]により、リクエストの状態[isLoading、isLoaded、hasError]に基づいてレンダリングするHTMLを制御できます。 この例では、属性[data-filter-selector]および[data-sort]がプラグインによって使用され、ユーザーがデータテーブルと対話できるようにします。 ページテンプレートは、一致するルートの[src]属性に基づいてダウンロードおよびキャッシュされます。",
     "json_data_vue_desc": "DataFormsJSは、アプリがJavaScriptを記述することなくVueを使用してデータを表示できるレンダリングエンジンとしてVueをサポートします。 各ルートには独自のVueインスタンスモデルが割り当てられ、組み込みページオブジェクトを使用する場合、[jsonData]は[isLoading、isLoaded、hasError]を使用して表示内容を制御できます。 この例では、[data-countries]と[data-regions]がルート上で定義され、Vueウォッチャーのインスタンスプロパティ[countries]と[regions]としても設定されます。 両方のプロパティは、ダウンロードされたWebサービスからのデータを表します。",

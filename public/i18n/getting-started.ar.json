@@ -19,12 +19,11 @@
     "countries_filtered": "عرض {displayCount} من البلدان {totalCount}",
     "countries_enter_filer": "أدخل الفلتر ، مثال \"Asia\"",
     "countries_field_list": "الرمز ، الاسم ، الحجم (KM) ، السكان ، القارة",
-    "babel": "Babel ل JSX",
-    "babel_ie": "استخدم [babel-standalone @ 6] لدعم IE.",
-    "babel_modern": "يمكن استخدام Babel 7 [babel] للمتصفحات الحديثة.",
     "dev_latest": "ديف آخر:",
     "dev_specific": "نسخة ديف محددة:",
     "prod_latest": "أحدث الإنتاج:",
     "comment_old_browsers": "سوف ترى المتصفحات الأقدم (IE ، أجهزة المحمول الأقدم ، إلخ) تحذيرًا",
-    "comment_nav_links": "قم بتحديث ارتباطات التنقل عندما يتم تحميل الصفحة أو تغييرها"
+    "comment_nav_links": "قم بتحديث ارتباطات التنقل عندما يتم تحميل الصفحة أو تغييرها",
+    "jsxloader_line_1": "[jsxLoader.js] will quickly compile and convert JSX to JS for modern browsers,",
+    "jsxloader_line_2": "and for older browsers it will download and use Babel Standalone from a CDN."
 }

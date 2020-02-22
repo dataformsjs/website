@@ -1,12 +1,12 @@
 {
     "view_or_download": "View on GitHub or Download",
-    "tmpl_hbs_graphql": "Handlebars with GraphQL",
+    "tmpl_hbs_graphql": "HandlebarsJS with GraphQL",
     "tmpl_vue_graphql": "Vue with GraphQL",
     "tmpl_js": "JavaScript/HTML (No Templating)",
     "view_tmpl": "View Template",
     "download": "下载",
-    "tmpl_hbs_title": "DataFormsJS Handlebars Template",
-    "tmpl_hbs_graphql_title": "DataFormsJS Handlebars with GraphQL Template",
+    "tmpl_hbs_title": "DataFormsJS HandlebarsJS Template",
+    "tmpl_hbs_graphql_title": "DataFormsJS HandlebarsJS with GraphQL Template",
     "tmpl_web_title": "DataFormsJS Web Components Template",
     "tmpl_vue_title": "DataFormsJS Vue Template",
     "tmpl_vue_graphql_title": "DataFormsJS Vue with GraphQL Template",
@@ -19,12 +19,11 @@
     "countries_filtered": "Showing {displayCount} of {totalCount} Countries",
     "countries_enter_filer": "Enter filter, example 'North America'",
     "countries_field_list": "Code, Name, Size (KM), Population, Continent",
-    "babel": "Babel for JSX",
-    "babel_ie": "Use [babel-standalone@6] for IE Support.",
-    "babel_modern": "Babel 7 [@babel] can be used for modern browsers.",
     "dev_latest": "Dev Latest:",
     "dev_specific": "Specific Dev Version:",
     "prod_latest": "Prod Latest:",
     "comment_old_browsers": "Older browsers (IE, Older Mobile Devices, etc) will see a warning",
-    "comment_nav_links": "Update Nav Links when page is loaded or changed"
+    "comment_nav_links": "Update Nav Links when page is loaded or changed",
+    "jsxloader_line_1": "[jsxLoader.js] will quickly compile and convert JSX to JS for modern browsers,",
+    "jsxloader_line_2": "and for older browsers it will download and use Babel Standalone from a CDN."
 }

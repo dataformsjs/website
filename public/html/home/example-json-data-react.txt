@@ -4,18 +4,19 @@
     <body>
         <div id="root"></div>
 
-        <!-- React and Babel -->
-        <script src="js/react/react.js"></script>
-        <script src="js/react/react-dom.js"></script>
-        <script src="js/babel.js"></script>
+        <!-- React -->
+        <script src="js/react.js"></script>
+        <script src="js/react-dom.js"></script>
+
+        <!-- DataFormsJS JSX Loader -->
+        <script src="js/jsxLoader.jsx"></script>
 
         <!-- DataFormsJS React Components -->
-        <script type="text/babel" src="js/react/ErrorBoundary.jsx"></script>
-        <script type="text/babel" src="js/react/PolyfillService.jsx"></script>
-        <script type="text/babel" src="js/react/JsonData.jsx"></script>
-        <script type="text/babel" src="js/react/InputFilter.jsx"></script>
-        <script type="text/babel" src="js/react/SortableTable.jsx"></script>
-        <script type="text/babel" src="js/react/Format.js"></script>
+        <script type="text/babel" src="js/es6/ErrorBoundary.js"></script>
+        <script type="text/babel" src="js/es6/JsonData.js"></script>
+        <script type="text/babel" src="js/es6/InputFilter.js"></script>
+        <script type="text/babel" src="js/es6/SortableTable.js"></script>
+        <script type="text/babel" src="js/es6/Format.js"></script>
 
         <script type="text/babel">
             const format = new Format();
@@ -67,13 +68,11 @@
                 render() {
                     return (
                         <ErrorBoundary>
-                            <PolyfillService>
-                                <JsonData
-                                    url="https://www.dataformsjs.com/data/geonames/countries"
-                                    isLoading={<ShowLoading />}
-                                    hasError={<ShowError />}
-                                    isLoaded={<ShowCountries />} />
-                            </PolyfillService>
+                            <JsonData
+                                url="https://www.dataformsjs.com/data/geonames/countries"
+                                isLoading={<ShowLoading />}
+                                hasError={<ShowError />}
+                                isLoaded={<ShowCountries />} />
                         </ErrorBoundary>
                     )
                 }

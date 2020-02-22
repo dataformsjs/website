@@ -3,7 +3,7 @@
 
 react.svg
 https://reactjs.org
-Downloaded SVG logo from the main site
+# Downloaded SVG logo from the main site
 
 vue.svg
 https://github.com/vuejs/art/blob/master/logo.svg
@@ -36,3 +36,10 @@ https://www.jsdelivr.com/img/logo-horizontal.svg
 GitHub-Mark-32px.png
 GitHub-Mark-Light-32px.png
 https://github.com/logos
+
+preact.svg
+https://github.com/preactjs/preact
+# SVG was modified to remove the text
+
+rax.png
+https://github.com/alibaba/rax

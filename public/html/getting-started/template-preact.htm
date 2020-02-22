@@ -10,19 +10,10 @@
         <div id="root"></div>
 
         <!--
-            React
-            https://reactjs.org
+            Preact
+            https://preactjs.com
         -->
-        <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-
-        <!--
-            React Router
-            https://reacttraining.com/react-router/
-            https://github.com/ReactTraining/react-router
-        -->
-        <script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
-        <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+        <script src="https://unpkg.com/preact"></script>
 
         <!--
             DataFormsJS JSX Loader
@@ -32,6 +23,7 @@
             [[i18n jsxloader_line_2]]
         -->
         <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/3.6.0/react/jsxLoader.min.js"></script>
+        <script> jsxLoader.usePreact(); </script>
 
         <!--
             DataFormsJS React Components
@@ -49,11 +41,6 @@
         <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/3.6.0/react/es5/DataFormsJS.min.js"></script>
 
         <script type="text/babel">
-            const Router = window.ReactRouterDOM.HashRouter;
-            const Route = window.ReactRouterDOM.Route;
-            const Redirect = window.ReactRouterDOM.Redirect;
-            const NavLink = window.ReactRouterDOM.NavLink;
-
             const format = new Format();
 
             function ShowLoading() {
@@ -64,13 +51,9 @@
                 return <p className="error">{props.error}</p>;
             }
 
-            function HomePage() {
-                return <h1>[[i18n tmpl_react_title]]</h1>;
-            }
-
             function ShowCountries(props) {
                 return (
-                    <React.Fragment>
+                    <preact.Fragment>
                         <h1>Countries</h1>
                         <InputFilter
                             filter-selector="table"
@@ -105,44 +88,28 @@
                                 })}
                             </tbody>
                         </SortableTable>
-                    </React.Fragment>
+                    </preact.Fragment>
                 )
             }
 
-            function DataPage() {
-                return (
-                    <JsonData
-                        url="https://www.dataformsjs.com/data/geonames/countries"
-                        isLoading={<ShowLoading />}
-                        hasError={<ShowError />}
-                        isLoaded={<ShowCountries />}
-                        loadOnlyOnce={true} />
-                );
-            }
-
-            class App extends React.Component {
+            class App extends preact.Component {
                 render() {
                     return (
                         <ErrorBoundary>
-                            <Router>
-                                <header>
-                                    <nav>
-                                        <NavLink exact to="/" activeClassName="active">[[i18n Home]]</NavLink>
-                                        <NavLink exact to="/data" activeClassName="active">[[i18n data_example]]</NavLink>
-                                    </nav>
-                                </header>
-
-                                <main id="view" className="container">
-                                    <Route exact path="/" component={HomePage} />
-                                    <Route exact path="/data" component={DataPage} />
-                                </main>
-                            </Router>
+                            <main id="view" className="container">
+                                <JsonData
+                                    url="https://www.dataformsjs.com/data/geonames/countries"
+                                    isLoading={<ShowLoading />}
+                                    hasError={<ShowError />}
+                                    isLoaded={<ShowCountries />}
+                                    loadOnlyOnce={true} />
+                            </main>
                         </ErrorBoundary>
                     )
                 }
             }
 
-            ReactDOM.render(
+            preact.render(
                 <App />,
                 document.getElementById('root')
             );

@@ -4,18 +4,19 @@
     &lt;body&gt;
         &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
 
-        &lt;!-- React and Babel --&gt;
-        &lt;script src=&quot;js/react/react.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;js/react/react-dom.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;js/babel.js&quot;&gt;&lt;/script&gt;
+        &lt;!-- React --&gt;
+        &lt;script src=&quot;js/react.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/react-dom.js&quot;&gt;&lt;/script&gt;
+
+        &lt;!-- DataFormsJS JSX Loader --&gt;
+        &lt;script src=&quot;js/jsxLoader.jsx&quot;&gt;&lt;/script&gt;
 
         &lt;!-- DataFormsJS React Components --&gt;
-        &lt;script type=&quot;text/babel&quot; src=&quot;js/react/ErrorBoundary.jsx&quot;&gt;&lt;/script&gt;
-        &lt;script type=&quot;text/babel&quot; src=&quot;js/react/PolyfillService.jsx&quot;&gt;&lt;/script&gt;
-        &lt;script type=&quot;text/babel&quot; src=&quot;js/react/JsonData.jsx&quot;&gt;&lt;/script&gt;
-        &lt;script type=&quot;text/babel&quot; src=&quot;js/react/InputFilter.jsx&quot;&gt;&lt;/script&gt;
-        &lt;script type=&quot;text/babel&quot; src=&quot;js/react/SortableTable.jsx&quot;&gt;&lt;/script&gt;
-        &lt;script type=&quot;text/babel&quot; src=&quot;js/react/Format.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/ErrorBoundary.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/JsonData.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/InputFilter.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/SortableTable.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/Format.js&quot;&gt;&lt;/script&gt;
 
         &lt;script type=&quot;text/babel&quot;&gt;
             const format = new <mark>Format()</mark>;
@@ -67,13 +68,11 @@
                 render() {
                     return (
                         &lt;<mark>ErrorBoundary</mark>&gt;
-                            &lt;<mark>PolyfillService</mark>&gt;
-                                &lt;<mark>JsonData</mark>
-                                    url=&quot;https://www.dataformsjs.com/data/geonames/countries&quot;
-                                    isLoading={&lt;ShowLoading /&gt;}
-                                    hasError={&lt;ShowError /&gt;}
-                                    isLoaded={&lt;ShowCountries /&gt;} /&gt;
-                            &lt;/PolyfillService&gt;
+                            &lt;<mark>JsonData</mark>
+                                url=&quot;https://www.dataformsjs.com/data/geonames/countries&quot;
+                                isLoading={&lt;ShowLoading /&gt;}
+                                hasError={&lt;ShowError /&gt;}
+                                isLoaded={&lt;ShowCountries /&gt;} /&gt;
                         &lt;/ErrorBoundary&gt;
                     )
                 }
