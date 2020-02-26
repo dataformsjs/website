@@ -26,6 +26,7 @@ rsync -rcv --delete --exclude node_modules ~/website-master/app/ /var/www/app
 rsync -rcv --delete --exclude geonames.sqlite ~/website-master/app_data/ /var/www/app_data
 rsync -rcv --delete ~/website-master/scripts/ /var/www/scripts
 rsync -rcv --delete --exclude examples --exclude .htaccess --exclude Web.config ~/website-master/public/ /var/www/html
+rsync -rcv --delete ~/website-master/public/img/examples/ /var/www/html/img/examples
 rm -r ~/website-master
 rm -r ~/dataformsjs-master
 
