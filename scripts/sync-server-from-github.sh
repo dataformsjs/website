@@ -31,8 +31,8 @@ rm ~/public/Web.config
 cp -r ~/dataformsjs-master/examples/ ~/public/examples
 cp -r ~/dataformsjs-master/js/ ~/public/src
 cp -r ~/dataformsjs-master/test/ ~/public/unit-testing/
-rm ~/public/unit-tests/server.js
-rm ~/public/unit-tests/favicon.ico
+rm ~/public/unit-testing/server.js
+rm ~/public/unit-testing/favicon.ico
 
 # Sync
 rsync -rcv --delete --exclude node_modules ~/website-master/app/ /var/www/app
