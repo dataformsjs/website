@@ -4,10 +4,16 @@ use FastSitePHP\Web\Response;
 use FastSitePHP\FileSystem\Security;
 
 /**
- * Unit Test Routes for Runnig Unit Tests on the main server.
+ * Unit Test Routes for Running Unit Tests on the main server.
  * 
  * This is the PHP version of the node tests:
  *     https://github.com/dataformsjs/dataformsjs/blob/master/test/server.js
+ * 
+ * Example URL on the main server:
+ *     https://www.dataformsjs.com/unit-testing/react
+ * 
+ * If running the main site for local development the same URL will be:
+ *     http://localhost:3000/unit-testing/react
  */
 
 $app->get('/unit-testing/:view', function($view) use ($app) {
