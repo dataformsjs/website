@@ -13,6 +13,9 @@
 #  Example:
 #      rsync -nrcv --delete ~/dataformsjs-master/examples/ /var/www/html/examples
 #
+#  When this file is updated it must be ran twice on the server so the 
+#  final sync runs.
+#
 # -----------------------------------------------------------------------------
 
 # Download and Uncompress latest braches from GitHub
@@ -25,7 +28,6 @@ rm ~/master.zip
 
 # The public directory `/var/www/html` is a combination of files from the
 # two repositories so re-create the structure from downloaded files before syncing
-mkdir ~/public
 cp -r ~/website-master/public/ ~/public
 rm ~/public/Web.config
 cp -r ~/dataformsjs-master/examples/ ~/public/examples
