@@ -13,8 +13,12 @@
 #  Example:
 #      rsync -nrcv --delete ~/dataformsjs-master/examples/ /var/www/html/examples
 #
-#  When this file is updated it must be ran twice on the server so the 
-#  final sync runs.
+#  When this file is updated the script should first be manually updated
+#  on the server to avoid sync issues.
+#
+#  Additionally reset permissions if there are sync issues:
+#      sudo chown ubuntu:www-data -R /var/www
+#      sudo chmod 0775 -R /var/www
 #
 # -----------------------------------------------------------------------------
 
