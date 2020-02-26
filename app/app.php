@@ -152,6 +152,9 @@ $app->get('/:lang/examples', $app_html);
  *
  * On the production server the needed files are copied.
  * See server setup in [docs\Main Site Server Setup.txt].
+ * 
+ * This route doesn't run on the live server due to the
+ * filter for `$is_localhost`.
  */
 $app->get('/*', function() use ($app) {
     // Path for DataFormsJS Repository; this assumes the Repository
@@ -169,12 +172,21 @@ $app->get('/*', function() use ($app) {
     
     // Uncomment to debug if needed (also version below)
     // var_dump($root . $path);
+    // var_dump($path);
     // exit();
+
+    // Unit Tests routes have different mapping so they work from node
+    // in the main repository, from server, and from here
+    if (strpos($path, '/src/') === 0) {
+        $path = '/js/' . substr($path, 5);
+    } elseif (strpos($path, '/unit-testing/') === 0) {
+        $path = '/test/' . substr($path, strlen('/unit-testing/'));
+    } 
 
     // Security check since [$path] comes from User Input. Although
     // this only runs in localhost using secure code is good practice.
     if (!Security::dirContainsPath($root, $path)) {
-        // Site is likley running with the PHP built-in server using [index.php] as
+        // Site is likely running with the PHP built-in server using [index.php] as
         // the router. All requests will go here so check for public site files.
         $root = __DIR__ . '/../public';
         // var_dump($root . $path);
