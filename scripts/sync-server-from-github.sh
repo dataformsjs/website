@@ -36,7 +36,8 @@ rsync -rcv --delete ~/website-master/public/img/examples/. /var/www/html/img/exa
 # rm -r ~/fastsitephp-master
 
 # Copy and modify Unit Tests
-rsync -rcv --delete --exclude html --exclude js ~/dataformsjs-master/test/views/. /var/www/html/test
+# This currently overwrites all files each time.
+rsync -rcv --delete ~/dataformsjs-master/test/views/. /var/www/html/test
 rsync -rcv --delete ~/dataformsjs-master/test/js/. /var/www/html/test/js
 rsync -rcv --delete ~/dataformsjs-master/test/html/. /var/www/html/test/html
 code=$(cat <<'CODE'
