@@ -43,7 +43,7 @@ code=$(cat <<'CODE'
 $files = ['handlebars', 'mixed-templates', 'nunjucks', 'preact', 'react', 'underscore'];
 foreach ($files as $file) {
     $path = '/var/www/html/test/unit-testing-' . $file . '.htm';
-    $content = file_get_contents($file);
+    $content = file_get_contents($path);
     $content = str_replace('src="/js/', 'src="js/', $content);
     $content = str_replace('src="src/', 'src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/', $content);
     $content = str_replace('data-url="unit-testing/', 'data-url="/unit-testing/', $content);
