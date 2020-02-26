@@ -1,5 +1,7 @@
 <?php
 
+use FastSitePHP\Web\Response;
+
 /**
  * Unit Test Routes for Runnig Unit Tests on the main server.
  * 

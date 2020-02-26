@@ -25,8 +25,8 @@ rsync -rcv --delete ~/dataformsjs-master/examples/ /var/www/html/examples
 rsync -rcv --delete --exclude node_modules ~/website-master/app/ /var/www/app
 rsync -rcv --delete --exclude geonames.sqlite ~/website-master/app_data/ /var/www/app_data
 rsync -rcv --delete ~/website-master/scripts/ /var/www/scripts
-rsync -rcv --delete --exclude examples --exclude .htaccess --exclude Web.config ~/website-master/public/ /var/www/html
-rsync -rcv --delete ~/website-master/public/img/examples/ /var/www/html/img/examples
+rsync -rcv --delete --exclude examples --exclude test --exclude .htaccess --exclude Web.config ~/website-master/public/ /var/www/html
+rsync -rcv --delete ~/website-master/public/img/examples/. /var/www/html/img/examples
 
 # FastSitePHP Framework Updates are manual only if needed:
 # wget https://github.com/fastsitephp/fastsitephp/archive/master.zip -O ~/master.zip
@@ -36,9 +36,9 @@ rsync -rcv --delete ~/website-master/public/img/examples/ /var/www/html/img/exam
 # rm -r ~/fastsitephp-master
 
 # Copy and modify Unit Tests
-rsync -rcv --delete ~/dataformsjs-master/test/views/. /var/www/html/test
-rsync -rcv --delete ~/dataformsjs-master/test/js /var/www/html/test/js
-rsync -rcv --delete ~/dataformsjs-master/test/html /var/www/html/test/html
+rsync -rcv --delete --exclude html --exclude js ~/dataformsjs-master/test/views/. /var/www/html/test
+rsync -rcv --delete ~/dataformsjs-master/test/js/. /var/www/html/test/js
+rsync -rcv --delete ~/dataformsjs-master/test/html/. /var/www/html/test/html
 code=$(cat <<'CODE'
 $files = ['handlebars', 'mixed-templates', 'nunjucks', 'preact', 'react', 'underscore'];
 foreach ($files as $file) {
