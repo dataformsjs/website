@@ -99,6 +99,7 @@ $app->get('/', function() use ($app) {
  */
 $app->mount('/data', 'routes-data.php');
 $app->mount('/graphql', 'routes-graphql.php');
+$app->mount('/unit-testing', 'routes-test.php');
 
 /**
  * Additional routes
