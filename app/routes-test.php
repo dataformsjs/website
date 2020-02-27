@@ -10,11 +10,21 @@ use FastSitePHP\FileSystem\Security;
  *     https://github.com/dataformsjs/dataformsjs/blob/master/test/server.js
  * 
  * Example URL on the main server:
- *     https://www.dataformsjs.com/unit-testing/react
+ *     https://www.dataformsjs.com/unit-testing/
  * 
  * If running the main site for local development the same URL will be:
- *     http://localhost:3000/unit-testing/react
+ *     http://localhost:3000/unit-testing/
  */
+
+$app->get('/unit-testing', function() {
+    $html = '<h1>DataFormsJS Unit Testing</h1><ul>';
+    $files = ['handlebars', 'nunjucks', 'underscore', 'mixed-templates', 'vue', 'react', 'preact'];
+    foreach ($files as $file) {
+        $html .= '<li><a href="/unit-testing/' . $file . '">' . $file . '</li>';
+    }
+    $html .= '</ul>';
+    return $html;
+});
 
 $app->get('/unit-testing/:view', function($view) use ($app) {
     // Production Server location
