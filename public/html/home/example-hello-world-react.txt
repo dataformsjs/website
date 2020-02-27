@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <head>…</head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            class HelloMessage extends React.Component {
+                render() {
+                    return (
+                        <div>
+                            Hello {this.props.name}
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <HelloMessage name="World" />,
+                document.getElementById('root')
+            );
+        </script>
+        
+        <script src="react.js"></script>
+        <script src="react-dom.js"></script>
+        <script src="dataformsjs/jsxLoader.js"></script>
+    </body>
+</html>

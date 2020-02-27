@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>[[i18n tmpl_react_title]]</title>
+        <title>[[i18n tmpl_react_graphql_title]]</title>
         <link rel="stylesheet" href="https://d2xbd92kui7v97.cloudfront.net/site/css/getting-started.css">
     </head>
     <body>
@@ -65,7 +65,7 @@
             }
 
             function HomePage() {
-                return <h1>[[i18n tmpl_react_title]]</h1>;
+                return <h1>[[i18n tmpl_react_graphql_title]]</h1>;
             }
 
             function ShowCountries(props) {
@@ -112,7 +112,20 @@
             function DataPage() {
                 return (
                     <JsonData
-                        url="https://www.dataformsjs.com/data/geonames/countries"
+                        url="https://www.dataformsjs.com/graphql"
+                        graphQL={true}
+                        query={`
+                            {
+                                countries {
+                                    iso
+                                    country
+                                    area_km
+                                    population
+                                    continent
+                                }
+                            }
+                        `}
+                        variables={{}}
                         isLoading={<ShowLoading />}
                         hasError={<ShowError />}
                         isLoaded={<ShowCountries />}

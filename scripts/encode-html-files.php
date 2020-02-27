@@ -15,6 +15,7 @@ $files = [
     'example-hello-world-hbs',
     'example-hello-world-web',
     'example-hello-world-js',
+    'example-hello-world-react',
     'example-json-data-hbs',
     'example-json-data-vue',
     'example-json-data-react',

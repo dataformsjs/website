@@ -53,6 +53,12 @@ body {
 
 #view { text-align:center; flex: 1 0 auto; }
 
+/* Older iOS - iOS 9 (example iPad2) */
+@supports (-webkit-overflow-scrolling: touch) {
+    header,
+    footer { flex: 1 0 auto; }
+}
+
 .page {
     margin: 20px;
     display: flex;
@@ -187,6 +193,12 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; direction:lt
     code[class*="language-"], pre[class*="language-"] { font-size:1em; }
 }
 
+/* Upate code based on High-Contrast Warnings from DevTools */
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: #667482; }
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted { color:#547d00; }
+.token.punctuation { color:#6d6d6d; }
+.token.regex, .token.important, .token.variable { color: #986303; }
+
 /************ Home Page ************/
 .home.page .logo {
     display: flex;
@@ -217,6 +229,7 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; direction:lt
 
 .home.page .overview {
     padding: 20px;
+    font-size: 1.2em;
 } 
 
 .home.page .overview p { padding:10px 0; }

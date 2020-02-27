@@ -98,21 +98,24 @@ TITLE: DataFormsJS Framework JavaScript Files
 TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 -->
 <!--
-    Componentes Individuais de React e Classes JavaScript para Desenvolvimento Web com Babel Standalone
+    DataFormsJS JSX Loader
+
+    [jsxLoader.js] will quickly compile and convert JSX to JS for modern browsers,
+    and for older browsers it will download and use Babel Standalone from a CDN.
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/react/jsxLoader.min.js"></script>
+
+<!--
+    Componentes Individuais de React e Classes JavaScript para Desenvolvimento Web com JSX Loader
 -->
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/ErrorBoundary.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/PolyfillService.js"></script>
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/JsonData.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/LazyLoad.js"></script>
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/InputFilter.js"></script>
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/SortableTable.js"></script>
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/I18n.js"></script>
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/Format.js"></script>
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/LeafletMap.js"></script>
-
-<!--
-    Todos os components também incluem uma versão [*.min.js] do arquivo
--->
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/JsonData.min.js"></script>
 
 <!--
     Todos arquivos [es6] também têm uma versão [es5] que pode ser usada num navegador sem o Babel
@@ -121,7 +124,8 @@ TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/JsonData.min.js"></script>
 
 <!--
-    ES5 compilado com todos os React Components e Classes pode ser utilizado no Navegador sem o Babel
+    ES5 compilado com todos os React Components e Classes pode ser utilizado no Navegador sem o Babel.
+    Using this file or individual [es5] component files is recommended for most browser based apps.
 -->
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/DataFormsJS.min.js"></script>
 
@@ -133,31 +137,20 @@ TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 <!--
     Incluir React
 -->
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@16.12.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.production.min.js"></script>
 
 <!--
     Os componentes React do DataFormsJS podem ser utilizados com React Router para SPAs
 -->
 <script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
-
-<!--
-    Babel para JSX (se estiver rodando o JSX diretamente no navegador)
-    Use [babel-standalone@6] para suporte ao IE.
-    Babel 7 [@babel] pode ser utilizado em navegadores modernos.
--->
-<!--
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
--->
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
 <!-- ********************************************************************** -->
 <!-- EXAMPLE_CODE_START
-TITLE: Componentes React do DataFormsJS com [Create React App]
+TITLE: Componentes React do DataFormsJS com [Create React App] ou Node
 LANG: JSX
 -->
 <script type="text/babel">
@@ -172,7 +165,7 @@ LANG: JSX
 */}
 
 // Importe componentes do arquivo rais do DataFormsJS
-import { ErrorBoundary, PolyfillService, JsonData } from 'dataformsjs/js/react/es6/DataFormsJS.js';
+import { ErrorBoundary, JsonData } from 'dataformsjs/js/react/es6/DataFormsJS.js';
 
 // Importe o Namespace padrão DataFormsJS
 // Você podem então utilizar o seguinte para JSX:
@@ -181,7 +174,6 @@ import DataFormsJS from 'dataformsjs/js/react/es6/DataFormsJS.js';
 
 // Importe Componentes Individuais:
 import JsonData from 'dataformsjs/js/react/es6/JsonData.js';
-import PolyfillService from 'dataformsjs/js/react/es6/PolyfillService.js';
 import ErrorBoundary from 'dataformsjs/js/react/es6/ErrorBoundary.js';
 
 /* Ambos os diretórios[es6] e [es5] funcionam com [create-react-app]. A versão
@@ -193,10 +185,9 @@ Componentes [es5] são projetados para desenvolvimento em Navegadores. Para
 todos os componentes individuais, você pode simplesmente mudar o caminho do
 diretório de [es6] para [es5] e para o namespace padrão há uma sutil mudança
 na sintaxe utilizando [import { DataFormsJS } from ...]. */
-import { ErrorBoundary, PolyfillService, JsonData } from 'dataformsjs/js/react/es5/DataFormsJS.js';
+import { ErrorBoundary, JsonData } from 'dataformsjs/js/react/es5/DataFormsJS.js';
 import { DataFormsJS } from 'dataformsjs/js/react/es5/DataFormsJS.js';
 import JsonData from 'dataformsjs/js/react/es5/JsonData.js';
-import PolyfillService from 'dataformsjs/js/react/es5/PolyfillService.js';
 import ErrorBoundary from 'dataformsjs/js/react/es5/ErrorBoundary.js';
 </script>
 <!-- EXAMPLE_CODE_END -->
@@ -803,10 +794,6 @@ TITLE: React - Mostra Dados de um Serviço Web JSON
 LANG: JSX
 -->
 <script type="text/babel">
-import ErrorBoundary from 'DataFormsJS/js/react/ErrorBoundary.jsx';
-import PolyfillService from 'DataFormsJS/js/react/PolyfillService.jsx';
-import JsonData from 'DataFormsJS/js/react/JsonData.jsx';
-
 function ShowLoading() {
     return <h3 className="loading">Carregando...</h3>;
 }
@@ -830,11 +817,9 @@ function ShowData(props) {
 }
 
 {/*
-    <ErrorBoundary> e <PolyfillService> são componentes opcionais.
+    <ErrorBoundary> é um componente opcionais.
 
-    <ErrorBoundary> pode ser utilizado para ajudar a resolver e exibir
-    erros de componentes React e <PolyfillService> carregará fetch/Promise e
-    outros [polyfills] para IE e dispositivos móveis antigos.
+    <ErrorBoundary> pode ser utilizado para ajudar a resolver e exibir erros de componentes React.
 
     <JsonData> é utilizado para baixar dados e renderizar componentes diferentes
     baseando-se no estado [fetch] do serviço web. Dados JSON data do serviço
@@ -849,14 +834,12 @@ class App extends React.Component {
     render() {
         return (
             <ErrorBoundary>
-                <PolyfillService>
-                    <JsonData
-                        url="https://www.dataformsjs.com/data/geonames/countries"
-                        isLoading={<ShowLoading />}
-                        hasError={<ShowError />}
-                        isLoaded={<ShowData />}
-                        loadOnlyOnce={true} />
-                </PolyfillService>
+                <JsonData
+                    url="https://www.dataformsjs.com/data/geonames/countries"
+                    isLoading={<ShowLoading />}
+                    hasError={<ShowError />}
+                    isLoaded={<ShowData />}
+                    loadOnlyOnce={true} />
             </ErrorBoundary>
         )
     }
@@ -906,9 +889,6 @@ TITLE: React - Filtrando e classificando Dados
 LANG: JSX
 -->
 <script type="text/babel">
-import InputFilter from 'DataFormsJS/js/react/InputFilter.jsx';
-import SortableTable from 'DataFormsJS/js/react/SortableTable.jsx';
-
 function ShowCountries(props) {
     return (
         <React.Fragment>
