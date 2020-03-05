@@ -15,7 +15,7 @@ TITLE: DataFormsJS Framework JavaScript Files
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/jsonData.min.js"></script>
 
 <!--
-    Par visualizar o fonte completo de qualquer arquivo, substitua [.min.js]
+    Para visualizar o fonte completo de qualquer arquivo, substitua [.min.js]
     com [.js]. DataFormsJS é desenvolvido para ser pequeno em tamanho e de
     fácil utlização.
     Todos os arquivos sendo tão pequenos torna fácil depurá-los.
@@ -84,7 +84,7 @@ TITLE: DataFormsJS Framework JavaScript Files
 <script src="js/pages/entryForm.js"></script>
 
 <!--
-    Links de CDN para Template e View Engines
+    Links de CDN para mecanismos de Modelo e Visualização
 -->
 <script src="https://cdn.jsdelivr.net/npm/handlebars@4.5.1/dist/handlebars.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.0/browser/nunjucks.min.js"></script>
@@ -100,8 +100,9 @@ TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 <!--
     DataFormsJS JSX Loader
 
-    [jsxLoader.js] will quickly compile and convert JSX to JS for modern browsers,
-    and for older browsers it will download and use Babel Standalone from a CDN.
+    [jsxLoader.js] compilará e converterá rapidamente JSX to JS para navegadores
+    modernos,  e para navegadores antigos baixará e utilizará o Babel Standalone
+    de um CDN.
 -->
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/react/jsxLoader.min.js"></script>
 
@@ -350,45 +351,49 @@ TITLE: Rotas do Framework
 </script>
 
 <!--
-    To link to a route when using the default hash URL’s
+    Para ligar-se a uma rota ao utiliza a URL padrão da hash, simplesmente
+    utilize um elemento <a> padrão: To link to a route when using the default hash URL’s
     simply use a standard <a> element:
 -->
 <a href="#/info">Info</a>
 
 <!--
-    Using HTML5 History API
+    Utilizando a API History do HTML5
 
-    By default DataFormsJS uses URL hash routing for routes (example "#/page").
-    This works well for static sites that use web services. For example a
-    single page with related content can be hosted on AWS S3.
+    Por padrão DataFormsJS utiliza roteamento de hash de URL para rotas (exemplo "#/page").
+    Isto funciona bem para sites estáticos que utilizam web services. Por exemplo uma
+    única página com o conteúdo relacionado pode ser hospedada no AWS S3.
 
-    The HTML5 History API can be used to define routes without a hash
-    (“/page” instead of “/page”). Typically when using this method server code
-    will be used so a 404 page can be returned to the user for missing routes.
-    If server code is not used then DataFormsJS will redirect to the default
-    route for an unknown URL. The main DataFormsJS site uses the HTML5 History
-    API and can be referenced as an example app.
+    A API History do HTML5 pode ser utilizado para definir rotas sem uma hash
+    (“/page” ao invés de “/page”). Tipicamente, ao utiliza este método, o código
+    do servidor será utilizdo, assim, uma página 404 pode ser retornada para o
+    usuário para rotas inexistentes. Se o código de servidor não for utilizado,
+    então o DataFormsJS redirecionará para a rota padrão quando houver uma URL
+    desconhecida. O site principal do DataFormsJS utiliza a API History do HTML5
+    e pode ser referenciada como um app de exemplo.
 
-    To use specifiy the [data-routing-mode="history"] in the root <html> element.
+    Para utilizar especifique  [data-routing-mode="history"] no elemento <html>
+    raiz.
 -->
 <html data-routing-mode="history">...</html>
 
 <!--
-    Then for navigation links on the site use start the href with “/”:
+    Em seguida, para utilizar links de navegação no site, comece o href com “/”:
 -->
 <a href="/info">Info</a>
 
 <!--
-    Instead of using a hash “#” URL:
+    Ao invés de utilizar uma hash de URL “#”:
 -->
 <a href="#/info">Info</a>
 
 <!--
-    By default when using the HTML5 History API for routing all links starting with
-    href="/..." will be updated to use JavaScript Routing. If you have relative pages
-    for the site that need to point to a separate page include the [data-no-pushstate]
-    attribute on the related links so that the links will not be processed for
-    JavaScript routing.
+    Por padrão, ao utilizar a API History do HTML5 para roteamente de todos os
+    links, iniciar com href="/..." será atualizado para utilizar Roteamento
+    JavaScript. Se você tiver páginas relativas ao site que precisam apontar
+    para uma página separada, inclua o atributo [data-no-pushstate] nos links
+    relacionados, assim os links não serão processados pelo roteamento JavaScript
+    routing.
 -->
 <a href="/other-app/page.htm" data-no-pushstate>App</a>
 <!-- EXAMPLE_CODE_END -->
@@ -758,7 +763,7 @@ TITLE: Plugins do Framework - Filtrando e classificando
 TITLE: Web Components - Filtrando e classificando
 -->
 <!--
-    Dois Web Components fornecem funcionalidade similar a do framework [filter.js]
+    Dois Web Components fornecem funcionalidade similar à do framework [filter.js]
     e [sort.js].
 -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/input-filter.min.js"></script>
