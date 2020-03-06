@@ -177,12 +177,12 @@ import DataFormsJS from 'dataformsjs/js/react/es6/DataFormsJS.js';
 import JsonData from 'dataformsjs/js/react/es6/JsonData.js';
 import ErrorBoundary from 'dataformsjs/js/react/es6/ErrorBoundary.js';
 
-/* Ambos os diretórios[es6] e [es5] funcionam com [create-react-app]. A versão
+/* Ambos os diretórios [es6] e [es5] funcionam com [create-react-app]. A versão
 [es5] dos arquivos já é compilada utilizando Babel, entretanto, você
-preferiria utilizar a versão [es6] para que os componentes sejam compilados
-utilizando as configurações padrão ou a de seu projeto.
+prefira utilizar a versão [es6] para que os componentes sejam compilados com as
+configurações padrão ou a de seu projeto.
 
-Componentes [es5] são projetados para desenvolvimento em Navegadores. Para
+Componentes [es5] são projetados para Desenvolvimento em Navegador. Para
 todos os componentes individuais, você pode simplesmente mudar o caminho do
 diretório de [es6] para [es5] e para o namespace padrão há uma sutil mudança
 na sintaxe utilizando [import { DataFormsJS } from ...]. */
@@ -196,11 +196,11 @@ import ErrorBoundary from 'dataformsjs/js/react/es5/ErrorBoundary.js';
 
 <!-- ********************************************************************** -->
 <!-- EXAMPLE_CODE_START
-TITLE: Web Component do DataFormsJS
+TITLE: Web Components do DataFormsJS
 -->
 <!--
     Componentes Web
-    É requisito a inclusão de [type="module"] para scripts Web Component.
+    É requisito a inclusão de [type="module"] para scripts Web Components.
 -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/url-hash-router.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/json-data.min.js"></script>
@@ -822,13 +822,14 @@ function ShowData(props) {
 }
 
 {/*
-    <ErrorBoundary> é um componente opcionais.
+    <ErrorBoundary> é um componente opcional.
 
-    <ErrorBoundary> pode ser utilizado para ajudar a resolver e exibir erros de componentes React.
+    <ErrorBoundary> pode ser utilizado para ajudar a resolver e exibir erros
+    de componentes React.
 
     <JsonData> é utilizado para baixar dados e renderizar componentes diferentes
-    baseando-se no estado [fetch] do serviço web. Dados JSON data do serviço
-    web serão passados para o componente através de [props.data].
+    baseando-se no estado [fetch] do serviço web. Dados JSON do serviço web
+    serão passados para o componente através de [props.data].
 
     Por padrão <JsonData> chama o serviço web cada vez que o componente é criado.
     Ao utilizar o [prop] opcional [loadOnlyOnce] como mostrado abaixo, os dados
