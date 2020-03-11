@@ -78,10 +78,10 @@ $use_i18n = function() use ($app) {
 /**
  * Root URL, redirect to the user's default language based the 'Accept-Language'
  * request header. Defaults to 'en = English' if no language is matched.
- * 
+ *
  * For example if the user's default language is Spanish then they will be
  * redirected to '/es/'.
- * 
+ *
  * The response header [Vary: Accept-Language] is used for Content
  * negotiation to let bots know that the content will change based
  * on language. For example this applies to Googlebot and Bingbot.
@@ -128,16 +128,24 @@ $app->get('/phpinfo', function() {
 
 /**
  * Home Page and HTML5 History Routes handled by JavaScript.
- * These routes are defined after other routes such as ['/graphql'] 
+ * These routes are defined after other routes such as ['/graphql']
  * so that ['/:lang'] does not get matched to them.
  */
-$app_html = function($lang) use ($use_i18n) {
+$app_html = function($lang) use ($use_i18n, $app) {
+    // In local development root files such as [favicon.ico] will be mapped to '/:lang'.
+    // Skip the route if the request is for a file, otherwise a 500 response will be
+    // returned from `I18N::langFile()`.
+    if (isset($_SERVER['SCRIPT_NAME']) && strpos($_SERVER['SCRIPT_NAME'], '.') !== false) {
+        return;
+    }
+
     // Calling [I18N::langFile] with an unknown language
     // will result in a 404 page being sent to the client.
     $use_i18n();
     I18N::langFile('_', $lang);
 
     // Return the main web page [index.htm].
+    $app->noCache();
     return file_get_contents(__DIR__ . '/Views/index.htm');
 };
 $app->get('/:lang', $app_html);
@@ -152,7 +160,7 @@ $app->get('/:lang/examples', $app_html);
  *
  * On the production server the needed files are copied.
  * See server setup in [docs\Main Site Server Setup.txt].
- * 
+ *
  * This route doesn't run on the live server due to the
  * filter for `$is_localhost`.
  */
@@ -169,7 +177,7 @@ $app->get('/*', function() use ($app) {
     // if (strpos($path, '.js') === false) {
     //     usleep(500000);
     // }
-    
+
     // Uncomment to debug if needed (also version below)
     // var_dump($root . $path);
     // var_dump($path);
@@ -181,7 +189,7 @@ $app->get('/*', function() use ($app) {
         $path = '/js/' . substr($path, 5);
     } elseif (strpos($path, '/unit-testing/') === 0) {
         $path = '/test/' . substr($path, strlen('/unit-testing/'));
-    } 
+    }
 
     // Security check since [$path] comes from User Input. Although
     // this only runs in localhost using secure code is good practice.

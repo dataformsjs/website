@@ -20,7 +20,7 @@
         <link rel="icon" sizes="196x196" href="/img/favicons/DataFormsJS-196x196.png">
         <link type="text/plain" rel="author" href="/humans.txt" />
         <link href="/js/prism-1.17.1/prism.css" rel="stylesheet" />
-        <link href="/css/site.css" rel="stylesheet" />
+        <link href="/css/site.20200311.css" rel="stylesheet" />
     </head>
     <body>
         <header>
@@ -121,12 +121,20 @@
             </nav>
         </header>
 
-        <main id="view"></main>
+        <main id="view"><div class="loading">Loading...</div></main>
 
         <footer>
             <p>&copy; <span class="year"></span> <a href="http://www.conradsollitt.com" rel="noopener" target="_blank">Conrad Sollitt</a></p>
             <p data-i18n="footer_license"></p>
         </footer>
+
+        <template id="loading-screen">
+            <div class="loading">Loading...</div>
+        </template>
+
+        <script type="text/x-template" data-engine="handlebars" id="error-screen">
+            <div class="error">{{errorMessage}}</div>
+        </script>
 
         <!--
             [home-page.htm] and [getting-started.htm] use <template> rather
@@ -185,7 +193,8 @@
             app.lazyLoad = {
                 homePage: '/js/pages/jsonData.js',
         -->
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/DataFormsJS.min.js"></script>
+        <script src="https://d2xbd92kui7v97.cloudfront.net/js/pre-release/DataFormsJS.20200311.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/DataFormsJS.min.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/plugins/i18n.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/plugins/navList.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.6.2/js/plugins/prism.min.js"></script>
@@ -200,10 +209,12 @@
                 playgroundCss: '/css/playground.css',
                 playgroundPage: '/js/page-playground.js',
                 // Third-party
-                codemirrorCss: "/js/codemirror/codemirror-5.48.0.css",
-                codemirrorJs: "/js/codemirror/codemirror-5.48.0.min.js",
+                codemirrorCss: '/js/codemirror/codemirror-5.48.0.css',
+                codemirrorJs: '/js/codemirror/codemirror-5.48.0.min.js',
                 jshint: 'https://cdnjs.cloudflare.com/ajax/libs/jshint/2.10.2/jshint.min.js',
             };
+
+            app.settings.lazyTemplateSelector = '#loading-screen';
         </script>
         <script>
             (function() {
@@ -240,7 +251,7 @@
                 var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
                 app.loadScript(supportsCssVars, polyfillUrl, function() {
                     if (window.cssVars) {
-                        cssVars({ include:'link[href="/css/site.css"]' });
+                        cssVars({ include:'link[href^="/css/site"]' });
                     }
                 });
 
