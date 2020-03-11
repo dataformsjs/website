@@ -131,13 +131,13 @@ $app->get('/phpinfo', function() {
  * These routes are defined after other routes such as ['/graphql']
  * so that ['/:lang'] does not get matched to them.
  */
-$app_html = function($lang) use ($use_i18n, $app) {
+$app_html = function($lang) use ($use_i18n, $app, $is_localhost) {
     // In local development root files such as [favicon.ico] will be mapped to '/:lang'.
     // Skip the route if the request is for a file, otherwise a 500 response will be
     // returned from `I18N::langFile()`.
-    // if (isset($_SERVER['SCRIPT_NAME']) && strpos($_SERVER['SCRIPT_NAME'], '.') !== false) {
-    //     return;
-    // }
+    if (strpos($app->requestedPath(), '.') !== false && $is_localhost()) {
+        return;
+    }
 
     // Calling [I18N::langFile] with an unknown language
     // will result in a 404 page being sent to the client.
