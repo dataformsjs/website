@@ -34,11 +34,12 @@ Getting started with PHP is extremely easy. If you do not have PHP installed the
 
 Once PHP is installed you can install FastSitePHP and launch the site from the command-line as show below. FastSitePHP is relatively small (~470 kb).
 
-For the full site both [dataformsjs] and this [website] repository need to be downloaded and located in a single directory/folder:
+For the full site both [dataformsjs] and this [website] repository need to be downloaded and located in a single directory/folder. The [playground] repository is optional and can also be included.
 
 ~~~
 dataformsjs {root-directory}
 ├── dataformsjs [repository]
+├── playground [repository]
 └── website [repository]
 ~~~
 
@@ -60,8 +61,8 @@ Additionally GraphQL services run from Node with Express [app/app.js] and AI/ML 
 
 For local setup of the GeoNames database used in the Places demo see comments in:
 
-* scripts/geonames.py
-* scripts/geonames.rb
+* [scripts/geonames.py](scripts/geonames.py)
+* [scripts/geonames.rb](scripts/geonames.rb)
 
 ## :handshake: Contributing and Translations
 
