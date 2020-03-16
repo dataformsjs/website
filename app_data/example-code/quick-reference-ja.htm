@@ -43,6 +43,13 @@ TITLE: DataFormsJS Framework JavaScriptファイル
         ],
         chosenPlugin: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/plugins/chosen.js',
     };
+
+    // A loading screen <template> can displayed while scripts are loading in-between
+    // page views. Often on a desktop scripts download quickly and the user won’t notice,
+    // however on a mobile device or slower connection there can be a small delay for large
+    // scripts so using a loading screen is recommended. The main site for DataFormsJS
+    // provides a good example of how it’s used.
+    app.settings.lazyTemplateSelector = '#loading-screen';
 </script>
 
 <template
