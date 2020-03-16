@@ -13,6 +13,12 @@
  *
  * IMPORTANT - When adding additional languages for the computer animation
  * search this file for "app.plugins.i18n.currentLocale" and see related comments.
+ * 
+ * Updating the build of this file:
+ *     npm install uglify-js -g
+ *     uglifyjs page-home-page.js -o page-home-page{YYYYMMDD}.min.js -c -m
+ *     uglifyjs page-home-page.js -o page-home-page.2020316.min.js -c -m
+ *     # Then update [website\app\Views\index.htm] with the new file
  */
 
 /*
@@ -566,6 +572,11 @@ Steps used to create (or re-create the computer)
             // change [stopScreen: null] to [stopScreen: 4] and to determine the login
             // screen set [stopScreen: 2] and wait for a full animation.
             switch (app.plugins.i18n.currentLocale) {
+                case 'zh-CN':
+                    document.querySelector('#Text-User-Name tspan').setAttribute('x', '325');
+                    document.querySelector('#Text-Password tspan').setAttribute('x', '335');
+                    document.querySelector('#Text-Login tspan').setAttribute('x', '335');
+                    break;
                 case 'ja':
                     document.querySelector('#Text-Login tspan').setAttribute('x', '290');
                     document.querySelector('#Text-Filter tspan').setAttribute('x', '310');
@@ -585,6 +596,15 @@ Steps used to create (or re-create the computer)
                     document.querySelector('#Text-Password tspan').setAttribute('x', '290');
                     document.querySelector('#Text-Login tspan').setAttribute('x', '308');
                     break;
+                //
+                // Template:
+                //
+                // case '{new}':
+                //     document.querySelector('#Text-User-Name tspan').setAttribute('x', '300');
+                //     document.querySelector('#Text-Password tspan').setAttribute('x', '307');
+                //     document.querySelector('#Text-Login tspan').setAttribute('x', '330');
+                //     document.querySelector('#Text-Filter tspan').setAttribute('x', '328');
+                //     break;
             }
             this.setupExamples();
             this.setupAnimation();
