@@ -19,10 +19,9 @@ if (isset($show_debug_info) && $show_debug_info) {
 // Setup a PHP Autoloader so classes can be dynamically loaded
 require __DIR__ . '/../vendor/autoload.php';
 
-// Create and Setup the FastSitePHP Application Object
-// If a specific timezone is desired you can obtain the 
-// value to use from here:
-//   http://php.net/manual/en/timezones.php
+// Create and Setup the FastSitePHP Application Object.
+// This setups up error handling in PHP and defines the timezone,
+// which is needed if for any date/time php functions.
 $app = new \FastSitePHP\Application();
 $app->setup('UTC');
 
