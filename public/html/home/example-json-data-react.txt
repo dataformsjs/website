@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>…</head>
+    <body>
+        <div id="root"></div>
+
+        <!-- React -->
+        <script src="js/react.js"></script>
+        <script src="js/react-dom.js"></script>
+
+        <!-- DataFormsJS JSX Loader -->
+        <script src="js/jsxLoader.jsx"></script>
+
+        <!-- DataFormsJS React Components -->
+        <script type="text/babel" src="js/es6/ErrorBoundary.js"></script>
+        <script type="text/babel" src="js/es6/JsonData.js"></script>
+        <script type="text/babel" src="js/es6/InputFilter.js"></script>
+        <script type="text/babel" src="js/es6/SortableTable.js"></script>
+        <script type="text/babel" src="js/es6/Format.js"></script>
+
+        <script type="text/babel">
+            const format = new Format();
+
+            function ShowLoading() {
+                return <h3 className="loading">[[i18n Loading...]]</h3>;
+            }
+
+            function ShowError(props) {
+                return <p className="error">{props.error}</p>;
+            }
+
+            function ShowCountries(props) {
+                return (
+                    <React.Fragment>
+                        <h1>[[i18n Countries]]</h1>
+
+                        <InputFilter filter-selector="table" />
+
+                        <SortableTable>
+                            <thead>
+                                <tr>
+                                    <th>[[i18n country_code]]</th>
+                                    <th>[[i18n country_name]]</th>
+                                    <th>[[i18n country_size]]</th>
+                                    <th>[[i18n country_pop]]</th>
+                                    <th>[[i18n country_continent]]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {props.data && props.data.countries && props.data.countries.map(country => {
+                                    return (
+                                        <tr key={country.iso}>
+                                            <td>{country.iso}</td>
+                                            <td>{country.country}</td>
+                                            <td>{format.number(country.area_km)}</td>
+                                            <td>{format.number(country.population)}</td>
+                                            <td>{country.continent}</td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </SortableTable>
+                    </React.Fragment>
+                )
+            }
+
+            class App extends React.Component {
+                render() {
+                    return (
+                        <ErrorBoundary>
+                            <JsonData
+                                url="https://www.dataformsjs.com/data/geonames/countries"
+                                isLoading={<ShowLoading />}
+                                hasError={<ShowError />}
+                                isLoaded={<ShowCountries />} />
+                        </ErrorBoundary>
+                    )
+                }
+            }
+
+            ReactDOM.render(
+                <App />,
+                document.getElementById('root')
+            );
+        </script>
+    </body>
+</html>

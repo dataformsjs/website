@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+    <head>…</head>
+    <body>
+        <div id="view"></div>
+
+        <template data-route="/">
+            <h1>[[i18n Hello World!]]</h1>
+        </template>
+        
+        <script type="text/x-template" data-engine="handlebars" data-route="/:name">
+            <h1>[[i18n Hello]] {{name}}!</h1>
+        </script>
+
+        <script src="js/DataFormsJS.js"></script>
+        <script src="js/handlebars.js"></script>
+    </body>
+</html>

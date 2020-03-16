@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <head>…</head>
+    <body>
+        <div id="view"></div>
+
+        <script
+            type="text/x-template"
+            data-engine="vue"
+            data-route="/"
+            data-page="jsonData"
+            data-url="https://www.dataformsjs.com/data/geonames/countries"
+            data-countries>
+
+            <div v-if="isLoading">[[i18n Loading...]]</div>
+            <div v-if="hasError">{{ errorMessage }}</div>
+            <div v-if="isLoaded">
+                <h1>[[i18n Countries]]</h1>
+                <input data-filter-selector="table">
+
+                <table data-sort>
+                    <thead>
+                        <tr>
+                            <th>[[i18n country_code]]</th>
+                            <th>[[i18n country_name]]</th>
+                            <th>[[i18n country_size]]</th>
+                            <th>[[i18n country_pop]]</th>
+                            <th>[[i18n country_continent]]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="country in countries">
+                            <td><a a v-bind:href="'#/regions/' + country.iso">{{ country.iso }}</a></td>
+                            <td>{{ country.country }}</td>
+                            <td>{{ country.area_km }}</td>
+                            <td>{{ country.population }}</td>
+                            <td>{{ country.continent }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </script>
+
+        <script
+            type="text/x-template"
+            data-engine="vue"
+            data-route="/regions/:country"
+            data-page="jsonData"
+            data-url="https://www.dataformsjs.com/data/geonames/regions/:country"
+            data-regions
+            src="/html/country-list.htm">
+        </script>
+
+        <script src="js/DataFormsJS.js"></script>
+        <script src="js/DataFormsJS/pages/jsonData.js"></script>
+        <script src="js/DataFormsJS/plugins/filter.js"></script>
+        <script src="js/DataFormsJS/plugins/sort.js"></script>
+        <script src="js/vue.js"></script>
+    </body>
+</html>

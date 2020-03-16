@@ -1,0 +1,5 @@
+{
+    "quick_ref_all": "{totalCount} Quick Reference Examples",
+    "quick_ref_filtered": "Showing {displayCount} of {totalCount} Examples",
+    "quick_ref_placeholder": "Enter filter, example 'JavaScript' or 'Web Components'"
+}

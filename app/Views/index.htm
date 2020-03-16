@@ -1,0 +1,352 @@
+<!doctype html>
+<html
+    data-show-errors
+    data-i18n-default="en"
+    data-i18n-locales="en,ja,es,pt-BR,ar,fr,zh-CN"
+    data-i18n-dir="/i18n"
+    data-routing-mode="history">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>DataFormsJS</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/img/favicons/apple-touch-icon-120.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/favicons/apple-touch-icon-152.png">
+        <link rel="apple-touch-icon" sizes="167x167" href="/img/favicons/apple-touch-icon-167.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon-180.png">
+        <link rel="icon" sizes="32x32" href="/img/favicons/DataFormsJS-32x32.png">
+        <link rel="icon" sizes="144x144" href="/img/favicons/DataFormsJS-144x144.png">
+        <link rel="icon" sizes="192x192" href="/img/favicons/DataFormsJS-192x192.png">
+        <link rel="icon" sizes="196x196" href="/img/favicons/DataFormsJS-196x196.png">
+        <link type="text/plain" rel="author" href="/humans.txt" />
+        <link href="/js/prism-1.17.1/prism.css" rel="stylesheet" />
+        <link href="/css/site.20200311.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <nav class="site-nav">
+                <div class="mobile-nav">
+                    <a href="/en/" class="site-title" data-i18n-href>
+                        <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="home" fill="#203040">
+                                    <rect x="2" y="10" width="12" height="6"></rect>
+                                    <polygon id="Triangle" points="8 4 14 10 2 10"></polygon>
+                                    <rect transform="translate(11.500000, 4.750000) rotate(45.000000) translate(-11.500000, -4.750000) " x="6" y="4" width="11" height="1.5" rx="0.75"></rect>
+                                    <rect transform="translate(4.500000, 4.750000) scale(-1, 1) rotate(45.000000) translate(-4.500000, -4.750000) " x="-1" y="4" width="11" height="1.5" rx="0.75"></rect>
+                                    <polygon points="12 0 14 0 14 5 12 3"></polygon>
+                                </g>
+                            </g>
+                        </svg>
+                        <span style="margin-left:8px;">DataFormsJS</span>
+                    </a>
+                    <span class="open-menu">
+                        <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="open-menu" transform="translate(0.000000, -1.000000)" fill="#203040">
+                                    <rect x="0" y="2" width="16" height="3" rx="1.5"></rect>
+                                    <rect x="0" y="8" width="16" height="3" rx="1.5"></rect>
+                                    <rect x="0" y="14" width="16" height="3" rx="1.5"></rect>
+                                </g>
+                            </g>
+                        </svg>
+                    </span>
+                </div>
+                <div class="mobile-menu" style="display:none;">
+                    <div>
+                        <span class="close-menu"><a href="#">
+                            <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="close-menu" fill="#203040">
+                                        <rect transform="translate(7.707107, 8.207107) rotate(45.000000) translate(-7.707107, -8.207107) " x="-2.29289322" y="6.70710678" width="20" height="3" rx="1.5"></rect>
+                                        <rect transform="translate(8.131728, 8.131728) scale(-1, 1) rotate(45.000000) translate(-8.131728, -8.131728) " x="-1.86827202" y="6.63172798" width="20" height="3" rx="1.5"></rect>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a></span>
+                    </div>
+                    <ul>
+                        <li><a href="/en/" data-i18n="Home" data-i18n-href></a></li>
+                        <li><a href="/en/playground" data-i18n="Playground" data-i18n-href></a></li>
+                        <li><a href="/en/getting-started" data-i18n="Getting Started" data-i18n-href></a></li>
+                        <li><a href="/en/quick-reference" data-i18n="Quick Reference" data-i18n-href></a></li>
+                        <li><a href="/en/examples" data-i18n="Examples" data-i18n-href></a></li>
+                        <li><a href="https://github.com/dataformsjs/dataformsjs" class="github" target="_blank" rel="noopener"><img src="/img/logos/GitHub-Mark-32px.png" alt="GitHub"></a></li>
+                    </ul>
+                    <ul class="i18n-menu">
+                        <li><a data-i18n-nav-lang="en">English</a></li>
+                        <li><a data-i18n-nav-lang="es">Español</a></li>
+                        <li><a data-i18n-nav-lang="fr">Français</a></li>
+                        <li><a data-i18n-nav-lang="pt-BR">Português (Brasil)</a></li>
+                        <li><a data-i18n-nav-lang="ar">العربية</a></li>
+                        <li><a data-i18n-nav-lang="zh-CN">中文 (简体)</a></li>
+                        <li><a data-i18n-nav-lang="ja">日本語</a></li>
+                    </ul>
+                </div>
+                <ul class="desktop-nav">
+                    <li><a href="/en/" data-i18n="Home" data-i18n-href></a></li>
+                    <li><a href="/en/playground" data-i18n="Playground" data-i18n-href></a></li>
+                    <li><a href="/en/getting-started" data-i18n="Getting Started" data-i18n-href></a></li>
+                    <li><a href="/en/quick-reference" data-i18n="Quick Reference" data-i18n-href></a></li>
+                    <li><a href="/en/examples" data-i18n="Examples" data-i18n-href></a></li>
+                    <li><a href="https://github.com/dataformsjs/dataformsjs" class="github" target="_blank" rel="noopener"><img src="/img/logos/GitHub-Mark-Light-32px.png" alt="GitHub"></a></li>
+                    <li class="i18n-menu">
+                        <div>
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="i18n">
+                                        <circle stroke="#203040" fill="#FFFFFF" cx="12" cy="12" r="11.5"></circle>
+                                        <circle stroke="#DDE6EE" stroke-width="2" cx="12" cy="12" r="10"></circle>
+                                        <path d="M12.5,-2.5 C11.8333333,-0.472541163 11.5,2.52745884 11.5,6.5 C11.5,12.4588117 12.5,15.5 12.5,15.5" id="Line" stroke="#203040" stroke-linecap="square" transform="translate(12.000000, 6.500000) rotate(-90.000000) translate(-12.000000, -6.500000) "></path>
+                                        <ellipse stroke="#203040" cx="12" cy="12" rx="5.5" ry="11.5"></ellipse>
+                                        <line x1="12" y1="0" x2="12" y2="24" stroke="#203040" stroke-linecap="square"></line>
+                                        <path d="M12.5,1 C11.8333333,4.83333333 11.5,8.66666667 11.5,12.5 C11.5,16.3333333 11.8333333,20.1666667 12.5,24" stroke="#203040" stroke-linecap="square" transform="translate(12.000000, 12.500000) rotate(-90.000000) translate(-12.000000, -12.500000) "></path>
+                                        <path d="M12.5,8.5 C11.8333333,11.6666667 11.5,14.8333333 11.5,18 C11.5,21.1666667 11.8333333,24.3333333 12.5,27.5" stroke="#203040" stroke-linecap="square" transform="translate(12.000000, 18.000000) rotate(-90.000000) translate(-12.000000, -18.000000) "></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span data-i18n-nav-selected></span>
+                        </div>
+                        <ul>
+                            <li><a data-i18n-nav-lang="en">English</a></li>
+                            <li><a data-i18n-nav-lang="es">Español</a></li>
+                            <li><a data-i18n-nav-lang="fr">Français</a></li>
+                            <li><a data-i18n-nav-lang="pt-BR">Português (Brasil)</a></li>
+                            <li><a data-i18n-nav-lang="ar">العربية</a></li>
+                            <li><a data-i18n-nav-lang="zh-CN">中文 (简体)</a></li>
+                            <li><a data-i18n-nav-lang="ja">日本語</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="view"><div class="loading">Loading...</div></main>
+
+        <footer>
+            <p>&copy; <span class="year"></span> <a href="http://www.conradsollitt.com" rel="noopener" target="_blank">Conrad Sollitt</a></p>
+            <p data-i18n="footer_license"></p>
+        </footer>
+
+        <template id="loading-screen">
+            <div class="loading">Loading...</div>
+        </template>
+
+        <script type="text/x-template" data-engine="handlebars" id="error-screen">
+            <div class="error">{{errorMessage}}</div>
+        </script>
+
+        <!--
+            [home-page.htm] and [getting-started.htm] use <template> rather
+            than Handlebars to prevent nested code templates from being rendered.
+        -->
+        <template
+            data-route="/:lang/"
+            data-default-route
+            data-page="homePage"
+            data-src="/html/home-page.htm"
+            data-lazy-load="homePage"
+            data-i18n-file="home-page">
+        </template>
+
+        <script
+            type="text/x-template"
+            data-engine="handlebars"
+            data-route="/:lang/playground"
+            data-src="/html/playground.htm"
+            data-page="playground"
+            data-lazy-load="codemirrorCss, codemirrorJs, jshint, playgroundCss, playgroundPage"
+            data-i18n-file="playground">
+        </script>
+
+        <template
+            data-route="/:lang/getting-started"
+            data-src="/html/getting-started.htm"
+            data-page="gettingStarted"
+            data-lazy-load="gettingStarted"
+            data-i18n-file="getting-started">
+        </template>
+
+        <script type="text/x-template"
+            data-engine="handlebars"
+            data-page="jsonData"
+            data-route="/:lang/quick-reference"
+            data-url="/docs/:lang/quick-reference"
+            data-load-only-once="true"
+            data-src="/html/quick-ref.htm"
+            data-lazy-load="jsonData, filter"
+            data-i18n-file="quick-ref">
+        </script>
+
+        <script
+            type="text/x-template"
+            data-engine="handlebars"
+            data-route="/:lang/examples"
+            data-src="/html/examples.htm"
+            data-i18n-file="examples">
+        </script>
+
+        <!-- DataFormsJS -->
+        <!--
+            For local development replace the CDN url with 'js/*', example:
+            <script src="/js/DataFormsJS.js"></script>
+            app.lazyLoad = {
+                homePage: '/js/pages/jsonData.js',
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/DataFormsJS.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/plugins/i18n.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/plugins/navList.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/plugins/prism.min.js"></script>
+        <script>
+            app.lazyLoad = {
+                // DataFormsJS Framework Objects
+                jsonData: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/pages/jsonData.min.js',
+                filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/plugins/filter.min.js',
+                // Site Files
+                homePage: '/js/page-home-page.20200205.min.js',
+                gettingStarted: '/js/page-getting-started.js',
+                playgroundCss: '/css/playground.css',
+                playgroundPage: '/js/page-playground.js',
+                // Third-party
+                codemirrorCss: '/js/codemirror/codemirror-5.48.0.css',
+                codemirrorJs: '/js/codemirror/codemirror-5.48.0.min.js',
+                jshint: 'https://cdnjs.cloudflare.com/ajax/libs/jshint/2.10.2/jshint.min.js',
+            };
+
+            app.settings.lazyTemplateSelector = '#loading-screen';
+        </script>
+        <script>
+            (function() {
+                'use strict';
+
+                // Mobile Nav Menu
+                var openMenu = document.querySelector('.open-menu');
+                var closeMenu = document.querySelector('.close-menu');
+                var mobileMenu = document.querySelector('.mobile-menu');
+                var mobileLinks = document.querySelectorAll('.mobile-menu a');
+                openMenu.onclick = function(e) { e.preventDefault(); mobileMenu.style.display = ''; };
+                closeMenu.onclick = function(e) { e.preventDefault(); mobileMenu.style.display = 'none'; };
+                Array.prototype.forEach.call(mobileLinks, function(link) {
+                    link.onclick = function() {
+                        mobileMenu.style.display = 'none';
+                    };
+                });
+
+                // Handle desktop menu hover for wide-screen mobile devices (iPad, Android Tablets, etc)
+                var desktopNav = document.querySelector('.site-nav .desktop-nav');
+                var i18nMenu = document.querySelector('.site-nav .desktop-nav > li.i18n-menu');
+                var i18nUL = i18nMenu.querySelector('ul');
+                i18nMenu.onclick = function(e) {
+                    i18nUL.style.display = (i18nUL.style.display === '' ? 'block' : '');
+                    e.preventDefault();
+                    e.cancelBubble = true;
+                };
+                desktopNav.onclick = function() {
+                    i18nUL.style.display = '';
+                };
+
+                // Add CSS Variable Support to IE and older Browsers
+                var supportsCssVars = (window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)'));
+                var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
+                app.loadScript(supportsCssVars, polyfillUrl, function() {
+                    if (window.cssVars) {
+                        cssVars({ include:'link[href^="/css/site"]' });
+                    }
+                });
+
+                // Custom Site Plugin to update GitHub Links
+                app.addPlugin('github', function() {
+                    var links = document.querySelectorAll('nav a.github');
+                    var url = 'https://github.com/dataformsjs/dataformsjs';
+                    switch (app.plugins.i18n.currentLocale) {
+                        case 'es':
+                        case 'pt-BR':
+                        case 'ja':
+                        case 'zh-CN':
+                            url = 'https://github.com/dataformsjs/dataformsjs/blob/master/docs/i18n-readme/README.' + app.plugins.i18n.currentLocale + '.md';
+                            break;
+                    }
+                    Array.prototype.forEach.call(links, function(link) {
+                        link.href = url;
+                    });
+                });
+
+                // Custom Site Plugin for right-to-left languages (example: Arabic, Persian, Hebrew).
+                // The [site.css] file also contains query selectors starting with "html[dir='rtl']"
+                // to handle the layout.
+                app.addPlugin('htmlDir', {
+                    onRouteLoad: function(next) {
+                        if (app.plugins.i18n.currentLocale === 'ar') {
+                            document.documentElement.setAttribute('dir', 'rtl');
+                        } else {
+                            if (document.documentElement.hasAttribute('dir')) {
+                                document.documentElement.removeAttribute('dir');
+                                // The code below is a hack for iOS 11 with Safari.
+                                // If changing languages from ltr to rtl and back
+                                // the nav menu will appear out of order.
+                                // Example: ('en' -> 'ar' -> 'en')
+                                document.documentElement.style.direction = 'ltr';
+                                window.setTimeout(function() {
+                                    document.documentElement.style.direction = '';
+                                }, 100);
+                            }
+                        }
+                        next();
+                    },
+                });
+
+                // Custom Site Plugin to add or remove the <meta name="Description" content="{content}">
+                // tag. It only is inlcuded on the home page and removed from other pages.
+                app.addPlugin('metaDescription', {
+                    onRouteLoad: function(next) {
+                        var element = document.querySelector('meta[name="Description"]');
+                        var text = null;
+                        if (app.activeController && app.activeController.path === '/:lang/') {
+                            text = app.plugins.i18n.getText('overview_1');
+                        }
+                        if (text === null) {
+                            if (element !== null) {
+                                element.parentNode.removeChild(element);
+                            }
+                        } else {
+                            if (element === null) {
+                                element = document.createElement('meta');
+                                element.name = 'Description';
+                                element.content = 'DataFormsJS - ' + text;
+                                document.querySelector('head').appendChild(element);
+                            } else {
+                                element.content = 'DataFormsJS - ' + text;
+                            }
+                        }
+                        next();
+                    },
+                });
+
+                // The site was orignally published using #hash URL's. If the
+                // page loaded uses a hash URL then navigate to the path.
+                //
+                // Example:
+                //     https://www.dataformsjs.com/#/en/quick-reference
+                // Becomes:
+                //     https://www.dataformsjs.com/en/quick-reference
+                if (window.location.hash) {
+                    var path = window.location.hash.substring(1);
+                    document.addEventListener('DOMContentLoaded', function() {
+                        app.changeRoute(path);
+                    });
+                }
+
+                // Update footer
+                document.querySelector('footer .year').textContent = (new Date()).getFullYear();
+            })();
+        </script>
+
+        <!-- JS Libraries -->
+        <!--
+            For local development with Handlebars create a [vendor] dir and modify the URL, example:
+                <script src="vendor/handlebars.min.js"></script>
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@4.5.1/dist/handlebars.min.js"></script>
+        <script src="/js/prism-1.17.1/prism.modified.min.js"></script>
+    </body>
+</html>

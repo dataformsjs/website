@@ -1,0 +1,21 @@
+{
+    "places_title": "Lugares de Demostración",
+    "places_desc": "Aplicación de ejemplo de la página de inicio que muestra las características de DataFormsJS de uso común.",
+    
+    "log_title": "Reportes Log de Demostracion",
+    "log_desc": "Aplicación de demostración de reportes log que muestra varios complementos de Framework.",
+
+    "entry_form_title": "Formulario de inscripción de demostración",
+    "entry_form_desc": "Aplicación de formulario de inscripción de demostración que utiliza Autenticación, [entryForm.js], [listEditor.js] y otras características. Todas las características del formulario de entrada se definen a través de HTML y plantillas, mientras que la autenticación utiliza un complemento de JavaScript personalizado.",
+
+    "image_class_title": "AI/ML - Clasificación de Imagen",
+    "image_class_desc": "Aplicación de Demostración que llama a un servicio web TensorFlow para clasificar las imágenes cargadas. Estas aplicaciones demuestran cómo usar [jsonData.js] y <JsonData> con código JavaScript personalizado.",
+
+    "binary_class_title": "AI/ML - Clasificación Binaria",
+    "binary_class_desc": "Aplicación de demostración que llama a un servicio web [scikit-learn] para hacer una predicción de diabetes basada en los datos ingresados del paciente y muestra cómo usar [entryForm.js] con un código JavaScript personalizado.",
+
+    "country_list_title": "Lista de países (sin SPA)",
+    "country_list_desc": "Estas páginas no utilizan un SPA (Single Page Application o Aplicación de Página Única) y demuestran que los controles y complementos se ejecutan automáticamente cuando no se utilizan rutas o se llama a JavaScript.",
+    
+    "hello_world_desc": "Ejemplo de la Página de Inicio"
+}

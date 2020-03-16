@@ -1,0 +1,329 @@
+/*
+    This is CSS for the playground page. It's loaded dynamically only if the user
+    opens the playground page. For simplicity IE fallback colors are simply hard-coded
+    in the file before each CSS [var()].
+
+    Generic CSS class names are prefixed use the parent [.page.playground] selector
+    to avoid future issues with other pages.
+*/
+
+.page.playground { margin:20px; }
+
+.editor-container {
+    display: flex;
+    min-height: calc(100vh - 245px);
+    margin: 20px;
+    background-color: hsla(210, 33%, 95%, 1);
+    background-image: linear-gradient(180deg, #fff 0%, hsla(210, 33%, 95%, 1) 100%);
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    position:relative;
+    text-align: left;
+    padding: 20px;
+    border-radius: 1em;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    direction: ltr;
+}
+.editor-container.warning {
+    box-shadow: 0 0 40px 0 rgba(255,0,0,1);
+}
+@media screen and (min-width: 750px) {
+    .editor-container {
+        min-height: calc(100vh - 190px);
+    }
+}
+
+.editor-container .create-site-overlay {
+    z-index:10;
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color:black;
+    opacity: .1;
+    border-radius: 1em;
+}
+
+.editor-container .create-site-screen,
+.editor-container .create-another-site-screen {
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-site-screen .content,
+.create-another-site-screen .content {
+    text-align:center;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow);
+    margin-top: 210px;
+}
+@media screen and (min-width: 500px) {
+    .create-site-screen .content,
+    .create-another-site-screen .content {
+        margin-top: 210px;
+    }
+}
+@media screen and (min-width: 750px) {
+    .create-site-screen .content,
+    .create-another-site-screen .content {
+        margin-top: initial;
+    }
+}
+
+.create-another-site-screen .content {
+    max-width:500px;
+}
+.create-another-site-screen p {
+    text-align:center;
+    text-align: center;
+    margin: 40px auto 50px;
+    font-size: 1.4em;
+}
+
+.create-another-site-screen .site-expired { font-size: 1em; font-style: italic; }
+.create-another-site-screen p.try-other-site { font-size:1em; margin-bottom: 20px; }
+
+.page.playground h1 { margin-bottom:20px; font-size:2em; }
+
+.create-site-screen ul {
+    text-align: left;
+    margin-bottom: 20px;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.page.playground .files { padding-right: 20px; }
+
+.page.playground .files,
+.page.playground .file-info { display:none; }
+
+.page.playground .content.mobile-message { margin:auto auto 30px auto; }
+
+/*
+    Below 750 is for Mobile Layout and above is for Desktop.
+    750px is determined based on size of content and layout.
+*/
+@media screen and (min-width: 750px) {
+    .page.playground .files {
+        display: flex;
+        flex-direction: column;
+    }
+    .page.playground .file-info { display:inline; }
+
+    .page.playground .content.mobile-message,
+    .page.playground .controls.mobile-file-list { display:none !important; }
+}
+
+.page.playground .files ul {
+    list-style-type: none;
+    flex: 1 0 auto;
+    padding-right: 20px;
+    width:180px;
+    overflow-y: auto;
+    max-height: calc(100vh - 380px);
+}
+@media screen and (min-height:900px) {
+    .page.playground .files ul { 
+        max-height: calc(100vh - 360px);
+    }
+}
+.page.playground .no-site .files ul {
+    max-height: calc(100vh - 260px);
+}
+
+.page.playground .files ul li {
+    padding:5px 10px;
+    padding-left: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    color: rgb(32, 48, 64);
+    color: var(--main-color);
+}
+.page.playground .files ul li::before {
+    margin-right: 10px;
+    padding: 0 8px 2px;
+    color: white;
+    width: 32px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 2em;
+}
+
+.page.playground .files ul li.htm::before { content:'< >'; background-color:#e54c21; }
+.page.playground .files ul li.js::before { content:'JS'; background-color:#f7df1e; }
+.page.playground .files ul li.jsx::before { content:'JSX'; background-color:#61dafb; }
+.page.playground .files ul li.css::before { content:'{ }'; background-color:#214ce5; }
+.page.playground .files ul li.svg::before { content:'○'; background-color:#ff9a00; }
+.page.playground .files ul li.graphql::before { content:'GQL'; background-color:rgb(225, 0, 152); }
+
+.page.playground .files ul li.active {
+    background-color: hsla(210, 33%, 76%, 1);
+    background-color: var(--lighter-color-2);
+    border-radius: 4px;
+    box-shadow: 0 0 2px rgba(0,0,0,.5);
+    padding-left: 5px;
+}
+.page.playground .files ul li.active::before { margin-right:5px; }
+
+.page.playground .files ul li:hover {
+    background-color: hsla(210, 33%, 90%, 1);
+    background-color: var(--lighter-color-3);
+    border-radius: 4px;
+    padding-left: 5px;
+}
+
+.page.playground .files ul li:first-child { margin-top:0; }
+
+.page.playground .editor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.page.playground .controls { margin-bottom:20px; min-height:36px; }
+.page.playground .editor .controls {
+    display: flex;
+    justify-content: space-between;
+}
+.page.playground .controls.countdown {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+.page.playground .controls.delete {
+    margin-top:10px;
+    margin-bottom:0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.page.playground .editor textarea {
+    height: calc(100vh - 250px);
+    max-width: 980px;
+}
+
+.CodeMirror {
+    height: calc(100vh - 250px);
+    border:1px solid gray;
+    width:100%;
+}
+@media screen and (min-width: 750px) {
+    .CodeMirror {
+        max-width:calc(100vw - 320px);
+    }
+}
+@media screen and (min-width:1280px) {
+    .CodeMirror {
+        max-width: 980px;
+    }
+}
+
+.no-site .CodeMirror {
+    height: calc(100vh - 200px);
+}
+
+#countdown { color:green; margin-left:10px; }
+#countdown.warning {
+    color: white;
+    background-color: red;
+    border-radius: 2em;
+    padding: 8px 16px;
+    font-weight: bold;
+    margin-left: 0;
+    box-shadow: 0 0 2px rgba(0,0,0,.5);
+    display: inline-block;
+}
+#countdown.warning.scale {
+    transform: scale(1.05);
+}
+
+.page.playground .error {
+    font-weight:bold;
+    display: flex;
+    justify-content: space-between;
+}
+.page.playground .error .close-error {
+    padding:5px 10px;
+    float:right;
+    border:1px solid darkred;
+    cursor:pointer;
+    margin-left:10px;
+    background-image:linear-gradient(#c00,#a00);
+    border-radius:5px;
+}
+
+.page.playground .btn {
+    cursor:pointer;
+    border-radius: 4px;
+    padding:5px 10px;
+    color: hsla(210, 33%, 38%, 1);
+    color: var(--lighter-color-1);
+    white-space: nowrap;
+    display: inline-block;
+}
+..page.playground content a.btn {
+    text-decoration: none;
+    color: hsla(210, 33%, 38%, 1);
+    color: var(--lighter-color-1);
+}
+.page.playground .btn:hover {
+    background-color: hsla(210, 33%, 76%, 1);
+    background-color: var(--lighter-color-2);
+}
+.page.playground .controls .btn:hover .text {
+    color: rgb(32, 48, 64);
+    color: var(--main-color);
+}
+
+.page.playground .controls .btn { font-weight:bold; text-decoration:none; }
+
+.page.playground .controls .btn,
+.page.playground .controls .msg,
+.page.playground .controls input { margin-right:20px; }
+
+.page.playground .controls .msg {
+    font-weight: bold;
+    color: hsla(210, 33%, 76%, 1);
+    color: var(--lighter-color-2);
+}
+
+.page.playground .controls input[disabled] { color:gray; }
+
+.page.playground .controls.delete .btn { margin-top:10px; }
+
+.page.playground .controls .btn.view-site { margin-right:0; }
+
+.page.playground .controls .btn {
+    display: inline-flex;
+    align-items: center;
+}
+.page.playground .controls .btn .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+    background-repeat: no-repeat;
+}
+.btn.add-file .icon { background-image:url('../img/buttons/add.svg'); }
+.btn.add-file:hover .icon { background-image:url('../img/buttons/add-hover.svg'); }
+.btn.delete-file .icon { background-image:url('../img/buttons/delete.svg'); }
+.btn.delete-file:hover .icon { background-image:url('../img/buttons/delete-hover.svg'); }
+.btn.delete-site .icon { background-image:url('../img/buttons/bomb.svg'); }
+.btn.delete-site:hover .icon { background-image:url('../img/buttons/bomb-hover.svg'); }
+.btn.view-site .icon { background-image:url('../img/buttons/view.svg'); }
+.btn.view-site:hover .icon { background-image:url('../img/buttons/view-hover.svg'); }
+.btn.view-file .icon { background-image:url('../img/buttons/view-item.svg'); }
+.btn.view-file:hover .icon { background-image:url('../img/buttons/view-item-hover.svg'); }
+.btn.save-file .icon { background-image:url('../img/buttons/save.svg'); }
+.btn.save-file:hover .icon { background-image:url('../img/buttons/save-hover.svg'); }
+.btn.rename-file .icon { background-image:url('../img/buttons/rename.svg'); }
+.btn.rename-file:hover .icon { background-image:url('../img/buttons/rename-hover.svg'); }

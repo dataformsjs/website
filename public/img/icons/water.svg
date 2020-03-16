@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>water</title>
+    <desc>Created with Sketch.</desc>
+    <g id="water" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M5,73 C13.779661,84.3333333 22.8728814,90 32.279661,90 C41.6864407,90 51.4067797,84.3333333 61.440678,73 C71.4259289,61.6666667 80.8327086,56 89.6610169,56 C98.4893253,56 107.268986,61.6666667 116,73" id="Line-2" stroke="#AEC2D6" stroke-width="4" stroke-linecap="round" transform="translate(60.500000, 73.000000) scale(1, -1) translate(-60.500000, -73.000000) "></path>
+        <path d="M5,93 C13.779661,104.333333 22.8728814,110 32.279661,110 C41.6864407,110 51.4067797,104.333333 61.440678,93 C71.4259289,81.6666667 80.8327086,76 89.6610169,76 C98.4893253,76 107.268986,81.6666667 116,93" id="Line-2" stroke="#AEC2D6" stroke-width="4" stroke-linecap="round" transform="translate(60.500000, 93.000000) scale(1, -1) translate(-60.500000, -93.000000) "></path>
+        <path d="M5,51 C13.779661,62.3333333 22.8728814,68 32.279661,68 C41.6864407,68 51.4067797,62.3333333 61.440678,51 C71.4259289,39.6666667 80.8327086,34 89.6610169,34 C98.4893253,34 107.268986,39.6666667 116,51" id="Line-2" stroke="#AEC2D6" stroke-width="4" stroke-linecap="round" transform="translate(60.500000, 51.000000) scale(1, -1) translate(-60.500000, -51.000000) "></path>
+        <path d="M89,51 C97.2842712,51 104,44.2842712 104,36 C104,30.4771525 99,21.4771525 89,9 C79,21.4771525 74,30.4771525 74,36 C74,44.2842712 80.7157288,51 89,51 Z" id="Oval" stroke="#AEC2D6" stroke-width="4"></path>
+        <path d="M87,44 C91.9705627,44 96,39.9705627 96,35" id="Path" stroke="#AEC2D6" stroke-width="4" stroke-linecap="round"></path>
+    </g>
+</svg>

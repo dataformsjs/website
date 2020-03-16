@@ -1,0 +1,69 @@
+/* Reset */
+* { margin:0; padding:0; }
+html { font-family: Arial, Helvetica, sans-serif; }
+a { color:black; }
+
+/* Main elements */
+header { padding:20px; }
+body {
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+}
+#view { padding:40px; }
+
+/* IE - hide embedded <template> elements while page is loaded */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    template { display:none; }
+}
+
+/* Nav */
+nav a { padding:10px 20px; }
+nav a.active { background-color:#efefef; }
+
+/* Elements on Data Page */
+input {
+    margin-top: 40px;
+    padding: 0.5em 1em;
+    border-radius: 2em;
+    width: 100%;
+    max-width: 400px;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5), 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    border: none;
+    background-color: #eff;
+}
+.error { background-color:red; color:white; padding:1em; border:1px solid darkred; display: inline-block; }
+.text-right { text-align:right; }
+
+/* Show the loading screen only if it appears for longer than half a second */
+.loading {
+    background-color: lightblue;
+    color:white;
+    padding:1em;
+    display: inline-block;
+    opacity: 0;
+    animation-name: show-after-delay;
+    animation-delay: 0.5s;
+    animation-duration: 0s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+@keyframes show-after-delay {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Table */
+table { border-collapse:collapse; text-align:left; margin:40px auto; }
+th, td { padding:8px 16px; border:1px solid black; }
+table tbody tr:nth-child(odd) { background-color: #efefef; }
+table tbody tr:nth-child(even) { background-color: #fff; }
+
+/* [sort] and [filter] plugins add classes to each row based on element
+    display and sort order which override [:nth-child()] */ 
+table tbody tr.row-odd { background-color: #efefef; }
+table tbody tr.row-even { background-color: #fff; }
+
+/* Color for [clickToHighlight] plugin */
+table tbody tr.highlight { background-color:#ff0; }

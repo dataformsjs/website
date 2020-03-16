@@ -1,0 +1,21 @@
+{
+    "places_title": "Lugares",
+    "places_desc": "App de exemplo da página inicial mostrando funcionalidades comumente utilizadas do DataFormsJS.",
+
+    "log_title": "Relatório de Log",
+    "log_desc": "Um app exemplo de relatório de logs mostrando vários plugins de frameworks.",
+
+    "entry_form_title": "Formulário de Entrada de Dados",
+    "entry_form_desc": "App exemplo de um formulário de entrada de dados que utiliza autenticação, [entryForm.js], [listEditor.js] e outras funcionalidades. Todas as funcionalidades são definidas através de HTML e modelos, enquanto a autenticação utiliza um plugin JavaScript.",
+
+    "image_class_title": "AI/ML - Classificação de Imagens",
+    "image_class_desc": "Aplicativo exemplo que chama um serviço web TensorFlow para classificar imagens enviadas. Esses aplicativos demonstram como usar [jsonData.js] and <JsonData> com código JavaScript personalizado.",
+
+    "binary_class_title": "AI/ML - Classificação Binária",
+    "binary_class_desc": "Aplicativo exemplo que chama um serviço web [scikit-learn] para fazer uma previsão baseada nos dados fornecidos e mostra como usar [entryForm.js] com código JavaScript personalizado.",
+
+    "country_list_title": "Lista de Países (sem SPA)",
+    "country_list_desc": "Essas páginas não utilizam um SPA (Aplicativo de Única Página) e demonstram que controles e plugins rodam automaticamente quando não há utilização de rotas ou JavaScript é chamado.",
+
+    "hello_world_desc": "Exemplo da página Inicial"
+}

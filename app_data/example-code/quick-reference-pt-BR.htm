@@ -1,0 +1,1155 @@
+<!-- EXAMPLE_CODE_START
+TITLE: DataFormsJS Framework JavaScript Files
+-->
+<!--
+    DataFormsJS Core Framework Files
+
+    Este framework JavaScript funciona com engines de templating e visualização
+    (Handlebars, Vue, Nunjucks, and Underscore). Além das classes autônomas
+    padrão do framework DataFormsJS para React e Web Components, estão
+    disponíveis, as quais fornecem funcionalidade semelhante
+
+    [pages/jsonData.js] é opcional mas será incluída na marioria dos apps.
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/DataFormsJS.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/jsonData.min.js"></script>
+
+<!--
+    Para visualizar o fonte completo de qualquer arquivo, substitua [.min.js]
+    com [.js]. DataFormsJS é desenvolvido para ser pequeno em tamanho e de
+    fácil utlização.
+    Todos os arquivos sendo tão pequenos torna fácil depurá-los.
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/DataFormsJS.js"></script>
+
+<!--
+    Arquivos JavaScript só podem ser carregados quando usando [app.lazyLoad]
+    juntamente com [data-lazy-load] na rota ou no controllador relacionado.
+
+    Além disso, faz com que os polyfills comuns, como [fetch, Promise,
+    Object.assign], sejam carregados primeiro ao usar o IE ou dispositivos
+    móveis mais antigos.
+-->
+<script>
+    app.lazyLoad = {
+        entryForm: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/entryForm.min.js',
+        filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/filter.min.js',
+        sort: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/sort.min.js',
+        // Todos os scripts lazyLoad são baixandos the forma assíncrona ao mesmo
+        // tempo, no entanto quando um array é utilizado os scripts relacionados
+        // serão baixados na ordem especificada.
+        chosen: [
+            'https://code.jquery.com/jquery-3.4.1.min.js',
+            'https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.css',
+            'https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js',
+        ],
+        chosenPlugin: 'https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/chosen.js',
+    };
+</script>
+
+<template
+    data-route="/order/:orderId"
+    data-page="entryForm"
+    data-src="html/order-form.htm"
+    data-lazy-load="entryForm, filter, sort, chosen, chosenPlugin">
+</template>
+
+<!--
+    Handlebars Helpers e Vue Directives estão disponíveis
+    e podem ser utilizadas sem o Framework.
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/handlebars-helpers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/vue-directives.min.js"></script>
+
+<!--
+    URL relativa é recomendada se os arquivos estiverem hospedados localmente.
+-->
+<script src="js/DataFormsJS.js"></script>
+<script>
+    app.lazyLoad = {
+        jsonData: 'js/pages/jsonData.js',
+        exportToCsv: 'js/plugins/exportToCsv.js',
+    };
+</script>
+
+<!--
+    DataFormsJS é desenvolvido de forma que a ordem dos scripts não importa para
+    a maioria dos scripts desde que o core [DataFormsJS.js] seja incluído primeiro,
+    no entanto se um objeto de página personalizada for baseado em outra página então
+    eles devem ser incluídos na ordem correta. Para arquivos do core [entryForm.js]
+    devem ser incluídos depois do [jsonData.js].
+-->
+<script src="js/DataFormsJS.js"></script>
+<script src="js/pages/jsonData.js"></script>
+<script src="js/pages/entryForm.js"></script>
+
+<!--
+    Links de CDN para mecanismos de Modelo e Visualização
+-->
+<script src="https://cdn.jsdelivr.net/npm/handlebars@4.5.1/dist/handlebars.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.0/browser/nunjucks.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.9.1/underscore.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
+-->
+<!--
+    DataFormsJS JSX Loader
+
+    [jsxLoader.js] compilará e converterá rapidamente JSX to JS para navegadores
+    modernos,  e para navegadores antigos baixará e utilizará o Babel Standalone
+    de um CDN.
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/jsxLoader.min.js"></script>
+
+<!--
+    Componentes Individuais de React e Classes JavaScript para Desenvolvimento Web com JSX Loader
+-->
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/ErrorBoundary.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/JsonData.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/LazyLoad.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/InputFilter.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/SortableTable.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/I18n.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/Format.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es6/LeafletMap.js"></script>
+
+<!--
+    Todos arquivos [es6] também têm uma versão [es5] que pode ser usada num navegador sem o Babel
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/JsonData.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/JsonData.min.js"></script>
+
+<!--
+    ES5 compilado com todos os React Components e Classes pode ser utilizado no Navegador sem o Babel.
+    Using this file or individual [es5] component files is recommended for most browser based apps.
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/es5/DataFormsJS.min.js"></script>
+
+<!--
+    Plugins padrão para Framework são suportados com o React quado utilizando uma API do [jsPlugins.js]
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/react/jsPlugins.min.js"></script>
+
+<!--
+    Incluir React
+-->
+<script src="https://unpkg.com/react@16.13.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+
+<!--
+    Os componentes React do DataFormsJS podem ser utilizados com React Router para SPAs
+-->
+<script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Componentes React do DataFormsJS com [Create React App] ou Node
+LANG: JSX
+-->
+<script type="text/babel">
+{/*
+    Crie seu próprio app utilizando o [create-react-app] padrão e execute
+    [npm install dataformsjs]:
+
+    npx create-react-app my-app
+    cd my-app
+    npm install dataformsjs
+    npm start
+*/}
+
+// Importe componentes do arquivo rais do DataFormsJS
+import { ErrorBoundary, JsonData } from 'dataformsjs/js/react/es6/DataFormsJS.js';
+
+// Importe o Namespace padrão DataFormsJS
+// Você podem então utilizar o seguinte para JSX:
+//     <DataFormsJS.JsonData>
+import DataFormsJS from 'dataformsjs/js/react/es6/DataFormsJS.js';
+
+// Importe Componentes Individuais:
+import JsonData from 'dataformsjs/js/react/es6/JsonData.js';
+import ErrorBoundary from 'dataformsjs/js/react/es6/ErrorBoundary.js';
+
+/* Ambos os diretórios [es6] e [es5] funcionam com [create-react-app]. A versão
+[es5] dos arquivos já é compilada utilizando Babel, entretanto, você
+prefira utilizar a versão [es6] para que os componentes sejam compilados com as
+configurações padrão ou a de seu projeto.
+
+Componentes [es5] são projetados para Desenvolvimento em Navegador. Para
+todos os componentes individuais, você pode simplesmente mudar o caminho do
+diretório de [es6] para [es5] e para o namespace padrão há uma sutil mudança
+na sintaxe utilizando [import { DataFormsJS } from ...]. */
+import { ErrorBoundary, JsonData } from 'dataformsjs/js/react/es5/DataFormsJS.js';
+import { DataFormsJS } from 'dataformsjs/js/react/es5/DataFormsJS.js';
+import JsonData from 'dataformsjs/js/react/es5/JsonData.js';
+import ErrorBoundary from 'dataformsjs/js/react/es5/ErrorBoundary.js';
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Web Components do DataFormsJS
+-->
+<!--
+    Componentes Web
+    É requisito a inclusão de [type="module"] para scripts Web Components.
+-->
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/url-hash-router.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/json-data.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/data-list.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/data-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/input-filter.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/sortable-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/leaflet-map.min.js"></script>
+
+<!--
+    Scripts [nomodule] estão disponíveis para prover uma mensagem amigável para
+    usuários informando que o site não funcionará se estiverem utilizando IE ou
+    dispositivos móveis e navegadores antigos.
+-->
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/safari-nomodule.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/old-browser-warning.min.js"></script>
+
+<!--
+    Plugins padrão do framework são suportados com Web Components ao utilizar uma API de [jsPlugins.js]
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/jsPlugins.min.js"></script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Todos os Arquivos do Framework
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/DataFormsJS.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/controls/data-list.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/controls/data-table.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/controls/json-data.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/events.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/handlebars-helpers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/validation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/vue-directives.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/jsonData.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/pages/entryForm.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/chosen.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/clickToHighlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/clickUrlAction.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/dataBind.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/exportToCsv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/filter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/highlighter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/i18n.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/keydownAction.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/listEditor.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/navLinks.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/navList.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/sort.min.js"></script>
+<!-- EXAMPLE_CODE_END -->
+
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Rotas do Framework
+-->
+<!--
+    Rotas representam uma página web em um SPA e pode ser definida por outros
+    elementos <template> utilizando mecanismos de renderização com
+    <script type="text/x-template">.
+
+    [data-engine] é utilizado para especificar o tipo de modelo:
+    ['handlebars', 'vue', 'underscore' ou 'nunjucks'].
+    [data-route] define o caminho da rota local depois da hahs '#' da URL'.
+-->
+<template data-route="/path">...</template>
+<script type="text/x-template" data-engine="handlebars" data-route="/path">...</script>
+
+<!--
+    Ao utilizar [src], conteúdo modelo será baixado dinamicamente na primeira vez
+    que a rota for utilizada.
+-->
+<template data-route="/path" src="https://example.com/"></template>
+<script type="text/x-template" data-engine="handlebars" data-route="/path" src="https://example.com/"></script>
+
+<!--
+    Parâmetros para o caminho de rota começam com [:] e podem ser acessado por
+    JavaScript. Ao fazer uso do tipo de página [jsonData] padrão, os parâmetros
+    são passados para a URL. Neste exemplo a rota de hash local "#/order/view/123"
+    acabaria chamando "https://example.com/data/order/view/123", e os parâmetros
+    da poderiam ser acessados pelo controller, model ou funções de plugins.
+-->
+<script
+    type="text/x-template"
+    data-engine="handlebars"
+    data-route="/:recordType:/:action/:recordId"
+    data-page="jsonData"
+    data-url="https://example.com/data/:recordType:/:action/:recordId">
+</script>
+<script>
+    // Exemplo para URL: '#/order/view/123'
+    app.activeParameterList = {
+        recordType: 'order',
+        action: 'view',
+        recordId: '123',
+    };
+
+    app.activeParameters = [
+        'order',
+        'view',
+        '123'
+    ];
+</script>
+
+<!--
+    Atributos HTML personalizados 'data-*' são passados para o controller via
+    um objeto de configurações. Valores serão booleano ou string. Exemplo:
+        'data-url' se torna 'settings.url'
+        'data-save-url' se torna 'settings.saveUrl'
+
+    O objeto da página [jsonData] inclui a configuração [data-load-only-once]
+    que, se for definida como "true", armazenará em cache os dados para que
+    sejam carregados somente uma vez e mantidos na memória.
+-->
+<script
+    type="text/x-template"
+    data-engine="handlebars"
+    data-route="/:recordType:/:action/:recordId"
+    data-page="jsonData"
+    data-url="https://example.com/view"
+    data-save-url="https://example.com/save"
+    data-load-only-once="true">
+</script>
+<script>
+    // Visualize configurações de JavaScript para o controller ativo:
+    console.log(app.activeController.settings);
+</script>
+
+<!--
+    A rota padrão é definida por [data-route="/"], entretanto se uma rota
+    diferente deve ser a padrão, utilize o atributo [data-default-route].
+-->
+<script
+    type="text/x-template"
+    data-engine="handlebars"
+    data-default-route
+    data-route="/:lang/">
+</script>
+
+<!--
+    Para ligar-se a uma rota ao utiliza a URL padrão da hash, simplesmente
+    utilize um elemento <a> padrão: To link to a route when using the default hash URL’s
+    simply use a standard <a> element:
+-->
+<a href="#/info">Info</a>
+
+<!--
+    Utilizando a API History do HTML5
+
+    Por padrão DataFormsJS utiliza roteamento de hash de URL para rotas (exemplo "#/page").
+    Isto funciona bem para sites estáticos que utilizam web services. Por exemplo uma
+    única página com o conteúdo relacionado pode ser hospedada no AWS S3.
+
+    A API History do HTML5 pode ser utilizado para definir rotas sem uma hash
+    (“/page” ao invés de “/page”). Tipicamente, ao utiliza este método, o código
+    do servidor será utilizdo, assim, uma página 404 pode ser retornada para o
+    usuário para rotas inexistentes. Se o código de servidor não for utilizado,
+    então o DataFormsJS redirecionará para a rota padrão quando houver uma URL
+    desconhecida. O site principal do DataFormsJS utiliza a API History do HTML5
+    e pode ser referenciada como um app de exemplo.
+
+    Para utilizar especifique  [data-routing-mode="history"] no elemento <html>
+    raiz.
+-->
+<html data-routing-mode="history">...</html>
+
+<!--
+    Em seguida, para utilizar links de navegação no site, comece o href com “/”:
+-->
+<a href="/info">Info</a>
+
+<!--
+    Ao invés de utilizar uma hash de URL “#”:
+-->
+<a href="#/info">Info</a>
+
+<!--
+    Por padrão, ao utilizar a API History do HTML5 para roteamente de todos os
+    links, iniciar com href="/..." será atualizado para utilizar Roteamento
+    JavaScript. Se você tiver páginas relativas ao site que precisam apontar
+    para uma página separada, inclua o atributo [data-no-pushstate] nos links
+    relacionados, assim os links não serão processados pelo roteamento JavaScript
+    routing.
+-->
+<a href="/other-app/page.htm" data-no-pushstate>App</a>
+<!-- EXAMPLE_CODE_END -->
+
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Controles HTML do Framework
+LANG: Handlebars
+-->
+<!--
+    O framework DataFormsJS permite que modelos HTML sejam definidos uma vez
+    e utilizados por múltiplas páginas ou por múltiplos elementos em uma única
+    página.
+
+    Simplesmente defina um elemento <template> ou <script> com um [id];
+    se o [src] for especificado, então o conteúdo de controle será baixado e
+    armazenado em cache somente quando for utilizado.
+-->
+<template id="loading-screen">
+    <div>Carregando...</div>
+</template>
+<script id="error-screen" type="text/x-template" data-engine="handlebars" src="https://example.com/error-screen.htm"></script>
+
+<!--
+    Então, para renderizar o controle HTML em um elemento, utilize o atributo
+    [data-template-id] com a ID do controle.
+-->
+<script
+    type="text/x-template"
+    data-engine="handlebars"
+    data-route="/page1"
+    data-page="jsonData"
+    data-url="https://example.com/data/page1">
+    {{#if isLoading}}<div data-template-id="loading-screen"></div>{{/if}}
+    {{#if hasError}}<div data-template-id="error-screen"></div>{{/if}}
+    ...
+</script>
+
+<!--
+    [data-template-url] também pode ser utilizado para espcificar a URL do
+    modelo de controle a ser baixado.
+-->
+<script
+    type="text/x-template"
+    data-engine="handlebars"
+    data-route="/page2">
+    {{#if isLoading}}<div data-template-url="html/loading-screen.htm"></div>{{/if}}
+    {{#if hasError}}<div data-template-url="html/error-screen.htm"></div>{{/if}}
+    ...
+</script>
+
+<!--
+    Controles pode ser aninhados e pode misturar [data-template-url] e
+    [data-template-id]
+-->
+<script id="page-title" type="text/x-template" data-engine="handlebars">
+    <img src="img/logo.svg" />
+    <div data-template-url="html/child-control-1"></div>
+</script>
+
+<template id="parent-control">
+    <div data-template-id="page-title.htm"></div>
+    <div data-template-url="html/child-control-2.htm"></div>
+</template>
+
+<script>
+    // O objeto principal do [DataFormsJS/app] fornece uma API JavaScript para
+    // recarregar controles.
+    // Isso é comumente utilizado por páginas dinâmicas que precisam recarregar
+    // seus conteúdos após o modelo ser atualizado quando utiliza-se modelos
+    // [Handlebars, Nunjucks, or Underscore]. Esses métodos não deveria ser
+    // chamados para a maioria dos sites ao utilizar o Vue para renderização.
+
+    // Rearregar todos controles HTML na página. Todos os elementos com
+    // [data-template-id] ou [data-template-url].
+    app.refreshAllHtmlControls(callback, model);
+
+    // Recarregar um controle específico na página.
+    app.refreshHtmlControl(element, callback, model);
+
+    // Ambos, a função [callback] e o objeto [model] são opcionais.
+    // Quando o [model] não é passado, então utiliza-se o [app.activeModel].
+
+    // Quando chama-se [app.refreshAllHtmlControls] então, todos os plugins serão
+    // chamados e recarregados à partir de [app.refreshPlugins()].
+    app.refreshAllHtmlControls(function() {
+        console.log('Recarregar todos os Controles HTML e Plugins');
+    });
+
+    // Quando [app.refreshHtmlControl] for chamado, plugins sob o controle
+    // específico serão chamados utilizando [app.refreshPlugins(control)].
+    app.refreshHtmlControl(control, function() {
+        console.log('Controle HTML Recarregado:');
+        console.log(control);
+    });
+
+    // Se você estiver desenvolvendo um script que pode ser utilizado por
+    // múltiplos mecanismos de modelos, incluindo Vue, você pode adicionar uma
+    // verificação para somente chamar essas funções se o mecanismo de
+    // visualização não for o Vue.
+    if (app.activeController.viewEngine !== 'Vue') {
+        app.refreshAllHtmlControls();
+    }
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Framework utilizando Handlebars - Mostrar Dados de um Web Service JSON
+LANG: Handlebars
+-->
+<script
+    type="text/x-template"
+    data-engine="handlebars"
+    data-route="/data"
+    data-page="jsonData"
+    data-url="https://www.dataformsjs.com/data/geonames/countries">
+
+    {{#if isLoading}}<div>Carregando...</div>{{/if}}
+    {{#if hasError}}<div>{{errorMessage}}</div>{{/if}}
+    {{#if isLoaded}}
+        <ul>
+            {{#each countries}}
+                <li>{{country}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</script>
+<!--
+    Opcionalmente, o atributo [data-prop] pode ser utilizado para que todos os
+    dados baixados seja atribuído a uma propriedade específica do modelo. Por
+    exemplo [data-prop="records"] atribuirá todos os dados baixados ao
+    [app.activeModel.records].
+
+    Para serviços web que retornam um array de dados não nomeado utilizar
+    [data-prop] é necessário para que seja criado um modelo prop.
+-->
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Framework utilizando Vue - Mostrar Dados do serviço web JSON
+-->
+<script
+    type="text/x-template"
+    data-route="/data"
+    data-page="jsonData"
+    data-url="https://www.dataformsjs.com/data/geonames/countries">
+
+    <!--
+        [v-cloak] é um atributo Vue padrão que permite que os elementos sejam
+        ocultados antes de renderizar a página.
+    -->
+    <h3 v-if="isLoading" v-cloak class="loading">Carregando...</h3>
+    <h3 v-if="hasError" v-cloak class="error">{{ errorMessage }}</h3>
+    <div v-if="isLoaded" v-cloak>
+        <ul>
+            <li v-for="country in countries">{{ country.country }}</li>
+        </ul>
+    </div>
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Framework com GraphQL - Mostrar Dados de um serviço web JSON
+-->
+<!--
+    Define o Serviço GraphQL usando [data-graphql-url] no elemento raiz <html>.
+-->
+<html lang="en" data-graphql-url="https://www.dataformsjs.com/graphql">
+
+<!--
+    GraphQL pode ser integrado diretamente na página e acessado pela [id].
+-->
+<script type="application/graphql" id="graphql-countries">
+    {
+        countries {
+            iso
+            country
+            area_km
+            population
+            continent
+        }
+    }
+</script>
+
+<!--
+    Páginas [jsonData] usa [data-graphql-id] para especificar qual consulta
+    GraphQL utilizar.
+-->
+<script
+    type="text/x-template"
+    data-route="/data"
+    data-page="jsonData"
+    data-graphql-id="graphql-countries">
+
+    <h3 v-if="isLoading" v-cloak class="loading">Carregando...</h3>
+    <h3 v-if="hasError" v-cloak class="error">{{ errorMessage }}</h3>
+    <div v-if="isLoaded" v-cloak>
+        <ul>
+            <li v-for="country in countries">{{ country.country }}</li>
+        </ul>
+    </div>
+</script>
+
+<!--
+    Além disso, [data-graphql-src] pode ser utilizado para baixar a consulta de
+    forma dinâmica.
+-->
+<script
+    type="text/x-template"
+    data-engine="handlebars"
+    data-route="/regions/:country"
+    data-page="jsonData"
+    data-graphql-src="graphql/regions.graphql"
+    src="html/country-list.htm">
+</script>
+<!-- EXAMPLE_CODE_END -->
+</html>
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Web Components - Mostrar Dados do serviço web JSON
+-->
+<!-- Definir uma elemento raiz para a visualização -->
+<div id="view"></div>
+
+<!--
+    Vincular o roteador da hash à view via seletor de consulta
+-->
+<url-hash-router view-selector="#view">
+    <!--
+        Rotas contêm o <template> HTML
+    -->
+    <url-hash-route path="/">
+        <template>
+            <!--
+                Dados são passados de from <json-data> para elementos filho
+                utilizando [data-bind]
+
+                Quando o atributo opcional [load-only-once] é utilizado como
+                mostrado abaixo, dados serão armazenado em memória e reutilizados
+                se a mesma URL for acessada enquanto a página estiver aberta.
+            -->
+            <json-data
+                url="https://www.dataformsjs.com/data/geonames/countries"
+                load-only-once="true">
+                <is-loading>
+                    <span class="loading">Carregando...</span>
+                </is-loading>
+                <has-error>
+                    <span class="error" data-bind="errorMessage"></span>
+                </has-error>
+                <is-loaded>
+                    <!--
+                        Componentes web integrados como <data-table>, podem ser
+                        utilizados, ou utilize JavaScript para definir Web
+                        Components personalizados para seu app.
+                    -->
+                    <data-table
+                        data-bind="countries"
+                        col-link-template="#/regions/:iso"
+                        table-attr="is=sortable-table">
+                    </data-table>
+                </is-loaded>
+            </json-data>
+        </template>
+    </url-hash-route>
+
+    <!--
+        A fonte HTML <template> da rota será baixada dinamicamente quando
+        [src] for utilizado.
+    -->
+    <url-hash-route path="/regions/:country" src="html/regions-web.htm"></url-hash-route>
+</url-hash-router>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Plugins do Framework - Filtrando e classificando
+-->
+<!--
+    O framework fornece vários plugins; dois comumente utilizados permitem que
+    o usuário final trabalhe com dados em um página são [filter.js].
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/filter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/plugins/sort.min.js"></script>
+<script
+    type="text/x-template"
+    data-engine="underscore"
+    data-route="/data"
+    data-page="jsonData"
+    data-url="https://www.dataformsjs.com/data/geonames/countries">
+
+    <% if (isLoading) { %><div data-template-id="loading-screen"></div><% } %>
+    <% if (hasError) { %><div data-template-id="error-screen"></div><% } %>
+    <% if (isLoaded) { %>
+        <h1>Countries</h1>
+
+        <!--
+            [filter.js] permite que usuários filtrem os elementos de uma página
+            baseando-se na propriedade [data-filter-selector]. O plugin tem
+            várias opções e pode trabalhar com controles <input> para texto e
+            outros elementos quando o usuário clique neles.
+        -->
+        <input
+            data-filter-selector="table"
+            data-filter-results-text-selector="h1"
+            data-filter-results-text-all="{totalCount} Countries"
+            data-filter-results-text-filtered="Showing {displayCount} of {totalCount} Countries"
+            placeholder="Enter filter, example 'North America'">
+
+        <div
+            data-filter-selector="table"
+            data-filter-column="Continent"
+            data-filter-operator="==="
+            data-filter-value="EU">
+            Filter for 'EU'
+        </div>
+
+        <!--
+            <sort.js> permite que usuários cliquem em colunas em uma tabela HTML
+            padrão e classifiquem linhas baseando-se nos dados da coluna clicada. O
+            tipo de dados (números, datas etc) é determinado baseando-se nos
+            dados e classificado baseando-se no tipo de dado.
+        -->
+        <table
+            data-sort
+            data-sort-class-odd="row-odd"
+            data-sort-class-even="row-even">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Tamanho (KM)</th>
+                    <th>População</th>
+                    <th>Continente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% countries.map(function(country) { %>
+                <tr>
+                    <td><%- country.iso %></td>
+                    <td><%- country.country %></td>
+                    <td><%- country.area_km %></td>
+                    <td><%- country.population %></td>
+                    <td><%- country.continent %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Web Components - Filtrando e classificando
+-->
+<!--
+    Dois Web Components fornecem funcionalidade similar à do framework [filter.js]
+    e [sort.js].
+-->
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/input-filter.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/web-components/sortable-table.min.js"></script>
+
+<!--
+    O componente [input-filter.js] é herdado de um elemento padrão <input>.
+    Utilize-o definindo o atributo [is="input-filter"] juntamente com
+    [filter-selector]. [filter-selector] pode ser tanto uma tabela quanto
+    um seletor de consultas de elementos.
+-->
+<input is="input-filter" filter-selector="table">
+<input is="input-filter" filter-selector="ul.item-list li">
+
+<!--
+    O componente [sortable-table.js] é herdado do elemento <table> padrão.
+    Utilize-o definindo o atributo [is="sortable-table"].
+
+    Alternar estilos de linha pode ser controlado à partir dos atributos
+    [data-sort-class-odd] e [data-sort-class-even]. O componente
+    [input-filter.js] também utiliza os atributos quando está filtrando uma
+    tabela relacionada.
+-->
+<table is="sortable-table" data-sort-class-odd="row-odd" data-sort-class-even="row-even">
+    ...
+</table>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: React - Mostra Dados de um Serviço Web JSON
+LANG: JSX
+-->
+<script type="text/babel">
+function ShowLoading() {
+    return <h3 className="loading">Carregando...</h3>;
+}
+
+function ShowError(props) {
+    return <p className="error">{props.error}</p>;
+}
+
+function ShowData(props) {
+    return (
+        <React.Fragment>
+            <ul>
+                {props.data && props.data.countries && props.data.countries.map(country => {
+                    return (
+                        <li key={country.iso}>{country.country}</li>
+                    )
+                })}
+            </ul>
+        </React.Fragment>
+    )
+}
+
+{/*
+    <ErrorBoundary> é um componente opcional.
+
+    <ErrorBoundary> pode ser utilizado para ajudar a resolver e exibir erros
+    de componentes React.
+
+    <JsonData> é utilizado para baixar dados e renderizar componentes diferentes
+    baseando-se no estado [fetch] do serviço web. Dados JSON do serviço web
+    serão passados para o componente através de [props.data].
+
+    Por padrão <JsonData> chama o serviço web cada vez que o componente é criado.
+    Ao utilizar o [prop] opcional [loadOnlyOnce] como mostrado abaixo, os dados
+    serão armazenados em memória e reutilizados se a mesma URL for acessada
+    enquanto a página for  aberta.
+*/}
+class App extends React.Component {
+    render() {
+        return (
+            <ErrorBoundary>
+                <JsonData
+                    url="https://www.dataformsjs.com/data/geonames/countries"
+                    isLoading={<ShowLoading />}
+                    hasError={<ShowError />}
+                    isLoaded={<ShowData />}
+                    loadOnlyOnce={true} />
+            </ErrorBoundary>
+        )
+    }
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: React - Utilizando Opções personalizadas de Fetch e Cabeçalhos de Requisição
+LANG: JSX
+-->
+<script type="text/babel">
+{/*
+    [fetchOptions] e [fetchHeaders] permitem que o app controle as opções de
+    [fetch] e envie cabeçalhos de requisições personalizados para o componente.
+
+    O [fetchOptions] padrão é mostrado abaixo.
+*/}
+
+<JsonData
+    url="https://www.dataformsjs.com/data/geonames/countries"
+    isLoading={<ShowLoading />}
+    hasError={<ShowError />}
+    isLoaded={<ShowCountries />}
+    fetchOptions={{
+        mode: 'cors',
+        cache: 'no-store',
+        credentials: 'same-origin',
+    }}
+    fetchHeaders={{
+        Authorization: 'bearer 123abc',
+    }} />
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: React - Filtrando e classificando Dados
+LANG: JSX
+-->
+<script type="text/babel">
+function ShowCountries(props) {
+    return (
+        <React.Fragment>
+            {/*
+                <InputFilter> renderiza uma <input> HTML padrão que permite aos
+                usuários filtrarem elementos na página baseando-se na propriedade
+                [filter-selector]. Atributos opcionais adicionais, podem ser
+                utilizados para mostrar o resultado do filtro.
+            */}
+            <InputFilter
+                filter-selector="table.data-table"
+                filter-results-selector="h1"
+                filter-results-text-all="{totalCount} Países"
+                filter-results-text-filtered="Mostrando {displayCount} de {totalCount} Países"
+                placeholder="Entre com o filtro, exemplo 'Brazil'" />
+
+            {/*
+                <SortableTable> renderiza uma <tale> HTML padrão que permite que
+                usuários cliquem em colunas e classifiquem linhas baseando-se nos
+                dados da coluna clicada. O tipo de dados (números, datas etc) é
+                determinado baseando-se nos dados e classificado baseando-se no
+                tipo de dado.
+
+                Ambos, <InputFilter> e <SortableTable>, têm "efeitos colaterais"
+                para elementos relacionados, por eles alteram a ordem de exibição
+                e classificação de cada linha entretanto, isso não causa problemas
+                com a maioria dos apps e páginas.
+            */}
+            <SortableTable
+                className="data-table"
+                data-sort-class-odd="row-odd"
+                data-sort-class-even="row-even">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Tamanho (KM)</th>
+                        <th>População</th>
+                        <th>Continente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.data && props.data.countries && props.data.countries.map(country => {
+                        return (
+                            <tr key={country.iso}>
+                                <td>{country.iso}</td>
+                                <td>{country.country}</td>
+                                <td>{country.area_km}</td>
+                                <td>{country.population}</td>
+                                <td>{country.continent}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </SortableTable>
+        </React.Fragment>
+    )
+}
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Modelo JavaScript - Criar uma Função Plugin para o Framework
+LANG: JavaScript
+-->
+<script>
+(function () {
+    'use strict';
+
+    app.addPlugin('name', function(rootElement) {
+        // [rootElement] é um parâmetro opcional e utilizando quando controles HTML
+        // são recarregados de [app.refreshHtmlControl()].
+        rootElement = (rootElement === undefined ? document : rootElement);
+        console.log('função plugin chamada');
+    });
+})();
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Modelo JavaScript - Criar um Objeto Plugin para o Framework
+LANG: JavaScript
+-->
+<script>
+(function () {
+    'use strict';
+
+    // Objeto Plugin
+    // Dica: Este arquivo tem a intenção de ser um ponto inicial;
+    // apague todas as funções e código que você não usa.
+    var plugin = {
+        // Evento que roda somente uma vez por mudança de hash e antes que a
+        // [view] seja renderizada. Este evento seria tipicamente utilizado
+        // para baixar recursos necessários para a página que não são parte do
+        // [controller] da página. Visto que isso impede que a [view] atualize,
+        // isso somente deve ser utilizando com serviços web muito rápidos, por
+        // exemplo baixando aquivos JSON simples.
+        onRouteLoad: function(next) {
+            next();
+        },
+
+        // Evento chamado antes que a [view] atual seja renderizada
+        onBeforeRender: function() { },
+
+        // Evento chamado depois que o HTML é renderizado e antes que a função
+        // [controller] da página [onRendered()] rode.
+        onRendered: function(element) {
+            element = (element === undefined ? document : element);
+        },
+
+        // Evento chamado somente uma vez por mudança de hash or por atualização
+        // de página e ocorre antes que a página atual seja descarregada. Utilize
+        // par alimpar quaisquer recursos específicos de página como
+        // [window.clearInterval()].
+        onRouteUnload: function() { },
+    };
+
+    // Adicionar Plugin ao DataFormsJS
+    app.addPlugin('name', plugin);
+})();
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Modelo JavaScript - Criar um Objeto Página para o Framework
+LANG: JavaScript
+-->
+<script>
+(function () {
+    'use strict';
+
+    // Criar um novo objeto página.
+    // Dica: Este arquivo tem a intenção de ser um ponto inicial;
+    // apague todas as funções e código que você não usa.
+    var page = {
+        // ----------------------------------------------------------
+        // Define um modelo para o objeto página. Cada rota que é
+        // utilizada criará um novo modelo para sua página.
+        // ----------------------------------------------------------
+        model: {
+            setupView: function() {
+                console.log(this);
+            },
+        },
+
+        // ----------------------------------------------------------
+        // Funções do Controller. Pelo menos uma função tem de ser
+        // definida para a página e todas as funções do [controller]
+        // podem utilizar [this] para acessar o modelo da página.
+        // ----------------------------------------------------------
+
+        // Função do [controller] que é chamada uma vez antes que a rota seja
+        // carregada. Isso é útil para chamar serviços web antes que qualquer
+        // renderização aconteça. Por exemplo, veja o uso no arquivo principal
+        // [pages/jsonData.js].
+        onRouteLoad: function() { },
+
+        // Defina a função do [controller] [onBeforeRender()]. Esta é chamada
+        // cada vez que a [view] é redesenhada antes que o HTML seja
+        // renderizado.
+        //
+        // Ao utilizar Vue, esta função não será chamada, então ao invés disso
+        // utilize [onRouteLoad()] para manipular logic inicial do [controller].
+        onBeforeRender: function() { },
+
+        // Defina a função do [controller] [onRendered()]. Isso é chamado cada
+        // vez que a [view] é redesenhada.
+        onRendered: function() {
+            this.setupView();
+        },
+
+        // Defina a função do [controller] [onRouteUnload()].
+        // Este evento é chamado somente uma vez por mudança de hash quando
+        // quando a rota atual é descarregada. Utilize para limpar qualquer
+        // recurso específico da página como [window.clearInterval()].
+        onRouteUnload: function() { },
+    };
+
+    // Adiciona page ao app
+    app.addPage('pageName', page);
+})();
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: Modelo JavaScript - Crie um Objeto Página do Framework baseado no [jsonData]
+LANG: JavaScript
+-->
+<script>
+// Ao criar páginas baseadas em scripts de outras páginas, order de
+// carregamento é importante:
+// Carregue este arquivo primeiro:
+//     <script src="js/pages/jsonData.js">
+// Então carregue seu arquivo personalizado:
+//     <script src="js/customPage.js">
+(function () {
+    'use strict';
+
+    // Crie o Objeto Página copiando a página [jsonData]
+    var page = app.deepClone({}, app.pages.jsonData);
+
+    // Adicione novas propriedades e funções para a página ao [Model]
+    Object.assign(page.model, {
+        // Propriedades
+        property1: 'Propriedade Exemplo',
+        property2: null,
+        property3: 123,
+
+        // Função exemplo
+        logInfo: function() {
+            // Estas duas propriedades vêm do objeto modelo jsonData
+            // e são atribuídos a este modelo através de [app.deepClone()]
+            console.log(this.url);
+            console.log(this.submittedFetchUrl);
+            // Propriedade exemplo desta classe
+            console.log(this.property1);
+        },
+
+        // Chamado uma vez quando a [view] é carregada com dados
+        setupView: function() {
+            // Referência ao objeto modelo atual
+            var model = this;
+
+            // Adicione lógica personalizada aqui
+            model.logInfo();
+        }
+    });
+
+    // Defina a função controller [onRendered()].
+    // Isto é chamado cada vez que a [view] é redesenhada.
+    page.onRendered = function() {
+        if (this.isLoaded) {
+            this.setupView();
+        }
+    };
+
+    // Adicione a página ao app
+    app.addPage('customPage', page);
+})();
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- NOTA - Utilize isto como um modelo para novas rotas, é necessário adicionar espaços entre '<!-- EXAMPLE_', etc -->
+<!-- ********************************************************************** -->
+<!--EXAMPLE_CODE_START
+TITLE: Modelo de Nova Rota, Repare os Espaços para funcionar
+-->
+<!--EXAMPLE_CODE_END -->

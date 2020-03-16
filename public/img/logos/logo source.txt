@@ -1,0 +1,45 @@
+# [handlebars.png] and [underscore.png] were futher compressed using:
+# https://tinypng.com/
+
+react.svg
+https://reactjs.org
+# Downloaded SVG logo from the main site
+
+vue.svg
+https://github.com/vuejs/art/blob/master/logo.svg
+
+handlebars_logo.png
+https://handlebarsjs.com/images/handlebars_logo.png
+# Image was then cropped to just [handlebars.png]
+
+underscore.png
+https://underscorejs.org/docs/images/underscore.png
+
+nunjucks.png
+https://mozilla.github.io/nunjucks/
+# Created by modifying HTML to change font color, hide background, and take a print screen.
+# Then modify image for transparent background using an image editor.
+
+graphql.svg
+https://graphql.org/img/logo.svg
+
+javascript.svg
+https://commons.wikimedia.org/wiki/File:Unofficial_JavaScript_logo_2.svg
+
+npm.svg
+https://www.npmjs.com/
+# Logo was embedded directly in the HTML
+
+jsdelivr.svg
+https://www.jsdelivr.com/img/logo-horizontal.svg
+
+GitHub-Mark-32px.png
+GitHub-Mark-Light-32px.png
+https://github.com/logos
+
+preact.svg
+https://github.com/preactjs/preact
+# SVG was modified to remove the text
+
+rax.png
+https://github.com/alibaba/rax

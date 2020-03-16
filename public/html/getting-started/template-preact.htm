@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>[[i18n tmpl_preact_title]]</title>
+        <link rel="stylesheet" href="https://d2xbd92kui7v97.cloudfront.net/site/css/getting-started.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <!--
+            Preact
+            https://preactjs.com
+        -->
+        <script src="https://unpkg.com/preact"></script>
+
+        <!--
+            DataFormsJS JSX Loader
+            https://www.dataformsjs.com
+
+            [[i18n jsxloader_line_1]]
+            [[i18n jsxloader_line_2]]
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/jsxLoader.min.js"></script>
+        <script> jsxLoader.usePreact(); </script>
+
+        <!--
+            DataFormsJS React Components
+        -->
+        <!--
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/ErrorBoundary.js"></script>
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/JsonData.js"></script>
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/LazyLoad.js"></script>
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/InputFilter.js"></script>
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/SortableTable.js"></script>
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/I18n.js"></script>
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/Format.js"></script>
+        <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es6/LeafletMap.js"></script>
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/react/es5/DataFormsJS.min.js"></script>
+
+        <script type="text/babel">
+            const format = new Format();
+
+            function ShowLoading() {
+                return <h3 className="loading">[[i18n Loading...]]</h3>;
+            }
+
+            function ShowError(props) {
+                return <p className="error">{props.error}</p>;
+            }
+
+            function ShowCountries(props) {
+                return (
+                    <preact.Fragment>
+                        <h1>Countries</h1>
+                        <InputFilter
+                            filter-selector="table"
+                            filter-results-selector="h1"
+                            filter-results-text-all="[[i18n countries_all]]"
+                            filter-results-text-filtered="[[i18n countries_filtered]]"
+                            placeholder="[[i18n countries_enter_filer]]" />
+
+                        <SortableTable
+                            data-sort-class-odd="row-odd"
+                            data-sort-class-even="row-even">
+                            <thead>
+                                <tr>
+                                    <th>[[i18n country_code]]</th>
+                                    <th>[[i18n country_name]]</th>
+                                    <th>[[i18n country_size]]</th>
+                                    <th>[[i18n country_pop]]</th>
+                                    <th>[[i18n country_continent]]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {props.data && props.data.countries && props.data.countries.map(country => {
+                                    return (
+                                        <tr key={country.iso}>
+                                            <td>{country.iso}</td>
+                                            <td>{country.country}</td>
+                                            <td className="text-right" data-value={country.area_km}>{format.number(country.area_km)}</td>
+                                            <td className="text-right" data-value={country.population}>{format.number(country.population)}</td>
+                                            <td>{country.continent}</td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </SortableTable>
+                    </preact.Fragment>
+                )
+            }
+
+            class App extends preact.Component {
+                render() {
+                    return (
+                        <ErrorBoundary>
+                            <main id="view" className="container">
+                                <JsonData
+                                    url="https://www.dataformsjs.com/data/geonames/countries"
+                                    isLoading={<ShowLoading />}
+                                    hasError={<ShowError />}
+                                    isLoaded={<ShowCountries />}
+                                    loadOnlyOnce={true} />
+                            </main>
+                        </ErrorBoundary>
+                    )
+                }
+            }
+
+            preact.render(
+                <App />,
+                document.getElementById('root')
+            );
+        </script>
+    </body>
+</html>

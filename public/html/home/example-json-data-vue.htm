@@ -1,0 +1,60 @@
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;…&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;view&quot;&gt;&lt;/div&gt;
+
+        &lt;script
+            type=&quot;text/x-template&quot;
+            data-engine=&quot;vue&quot;
+            data-route=&quot;/&quot;
+            data-page=&quot;jsonData&quot;
+            data-url=&quot;https://www.dataformsjs.com/data/geonames/countries&quot;
+            <mark>data-countries</mark>&gt;
+
+            &lt;div <mark>v-if=&quot;isLoading&quot;</mark>&gt;[[i18n Loading...]]&lt;/div&gt;
+            &lt;div <mark>v-if=&quot;hasError&quot;</mark>&gt;{{ errorMessage }}&lt;/div&gt;
+            &lt;div <mark>v-if=&quot;isLoaded&quot;</mark>&gt;
+                &lt;h1&gt;[[i18n Countries]]&lt;/h1&gt;
+                &lt;input data-filter-selector=&quot;table&quot;&gt;
+
+                &lt;table data-sort&gt;
+                    &lt;thead&gt;
+                        &lt;tr&gt;
+                            &lt;th&gt;[[i18n country_code]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_name]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_size]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_pop]]&lt;/th&gt;
+                            &lt;th&gt;[[i18n country_continent]]&lt;/th&gt;
+                        &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                        &lt;tr v-for=&quot;country in countries&quot;&gt;
+                            &lt;td&gt;&lt;a a v-bind:href=&quot;&#039;#/regions/&#039; + country.iso&quot;&gt;{{ country.iso }}&lt;/a&gt;&lt;/td&gt;
+                            &lt;td&gt;{{ country.country }}&lt;/td&gt;
+                            &lt;td&gt;{{ country.area_km }}&lt;/td&gt;
+                            &lt;td&gt;{{ country.population }}&lt;/td&gt;
+                            &lt;td&gt;{{ country.continent }}&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/script&gt;
+
+        &lt;script
+            type=&quot;text/x-template&quot;
+            data-engine=&quot;vue&quot;
+            data-route=&quot;/regions/:country&quot;
+            data-page=&quot;jsonData&quot;
+            data-url=&quot;https://www.dataformsjs.com/data/geonames/regions/:country&quot;
+            <mark>data-regions</mark>
+            src=&quot;html/country-list.htm&quot;&gt;
+        &lt;/script&gt;
+
+        &lt;script src=&quot;js/DataFormsJS.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/DataFormsJS/pages/jsonData.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/DataFormsJS/plugins/filter.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/DataFormsJS/plugins/sort.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;

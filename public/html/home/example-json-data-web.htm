@@ -1,0 +1,39 @@
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;…&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;view&quot;&gt;&lt;/div&gt;
+
+        &lt;url-hash-router view-selector=&quot;#view&quot;&gt;
+            &lt;url-hash-route path=&quot;/&quot;&gt;
+                &lt;template&gt;
+                    &lt;<mark>json-data</mark> url=&quot;https://www.dataformsjs.com/data/geonames/countries&quot;&gt;
+                        &lt;is-loading&gt;
+                            &lt;span class=&quot;loading&quot;&gt;[[i18n Loading...]]&lt;/span&gt;
+                        &lt;/is-loading&gt;
+                        &lt;has-error&gt;
+                            &lt;span class=&quot;error&quot; <mark>data-bind</mark>=&quot;errorMessage&quot;&gt;&lt;/span&gt;
+                        &lt;/has-error&gt;
+                        &lt;is-loaded&gt;
+                            &lt;h1&gt;[[i18n Countries]]&lt;/h1&gt;
+                            &lt;input <mark>is=&quot;input-filter&quot;</mark> filter-selector=&quot;table&quot;&gt;
+                            &lt;<mark>data-table</mark>
+                                <mark>data-bind</mark>=&quot;countries&quot;
+                                col-link-template=&quot;#/regions/:iso&quot;
+                                table-attr=&quot;is=sortable-table&quot;&gt;
+                            &lt;/data-table&gt;
+                        &lt;/is-loaded&gt;
+                    &lt;/json-data&gt;
+                &lt;/template&gt;
+            &lt;/url-hash-route&gt;
+
+            &lt;<mark>url-hash-route</mark> path=&quot;/regions/:country&quot; <mark>src</mark>=&quot;html/regions-web.htm&quot;&gt;&lt;/url-hash-route&gt;
+        &lt;/url-hash-router&gt;
+
+        &lt;script type=&quot;module&quot; src=&quot;js/web-components/url-hash-router.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;module&quot; src=&quot;js/web-components/json-data.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;module&quot; src=&quot;js/web-components/data-table.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;module&quot; src=&quot;js/web-components/input-filter.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;module&quot; src=&quot;js/web-components/sortable-table.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;

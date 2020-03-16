@@ -1,0 +1,21 @@
+{
+    "Home": "الصفحة الرئيسية",
+    "Playground": "رمز الملعب",
+    "Getting Started": "ابدء",
+    "Quick Reference": "مرجع سريع",
+    "Examples": "أمثلة",
+    "Documents": "مستندات",
+    "API": "API",
+    "Timezone": "وحدة زمنية",
+    "Web Components": "مكونات الويب",
+    "Loading...": "جار التحميل...",
+    "Hello World!": "مرحبا بالعالم!",
+    "Hello": "مرحبا",
+    "Countries": "بلدان",
+    "country_code": "رمز",
+    "country_name": "اسم",
+    "country_size": "الحجم (كم)",
+    "country_pop": "تعداد السكان",
+    "country_continent": "قارة",
+    "footer_license": "الموقع ورمز المصدر المنصوص عليها في رخصة معهد ماساتشوستس للتكنولوجيا"
+}

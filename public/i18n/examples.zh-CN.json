@@ -1,0 +1,21 @@
+{
+    "places_title": "在线演示",
+    "places_desc": "以下示例应用程序显示了常用的DataFormsJS功能。",
+
+    "log_title": "Log Reporting Demo",
+    "log_desc": "Log reporting demo app showing various Framework plugins.",
+
+    "entry_form_title": "Entry Form Demo",
+    "entry_form_desc": "Demo entry form app that uses authentication, [entryForm.js], [listEditor.js] and other features. All entry form features are defined through HTML and Templating while authentication uses a custom JavaScript plugin.",
+
+    "image_class_title": "AI/ML - Image Classification",
+    "image_class_desc": "Demo app that calls a TensorFlow web service to classify uploaded images. These apps demonstrate how to use [jsonData.js] and <JsonData> with custom JavaScript code.",
+
+    "binary_class_title": "AI/ML - Binary Classification",
+    "binary_class_desc": "Demo app that calls a [scikit-learn] web service to make a diabetes prediction based on entered patient data and shows how to use [entryForm.js] with custom JavaScript code.",
+
+    "country_list_title": "Country List (No SPA)",
+    "country_list_desc": "These pages do not use a SPA (Single Page App) and demonstrate that controls and plugins run automatically when no routes are used or JavaScript is called.",
+
+    "hello_world_desc": "Example from the Home Page"
+}

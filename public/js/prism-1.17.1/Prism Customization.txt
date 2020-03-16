@@ -1,0 +1,24 @@
+This project is using a custom version of Prism to prevent contents of:
+    <script type="text/x-template">
+from being highlighted as JavaScript. The actual update is expected to change with
+different versions of prism so any update requires verification of all example code.
+
+
+Related starting point to find JavaScript update:
+    https://github.com/PrismJS/prism/blob/master/components/prism-javascript.js
+
+
+Update for Prism Version 1.17.0:
+Line:
+    pattern: RegExp(/(<__[\s\S]*?>)(?:<!\[CDATA\[[\s\S]*?\]\]>\s*|[\s\S])*?(?=<\/__>)/.source.replace(/__/g, tagName), 'i'),
+Replaced with:
+    pattern: RegExp(/(<__>)(?:<!\[CDATA\[[\s\S]*?\]\]>\s*|[\s\S])*?(?=<\/__>)/.source.replace(/__/g, tagName), 'i'),
+Update is made in the function:
+    Prism.languages.markup.tag.addInlined
+
+
+Update for Prism Version 1.15.0:
+Line:
+    pattern: /(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,
+Replaced with:
+    pattern: /(<script>)[\s\S]*?(?=<\/script>)/i,

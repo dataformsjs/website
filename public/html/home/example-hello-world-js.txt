@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+    <head>…</head>
+    <body>
+        <div id="view"></div>
+
+        <template data-route="/">
+            <h1>[[i18n Hello World!]]</h1>
+        </template>
+        
+        <template data-route="/:name">
+            <h1>[[i18n Hello]] <span data-bind="name"></span>!</h1>
+        </template>
+
+        <script src="js/DataFormsJS.js"></script>
+        <script src="js/plugins/dataBind.js"></script>
+    </body>
+</html>

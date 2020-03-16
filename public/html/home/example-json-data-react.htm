@@ -1,0 +1,87 @@
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;…&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+
+        &lt;!-- React --&gt;
+        &lt;script src=&quot;js/react.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/react-dom.js&quot;&gt;&lt;/script&gt;
+
+        &lt;!-- DataFormsJS JSX Loader --&gt;
+        &lt;script src=&quot;js/jsxLoader.jsx&quot;&gt;&lt;/script&gt;
+
+        &lt;!-- DataFormsJS React Components --&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/ErrorBoundary.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/JsonData.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/InputFilter.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/SortableTable.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/babel&quot; src=&quot;js/es6/Format.js&quot;&gt;&lt;/script&gt;
+
+        &lt;script type=&quot;text/babel&quot;&gt;
+            const format = new <mark>Format()</mark>;
+
+            function ShowLoading() {
+                return &lt;h3 className=&quot;loading&quot;&gt;[[i18n Loading...]]&lt;/h3&gt;;
+            }
+
+            function ShowError(props) {
+                return &lt;p className=&quot;error&quot;&gt;{props.error}&lt;/p&gt;;
+            }
+
+            function ShowCountries(props) {
+                return (
+                    &lt;React.Fragment&gt;
+                        &lt;h1&gt;[[i18n Countries]]&lt;/h1&gt;
+
+                        &lt;<mark>InputFilter</mark> filter-selector=&quot;table&quot; /&gt;
+
+                        &lt;<mark>SortableTable</mark>&gt;
+                            &lt;thead&gt;
+                                &lt;tr&gt;
+                                    &lt;th&gt;[[i18n country_code]]&lt;/th&gt;
+                                    &lt;th&gt;[[i18n country_name]]&lt;/th&gt;
+                                    &lt;th&gt;[[i18n country_size]]&lt;/th&gt;
+                                    &lt;th&gt;[[i18n country_pop]]&lt;/th&gt;
+                                    &lt;th&gt;[[i18n country_continent]]&lt;/th&gt;
+                                &lt;/tr&gt;
+                            &lt;/thead&gt;
+                            &lt;tbody&gt;
+                                {props.data &amp;&amp; props.data.countries &amp;&amp; props.data.countries.map(country =&gt; {
+                                    return (
+                                        &lt;tr key={country.iso}&gt;
+                                            &lt;td&gt;{country.iso}&lt;/td&gt;
+                                            &lt;td&gt;{country.country}&lt;/td&gt;
+                                            &lt;td&gt;{<mark>format.number(country.area_km)</mark>}&lt;/td&gt;
+                                            &lt;td&gt;{format.number(country.population)}&lt;/td&gt;
+                                            &lt;td&gt;{country.continent}&lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    )
+                                })}
+                            &lt;/tbody&gt;
+                        &lt;/SortableTable&gt;
+                    &lt;/React.Fragment&gt;
+                )
+            }
+
+            class App extends React.Component {
+                render() {
+                    return (
+                        &lt;<mark>ErrorBoundary</mark>&gt;
+                            &lt;<mark>JsonData</mark>
+                                url=&quot;https://www.dataformsjs.com/data/geonames/countries&quot;
+                                isLoading={&lt;ShowLoading /&gt;}
+                                hasError={&lt;ShowError /&gt;}
+                                isLoaded={&lt;ShowCountries /&gt;} /&gt;
+                        &lt;/ErrorBoundary&gt;
+                    )
+                }
+            }
+
+            ReactDOM.render(
+                &lt;App /&gt;,
+                document.getElementById(&#039;root&#039;)
+            );
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="200px" viewBox="0 0 400 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>ai-ml-binary-classification</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="37.5%" x2="100%" y2="62.5%" id="linearGradient-1">
+            <stop stop-color="#0000FF" offset="0%"></stop>
+            <stop stop-color="#00FF00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="49.6527778%" x2="100%" y2="50.3472222%" id="linearGradient-2">
+            <stop stop-color="#0000FF" offset="0%"></stop>
+            <stop stop-color="#00FF00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="43.622449%" x2="100%" y2="56.377551%" id="linearGradient-3">
+            <stop stop-color="#0000FF" offset="0%"></stop>
+            <stop stop-color="#00FF00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="20.060941%" x2="100%" y2="79.939059%" id="linearGradient-4">
+            <stop stop-color="#0000FF" offset="0%"></stop>
+            <stop stop-color="#00FF00" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="ai-ml-binary-classification" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F7F7F7" x="0" y="0" width="400" height="200"></rect>
+        <rect id="Rectangle" stroke="#A3A3A3" fill="#FFFFFF" x="48" y="20" width="150" height="160"></rect>
+        <rect id="Rectangle" stroke="#CCCCCC" fill="#FFFFFF" x="70" y="38" width="75" height="20"></rect>
+        <text id="123.45" font-family="ArialMT, Arial" font-size="16" font-weight="normal" fill="#000000">
+            <tspan x="83.03125" y="54">123.45</tspan>
+        </text>
+        <rect id="Rectangle" stroke="#CCCCCC" fill="#FFFFFF" x="70" y="73" width="75" height="20"></rect>
+        <text id="0.33" font-family="ArialMT, Arial" font-size="16" font-weight="normal" fill="#000000">
+            <tspan x="91.9296875" y="89">0.33</tspan>
+        </text>
+        <rect id="Rectangle" stroke="#CCCCCC" fill="#FFFFFF" x="70" y="108" width="75" height="20"></rect>
+        <text id="3.14" font-family="ArialMT, Arial" font-size="16" font-weight="normal" fill="#000000">
+            <tspan x="91.9296875" y="124">3.14</tspan>
+        </text>
+        <rect id="Rectangle" stroke="#CCCCCC" fill="#FFFFFF" x="71" y="143" width="75" height="20"></rect>
+        <text id="987654" font-family="ArialMT, Arial" font-size="16" font-weight="normal" fill="#000000">
+            <tspan x="81.8046875" y="159">987654</tspan>
+        </text>
+        <rect id="Rectangle" stroke="#A3A3A3" fill="#FFFFFF" x="232" y="70" width="120" height="60"></rect>
+        <text id="1-=-True" font-family="ArialMT, Arial" font-size="16" font-weight="normal" fill="#000000">
+            <tspan x="277.425781" y="93">1 = True</tspan>
+        </text>
+        <text id="0-=-False" font-family="ArialMT, Arial" font-size="16" font-weight="normal" fill="#000000">
+            <tspan x="276.871094" y="118">0 = False</tspan>
+        </text>
+        <circle id="Oval" stroke="#CC0000" fill="#FF0000" cx="254.5" cy="113.5" r="9.5"></circle>
+        <line x1="171.5" y1="47.5" x2="254.5" y2="88.5" id="Line-2" stroke="url(#linearGradient-1)" stroke-linecap="square"></line>
+        <line x1="171.5" y1="82.5" x2="254.5" y2="88.5" id="Line-3" stroke="url(#linearGradient-2)" stroke-linecap="square"></line>
+        <line x1="171.5" y1="117.5" x2="254.5" y2="88.5" id="Line-4" stroke="url(#linearGradient-3)" stroke-linecap="square"></line>
+        <line x1="171.5" y1="152.5" x2="254.5" y2="88.5" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></line>
+        <circle id="Oval" stroke="#00CC00" fill="#00FF00" cx="254.5" cy="88.5" r="9.5"></circle>
+        <circle id="Oval" stroke="#0000CC" fill="#0000FF" cx="170.5" cy="47.5" r="9.5"></circle>
+        <circle id="Oval" stroke="#0000CC" fill="#0000FF" cx="170.5" cy="82.5" r="9.5"></circle>
+        <circle id="Oval" stroke="#0000CC" fill="#0000FF" cx="170.5" cy="117.5" r="9.5"></circle>
+        <circle id="Oval" stroke="#0000CC" fill="#0000FF" cx="171.5" cy="152.5" r="9.5"></circle>
+    </g>
+</svg>

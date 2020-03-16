@@ -1,0 +1,21 @@
+{
+    "Home": "首页",
+    "Playground": "在线运行",
+    "Getting Started": "开始入门",
+    "Quick Reference": "快速参考",
+    "Examples": "示例",
+    "Documents": "文档",
+    "API": "API",
+    "Timezone": "Timezone",
+    "Web Components": "Web Components",
+    "Loading...": "正在加载...",
+    "Hello World!": "Hello World!",
+    "Hello": "Hello",
+    "Countries": "Countries",
+    "country_code": "Code",
+    "country_name": "Name",
+    "country_size": "Size (KM)",
+    "country_pop": "Population",
+    "country_continent": "Continent",
+    "footer_license": "本站以及所有源码基于MIT开源协议"
+}

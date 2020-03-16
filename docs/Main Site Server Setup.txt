@@ -1,0 +1,189 @@
+
+# ------------------------------------------------------------------------------------
+#   
+#   This document lists the commands with comments for setup of the main web server.
+#   This commands can be ran from a web based terminal such as AWS Lightsail.
+#
+#   These instructions assume the Linux OS: Ubuntu 18.04 LTS
+#
+# ------------------------------------------------------------------------------------
+
+# ----------------------------------------------------
+# New Easy Setup for Apache, PHP, and needed Files
+# ----------------------------------------------------
+
+# After DataFormsJS was released a bash script [create-fast-site.sh] was created to allow
+# for easy server setup of either Apache or nginx, PHP, and FastSitePHP with the Starter Site.
+# Additionally another script was created [sync-server-from-github.sh] which allows the
+# main site to be synced to all content published to GitHub.
+
+# The combination of download and running these two scripts on a default OS are enough to
+# setup the most of the site now and skip over many of the manual commands.
+
+# The new setup works with either Apache or nginx (Web Server choice is chosen in a
+# selection from [create-fast-site.sh]).
+
+# 1) Download and run the Bash Script to setup the Web Server with the Start Site
+wget https://www.fastsitephp.com/downloads/create-fast-site.sh
+sudo bash create-fast-site.sh
+
+# 2) Download the Sync Server Script from GitHub and run it
+wget https://raw.githubusercontent.com/dataformsjs/website/master/scripts/sync-server-from-github.sh
+bash sync-server-from-github.sh
+
+# Normally this file is used to sync the server and now it will be Installed so
+# if you run it then no files will be changed because the server is up to date.
+bash /var/www/scripts/sync-server-from-github.sh
+
+# 3) Now skip to the topic [Continue Site Setup below] later in this file
+
+# ------------------------------------------
+# Original Commands used for Manual Setup
+# ------------------------------------------
+
+# Update [apt] Package Manager
+# The [upgrade] is not required but recommend (however, it takes many minutes)
+sudo apt update
+sudo apt upgrade
+
+# Install Apache and PHP
+sudo apt install apache2
+sudo apt install php
+
+# Enable PHP for Apache
+sudo apt install libapache2-mod-php
+
+# Add PHP Extensions for SQLite and Zip/Unzip. SQLite is used on
+# the Data Services and Unzip is used by [scripts/install.php].
+sudo apt install php7.2-sqlite php7.2-zip
+
+# Enable a Fallback page so that [index.php]
+# does not show in the URL.
+sudo nano /etc/apache2/apache2.conf
+# Scroll through the file and look for line:
+#    <Directory /var/www/>
+# Under it add the line:
+#    FallbackResource /index.php
+# Save using:
+#    {control+s} -> {control+x}
+#    Or {control+x} -> {y} -> {enter}
+
+# Enable Gzip Compression for JSON Responses
+#   (This is not enabled by default on Apache)
+sudo nano /etc/apache2/mods-available/deflate.conf
+# Add the following under similar commands:
+#       AddOutputFilterByType DEFLATE application/json
+
+# Restart Apache
+sudo service apache2 restart
+
+# Set Permissions
+# This assumes that the user [ubuntu] exists and
+# is used to create and update files on the site.
+sudo adduser ubuntu www-data
+sudo chown ubuntu:www-data -R /var/www
+sudo chmod 0775 -R /var/www
+
+# Create and view a PHP test file
+cd /var/www/html
+echo "<?php phpinfo(); ?>" | sudo tee phpinfo.php
+# http://your-server.example.com/phpinfo.php
+# http://44.224.31.99/phpinfo.php
+
+# Delete file [phpinfo.php] after checking server
+sudo rm phpinfo.php
+
+# Download Site Files
+# In the future, these will be link to GitHub Repositories
+cd ~
+sudo apt install unzip
+wget https://github.com/dataformsjs/dataformsjs/archive/master.zip
+unzip master.zip
+rm master.zip
+wget https://github.com/dataformsjs/website/archive/master.zip
+unzip master.zip
+ls
+
+# Copy Files
+cp -r ~/website-master/app /var/www/app
+cp -r ~/website-master/app_data /var/www/app_data
+cp -r ~/website-master/scripts /var/www/scripts
+cp -r ~/website-master/public/. /var/www/html
+cp -r ~/dataformsjs-master/examples /var/www/html/examples
+
+# Install FastSitePHP (~470 kb) and Dependencies (~20 - 40 kb)
+php /var/www/scripts/install.php
+
+# View Files
+ls /var/www
+ls -la /var/www/html
+
+# Delete files that are not needed including the Apache default page
+# The [.htaccess] file being deleted is a version for local development
+# that is copied from the downloaded site (it's not needed for production).
+sudo rm /var/www/html/.htaccess
+sudo rm /var/www/html/Web.config
+sudo rm /var/www/html/index.html
+
+# After copying files up, reset permissions
+sudo chown ubuntu:www-data -R /var/www
+sudo chmod 0775 -R /var/www
+
+# ------------------------------------------
+# Continue Site Setup below
+# ------------------------------------------
+
+# Check the Site Home Page and Hello World JSON Service
+# http://44.224.31.99/
+# http://44.224.31.99/data/hello-world
+
+# Create Geonames Database
+# About 350 MB to Download, Python Script takes about 3-5 minutes
+# and will show "Success Database Created" once it completes.
+# The generated SQLite database is around 2.6 GB in size
+cd /var/www/scripts
+wget http://download.geonames.org/export/dump/countryInfo.txt
+wget http://download.geonames.org/export/dump/allCountries.zip
+unzip allCountries.zip
+python3 geonames.py
+ls -la /var/www/app_data/geonames.sqlite
+
+# Check the Geonames Web Service
+# http://44.224.31.99/data/geonames/countries
+# http://44.224.31.99/data/geonames/regions/US
+
+# Remove downloaded Geonames files to clear up space on the server
+sudo rm countryInfo.txt allCountries.zip allCountries.txt
+
+# Install Node and NPM packages for GraphQL Services
+cd /var/www/app
+sudo apt install nodejs npm
+npm i express graphql express-graphql sqlite
+sudo npm install pm2 -g
+pm2 start app.js
+
+# Test GraphQL Services
+# http://44.224.31.99/graphql?query={countries{iso,country}}
+# http://44.224.31.99/graphql?query=query($country:String!){regions(country:$country){name}}&variables={"country":"US"}
+
+# Make sure PM2 starts the GraphQL service on reboot
+pm2 startup
+# ** Follow copy and paste command from PM2
+pm2 save
+
+# Restart the server and make sure everything works after a reboot
+sudo reboot
+
+# Additional Steps performmed for the live site
+https://www.dataformsjs.com/en/
+
+# 1) Created Static IP in AWS Lightsail for the Sever: 44.224.31.99
+# 2) GoDaddy - Used the IP for the Main A Record in Domain Settings
+# 3) Update AWS to allow HTTPS in the Firewall on the Networking Tab
+# 4) Installed HTTPS Certificate using certbot:
+#    https://certbot.eff.org/lets-encrypt/ubuntubionic-apache
+#    For the Certificate both non-www and www were entered:
+#        dataformsjs.com www.dataformsjs.com
+
+# Additionally a shell script is used to sync changes from GitHub back to the server
+https://github.com/dataformsjs/website/blob/master/scripts/sync-server-from-github.sh

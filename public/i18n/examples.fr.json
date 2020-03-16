@@ -1,0 +1,21 @@
+{
+    "places_title": "Démo Des Endroits",
+    "places_desc": "Exemple d'application de la page d'accueil montrant les fonctionnalités DataFormsJS couramment utilisées.",
+    
+    "log_title": "Démo de rapport de fichier journal",
+    "log_desc": "Enregistrez l'application de démonstration de rapports montrant divers plugins Framework.",
+
+    "entry_form_title": "Démo du formulaire d'inscription",
+    "entry_form_desc": "Application de formulaire d'entrée de démonstration qui utilise l'authentification, [entryForm.js], [listEditor.js] et d'autres fonctionnalités. Toutes les fonctionnalités du formulaire de saisie sont définies via HTML et les modèles tandis que l'authentification utilise un plugin JavaScript personnalisé.",
+
+    "image_class_title": "AI/ML - Classification d'images",
+    "image_class_desc": "Application de démonstration qui appelle un service Web TensorFlow pour classer les images téléchargées. Ces applications montrent comment utiliser [jsonData.js] et <JsonData> avec du code JavaScript personnalisé.",
+
+    "binary_class_title": "AI/ML - Classification binaire",
+    "binary_class_desc": "Application de démonstration qui appelle un service Web [scikit-learn] pour faire une prédiction du diabète sur la base des données patient entrées et montre comment utiliser [entryForm.js] avec un code JavaScript personnalisé.",
+
+    "country_list_title": "Liste des pays (pas de SPA)",
+    "country_list_desc": "Ces pages n'utilisent pas de SPA (Single Page App) et montrent que les contrôles et les plugins s'exécutent automatiquement lorsqu'aucune route n'est utilisée ou que JavaScript est appelé.",
+    
+    "hello_world_desc": "Exemple de la page d'accueil"
+}

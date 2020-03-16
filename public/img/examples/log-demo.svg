@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="200px" viewBox="0 0 400 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>log-demo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="log-demo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#E4EEF1" x="0" y="0" width="400" height="200"></rect>
+        <rect id="Rectangle" stroke="#800000" fill="#FF0000" x="60" y="20" width="100" height="20"></rect>
+        <rect id="Rectangle" stroke="#909000" fill="#FFFF00" x="240" y="20" width="100" height="20"></rect>
+        <rect id="Rectangle" stroke="#447483" fill="#DAE8EC" x="20" y="60" width="360" height="120"></rect>
+        <rect id="Rectangle" stroke="#447483" fill="#5795A8" x="20" y="60" width="360" height="20"></rect>
+        <rect id="Rectangle" stroke="#447483" fill="#FFFFFF" x="20" y="80" width="360" height="20"></rect>
+        <rect id="Rectangle" stroke="#447483" fill="#FFFFFF" x="20" y="120" width="360" height="20"></rect>
+        <rect id="Rectangle" stroke="#447483" fill="#FFFFFF" x="20" y="160" width="360" height="20"></rect>
+        <line x1="290" y1="60" x2="290" y2="180" id="Line" stroke="#447483" stroke-linecap="square"></line>
+        <line x1="110" y1="60" x2="110" y2="180" id="Line" stroke="#447483" stroke-linecap="square"></line>
+        <rect id="Rectangle" stroke="#909000" fill="#FFFF00" x="20" y="120" width="90" height="20"></rect>
+        <rect id="Rectangle" stroke-opacity="0.5" stroke="#447483" fill="#FF0000" x="20" y="160" width="90" height="20"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="30" y="66" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="30" y="86" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="30" y="106" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="30" y="146" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="301" y="66" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="301" y="86" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="301" y="106" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="301" y="126" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="301" y="146" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="301" y="166" width="70" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="121" y="66" width="158" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="121" y="86" width="158" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="121" y="106" width="158" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="121" y="126" width="158" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="121" y="146" width="158" height="8" rx="4"></rect>
+        <rect id="Rectangle" fill="#79ABB9" x="121" y="166" width="158" height="8" rx="4"></rect>
+    </g>
+</svg>

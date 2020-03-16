@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html lang="en">
+    <head>…</head>
+    <body>
+        <div id="view"></div>
+         
+        <url-hash-router view-selector="#view">
+                    
+            <url-hash-route path="/">
+                <template>
+                    <h1>[[i18n Hello World!]]</h1>
+                </template>
+            </url-hash-route>
+
+            <url-hash-route path="/:name">
+                <template>
+                    <h1>[[i18n Hello]] <span url-param="name"></span>!</h1>
+                </template>
+            </url-hash-route>
+
+        </url-hash-router>
+        
+        <script type="module" src="js/web-components/url-hash-router.js"></script>
+        <script nomodule src="js/web-components/old-browser-warning.js"></script>        
+    </body>
+</html>
