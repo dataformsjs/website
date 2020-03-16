@@ -1,21 +1,21 @@
 {
     "places_title": "在线演示",
-    "places_desc": "以下示例应用程序显示了常用的DataFormsJS功能。",
+    "places_desc": "以下示例应用程序展示了常用的DataFormsJS功能。",
 
-    "log_title": "Log Reporting Demo",
-    "log_desc": "Log reporting demo app showing various Framework plugins.",
+    "log_title": "日志报告演示",
+    "log_desc": "日志报告演示程序展示各种框架插件.",
 
-    "entry_form_title": "Entry Form Demo",
-    "entry_form_desc": "Demo entry form app that uses authentication, [entryForm.js], [listEditor.js] and other features. All entry form features are defined through HTML and Templating while authentication uses a custom JavaScript plugin.",
+    "entry_form_title": "报名表演示",
+    "entry_form_desc": "使用身份验证, [entryForm.js], [listEditor.js]和其他功能的软件来演示报名. 所有条目表单功能都是通过HTML和模板定义的，而身份验证使用一个自定义的JavaScript插件.",
 
-    "image_class_title": "AI/ML - Image Classification",
-    "image_class_desc": "Demo app that calls a TensorFlow web service to classify uploaded images. These apps demonstrate how to use [jsonData.js] and <JsonData> with custom JavaScript code.",
+    "image_class_title": "AI/ML - 图片分类",
+    "image_class_desc": "调用TensorFlow web服务对上传图像进行分类.这些应用展示了如何利用[jsonData.js]和使用了自定义JavaScript code的<JsonData>.",
 
-    "binary_class_title": "AI/ML - Binary Classification",
-    "binary_class_desc": "Demo app that calls a [scikit-learn] web service to make a diabetes prediction based on entered patient data and shows how to use [entryForm.js] with custom JavaScript code.",
+    "binary_class_title": "AI/ML - 二进制分类",
+    "binary_class_desc": "调用[scikit learn]web服务根据输入的患者数据进行糖尿病预测，并演示了如何将[entryForm.js]与自定义JavaScript代码一起使用.",
 
-    "country_list_title": "Country List (No SPA)",
-    "country_list_desc": "These pages do not use a SPA (Single Page App) and demonstrate that controls and plugins run automatically when no routes are used or JavaScript is called.",
+    "country_list_title": "国家列表 (No SPA)",
+    "country_list_desc": "这些页面不使用SPA(单页应用程序)，并且演示了当不使用路由或调用JavaScript时，控件和插件会自动运行.",
 
-    "hello_world_desc": "Example from the Home Page"
+    "hello_world_desc": "主页的示例"
 }

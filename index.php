@@ -22,3 +22,7 @@
 //      http://localhost:3000/
 
 header('Location: public/');
+<<<<<<< HEAD
+ini_set('error_reporting', E_ALL);
+=======
+>>>>>>> upstream/master
