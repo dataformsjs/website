@@ -22,6 +22,10 @@
             <h1>[[i18n tmpl_vue_title]]</h1>
         </template>
 
+        <template id="loading-screen">
+            <h3 class="loading">[[i18n Loading...]]</h3>
+        </template>
+
         <script
             type="text/x-template"
             data-engine="vue"
@@ -97,6 +101,7 @@
                 clickToHighlight: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/plugins/clickToHighlight.min.js',
                 vueDirectives: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.0.1/js/extensions/vue-directives.min.js',
             };
+            app.settings.lazyTemplateSelector = '#loading-screen';
         </script>
     </body>
 </html>
