@@ -1,4 +1,7 @@
 
+** If you have questions or need help with local setup please get in touch with an issue GitHub
+   This document provides a quick overview
+
 All JSON and GraphQL Web Services in the Examples and Site Templates are configured to
 use the main server. For local development the following changes can be made.
 
