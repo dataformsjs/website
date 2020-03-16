@@ -15,7 +15,11 @@
 
 // **** MODIFY here to add a new Language ****
 const LANG_COPY_FROM = 'en';
+<<<<<<< HEAD
 const LANG_COPY_TO = 'zh-CN';
+=======
+const LANG_COPY_TO = 'fr';
+>>>>>>> upstream/master
 
 // *** Additional Options ***/
 const COPY_QUICK_REF = true;
