@@ -1,10 +1,10 @@
 {
-    "view_or_download": "View on GitHub or Download",
+    "view_or_download": "GitHub或下载",
     "tmpl_hbs_graphql": "HandlebarsJS with GraphQL",
     "tmpl_vue_graphql": "Vue with GraphQL",
     "tmpl_react_graphql": "React with GraphQL",
     "tmpl_js": "JavaScript/HTML (No Templating)",
-    "view_tmpl": "View Template",
+    "view_tmpl": "视图模板",
     "download": "下载",
     "tmpl_hbs_title": "DataFormsJS HandlebarsJS Template",
     "tmpl_hbs_graphql_title": "DataFormsJS HandlebarsJS with GraphQL Template",
