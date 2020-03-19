@@ -11,7 +11,7 @@
     "image_class_title": "AI/ML - 图片分类",
     "image_class_desc": "调用TensorFlow web服务对上传图像进行分类.这些应用展示了如何利用[jsonData.js]和使用了自定义JavaScript code的<JsonData>.",
 
-    "binary_class_title": "AI/ML - 二进制分类",
+    "binary_class_title": "AI/ML - 二元分类",
     "binary_class_desc": "调用[scikit learn]web服务根据输入的患者数据进行糖尿病预测，并演示了如何将[entryForm.js]与自定义JavaScript代码一起使用.",
 
     "country_list_title": "国家列表 (No SPA)",
