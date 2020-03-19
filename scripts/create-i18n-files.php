@@ -55,6 +55,21 @@ if (!is_dir($dataformsjs_dir)) {
     exit();
 }
 
+// File: [docs\jsx-loader.md]
+// https://github.com/dataformsjs/dataformsjs/blob/master/docs/jsx-loader.md
+$jsx_loader_dir = $root_dir . '/dataformsjs/docs';
+if (LANG_COPY_FROM === 'en') {
+    $jsx_loader_from = $jsx_loader_dir . '/jsx-loader.md';
+} else {
+    $jsx_loader_from = $jsx_loader_dir . '/jsx-loader.' . LANG_COPY_FROM . '.md';
+}
+$jsx_loader_to = $jsx_loader_dir . '/jsx-loader.' . LANG_COPY_TO . '.md';
+if (!is_file($jsx_loader_from)) {
+    echo 'Error - Missing [jsx-loader.md] file to copy from.' . PHP_EOL;
+    echo $jsx_loader_from . PHP_EOL;
+    exit();
+}
+
 // Check for [https://github.com/dataformsjs/playground]
 $playground_dir_from = $root_dir . '/playground/app_data/template/' . LANG_COPY_FROM;
 $playground_dir_to = $root_dir . '/playground/app_data/template/' . LANG_COPY_TO;
@@ -92,7 +107,7 @@ foreach ($all_files as $file) {
     $checked_files[] = $dest;
     if (!is_file($dest)) {
         copy($file, $dest);
-        $copied_files[] = $dest; 
+        $copied_files[] = $dest;
     }
 }
 
@@ -101,6 +116,13 @@ $checked_files[] = $dataformsjs_readme_from;
 if (!is_file($dataformsjs_readme_to)) {
     copy($dataformsjs_readme_from, $dataformsjs_readme_to);
     $copied_files[] = $dataformsjs_readme_to;
+}
+
+// JSX Loader Doc
+$checked_files[] = $jsx_loader_from;
+if (!is_file($jsx_loader_to)) {
+    copy($jsx_loader_from, $jsx_loader_to);
+    $copied_files[] = $jsx_loader_to;
 }
 
 // Optional Quick Ref Code
@@ -133,10 +155,10 @@ foreach ($files as $file) {
     $checked_files[] = $dest;
     if (!is_file($dest)) {
         copy($file, $dest);
-        $copied_files[] = $dest; 
+        $copied_files[] = $dest;
     }
 }
-    
+
 // Show Results
 echo 'Files Checked: ' . count($checked_files) . PHP_EOL;
 echo 'Files Copied:' . count($copied_files) . PHP_EOL;
@@ -144,5 +166,5 @@ if ($copied_files) {
     echo 'New Files:' . PHP_EOL;
     foreach ($copied_files as $file) {
         echo $file . PHP_EOL;
-    }    
+    }
 }
