@@ -66,17 +66,26 @@ print(f'Model Loaded at {end} in {seconds} seconds')
 # When using a Webserver (Gunicorn, waitress, etc) the requests will be
 # multi-threaded so the following line along with [with graph.as_default():]
 # is needed in order for the service to work when using TensorFlow.
-graph = tf.get_default_graph()
+#
+# If running locally and you receive and error set `USE_GRAPH = False`.
+# By default this script is configured for the production web server.
+#
+USE_GRAPH = True
+if USE_GRAPH:
+    graph = tf.get_default_graph()
 
 # Load model for the Binary Classification Demo.
 # Model was created by [Website\scripts\ai-ml-pima-indians-diabetes-build.py]
 # Loading this requires [sklearn] to be installed but it doesn't have
 # to be imported at the top of this file. If you are testing locally
 # then generate the model first or download from CDN to this directory.
-# See info in server setup docs.
+# This will also work if the [static-files] repository is downloaded
+# for full local setup. See additional info in server setup docs.
 cur_dir = os.path.dirname(os.path.abspath(__file__))
 file_name = 'pima-indians-diabetes.sklearn'
 model_path = os.path.join(cur_dir, file_name)
+if not os.path.exists(model_path):
+    model_path = os.path.join(cur_dir, '../../static-files/ai_ml/models', file_name)
 with open(model_path, 'rb') as file:
     model_pima = pickle.load(file)
 
@@ -128,7 +137,10 @@ def resnet50_prediction(model, file_path):
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
-    with graph.as_default():
+    if USE_GRAPH:
+        with graph.as_default():
+            preds = model.predict(x)
+    else:
         preds = model.predict(x)
     predictions = decode_predictions(preds, top=5)[0]
     results = []
