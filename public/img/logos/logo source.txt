@@ -43,3 +43,6 @@ https://github.com/preactjs/preact
 
 rax.png
 https://github.com/alibaba/rax
+
+hyperapp-logo-v2.10d2f4a5.svg
+https://hyperapp.dev/hyperapp-logo-v2.10d2f4a5.svg

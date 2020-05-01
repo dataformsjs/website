@@ -17,5 +17,5 @@
     "country_list_title": "Country List (No SPA)",
     "country_list_desc": "These pages do not use a SPA (Single Page App) and demonstrate that controls and plugins run automatically when no routes are used or JavaScript is called.",
     
-    "hello_world_desc": "Example from the Home Page"
+    "hello_world_desc": "Example from the Home Page with additional view engines."
 }
