@@ -155,6 +155,34 @@ $app->get('/:lang/quick-reference', $app_html);
 $app->get('/:lang/examples', $app_html);
 
 /**
+ * Allow static resources on the server to be downloaded using CORS.
+ * For example this allows sites like CodePen to access HTML Temlates
+ * from the Example Apps.
+ */
+$app->get('/cors/:dir/:file', function($dir, $file) use ($app) {
+    // Get Directory, first check if running from production server (Ubuntu)
+    $root = __DIR__ . '/../html';
+    if (!is_dir($root)) {
+        // Local Dev Path
+        $root = __DIR__ . '/../../dataformsjs/examples';
+    }
+
+    // Security Check to prevent Path Traversal Attacks
+    if (!Security::dirContainsDir($root, $dir)) {
+        return $app->pageNotFound();
+    }
+    $root_dir = $root . '/' . $dir;
+    if (!Security::dirContainsFile($root_dir, $file)) {
+        return $app->pageNotFound();
+    }
+
+    // Return file; passing [$app] to the Response Object
+    // allows for CORS headers to be used.
+    $res = new Response($app);
+    return $res->file($root_dir . '/' . $file);
+});
+
+/**
  * Fallback URL for local development, all other files are
  * pulled directly from the DataFormsJS Framework examples.
  *
