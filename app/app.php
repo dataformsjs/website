@@ -159,9 +159,9 @@ $app->get('/:lang/examples', $app_html);
  * For example this allows sites like CodePen to access HTML Temlates
  * from the Example Apps.
  */
-$app->get('/cors/:dir/:file', function($dir, $file) use ($app) {
+$app->get('/examples/cors/:dir/:file', function($dir, $file) use ($app) {
     // Get Directory, first check if running from production server (Ubuntu)
-    $root = __DIR__ . '/../html';
+    $root = __DIR__ . '/../html/examples';
     if (!is_dir($root)) {
         // Local Dev Path
         $root = __DIR__ . '/../../dataformsjs/examples';
