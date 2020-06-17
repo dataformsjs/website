@@ -27,7 +27,7 @@
     "hello_world_react_desc": "DataFormsJS提供了一个基于web的编译器[jsxLoader.js],可以用作Babel的替代品.它允许在网页内部使用JSX,而不需要构建过程.这个编译器下载起来很小,运行起来非常快.",
     "json_data_example": "Display JSON Data from a Web Service",
     "json_data_hbs_desc": "使用DataFormsJS,您可以仅使用标记(HTML和模板)显示来自web服务的数据.可以开发[data-page]中指定的不同页面对象来处理控制器逻辑和模型状态.内置的页面对象[jsonData]允许根据请求的状态[isLoading,isLoaded,hasError]控制呈现什么HTML.在本例中,插件使用属性[data-filter-selector]和[data-sort]来允许用户与数据表进行交互.页面模板根据匹配路由的[src]属性下载和缓存.",
-    "json_data_vue_desc": "DataFormsJS支持Vue作为渲染引擎,该引擎允许应用程序使用Vue显示数据,而无需编写JavaScript.每个路由都被分配了自己的Vue实例模型,使用内置页面对象[jsonData]时,可以使用[isLoading,isLoaded,hasError]控制显示的内容.在此示例中,在路由上定义了[data-countries]和[data-regions],它们也通过Vue观察程序将它们设置为实例属性[countries]和[regions].这两个属性都代表来自下载的Web服务的数据.",
+    "json_data_vue_desc": "DataFormsJS支持Vue作为渲染引擎,该引擎允许应用程序使用Vue显示数据,而无需编写JavaScript.每个路由都被分配了自己的Vue实例模型,使用内置页面对象[jsonData]时,可以使用[isLoading,isLoaded,hasError]控制显示的内容.在此示例中,在路由上定义了[data-countries]和[data-regions],它们也通过Vue观察程序将它们设置为实例属性[countries]和[regions].这两个属性都代表来自下载的Web服务的数据. DataFormsJS可与Vue 2和Vue 3一起使用。",
     "json_data_react_desc": "DataFormsJS还提供了一组React组件(JSX和JS),可用于提供与标准框架类似的功能.React组件体积很小,并包含显示Web服务数据,错误处理,表排序,过滤器控件,语言翻译,数据格式等功能.",
     "json_data_graphql_desc": "DataFormsJS为GraphQL提供内置支持.本示例使用HandlebarsJS显示来自GraphQL服务的数据.可以将GraphQL分配给页面上的整体路线和各个元素,查询可以直接嵌入页面中,或者在首次使用时自行下载.",
     "json_data_web_desc": "与React组件类似,DataFormsJS提供了一组Web组件,可用于提供与标准框架类似的功能.Web组件体积很小,为使用Web组件的应用程序或网站提供了一个很好的起点.对于SPA而言,<url hash route>组件将下载并缓存基于[src]属性使用的模板.<json data>组件使用[data bind]和其他选项将数据从web服务传递给子元素.",

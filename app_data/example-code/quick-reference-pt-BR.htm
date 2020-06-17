@@ -64,6 +64,9 @@ TITLE: DataFormsJS Framework JavaScript Files
 <!--
     Handlebars Helpers e Vue Directives estão disponíveis
     e podem ser utilizadas sem o Framework.
+
+    Vue Directives work without DataFormsJS for Vue 2
+    but require DataFormsJS for Vue 3 due to Vue API changes.
 -->
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/handlebars-helpers.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@3.1.5/js/extensions/vue-directives.min.js"></script>
@@ -96,7 +99,12 @@ TITLE: DataFormsJS Framework JavaScript Files
 <script src="https://cdn.jsdelivr.net/npm/handlebars@4.5.1/dist/handlebars.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.0/browser/nunjucks.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/underscore@1.9.1/underscore.min.js"></script>
+
+<!-- Vue 2 -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<!-- Vue 3 (Works with DataFormsJS but Vue 3 is currently in Beta) -->
+<script src="https://unpkg.com/vue@next"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -554,13 +562,9 @@ TITLE: Framework utilizando Vue - Mostrar Dados do serviço web JSON
     data-page="jsonData"
     data-url="https://www.dataformsjs.com/data/geonames/countries">
 
-    <!--
-        [v-cloak] é um atributo Vue padrão que permite que os elementos sejam
-        ocultados antes de renderizar a página.
-    -->
-    <h3 v-if="isLoading" v-cloak class="loading">Carregando...</h3>
-    <h3 v-if="hasError" v-cloak class="error">{{ errorMessage }}</h3>
-    <div v-if="isLoaded" v-cloak>
+    <h3 v-if="isLoading" class="loading">Carregando...</h3>
+    <h3 v-if="hasError" class="error">{{ errorMessage }}</h3>
+    <div v-if="isLoaded">
         <ul>
             <li v-for="country in countries">{{ country.country }}</li>
         </ul>
@@ -603,9 +607,9 @@ TITLE: Framework com GraphQL - Mostrar Dados de um serviço web JSON
     data-page="jsonData"
     data-graphql-id="graphql-countries">
 
-    <h3 v-if="isLoading" v-cloak class="loading">Carregando...</h3>
-    <h3 v-if="hasError" v-cloak class="error">{{ errorMessage }}</h3>
-    <div v-if="isLoaded" v-cloak>
+    <h3 v-if="isLoading" class="loading">Carregando...</h3>
+    <h3 v-if="hasError" class="error">{{ errorMessage }}</h3>
+    <div v-if="isLoaded">
         <ul>
             <li v-for="country in countries">{{ country.country }}</li>
         </ul>
