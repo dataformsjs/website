@@ -18,7 +18,7 @@ use FastSitePHP\FileSystem\Security;
 
 $app->get('/unit-testing', function() {
     $html = '<h1>DataFormsJS Unit Testing</h1><ul>';
-    $files = ['handlebars', 'nunjucks', 'underscore', 'mixed-templates', 'vue', 'react', 'preact'];
+    $files = ['handlebars', 'nunjucks', 'underscore', 'mixed-templates', 'vue', 'vue-3', 'react', 'preact'];
     foreach ($files as $file) {
         $html .= '<li><a href="/unit-testing/' . $file . '">' . $file . '</li>';
     }
