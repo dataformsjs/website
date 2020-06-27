@@ -19,7 +19,7 @@ class Geonames
     {
         $sql = $app->getSql('geonames-countries.sql');
         if (isset($_GET['order_by']) && $_GET['order_by'] === 'country') {
-            $sql = str_replace('population DESC, ', '', $sql);
+            $sql = str_replace('population DESC,', '', $sql);
         }
         $records = $app->geonames->query($sql);
         return ['countries' => $records];
