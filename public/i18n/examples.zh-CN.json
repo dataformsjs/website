@@ -17,5 +17,8 @@
     "country_list_title": "国家列表 (No SPA)",
     "country_list_desc": "这些页面不使用SPA(单页应用程序)，并且演示了当不使用路由或调用JavaScript时，控件和插件会自动运行.",
 
-    "hello_world_desc": "主页的示例"
+    "hello_world_desc": "主页的示例",
+
+    "image_gallery_title": "图片库",
+    "image_gallery_desc": "演示页面，显示如何使用DataFormsJS Image Gallery Framework插件以及React和Web组件。"
 }

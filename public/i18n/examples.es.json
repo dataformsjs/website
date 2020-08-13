@@ -17,5 +17,8 @@
     "country_list_title": "Lista de países (sin SPA)",
     "country_list_desc": "Estas páginas no utilizan un SPA (Single Page Application o Aplicación de Página Única) y demuestran que los controles y complementos se ejecutan automáticamente cuando no se utilizan rutas o se llama a JavaScript.",
     
-    "hello_world_desc": "Ejemplo de la Página de Inicio"
+    "hello_world_desc": "Ejemplo de la Página de Inicio",
+
+    "image_gallery_title": "Galería de Imágenes",
+    "image_gallery_desc": "Página de demostración que muestra cómo utilizar el complemento de marco de la galería de imágenes de DataFormsJS y los componentes de React y Web."
 }

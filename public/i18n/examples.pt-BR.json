@@ -17,5 +17,8 @@
     "country_list_title": "Lista de Países (sem SPA)",
     "country_list_desc": "Essas páginas não utilizam um SPA (Aplicativo de Única Página) e demonstram que controles e plugins rodam automaticamente quando não há utilização de rotas ou JavaScript é chamado.",
 
-    "hello_world_desc": "Exemplo da página Inicial"
+    "hello_world_desc": "Exemplo da página Inicial",
+
+    "image_gallery_title": "Galeria de Imagens",
+    "image_gallery_desc": "Página de demonstração que mostra como usar o plug-in DataFormsJS Image Gallery Framework e React e componentes da Web."
 }

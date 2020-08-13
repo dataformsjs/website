@@ -20,5 +20,5 @@
     "hello_world_desc": "Example from the Home Page with additional view engines.",
 
     "image_gallery_title": "Image Gallery",
-    "image_gallery_desc": "Image Gallery Demo"
+    "image_gallery_desc": "Demo page that shows how to use the DataFormsJS Image Gallery Framework Plugin and React and Web Components."
 }

@@ -17,5 +17,8 @@
     "country_list_title": "国リスト（SPAなし）",
     "country_list_desc": "これらのページはSPA（シングルページアプリ）を使用せず、ルートが使用されていないかJavaScriptが呼び出されたときにコントロールとプラグインが自動的に実行されることを示しています。",
     
-    "hello_world_desc": "ホームページからの例"
+    "hello_world_desc": "ホームページからの例",
+
+    "image_gallery_title": "イメージギャラリー",
+    "image_gallery_desc": "DataFormsJSイメージギャラリーフレームワークプラグインとReactコンポーネントおよびWebコンポーネントの使用方法を示すデモページ。"
 }
