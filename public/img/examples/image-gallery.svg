@@ -44,17 +44,18 @@
             <stop stop-color="#1CBFF4" offset="0%"></stop>
             <stop stop-color="#0C8BE6" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="89.0434867%" y1="75.5120004%" x2="36.1496453%" y2="30.0715418%" id="linearGradient-14">
-            <stop stop-color="#FDEAA0" offset="0%"></stop>
-            <stop stop-color="#FBD067" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="90.161712%" y1="72.5083984%" x2="35.0137053%" y2="37.7766885%" id="linearGradient-15">
-            <stop stop-color="#FAE383" offset="0%"></stop>
-            <stop stop-color="#F4C34C" offset="100%"></stop>
-        </linearGradient>
+        <rect id="path-14" x="86" y="40" width="225" height="120"></rect>
         <linearGradient x1="50%" y1="65.675643%" x2="17.1312036%" y2="16.7983142%" id="linearGradient-16">
             <stop stop-color="#FBDB35" offset="0%"></stop>
             <stop stop-color="#F5B518" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="-30.3447417%" x2="50%" y2="100%" id="linearGradient-17">
+            <stop stop-color="#6F1E1E" offset="0%"></stop>
+            <stop stop-color="#DA3434" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="-47.526667%" x2="50%" y2="69.241229%" id="linearGradient-18">
+            <stop stop-color="#6F1E1E" offset="0%"></stop>
+            <stop stop-color="#DA3434" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="image-gallery" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -84,9 +85,12 @@
             <use fill="#0C8BE6" fill-rule="evenodd" xlink:href="#path-11"></use>
         </g>
         <rect id="Rectangle" fill-opacity="0.8" fill="#FFFFFF" x="0" y="0" width="400" height="200"></rect>
-        <rect id="Rectangle" stroke="#075B97" fill="url(#linearGradient-13)" x="86" y="40" width="225" height="120"></rect>
-        <circle id="Oval" stroke="#6B551D" fill="url(#linearGradient-14)" cx="222" cy="100" r="45"></circle>
-        <circle id="Oval" stroke="#6B551D" fill="url(#linearGradient-15)" cx="200" cy="100" r="45"></circle>
-        <circle id="Oval" stroke="#6B551D" fill="url(#linearGradient-16)" cx="177" cy="100" r="45"></circle>
+        <mask id="mask-15" fill="white">
+            <use xlink:href="#path-14"></use>
+        </mask>
+        <use id="Rectangle" stroke="#075B97" fill="url(#linearGradient-13)" xlink:href="#path-14"></use>
+        <circle id="Oval" stroke="#BC8600" stroke-width="2" fill="url(#linearGradient-16)" mask="url(#mask-15)" cx="174.5" cy="76.5" r="23.5"></circle>
+        <path d="M250.85906,85 C274.692394,85 301.072707,116.666667 330,180 L131,180 C187.072707,116.666667 227.025727,85 250.85906,85 Z" id="Triangle" stroke="#7E1A1A" stroke-width="2" fill="url(#linearGradient-17)" mask="url(#mask-15)"></path>
+        <path d="M138,109 C161.80712,109 181.473786,132.666667 197,180 L48,180 C84.1928804,132.666667 114.19288,109 138,109 Z" id="Triangle" stroke="#7E1A1A" stroke-width="2" fill="url(#linearGradient-18)" mask="url(#mask-15)"></path>
     </g>
 </svg>
