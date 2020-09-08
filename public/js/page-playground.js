@@ -16,7 +16,7 @@
  * as PHP i18n keys were swapped out with Handlebars using Find/Replace.
  *
  * @link     https://www.dataformsjs.com
- * @author   Conrad Sollitt (http://www.conradsollitt.com)
+ * @author   Conrad Sollitt (https://conradsollitt.com)
  * @license  MIT
  */
 
