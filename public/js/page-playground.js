@@ -177,6 +177,10 @@
                     var msg = errEl.getAttribute('data-saved-site');
                     if (confirm(msg)) {
                         removeSavedSitekey();
+                        // NOTE - `reload()` is now deprecated so some editors such as VS Code
+                        // will show a line through it, however it is still included here because
+                        // it improves the behavior for older Browsers. For example when using
+                        // `reload(true)` IE 11 will send a [Cache-Control: no-cache] Request Header.
                         window.location.reload(true);
                     }
                 }, 100);
@@ -268,7 +272,7 @@
         var container = document.querySelector('.error-message');
         if (!container) {
             return; // User clicked to a new page while function was still running
-        }        
+        }
         var label = container.querySelector('p .text');
         var message = error;
         if (message.toString().toLowerCase().indexOf('error') === -1) {
@@ -679,7 +683,7 @@
         }
 
         if (state.cm !== null) {
-            // Manually remove previous editors from the screen if they still exist. 
+            // Manually remove previous editors from the screen if they still exist.
             // This can happen if clicking on and off the pageground page very fast
             // while the service to download images or other resources is slow.
             var editors = document.querySelectorAll('.CodeMirror.cm-s-default');
