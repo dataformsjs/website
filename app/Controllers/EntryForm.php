@@ -108,11 +108,12 @@ class EntryForm
     {
         $categories = self::CATEGORIES;
         $cat_count = count($categories) - 1;
-        $sql = 'INSERT INTO records (api_key, label, num_value, category, active, comment) VALUES (?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO records (api_key, label, num_value, category, active, date_value, comment) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $date_value = date('Y-m-d', time());
         $app->entryFormDb->executeMany($sql, [
-            [$api_key, LoremIpsum::text(15), rand(0, 1000), $categories[rand(0, $cat_count)], 1, LoremIpsum::text()],
-            [$api_key, LoremIpsum::text(15), rand(0, 1000), $categories[rand(0, $cat_count)], 1, LoremIpsum::text()],
-            [$api_key, LoremIpsum::text(15), rand(0, 1000), $categories[rand(0, $cat_count)], 1, LoremIpsum::text()],
+            [$api_key, LoremIpsum::text(15), rand(0, 1000), $categories[rand(0, $cat_count)], 1, $date_value, LoremIpsum::text()],
+            [$api_key, LoremIpsum::text(15), rand(0, 1000), $categories[rand(0, $cat_count)], 1, $date_value, LoremIpsum::text()],
+            [$api_key, LoremIpsum::text(15), rand(0, 1000), $categories[rand(0, $cat_count)], 1, $date_value, LoremIpsum::text()],
         ]);
     }
 
@@ -262,7 +263,7 @@ class EntryForm
                 foreach ($exiting_records as $exiting) {
                     if ((int)$exiting['id'] === (int)$record['id']) {
                         $was_found = true;
-                        $fields = ['label', 'num_value', 'comment', 'category', 'active'];
+                        $fields = ['label', 'num_value', 'comment', 'category', 'active', 'date_value'];
                         foreach ($fields as $field) {
                             if ($exiting[$field] !== $record[$field]) {
                                 $has_changes = true;
@@ -397,9 +398,9 @@ class EntryForm
         // Build Insert or Update Query
         $insert = false;
         if (isset($record['id'])) {
-            $sql = 'UPDATE records SET label = :label, num_value = :num_value, category = :category, active = :active, comment = :comment WHERE id = :id AND api_key = :api_key';
+            $sql = 'UPDATE records SET label = :label, num_value = :num_value, category = :category, active = :active, date_value = :date_value, comment = :comment WHERE id = :id AND api_key = :api_key';
         } else {
-            $sql = 'INSERT INTO records (api_key, label, num_value, category, active, comment) VALUES (:api_key, :label, :num_value, :category, :active, :comment)';
+            $sql = 'INSERT INTO records (api_key, label, num_value, category, active, date_value, comment) VALUES (:api_key, :label, :num_value, :category, :active, :date_value, :comment)';
             $insert = true;
             // Remove key to prevent errors with extra keys for parameterized query
             if (array_key_exists('id', $record)) {

@@ -60,7 +60,7 @@ class Databases
         // Connect and create table and index the first time the db is used
         $dsn = 'sqlite:' . $path;
         $db = new Database($dsn);
-        $sql = 'CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, api_key TEXT, label TEXT, num_value NUMERIC, category TEXT, active INTEGER, comment TEXT)';
+        $sql = 'CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, api_key TEXT, label TEXT, num_value NUMERIC, category TEXT, active INTEGER, date_value TEXT, comment TEXT)';
         $db->execute($sql);
         $sql = 'CREATE INDEX IF NOT EXISTS records_api_key ON records (api_key)';
         $db->execute($sql);
