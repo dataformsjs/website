@@ -11,9 +11,9 @@ use FastSitePHP\Web\Request;
  * Controller class that handles the Entry Form Demo page.
  * The Entry Form Demo allows for each user to work with their own
  * records based on a randomly generated API key.
- * 
+ *
  * Prior to using this class the API key will be assigned to the app object.
- * 
+ *
  * In general public functions in this class return PHP Arrays which
  * are then returned as JSON objects.
  */
@@ -26,7 +26,7 @@ class EntryForm
 
     /**
      * Categories are hard-coded to keep the demo simple.
-     * In common relational database design and code these 
+     * In common relational database design and code these
      * values would exist as records in a seperate table.
      */
     private const CATEGORIES = ['Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'];
@@ -45,11 +45,11 @@ class EntryForm
         $this->addExampleRecords($app, $api_key);
         return ['key' => $api_key];
     }
-    
+
     /**
      * Return all categories and not other records. This is used
      * when for adding new records.
-     * 
+     *
      * @return array
      */
     public function getCategories()
@@ -129,6 +129,7 @@ class EntryForm
         $sql = 'SELECT * FROM records WHERE api_key = ? ORDER BY id LIMIT ' . (string)self::MAX_RECORDS;
         $records = $app->entryFormDb->query($sql, [$api_key]);
         return [
+            'most_recent_id' => max(array_merge([0], array_column($records, 'id'))),
             'records' => $records,
             'categories' => self::CATEGORIES,
         ];
@@ -172,7 +173,7 @@ class EntryForm
             $error = implode(' ', $errors);
             return WebServiceResult::error($error);
         }
-        
+
         // Limit number of records per user if adding a new record
         $api_key = $app->locals['api_key'];
         $is_new_record = !isset($record['id']);
@@ -213,7 +214,17 @@ class EntryForm
     {
         // Read API Key and Records from Request
         $req = new Request();
-        $records = $req->content()['records'];
+        $json_post = $req->content();
+        $records = $json_post['records'];
+        $most_recent_id = null;
+        if (isset($json_post['most_recent_id'])) {
+            // If a user has two or more browser tabs open and adds records
+            // in one while still on the [Edit All] page then submits the most
+            // recent id prevents new records from being deleted while the page
+            // was open. This was added later after the initial release so it
+            // may not always be included with the post.
+            $most_recent_id = (int)$json_post['most_recent_id'];
+        }
 
         // Limit number of records per user
         if (count($records) >= self::MAX_RECORDS) {
@@ -312,6 +323,10 @@ class EntryForm
             foreach ($record_ids as $id) {
                 $params[] = $id;
             }
+        }
+        if ($most_recent_id !== null) {
+            $sql .= ' AND id <= ?';
+            $params[] = $most_recent_id;
         }
         $rows_deleted = $app->entryFormDb->execute($sql, $params);
 
