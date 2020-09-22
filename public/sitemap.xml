@@ -23,10 +23,29 @@
         <loc>https://www.dataformsjs.com/examples/image-classification-react.htm#/en/info</loc>
     </url>
     <url>
-        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/en/info</loc>
+        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/en/info</loc>        
     </url>
     <url>
         <loc>https://www.dataformsjs.com/examples/hello-world/en/web.htm</loc>
+    </url>
+
+    <!--
+        English Only Pages - these are not included on each language section
+    -->
+    <url>
+        <loc>https://www.dataformsjs.com/examples/entry-form-demo-hbs.htm</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-gallery-vue.htm</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-gallery-react.htm</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-gallery-hbs.htm</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-gallery-web.htm</loc>
     </url>
 
     <!-- Português (do Brasil) -->
@@ -56,5 +75,150 @@
     </url>
     <url>
         <loc>https://www.dataformsjs.com/examples/hello-world/pt-BR/web.htm</loc>
+    </url>
+
+    <!-- Español / Spanish -->
+    <url>
+        <loc>https://www.dataformsjs.com/es/</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/es/playground</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/es/getting-started</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/es/quick-reference</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/es/examples</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/places-demo-hbs.htm#/es/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-classification-react.htm#/es/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/es/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/hello-world/es/web.htm</loc>
+    </url>
+
+    <!-- Français / French -->
+    <url>
+        <loc>https://www.dataformsjs.com/fr/</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/fr/playground</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/fr/getting-started</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/fr/quick-reference</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/fr/examples</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/places-demo-hbs.htm#/fr/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-classification-react.htm#/fr/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/fr/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/hello-world/fr/web.htm</loc>
+    </url>
+
+    <!-- Arabic -->
+    <url>
+        <loc>https://www.dataformsjs.com/ar/</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ar/playground</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ar/getting-started</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ar/quick-reference</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ar/examples</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/places-demo-hbs.htm#/ar/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-classification-react.htm#/ar/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/ar/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/hello-world/ar/web.htm</loc>
+    </url>
+
+    <!-- Chinese Simplified -->
+    <url>
+        <loc>https://www.dataformsjs.com/zh-CN/</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/zh-CN/playground</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/zh-CN/getting-started</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/zh-CN/quick-reference</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/zh-CN/examples</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/places-demo-hbs.htm#/zh-CN/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-classification-react.htm#/zh-CN/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/zh-CN/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/hello-world/zh-CN/web.htm</loc>
+    </url>
+
+    <!-- Japanese -->
+    <url>
+        <loc>https://www.dataformsjs.com/ja/</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ja/playground</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ja/getting-started</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ja/quick-reference</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/ja/examples</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/places-demo-hbs.htm#/ja/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/image-classification-react.htm#/ja/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/binary-classification-vue.htm#/ja/info</loc>
+    </url>
+    <url>
+        <loc>https://www.dataformsjs.com/examples/hello-world/ja/web.htm</loc>
     </url>
 </urlset>
