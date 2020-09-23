@@ -16,7 +16,7 @@
         </div>
 
         {{#each code}}
-            <div class="example">
+            <div class="example" data-filter-search-text="{{title}}">
                 <h2>{{title}}</h2>
                 <pre><code class="language-{{lang}}">{{code}}</code>
             </div>
