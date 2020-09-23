@@ -27,7 +27,6 @@
     "dev_specific": "Specific Dev Version:",
     "prod_latest": "Prod Latest:",
     "prod_specific": "Specific Prod Version:",
-    "vue3_beta": "Vue 3 (Currently in Beta)",
     "comment_old_browsers": "Older browsers (IE, Older Mobile Devices, etc) will see a warning",
     "comment_nav_links": "Update Nav Links when page is loaded or changed",
     "jsxloader_line_1": "[jsxLoader.js] will quickly compile and convert JSX to JS for modern browsers,",

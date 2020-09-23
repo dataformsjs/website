@@ -27,7 +27,6 @@
     "dev_specific": "نسخة ديف محددة:",
     "prod_latest": "أحدث الإنتاج:",
     "prod_specific": "Specific Prod Version:",
-    "vue3_beta": "Vue 3 (حاليًا في الإصدار التجريبي)",
     "comment_old_browsers": "سوف ترى المتصفحات الأقدم (IE ، أجهزة المحمول الأقدم ، إلخ) تحذيرًا",
     "comment_nav_links": "قم بتحديث ارتباطات التنقل عندما يتم تحميل الصفحة أو تغييرها",
     "jsxloader_line_1": "[jsxLoader.js] will quickly compile and convert JSX to JS for modern browsers,",
