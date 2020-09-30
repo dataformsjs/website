@@ -147,6 +147,12 @@ TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.6.1/js/react/es5/DataFormsJS.min.js"></script>
 
 <!--
+    To use ES5 build of <ImageGallery> the component script must be included seperated
+    because <ImageGallery> is not included in [DataFormsJS.min.js].
+-->
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.6.1/js/react/es5/ImageGallery.min.js"></script>
+
+<!--
     Plugins padrão para Framework são suportados com o React quado utilizando uma API do [jsPlugins.js]
 -->
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.6.1/js/react/jsPlugins.min.js"></script>
@@ -1021,8 +1027,8 @@ LANG: JavaScript
 
         // Evento chamado depois que o HTML é renderizado e antes que a função
         // [controller] da página [onRendered()] rode.
-        onRendered: function(element) {
-            element = (element === undefined ? document : element);
+        onRendered: function(rootElement) {
+            rootElement = (rootElement === undefined ? document : rootElement);
         },
 
         // Evento chamado somente uma vez por mudança de hash or por atualização
