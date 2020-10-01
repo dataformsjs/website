@@ -1136,6 +1136,114 @@ LANG: JavaScript
 <!-- EXAMPLE_CODE_END -->
 
 
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: JavaScript Template - Create a custom JavaScript Web Component (Custom HTML Element).
+LANG: JavaScript
+-->
+<script>
+/**
+ * This Template creates a Web Components (Custom HTML Element). It can be used
+ * as a starting point when creating Web Components. Web Components are built
+ * using standard JavaScript and work with Modern Browsers.
+ *
+ * Example:
+ *     <hello-world></hello-world>
+ *     <hello-world name="Mars" color="blue"></hello-world>
+ */
+
+/* Validates with both [jshint] and [eslint] */
+/* jshint esversion:8 */
+/* eslint-env browser, es6 */
+
+/**
+ * Import a Tagged Template Literal function
+ * to safely escape values for HTML.
+ */
+ import { render } from 'https://cdn.jsdelivr.net/npm/dataformsjs@4.6.2/js/web-components/utils.min.js';
+
+/**
+ * Shadow DOM for Custom Elements
+ */
+const shadowTmpl = document.createElement('template');
+shadowTmpl.innerHTML = `
+    <style>:host { display:block; }</style>
+    <slot></slot>
+`;
+
+/**
+ * Define class for the <hello-world> element
+ */
+class HelloWorld extends HTMLElement {
+    constructor() {
+        super();
+        const shadowRoot = this.attachShadow({mode: 'open'});
+        shadowRoot.appendChild(shadowTmpl.content.cloneNode(true));
+        this.state = {
+            name: null,
+            color: 'red',
+        };
+        this.render();
+    }
+    
+    // [observedAttributes] and [attributeChangedCallback] are used
+    // to handle HTML attribute changes.
+    static get observedAttributes() {
+        return ['name', 'color'];
+    }
+
+    attributeChangedCallback(attrName, oldValue, newValue) {
+        switch (attrName) {
+            case 'color':
+            case 'name':
+                this.state[attrName] = newValue;
+                this.render();
+                break;
+        }
+    }
+    
+    // Define [name] and [color] properties for JavaScript
+    // Example usage:
+    //   document.querySelector('hello-world').name = 'John Doe';
+    //   document.querySelector('hello-world').color = '#ff0';
+    get name() {
+        return this.state.name;
+    }
+
+    set name(newValue) {
+        this.state.name = newValue;
+        this.render();
+    }
+    
+    get color() {
+        return this.state.color;
+    }
+
+    set color(newValue) {
+        this.state.color = newValue;
+        this.render();
+    }
+    
+    // Update the element contents
+    render() {
+        const name = (this.state.name ? this.state.name : 'World');
+        const html = render`
+			<div style="color:${this.state.color};">
+				Hello ${name}!
+			<div>`;
+        this.innerHTML = html;
+    }
+}
+
+/**
+ * Add <hello-world> element to the page
+ */
+window.customElements.define('hello-world', HelloWorld);
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
 <!-- NOTE - Use this as a template for new routes, spaces need to be added between '<!-- EXAMPLE_', etc -->
 <!-- ********************************************************************** -->
 <!--EXAMPLE_CODE_START
