@@ -112,6 +112,21 @@ $app->get('/examples/hello-world/en-js.htm', function() use ($app) {
 });
 
 /**
+ * If user comes from [~/examples/] or [~/examples] then
+ * redirect to the main SPA examples page in their default language.
+ * 
+ * Typically this would happen if they view an example then
+ * manually update the URL in the browser. If this route is not
+ * included a 404 page would be returned.
+ */
+$app->get('/examples', function() use ($app) {
+    $res = new Response();
+    return $res
+        ->vary('Accept-Language')
+        ->redirect('/' . I18n::getUserDefaultLang() . '/examples');
+})->filter($use_i18n);
+
+/**
  * Test for the 500 error page
  */
 $app->get('/500', function() {
