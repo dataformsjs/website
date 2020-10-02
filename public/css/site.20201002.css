@@ -302,7 +302,7 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; direction:lt
 @media (min-width: 900px) {
     .home.page .works-with { flex-direction: row; }
     .home.page .works-with .tech-list { flex-wrap: initial; }
-    .home.page .works-with .tech { padding:16px 32px; border: none; margin: 0; }
+    .home.page .works-with .tech { padding:16px 32px; border: none; margin: 0; width:auto; }
     .home.page .works-with > span { padding:0 20px; font-size:1em; }
 }
 
