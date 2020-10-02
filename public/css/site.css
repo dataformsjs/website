@@ -284,10 +284,25 @@ code[class*="language-"], pre[class*="language-"] { font-size:12px; direction:lt
 .home.page .works-with a { text-decoration:none; }
 .home.page .works-with a:hover { text-decoration:underline; }
 .home.page .works-with > span { color:var(--lighter-color-1); font-weight:bold; padding: 20px; font-size:1.2em; }
-
-@media (min-width:700px) {
+@media (min-width: 550px) {
+    .home.page .works-with .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .home.page .works-with .tech {
+        width: calc(50% - 80px);
+        border: 1px solid currentColor;
+        margin: 10px;
+    }
+}
+@media (min-width: 768px) {
+    .home.page .works-with .tech { width: calc(33% - 80px); }
+}
+@media (min-width: 900px) {
     .home.page .works-with { flex-direction: row; }
-    .home.page .works-with .tech { padding:16px 32px; }
+    .home.page .works-with .tech-list { flex-wrap: initial; }
+    .home.page .works-with .tech { padding:16px 32px; border: none; margin: 0; }
     .home.page .works-with > span { padding:0 20px; font-size:1em; }
 }
 
