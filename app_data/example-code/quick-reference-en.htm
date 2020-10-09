@@ -1158,10 +1158,35 @@ LANG: JavaScript
 /* eslint-env browser, es6 */
 
 /**
- * Import a Tagged Template Literal function
- * to safely escape values for HTML.
+ * Import a Tagged Template Literal function to safely escape values for HTML.
+ * 
+ * The function can be imported directly from CDN when using modern browsers,
+ * however to use zero dependencies for this template the import is commented
+ * out and the needed functions are included here.
  */
- import { render } from 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/utils.min.js';
+
+// import { render } from 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/utils.min.js';
+
+function escapeHtml(text) {
+    if (text === undefined || text === null || typeof text === 'number') {
+        return text;
+    }
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function render(strings, ...values) {
+    const html = [strings[0]];
+    for (let n = 0, m = values.length; n < m; n++) {
+        html.push(escapeHtml(values[n]));
+        html.push(strings[n+1]);
+    }
+    return html.join('');
+}
 
 /**
  * Shadow DOM for Custom Elements
