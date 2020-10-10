@@ -2,8 +2,9 @@
 
     <section class="content mobile-message">
         <p
-            data-mobile-screen="{{i18n 'mobile_layout'}}"
-            data-narrow-screen="{{i18n 'narrow_layout'}}">
+            data-mobile-screen="mobile_layout"
+            data-narrow-screen="narrow_layout"
+            data-i18n-attr="data-mobile-screen, data-narrow-screen">
         </p>
     </section>
 
@@ -16,21 +17,22 @@
 
     <section class="content editor-container no-site">
         <div class="error-messages" style="display:none;"
-            data-saved-site="{{i18n 'error_saved_site'}}"
-            data-server-down="{{i18n 'error_server_down'}}">
+            data-saved-site="error_saved_site"
+            data-server-down="error_server_down"
+            data-i18n-attr="data-saved-site, data-server-down">
         </div>
         <div class="create-site-overlay"></div>
         <div class="create-site-screen">
             <section class="content">
-                <h1>{{i18n 'h1'}}</h1>
+                <h1 data-i18n="h1"></h1>
                 <ul class="bullet-list">
-                    <li>{{i18n 'info_1'}}</li>
-                    <li>{{i18n 'info_2'}}</li>
-                    <li>{{i18n 'info_3'}}</li>
-                    <li>{{i18n 'info_4'}}</li>
+                    <li data-i18n="info_1"></li>
+                    <li data-i18n="info_2"></li>
+                    <li data-i18n="info_3"></li>
+                    <li data-i18n="info_4"></li>
                 </ul>
                 <span class="btn create-site">
-                    <span class="text">{{i18n 'btn_create'}}</span>
+                    <span class="text" data-i18n="btn_create"></span>
                     <span class="icon-container">
                         <span class="arrow"></span>
                     </span>
@@ -39,49 +41,50 @@
         </div>
         <div class="create-another-site-screen" style="display:none;">
             <section class="content">
-                <h1>{{i18n 'thank_you'}}</h1>
-                <p>{{i18n 'please_share'}}</p>
-                <p class="site-expired">{{i18n 'site_expired'}}</p>
+                <h1 data-i18n="thank_you"></h1>
+                <p data-i18n="please_share"></p>
+                <p class="site-expired" data-i18n="site_expired"></p>
                 <span class="btn create-site">
-                    <span class="text">{{i18n 'btn_create_another'}}</span>
+                    <span class="text" data-i18n="btn_create_another"></span>
                     <span class="icon-container">
                         <span class="arrow"></span>
                     </span>
                 </span>
-                <p class="try-other-site"><a href="https://www.fastsitephp.com/en/playground" target="_blank">{{i18n 'try_other_site'}}</a></p>
+                <p class="try-other-site"><a href="https://www.fastsitephp.com/en/playground" target="_blank" data-i18n="try_other_site"></a></p>
             </section>
         </div>
         <div class="files">
             <div class="controls" style="display:none;">
                 <span class="btn add-file">
                     <span class="icon"></span>
-                    <span class="text">{{i18n 'btn_add_file'}}</span>
+                    <span class="text" data-i18n="btn_add_file"></span>
                 </span>
-                <span class="msg file-limit" style="display:none;">{{i18n 'file_limit_reached'}}</span>
+                <span class="msg file-limit" style="display:none;" data-i18n="file_limit_reached"></span>
             </div>
             <ul></ul>
             <div class="controls countdown">
                 <span id="countdown"
-                    data-minutes="{{i18n 'minutes_remaining'}}"
-                    data-seconds="{{i18n 'seconds_remaining'}}"
-                    data-one-second="{{i18n 'one_second_remaining'}}">
+                    data-minutes="minutes_remaining"
+                    data-seconds="seconds_remaining"
+                    data-one-second="one_second_remaining"
+                    data-i18n-attr="data-minutes, data-seconds, data-one-second">
                 </span>
             </div>
             <div class="controls delete" style="display:none;">
                 <span class="btn delete-file" style="display:none;">
                     <span class="icon"></span>
-                    <span class="text">{{i18n 'btn_delete_file'}}</span>
+                    <span class="text" data-i18n="btn_delete_file"></span>
                 </span>
-                <span class="btn delete-site" data-prompt="{{i18n 'confirm_site_delete'}}">
+                <span class="btn delete-site" data-prompt="confirm_site_delete" data-i18n-attr="data-prompt">
                     <span class="icon"></span>
-                    <span class="text">{{i18n 'btn_delete_site'}}</span>
+                    <span class="text" data-i18n="btn_delete_site"></span>
                 </span>
             </div>
         </div>
         <div class="editor">
             <div class="controls" style="display:none;">
                 <span class="file-info">
-                    <input id="file-name" type="text" size="30" value="" placeholder="{{i18n 'file_name'}}">
+                    <input id="file-name" type="text" size="30" value="" placeholder="file_name" data-i18n-attr="placeholder">
                     <select id="file-type" style="display:none">
                         <option value="htm" data-mode="text/x-handlebars-template" selected>HTML</option>
                         <option value="js" data-mode="text/javascript">JavaScript</option>
@@ -93,34 +96,38 @@
                 </span>
                 <span>
                     <span class="btn save-file" style="display:none;"
-                        title="{{i18n 'save_file_tooltip'}}"
-                        data-save="{{i18n 'btn_save_file'}}"
-                        data-save-as="{{i18n 'btn_save_as_file'}}">
+                        title="save_file_tooltip"
+                        data-save="btn_save_file"
+                        data-save-as="btn_save_as_file"
+                        data-i18n-attr="title, data-save, data-save-as">
                         <span class="icon"></span>
                         <span class="text"></span>
                     </span>
                     <span class="btn rename-file" style="display:none;"
-                        data-rename="{{i18n 'btn_rename_file'}}"
-                        data-rename-and-save="{{i18n 'btn_rename_and_save_file'}}">
+                        data-rename="btn_rename_file"
+                        data-rename-and-save="btn_rename_and_save_file"
+                        data-i18n-attr="data-rename, data-rename-and-save">
                         <span class="icon"></span>
                         <span class="text"></span>
                     </span>
                     <span class="msg file-event"
                         style="display:none;"
-                        data-saved="{{i18n 'file_saved'}}"
-                        data-deleted="{{i18n 'file_deleted'}}">
+                        data-saved="file_saved"
+                        data-deleted="file_deleted"
+                        data-i18n-attr="data-saved, data-deleted">
                     </span>
                     <span class="msg file-already-exists" style="display:none;"
-                        data-already-exists="{{i18n 'file_already_exists'}}"
-                        data-name-not-allowed="{{i18n 'name_not_allowed'}}">
+                        data-already-exists="file_already_exists"
+                        data-name-not-allowed="name_not_allowed"
+                        data-i18n-attr="data-already-exists, data-name-not-allowed">
                     </span>
                     <a class="btn view-file" href="#" target="_blank" style="display:none;">
                         <span class="icon"></span>
-                        <span class="text">{{i18n 'btn_view_file'}}</span>
+                        <span class="text" data-i18n="btn_view_file"></span>
                     </a>
                     <a class="btn view-site" href="#" target="_blank">
                         <span class="icon"></span>
-                        <span class="text">{{i18n 'btn_view_site'}}</span>
+                        <span class="text" data-i18n="btn_view_site"></span>
                     </a>
                 </span>
             </div>

@@ -1,25 +1,27 @@
-{{#if isLoading}}<div data-template-id="loading-screen"></div>{{/if}}
-{{#if hasError}}<div data-template-id="error-screen"></div>{{/if}}
-{{#if isLoaded}}
+<div class="is-loading" data-template-id="loading-screen"></div>
+<div class="has-error" data-template-id="error-screen"></div>
+<div class="is-loaded">
     <section class="page quick-ref">
-        <h1>{{i18n 'Quick Reference'}}</h1>
+        <h1 data-i18n="Quick Reference"></h1>
 
         <div class="filter">
             <input
                 data-filter-selector=".example"
                 data-filter-results-text-selector=".example-count"
-                data-filter-results-text-all="{{i18n 'quick_ref_all'}}"
-                data-filter-results-text-filtered="{{i18n 'quick_ref_filtered'}}"
-                placeholder="{{i18n 'quick_ref_placeholder'}}">
+                data-filter-results-text-all="quick_ref_all"
+                data-filter-results-text-filtered="quick_ref_filtered"
+                placeholder="quick_ref_placeholder"
+                data-i18n-attr="data-filter-results-text-all, data-filter-results-text-filtered, placeholder">
             
             <div class="example-count"></div>
         </div>
 
-        {{#each code}}
-            <div class="example" data-filter-search-text="{{title}}">
-                <h2>{{title}}</h2>
-                <pre><code class="language-{{lang}}">{{code}}</code>
+        <data-list data-bind="code" class="flex-col" data-template-selector="#quick-ref-item"></data-list>
+        <script type="text/x-template" id="quick-ref-item">
+            <div class="example" data-filter-search-text="${title}">
+                <h2>${title}</h2>
+                <pre><code class="language-${lang}">${code}</code>
             </div>
-        {{/each}}
+        </script>
     </section>
-{{/if}}
+</div>

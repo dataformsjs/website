@@ -20,7 +20,7 @@
         <link rel="icon" sizes="196x196" href="/img/favicons/DataFormsJS-196x196.png">
         <link type="text/plain" rel="author" href="/humans.txt" />
         <link href="/js/prism-1.17.1/prism.css" rel="stylesheet" />
-        <link href="/css/site.20201002.css" rel="stylesheet" />
+        <link href="/css/site.20201009.css" rel="stylesheet" />
     </head>
     <body>
         <header>
@@ -128,17 +128,19 @@
             <p data-i18n="footer_license"></p>
         </footer>
 
+        <!--
+            Define HTML Controls (Shared Templates)
+        -->
         <template id="loading-screen">
             <div class="loading">Loading...</div>
         </template>
 
-        <script type="text/x-template" data-engine="handlebars" id="error-screen">
-            <div class="error">{{errorMessage}}</div>
-        </script>
+        <template id="error-screen">
+            <div class="error" data-bind="errorMessage" data-show="typeof errorMessage === 'string'"></div>
+        </template>
 
         <!--
-            [home-page.htm] and [getting-started.htm] use <template> rather
-            than Handlebars to prevent nested code templates from being rendered.
+            Define Routes
         -->
         <template
             data-route="/:lang/"
@@ -149,15 +151,13 @@
             data-i18n-file="home-page">
         </template>
 
-        <script
-            type="text/x-template"
-            data-engine="handlebars"
+        <template
             data-route="/:lang/playground"
             data-src="/html/playground.htm"
             data-page="playground"
             data-lazy-load="codemirrorCss, codemirrorJs, jshint, playgroundCss, playgroundPage"
             data-i18n-file="playground">
-        </script>
+        </template>
 
         <template
             data-route="/:lang/getting-started"
@@ -167,24 +167,29 @@
             data-i18n-file="getting-started">
         </template>
 
-        <script type="text/x-template"
-            data-engine="handlebars"
+        <template
             data-page="jsonData"
             data-route="/:lang/quick-reference"
             data-url="/docs/:lang/quick-reference"
             data-load-only-once="true"
             data-src="/html/quick-ref.htm"
-            data-lazy-load="jsonData, filter"
+            data-lazy-load="jsonData, filter, data_list"
             data-i18n-file="quick-ref">
-        </script>
+        </template>
 
-        <script
-            type="text/x-template"
-            data-engine="handlebars"
+        <template
             data-route="/:lang/examples"
             data-src="/html/examples.htm"
             data-i18n-file="examples">
-        </script>
+        </template>
+
+        <!--
+            *** IMPORANT ***
+            This file and related files are currently out of sync with the main site (2020-10-09),
+            and are expected to remain out of sync for several weeks or longer while development
+            updates are being made. The difference is this version does not use Handlebars while
+            the previous code did and this version points to a pre-release of DataFormsJS.
+        -->
 
         <!-- DataFormsJS -->
         <!--
@@ -193,15 +198,17 @@
             app.lazyLoad = {
                 homePage: '/js/pages/jsonData.js',
         -->
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/DataFormsJS.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/i18n.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/navList.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/prism.min.js"></script>
+        <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/DataFormsJS.min.js"></script>
+        <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/i18n.min.js"></script>
+        <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/navList.min.js"></script>
+        <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/prism.min.js"></script>
+        <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/dataBind.min.js"></script>
         <script>
             app.lazyLoad = {
                 // DataFormsJS Framework Objects
-                jsonData: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/pages/jsonData.min.js',
-                filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/filter.min.js',
+                jsonData: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/pages/jsonData.min.js',
+                filter: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/filter.min.js',
+                data_list: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/controls/data-list.min.js',
                 // Site Files
                 homePage: '/js/page-home-page.2020316.min.js',
                 gettingStarted: '/js/page-getting-started.js',
@@ -342,11 +349,6 @@
         </script>
 
         <!-- JS Libraries -->
-        <!--
-            For local development with Handlebars create a [vendor] dir and modify the URL, example:
-                <script src="vendor/handlebars.min.js"></script>
-        -->
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.6/dist/handlebars.min.js"></script>
         <script src="/js/prism-1.17.1/prism.modified.min.js"></script>
     </body>
 </html>

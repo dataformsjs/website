@@ -13,7 +13,8 @@
  * a DataFormsJS app or site.
  *
  * Additionally the server-side PHP template was easy to quick to replace with handlebars
- * as PHP i18n keys were swapped out with Handlebars using Find/Replace.
+ * as PHP i18n keys were swapped out with Handlebars using Find/Replace. Later the site was
+ * switched from handlebars to no-templating (JS Only) and the additional change was quick as well.
  *
  * @link     https://www.dataformsjs.com
  * @author   Conrad Sollitt (https://conradsollitt.com)

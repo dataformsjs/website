@@ -120,6 +120,8 @@ svg { direction:ltr; }
 
 /************ General ************/
 
+.flex-col { display: flex; flex-direction: column; align-items: center; }
+
 .text-align-center { text-align:center; }
 
 .bullet-list { text-align: left; padding-left: 1em; line-height: 1.4em; }
@@ -665,7 +667,7 @@ html[dir='rtl'] .btn.create-site .arrow {
 .quick-ref .example {
     margin-top: 40px;
     border: 1px solid var(--main-color);
-    max-width: 100%;
+    max-width: calc(100vw - 80px);
     box-shadow: var(--shadow);
 }
 

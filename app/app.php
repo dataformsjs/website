@@ -114,7 +114,7 @@ $app->get('/examples/hello-world/en-js.htm', function() use ($app) {
 /**
  * If user comes from [~/examples/] or [~/examples] then
  * redirect to the main SPA examples page in their default language.
- * 
+ *
  * Typically this would happen if they view an example then
  * manually update the URL in the browser. If this route is not
  * included a 404 page would be returned.
@@ -220,6 +220,20 @@ $app->get('/*', function() use ($app) {
     // if (strpos($path, '.js') === false) {
     //     usleep(500000);
     // }
+
+    // When using localhost with IE DataFormsJS will use cache busting
+    // so that some requests have timestamp like this [home-page.htm?_=1602289678421].
+    // If found then remove from the URL otherwise `$app->requestedPath()`
+    // will return the query string.
+    // NOTE - this should actuall be corrected in FastSitePHP then the changes merged back here.
+    //   https://github.com/fastsitephp/fastsitephp/blob/master/src/Application.php#L2022
+    if (strpos($path, '?') !== false) {
+        $path = strtok($path, '?');
+        if ($path === '/docs/en/quick-reference' || $path === '/docs/pt-BR/quick-reference') {
+            $quickRef = new \App\Controllers\QuickReference();
+            return $quickRef->get($app, explode('/', $path)[2]);
+        }
+    }
 
     // Uncomment to debug if needed (also version below)
     // var_dump($root . $path);
