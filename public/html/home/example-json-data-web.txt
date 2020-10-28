@@ -4,8 +4,8 @@
     <body>
         <div id="view"></div>
 
-        <url-hash-router view-selector="#view">
-            <url-hash-route path="/">
+        <url-router view-selector="#view">
+            <url-route path="/">
                 <template>
                     <json-data url="https://www.dataformsjs.com/data/geonames/countries">
                         <is-loading>
@@ -25,12 +25,12 @@
                         </is-loaded>
                     </json-data>
                 </template>
-            </url-hash-route>
+            </url-route>
 
-            <url-hash-route path="/regions/:country" src="/html/regions-web.htm"></url-hash-route>
-        </url-hash-router>
+            <url-route path="/regions/:country" src="/html/regions-web.htm"></url-route>
+        </url-router>
 
-        <script type="module" src="js/web-components/url-hash-router.js"></script>
+        <script type="module" src="js/web-components/url-router.js"></script>
         <script type="module" src="js/web-components/json-data.js"></script>
         <script type="module" src="js/web-components/data-table.js"></script>
         <script type="module" src="js/web-components/input-filter.js"></script>

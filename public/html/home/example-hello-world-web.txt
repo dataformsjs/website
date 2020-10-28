@@ -4,23 +4,23 @@
     <body>
         <div id="view"></div>
          
-        <url-hash-router view-selector="#view">
+        <url-router view-selector="#view">
                     
-            <url-hash-route path="/">
+            <url-route path="/">
                 <template>
                     <h1>[[i18n Hello World!]]</h1>
                 </template>
-            </url-hash-route>
+            </url-route>
 
-            <url-hash-route path="/:name">
+            <url-route path="/:name">
                 <template>
                     <h1>[[i18n Hello]] <span url-param="name"></span>!</h1>
                 </template>
-            </url-hash-route>
+            </url-route>
 
-        </url-hash-router>
+        </url-router>
         
-        <script type="module" src="js/web-components/url-hash-router.js"></script>
+        <script type="module" src="js/web-components/url-router.js"></script>
         <script nomodule src="js/web-components/old-browser-warning.js"></script>        
     </body>
 </html>

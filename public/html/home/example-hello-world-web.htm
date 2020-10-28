@@ -4,23 +4,23 @@
     &lt;body&gt;
         &lt;div id=&quot;view&quot;&gt;&lt;/div&gt;
          
-        &lt;<mark>url-hash-router</mark> view-selector=&quot;#view&quot;&gt;
+        &lt;<mark>url-router</mark> view-selector=&quot;#view&quot;&gt;
                     
-            &lt;<mark>url-hash-route</mark> path=&quot;/&quot;&gt;
+            &lt;<mark>url-route</mark> path=&quot;/&quot;&gt;
                 &lt;template&gt;
                     &lt;h1&gt;[[i18n Hello World!]]&lt;/h1&gt;
                 &lt;/template&gt;
-            &lt;/url-hash-route&gt;
+            &lt;/url-route&gt;
 
-            &lt;url-hash-route <mark>path=&quot;/:name&quot;</mark>&gt;
+            &lt;url-route <mark>path=&quot;/:name&quot;</mark>&gt;
                 &lt;template&gt;
                     &lt;h1&gt;[[i18n Hello]] &lt;span <mark>url-param=&quot;name&quot;</mark>&gt;&lt;/span&gt;!&lt;/h1&gt;
                 &lt;/template&gt;
-            &lt;/url-hash-route&gt;
+            &lt;/url-route&gt;
 
-        &lt;/url-hash-router&gt;
+        &lt;/url-router&gt;
         
-        &lt;script type=&quot;module&quot; src=&quot;js/web-components/url-hash-router.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;module&quot; src=&quot;js/web-components/url-router.js&quot;&gt;&lt;/script&gt;
         &lt;script nomodule src=&quot;js/web-components/old-browser-warning.js&quot;&gt;&lt;/script&gt;        
     &lt;/body&gt;
 &lt;/html&gt;

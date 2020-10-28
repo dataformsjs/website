@@ -224,7 +224,7 @@ TITLE: Web Components do DataFormsJS
     Componentes Web
     É requisito a inclusão de [type="module"] para scripts Web Components.
 -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/url-hash-router.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/url-router.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/json-data.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/data-list.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/data-table.min.js"></script>
@@ -652,11 +652,11 @@ TITLE: Web Components - Mostrar Dados do serviço web JSON
 <!--
     Vincular o roteador da hash à view via seletor de consulta
 -->
-<url-hash-router view-selector="#view">
+<url-router view-selector="#view">
     <!--
         Rotas contêm o <template> HTML
     -->
-    <url-hash-route path="/">
+    <url-route path="/">
         <template>
             <!--
                 Dados são passados de from <json-data> para elementos filho
@@ -689,14 +689,14 @@ TITLE: Web Components - Mostrar Dados do serviço web JSON
                 </is-loaded>
             </json-data>
         </template>
-    </url-hash-route>
+    </url-route>
 
     <!--
         A fonte HTML <template> da rota será baixada dinamicamente quando
         [src] for utilizado.
     -->
-    <url-hash-route path="/regions/:country" src="html/regions-web.htm"></url-hash-route>
-</url-hash-router>
+    <url-route path="/regions/:country" src="html/regions-web.htm"></url-route>
+</url-router>
 <!-- EXAMPLE_CODE_END -->
 
 

@@ -4,8 +4,8 @@
     &lt;body&gt;
         &lt;div id=&quot;view&quot;&gt;&lt;/div&gt;
 
-        &lt;url-hash-router view-selector=&quot;#view&quot;&gt;
-            &lt;url-hash-route path=&quot;/&quot;&gt;
+        &lt;url-router view-selector=&quot;#view&quot;&gt;
+            &lt;url-route path=&quot;/&quot;&gt;
                 &lt;template&gt;
                     &lt;<mark>json-data</mark> url=&quot;https://www.dataformsjs.com/data/geonames/countries&quot;&gt;
                         &lt;is-loading&gt;
@@ -25,12 +25,12 @@
                         &lt;/is-loaded&gt;
                     &lt;/json-data&gt;
                 &lt;/template&gt;
-            &lt;/url-hash-route&gt;
+            &lt;/url-route&gt;
 
-            &lt;<mark>url-hash-route</mark> path=&quot;/regions/:country&quot; <mark>src</mark>=&quot;html/regions-web.htm&quot;&gt;&lt;/url-hash-route&gt;
-        &lt;/url-hash-router&gt;
+            &lt;<mark>url-route</mark> path=&quot;/regions/:country&quot; <mark>src</mark>=&quot;html/regions-web.htm&quot;&gt;&lt;/url-route&gt;
+        &lt;/url-router&gt;
 
-        &lt;script type=&quot;module&quot; src=&quot;js/web-components/url-hash-router.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;module&quot; src=&quot;js/web-components/url-router.js&quot;&gt;&lt;/script&gt;
         &lt;script type=&quot;module&quot; src=&quot;js/web-components/json-data.js&quot;&gt;&lt;/script&gt;
         &lt;script type=&quot;module&quot; src=&quot;js/web-components/data-table.js&quot;&gt;&lt;/script&gt;
         &lt;script type=&quot;module&quot; src=&quot;js/web-components/input-filter.js&quot;&gt;&lt;/script&gt;
