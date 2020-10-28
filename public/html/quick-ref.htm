@@ -17,11 +17,11 @@
         </div>
 
         <data-list data-bind="code" class="flex-col" data-template-selector="#quick-ref-item"></data-list>
-        <script type="text/x-template" id="quick-ref-item">
+        <template id="quick-ref-item">
             <div class="example" data-filter-search-text="${title}">
                 <h2>${title}</h2>
                 <pre><code class="language-${lang}">${code}</code>
             </div>
-        </script>
+        </template>
     </section>
 </div>
