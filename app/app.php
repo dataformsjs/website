@@ -159,9 +159,13 @@ $app_html = function($lang) use ($use_i18n, $app, $is_localhost) {
     $use_i18n();
     I18N::langFile('_', $lang);
 
-    // Return the main web page [index.htm].
+    // Return the main web page [index.htm]. A web component version of the main
+    // site is available but it doesn't not contain all features of the live site.
+    //
+    // $page = 'index_web.htm';
+    $page = 'index.htm';
     $app->noCache();
-    return file_get_contents(__DIR__ . '/Views/index.htm');
+    return file_get_contents(__DIR__ . '/Views/' . $page);
 };
 $app->get('/:lang', $app_html);
 $app->get('/:lang/playground', $app_html);
