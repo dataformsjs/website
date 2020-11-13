@@ -162,8 +162,8 @@ $app_html = function($lang) use ($use_i18n, $app, $is_localhost) {
     // Return the main web page [index.htm]. A web component version of the main
     // site is available but it doesn't not contain all features of the live site.
     //
-    // $page = 'index_web.htm';
-    $page = 'index.htm';
+    $page = 'index-web.htm'; // TODO - still being developed, multiple versions of the site will be available once complete
+    // $page = 'index.htm';
     $app->noCache();
     return file_get_contents(__DIR__ . '/Views/' . $page);
 };
