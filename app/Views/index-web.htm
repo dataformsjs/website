@@ -6,6 +6,16 @@
 
         If this ends up fully working and working (along with polyfill well) then
         it may be used instead of the main framework. That is a long term goal at least.
+
+        Currently there is one known major outstanding issue:
+            * Quick ref page is taking a long time (~5 seconds) to display data
+            * This happens almost instantly with the main framework
+            * Also when clicking back code is not highlighted
+            * Issue may be due to many different service web components running in async order
+
+        Additionally before this file can be considered ready it must be tested extensively
+        in a range of browsers and devices. All commented JS code at the bottom of this
+        file still needs to be handled (will use the 'app:routeChanged' event and basic functions).
 -->
 <html>
     <head>
@@ -156,14 +166,6 @@
         
         <!--
             Define Routes
-
-            data-lazy-load="homePage"
-            data-lazy-load="codemirrorCss, codemirrorJs, jshint, playgroundCss, playgroundPage"
-            data-lazy-load="gettingStarted"
-            data-lazy-load="jsonData, filter, data_list, jsTemplate"
-
-            data-page="jsonData"
-            data-url="/docs/:lang/quick-reference"
         -->
         <url-router view-selector="#view" mode="history" loading-template-selector="#loading-screen">
             <url-route
@@ -177,17 +179,24 @@
             <url-route
                 path="/:lang/playground"
                 src="/html/playground.htm"
-                data-i18n-file="playground">
+                data-i18n-file="playground"
+                lazy-load="codemirrorCss, codemirrorJs, jshint, playgroundCss, playgroundPage"
+                onload="setupPlayground()"
+                onunload="unloadPlayground()">
             </url-route>
             <url-route
                 path="/:lang/getting-started"
                 src="/html/getting-started.htm"
-                data-i18n-file="getting-started">
+                data-i18n-file="getting-started"
+                lazy-load="gettingStarted"
+                onload="setupGettingStarted()"
+                onunload="unloadGettingStarted()">
             </url-route>
             <url-route
                 path="/:lang/quick-reference"
-                src="/html/quick-ref.htm"
-                data-i18n-file="quick-ref">
+                src="/html/quick-ref-web.htm"
+                data-i18n-file="quick-ref"
+                lazy-load="json_data, input_filter, data_list">
             </url-route>
             <url-route
                 path="/:lang/examples"
@@ -199,17 +208,14 @@
         <!-- DataFormsJS Web Components -->
         <!--
             For local development replace the CDN url with 'js/*', example:
-            <script src="/js/DataFormsJS.js"></script>
+            <script src="/js/web-components/url-router.js"></script>
             app.lazyLoad = {
-                homePage: '/js/pages/jsonData.js',
+                json_data: { module: '/js/web-components/json-data.js' },
         -->
         <script type="module" src="/js/web-components/url-router.js"></script>
         <script type="module" src="/js/web-components/i18n-service.js"></script>
         <script type="module" src="/js/web-components/html-import-service.js"></script>
         <script type="module" src="/js/web-components/spa-links.js"></script>
-        <script type="module" src="/js/web-components/json-data.js"></script>
-        <script type="module" src="/js/web-components/data-list.js"></script>
-        <script type="module" src="/js/web-components/input-filter.js"></script>
         <script type="module" src="/js/web-components/show-errors-service.js"></script>
         <script type="module" src="/js/web-components/prism-service.js"></script>
         <script nomodule src="/js/web-components/polyfill.js"></script>
@@ -218,24 +224,13 @@
 
         <script>
             window.lazyLoad = {
+                // DataFormsJS Web Components
+                json_data: { module: '/js/web-components/json-data.js' },
+                data_list: { module: '/js/web-components/data-list.js' },
+                input_filter: { module: '/js/web-components/input-filter.js' },
                 // Site Files
+                // homePage: '/js/page-home-page.2020316.min.js',
                 homePage: '/js/page-home-page.js',
-            };
-        </script>
-        <!-- <script src="/js/DataFormsJS.js"></script>
-        <script src="/js/plugins/i18n.js"></script>
-        <script src="/js/plugins/navLinks.js"></script>
-        <script src="/js/plugins/prism.js"></script>
-        <script src="/js/plugins/dataBind.js"></script>
-        <script>
-            app.lazyLoad = {
-                // DataFormsJS Framework Objects
-                jsonData: '/js/pages/jsonData.js',
-                filter: '/js/plugins/filter.js',
-                data_list: '/js/controls/data-list.js',
-                jsTemplate: '/js/extensions/jsTemplate.js',
-                // Site Files
-                homePage: '/js/page-home-page.2020316.min.js',
                 gettingStarted: '/js/page-getting-started.js',
                 playgroundCss: '/css/playground.css',
                 playgroundPage: '/js/page-playground.js',
@@ -244,9 +239,7 @@
                 codemirrorJs: '/js/codemirror/codemirror-5.48.0.min.js',
                 jshint: 'https://cdn.jsdelivr.net/npm/jshint@2.12.0/dist/jshint.js',
             };
-            app.settings.lazyTemplateSelector = '#loading-screen';
         </script>
-         -->
         <script>
             (function() {
                 'use strict';

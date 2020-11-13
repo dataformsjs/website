@@ -1,0 +1,30 @@
+<json-data url="/docs/:lang/quick-reference" url-params load-only-once>
+    <is-loading template-selector="#loading-screen"></is-loading>
+    <has-error template-selector="#error-screen"></has-error>
+    <is-loaded>
+        <section class="page quick-ref">
+            <h1 data-i18n="Quick Reference"></h1>
+    
+            <div class="filter">
+                <input
+                    is="input-filter"
+                    filter-selector=".example"
+                    filter-results-selector=".example-count"
+                    filter-results-text-all="quick_ref_all"
+                    filter-results-text-filtered="quick_ref_filtered"
+                    placeholder="quick_ref_placeholder"
+                    data-i18n-attr="filter-results-text-all, filter-results-text-filtered, placeholder">
+                
+                <div class="example-count"></div>
+            </div>
+    
+            <data-list data-bind="code" class="flex-col" template-selector="#quick-ref-item"></data-list>
+            <template id="quick-ref-item">
+                <div class="example" data-filter-search-text="${title}">
+                    <h2>${title}</h2>
+                    <pre><code class="language-${lang}">${code}</code>
+                </div>
+            </template>
+        </section>        
+    </is-loaded>
+</json-data>

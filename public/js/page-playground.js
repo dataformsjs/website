@@ -5,7 +5,8 @@
  * (same license and author as DataFormsJS). Re-using the existing JS Code for the
  * DataFormsJS framework was quick and easy. Bascially rather than calling
  * [document.addEventListener('DOMContentLoaded', ...] a minimal [app.addPage('playground',...]
- * is used near the bottom of this file.
+ * is used near the bottom of this file. An additional Web Component version of the site
+ * shares this code and also requires minimal changes.
  *
  * The core structure and features of the original code did not have to be changed for
  * use with DataFormsJS. Only a few minor changes had to be made (removed PHP, added React, etc).
@@ -51,7 +52,10 @@
 
     // Setup gets called from the controller [onRendered] event at the bottom of this file
     function setup() {
-        state.lang = app.plugins.i18n.currentLocale;
+        // `app.plugins.i18n.currentLocale` can also be used with the Standard Framework
+        // to the the current locale (selected language). `window.i18n_Locale` works with
+        // both DataFormsJS Framework and <i18n-service> Web Component.
+        state.lang = window.i18n_Locale;
         getSavedSiteKey();
         if (state.siteKey) {
             if (state.fileList.length === 0 || state.selectedFile === null) {
@@ -547,7 +551,7 @@
             var file = state.fileList[n];
             var pos = file.indexOf('.');
             var type = file.substring(pos+1);
-            file = app.escapeHtml(file);
+            file = escapeHtml(file);
             listHtml += '<li class="' + type + '">' + file + '</li>';
             selectHtml += '<option>' + file + '</option>';
         }
@@ -585,6 +589,24 @@
             file: 'app.htm',
             content: data.app_code,
         };
+    }
+
+    // NOTE - when using standard DataFormsJS Framework `app.escapeHtml()`
+    // can be used and with Web Components `escapeHtml()` can be imported from [utils.js].
+    // For simplicity of the demo the function is duplicated here. In most apps
+    // this issue can be avoid by using a <data-list> for the related elements.
+    // This version of the playgound uses mostly plan JS so it builds the
+    // HTML as a string instead.
+    function escapeHtml(text) {
+        if (text === undefined || text === null || typeof text === 'number') {
+            return text;
+        }
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
     }
 
     function setNewFile() {
@@ -967,9 +989,34 @@
         document.getElementById('file-list').value = data.file;
     }
 
-    // Add a new page object with an empty model.
-    // All page logic is handled by functions and the initial [setup()] function.
-    // The controller simply calls [setup()] and a few features for DOM.
+    /**
+     * This page is shared between several different versions of the site.
+     * The original version uses the standard DataFormsJS Framework so it will
+     * use the standard Page Object if <url-router> does not exist on the page
+     * while the Web Component Version will use global functions that reference
+     * shared code from the original page object.
+     */
+    if (document.querySelector('url-router')) {
+        window.setupPlayground = function() {
+            setup();
+            document.querySelector('footer').style.display = 'none';
+        };
+        window.unloadPlayground = function() {
+            if (state.countdownInterval !== null) {
+                window.clearInterval(state.countdownInterval);
+                state.countdownInterval = null;
+            }
+            document.querySelector('footer').style.display = '';
+            document.onkeydown = null;
+        };
+        return;
+    }
+
+    /**
+     * Add a new page object with an empty model.
+     * All page logic is handled by functions and the initial [setup()] function.
+     * The controller simply calls [setup()] and a few features for DOM.
+     */
     app.addPage('playground', {
         model: {
             getState: function() { return state; } // Used from DevTools to debug UI errors if needed: app.activeModel.getState()

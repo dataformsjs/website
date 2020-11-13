@@ -583,8 +583,8 @@ Steps used to create (or re-create the computer graphic)
                 //
                 // NOTE - to get the current local using the standard framework either
                 // `app.plugins.i18n.currentLocale` or `window.i18n_Locale` can be used.
-                // For Web Components in modern browsers `window.i18n_Locale` is used
-                // so it the recommend way to get the current locale (selected language).
+                // For <i18n-service> Web Component in modern browsers `window.i18n_Locale`
+                // is used so it the recommend way to get the current locale (selected language).
                 //
                 switch (window.i18n_Locale) {
                     case 'zh-CN':
@@ -635,9 +635,8 @@ Steps used to create (or re-create the computer graphic)
 
             // Example Code Buttons
             if (!usingWebComponents) {
-                // With the standard DataFormsJS all code runs in a predictable
-                // order so this function will only be called once all content
-                // is ready.
+                // With the standard DataFormsJS all code runs in a predictable order
+                // so this function will only be called once all content is ready.
                 this.setupExamples();
             } else {
                 // When using Web Components different service components will still be
@@ -646,7 +645,13 @@ Steps used to create (or re-create the computer graphic)
                 // to be ready so a timer is used to check if the content is ready and
                 // once ready the related setup code can then be called.
                 // NOTE - This is due to a very specific layout based on the original
-                // site so code like this is not needed for most apps.
+                // site design so code like this is not needed for most apps.
+                // ** If IE and Older Browser support is not included the layout
+                // could likely be handled in CSS using:
+                //     .home.page .example-code .description { max-width: fit-content; }
+                // However a lot of testing would be needed to confirm.
+                // TODO - test and see if this can be removed, IE will always be using
+                //  the Framework so element width can be set in related code for IE.
                 var model = this;
                 var interval = window.setInterval(function() {
                     var examples = document.querySelectorAll('.example-code code');

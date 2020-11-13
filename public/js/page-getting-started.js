@@ -26,7 +26,10 @@
          */
         model: {
             // Keep track of selected template between page changes
-            activeTemplate: 'handlebars',
+            activeTemplate: 'web-components',
+
+            // Track which version of the site is being used
+            usingWebComponents: false,
 
             // Click event for [.template-page] elements
             changeTemplate: function(e) {
@@ -56,11 +59,18 @@
 
                 // Refresh the control, this will dynamically download templates
                 // as they are viewed and then cache them in memory so they are
-                // downloaded only once.
-                app.refreshHtmlControl(code, function() {
+                // downloaded only once. Use with the Web Component or Framework
+                // app object depending on which version of the page is used.
+                var apiObject = (model.usingWebComponents ? document.querySelector('html-import-service') : app);
+                apiObject.refreshHtmlControl(code, function() {
                     // Re-highlight Code
-                    app.plugins.i18n.onRendered(code.parentNode);
-                    app.plugins.prism.onRendered();
+                    if (model.usingWebComponents) {
+                        document.querySelector('i18n-service').updateContent(code.parentNode);
+                        document.querySelector('prism-service').onLoad(document);
+                    } else {
+                        app.plugins.i18n.onRendered(code.parentNode);
+                        app.plugins.prism.onRendered();
+                    }
 
                     // Set "active" button
                     var allPages = document.querySelectorAll('.template-page');
@@ -219,6 +229,24 @@
             document.onkeydown = null;
         },
     };
+
+    /**
+     * This page is shared between several different versions of the site.
+     * The original version uses the standard DataFormsJS Framework so it will
+     * use the standard Page Object if <url-router> does not exist on the page
+     * while the Web Component Version will use global functions that reference
+     * shared code from the original page object.
+     */
+    if (document.querySelector('url-router')) {
+        gettingStarted.model.usingWebComponents = true;
+        window.setupGettingStarted = function() {
+            gettingStarted.onRendered.apply(gettingStarted.model);
+        };
+        window.unloadGettingStarted = function() {
+            gettingStarted.onRouteUnload.apply(gettingStarted.model);
+        };
+        return;
+    }
 
     /**
      * Add page to app
