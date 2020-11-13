@@ -1,6 +1,11 @@
 <!doctype html>
 <!--
     TODO - new test file - in active development
+        A full working version of the main site may or may not be created.
+        At a minimum the code in current state helps confirm new Web Components and features.
+
+        If this ends up fully working and working (along with polyfill well) then
+        it may be used instead of the main framework. That is a long term goal at least.
 -->
 <html>
     <head>
@@ -137,15 +142,19 @@
             <div class="error" data-bind="errorMessage"></div>
         </template>
 
+        <!--
+            Define Services
+        -->
         <i18n-service
             default-locale="en"
             file-dir="/i18n"
             locales="en,ja,es,pt-BR,ar,fr,zh-CN">
         </i18n-service>
+        <html-import-service></html-import-service>
+        <show-errors-service></show-errors-service>
 
         <!--
             Define Routes
-            TODO - default [view-selector]?
 
             data-lazy-load="homePage"
             data-lazy-load="codemirrorCss, codemirrorJs, jshint, playgroundCss, playgroundPage"
@@ -193,10 +202,12 @@
         -->
         <script type="module" src="/js/web-components/url-router.js"></script>
         <script type="module" src="/js/web-components/i18n-service.js"></script>
+        <script type="module" src="/js/web-components/html-import-service.js"></script>
         <script type="module" src="/js/web-components/spa-links.js"></script>
         <script type="module" src="/js/web-components/json-data.js"></script>
         <script type="module" src="/js/web-components/data-list.js"></script>
         <script type="module" src="/js/web-components/input-filter.js"></script>
+        <script type="module" src="/js/web-components/show-errors-service.js"></script>
         <script nomodule src="/js/web-components/polyfill.js"></script>
 
         <!-- <script src="/js/DataFormsJS.js"></script>
