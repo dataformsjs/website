@@ -152,7 +152,8 @@
         </i18n-service>
         <html-import-service></html-import-service>
         <show-errors-service></show-errors-service>
-
+        <prism-service></prism-service>
+        
         <!--
             Define Routes
 
@@ -169,7 +170,9 @@
                 path="/:lang/"
                 default-route
                 src="/html/home-page.htm"
-                data-i18n-file="home-page">
+                data-i18n-file="home-page"
+                lazy-load="homePage"
+                onload="setupHomePage()">
             </url-route>
             <url-route
                 path="/:lang/playground"
@@ -208,8 +211,17 @@
         <script type="module" src="/js/web-components/data-list.js"></script>
         <script type="module" src="/js/web-components/input-filter.js"></script>
         <script type="module" src="/js/web-components/show-errors-service.js"></script>
+        <script type="module" src="/js/web-components/prism-service.js"></script>
         <script nomodule src="/js/web-components/polyfill.js"></script>
 
+        <!-- <script src="/js/web-components/polyfill.js"></script> -->
+
+        <script>
+            window.lazyLoad = {
+                // Site Files
+                homePage: '/js/page-home-page.js',
+            };
+        </script>
         <!-- <script src="/js/DataFormsJS.js"></script>
         <script src="/js/plugins/i18n.js"></script>
         <script src="/js/plugins/navLinks.js"></script>
@@ -235,7 +247,7 @@
             app.settings.lazyTemplateSelector = '#loading-screen';
         </script>
          -->
-         <script>
+        <script>
             (function() {
                 'use strict';
 
@@ -252,7 +264,6 @@
                     };
                 });
 
-                /*
                 // Handle desktop menu hover for wide-screen mobile devices (iPad, Android Tablets, etc)
                 var desktopNav = document.querySelector('.site-nav .desktop-nav');
                 var i18nMenu = document.querySelector('.site-nav .desktop-nav > li.i18n-menu');
@@ -266,6 +277,7 @@
                     i18nUL.style.display = '';
                 };
 
+                /*
                 // Add CSS Variable Support to IE and older Browsers
                 var supportsCssVars = (window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)'));
                 var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
@@ -343,7 +355,7 @@
                     },
                 });
 
-                // The site was orignally published using #hash URL's. If the
+                // The site was originally published using #hash URL's. If the
                 // page loaded uses a hash URL then navigate to the path.
                 //
                 // Example:

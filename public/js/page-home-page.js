@@ -1,19 +1,25 @@
 /**
  * DataFormsJS Home Page
  *
- * The home page uses <template> rather than Handlebars or other rendering
- * engines so that example code is display rather than rendered.
+ * This script supports two versions of the main site. The original version
+ * which uses the DataFormsJS Framework with a "Page" object and a newer
+ * Web Component Version which calls functions. Since most code is plain
+ * JavaScript only a limited amount of logic is needed two switch between
+ * the different versions of the sites. Search this file for `usingWebComponents`
+ * to see the difference. Because the original site was created using the
+ * Framework the code is structured for the Framework using a Page object
+ * that contains code organized by model controller.
  *
  * This script also includes animation code for the Computer SVG Image. Elements
  * are grouped into scenes and a simple animation loop is used. The process of
- * creating and updating the animated scenes is manual and time consuming.
- * The images are first drawn in Sketch App and then exported to SVG and
- * additional attribures are copied for each element to this file.
- * Additional details are in comments later in this file.
+ * creating and updating the animated scenes is manual and time consuming so
+ * it's not something that can be easily changed. The images are first drawn in
+ * Sketch App and then exported to SVG and additional attributes are copied for
+ * each element to this file. Additional details are in comments later in this file.
  *
  * IMPORTANT - When adding additional languages for the computer animation
- * search this file for "app.plugins.i18n.currentLocale" and see related comments.
- * 
+ * search this file for "window.i18n_Locale" and see related comments.
+ *
  * Updating the build of this file:
  *     npm install uglify-js -g
  *     uglifyjs page-home-page.js -o page-home-page{YYYYMMDD}.min.js -c -m
@@ -23,7 +29,7 @@
 
 /*
 
-Steps used to create (or re-create the computer)
+Steps used to create (or re-create the computer graphic)
 
 1) In Sketch App unique elements from multiple computer items are combined to one page
 2) The Elements on the Artboard are copied as SVG then pasted into the file [public/html/home-page.htm]
@@ -37,7 +43,7 @@ Steps used to create (or re-create the computer)
 6) For [Text-Filter] and [Oval-1] to [Oval-3] add [opacity="0"]
 7) Replace the generated [id="Rectangle-1"] <path> with the following
     <rect id="Rectangle-1" fill="#D0011B" x="193" y="88" width="335" height="50" rx="5"></rect>
-    * This element was orginally exported by Sketch as a <rect> but after updates (not sure if 
+    * This element was originally exported by Sketch as a <rect> but after updates (not sure if
         either the drawing or recent version of Sketch) it ended up being a <path>
 8) Depending on the version of Sketch used these instructions may vary,
     so if making updates keep the old version commented for quick compare
@@ -71,6 +77,7 @@ Steps used to create (or re-create the computer)
 
     var animation = null;
     var pendingElements = null;
+    var usingWebComponents = false;
 
     // Animation Loop
     function loop() {
@@ -222,11 +229,18 @@ Steps used to create (or re-create the computer)
 
                 // Refresh the control, this will dynamically download templates
                 // as they are viewed and then cache them in memory so they are
-                // downloaded only once.
-                app.refreshHtmlControl(code, function() {
+                // downloaded only once. Use with the Web Component or Framework
+                // app object depending on which version of the page is used.
+                var apiObject = (usingWebComponents ? document.querySelector('html-import-service') : app);
+                apiObject.refreshHtmlControl(code, function() {
                     // Re-highlight Code
-                    app.plugins.i18n.onRendered(parent);
-                    app.plugins.prism.onRendered(parent);
+                    if (usingWebComponents) {
+                        document.querySelector('i18n-service').updateContent(parent);
+                        document.querySelector('prism-service').onLoad(parent);
+                    } else {
+                        app.plugins.i18n.onRendered(parent);
+                        app.plugins.prism.onRendered(parent);
+                    }
 
                     // Update description and set width based on code
                     var description = parent.querySelector('.description');
@@ -272,7 +286,7 @@ Steps used to create (or re-create the computer)
                 });
             },
 
-            setupAnimation: function() {
+            startAnimation: function() {
                 animation = {
                     transition: 'all 1s ease',
                     delay: 1000,
@@ -545,7 +559,69 @@ Steps used to create (or re-create the computer)
                 };
 
                 window.setTimeout(loop, animation.delay);
-            }
+            },
+
+            setupAnimation: function () {
+                // Check Device Type from the User-Agent
+                var ua = navigator.userAgent;
+                var removeFilter = (ua.indexOf('Mac OS X') > -1 &&
+                    ua.indexOf('Chrome/') === -1 &&
+                    ua.indexOf('Safari/') > -1 &&
+                    window.devicePixelRatio === 1);
+
+                // Remove filter on if Mac/Safari and not Retina
+                // Otherwise the SVG will not be displayed on mobile Safari (for example iPad 2).
+                if (removeFilter) {
+                    document.querySelector('#home-page-computer').style.filter = 'none';
+                }
+
+                // Unless a better method is determined, text position values are hard-coded
+                // based on the language. To determine the start screen simply comment out
+                // [setupAnimation] below and to determine the "Filter" text temporarily
+                // change [stopScreen: null] to [stopScreen: 4] and to determine the login
+                // screen set [stopScreen: 2] and wait for a full animation.
+                //
+                // NOTE - to get the current local using the standard framework either
+                // `app.plugins.i18n.currentLocale` or `window.i18n_Locale` can be used.
+                // For Web Components in modern browsers `window.i18n_Locale` is used
+                // so it the recommend way to get the current locale (selected language).
+                //
+                switch (window.i18n_Locale) {
+                    case 'zh-CN':
+                        document.querySelector('#Text-User-Name tspan').setAttribute('x', '325');
+                        document.querySelector('#Text-Password tspan').setAttribute('x', '335');
+                        document.querySelector('#Text-Login tspan').setAttribute('x', '335');
+                        break;
+                    case 'ja':
+                        document.querySelector('#Text-Login tspan').setAttribute('x', '290');
+                        document.querySelector('#Text-Filter tspan').setAttribute('x', '310');
+                        break;
+                    case 'es':
+                        document.querySelector('#Text-User-Name tspan').setAttribute('x', '258');
+                        document.querySelector('#Text-Password tspan').setAttribute('x', '295');
+                        document.querySelector('#Text-Login tspan').setAttribute('x', '295');
+                        break;
+                    case 'pt-BR':
+                        document.querySelector('#Text-User-Name tspan').setAttribute('x', '270');
+                        document.querySelector('#Text-Password tspan').setAttribute('x', '330');
+                        document.querySelector('#Text-Login tspan').setAttribute('x', '325');
+                        break;
+                    case 'fr':
+                        document.querySelector('#Text-User-Name tspan').setAttribute('x', '270');
+                        document.querySelector('#Text-Password tspan').setAttribute('x', '290');
+                        document.querySelector('#Text-Login tspan').setAttribute('x', '308');
+                        break;
+                    //
+                    // Template:
+                    //
+                    // case '{new}':
+                    //     document.querySelector('#Text-User-Name tspan').setAttribute('x', '300');
+                    //     document.querySelector('#Text-Password tspan').setAttribute('x', '307');
+                    //     document.querySelector('#Text-Login tspan').setAttribute('x', '330');
+                    //     document.querySelector('#Text-Filter tspan').setAttribute('x', '328');
+                    //     break;
+                }
+            },
         },
 
         /**
@@ -553,63 +629,59 @@ Steps used to create (or re-create the computer)
          * This gets called each time the view is redrawn.
          */
         onRendered: function () {
-            // Check Device Type from the User-Agent
-            var ua = navigator.userAgent;
-            var removeFilter = (ua.indexOf("Mac OS X") > -1 &&
-                ua.indexOf("Chrome/") === -1 &&
-                ua.indexOf("Safari/") > -1 &&
-                window.devicePixelRatio === 1);
-
-            // Remove filter on if Mac/Safari and not Retina
-            // Otherwise the SVG will not be displayed on mobile Safari (for example iPad 2).
-            if (removeFilter) {
-                document.querySelector('#home-page-computer').style.filter = 'none';
-            }
-
-            // Unless a better method is determined, text position values are hard-coded
-            // based on the language. To determine the start screen simply comment out
-            // [setupAnimation] below and to determine the "Filter" text temporarily
-            // change [stopScreen: null] to [stopScreen: 4] and to determine the login
-            // screen set [stopScreen: 2] and wait for a full animation.
-            switch (app.plugins.i18n.currentLocale) {
-                case 'zh-CN':
-                    document.querySelector('#Text-User-Name tspan').setAttribute('x', '325');
-                    document.querySelector('#Text-Password tspan').setAttribute('x', '335');
-                    document.querySelector('#Text-Login tspan').setAttribute('x', '335');
-                    break;
-                case 'ja':
-                    document.querySelector('#Text-Login tspan').setAttribute('x', '290');
-                    document.querySelector('#Text-Filter tspan').setAttribute('x', '310');
-                    break;
-                case 'es':
-                    document.querySelector('#Text-User-Name tspan').setAttribute('x', '258');
-                    document.querySelector('#Text-Password tspan').setAttribute('x', '295');
-                    document.querySelector('#Text-Login tspan').setAttribute('x', '295');
-                    break;
-                case 'pt-BR':
-                    document.querySelector('#Text-User-Name tspan').setAttribute('x', '270');
-                    document.querySelector('#Text-Password tspan').setAttribute('x', '330');
-                    document.querySelector('#Text-Login tspan').setAttribute('x', '325');
-                    break;
-                case 'fr':
-                    document.querySelector('#Text-User-Name tspan').setAttribute('x', '270');
-                    document.querySelector('#Text-Password tspan').setAttribute('x', '290');
-                    document.querySelector('#Text-Login tspan').setAttribute('x', '308');
-                    break;
-                //
-                // Template:
-                //
-                // case '{new}':
-                //     document.querySelector('#Text-User-Name tspan').setAttribute('x', '300');
-                //     document.querySelector('#Text-Password tspan').setAttribute('x', '307');
-                //     document.querySelector('#Text-Login tspan').setAttribute('x', '330');
-                //     document.querySelector('#Text-Filter tspan').setAttribute('x', '328');
-                //     break;
-            }
-            this.setupExamples();
+            // Animation
             this.setupAnimation();
+            this.startAnimation();
+
+            // Example Code Buttons
+            if (!usingWebComponents) {
+                // With the standard DataFormsJS all code runs in a predictable
+                // order so this function will only be called once all content
+                // is ready.
+                this.setupExamples();
+            } else {
+                // When using Web Components different service components will still be
+                // running after the route changes and this function is called. These
+                // services load the content and the needed function relies on content
+                // to be ready so a timer is used to check if the content is ready and
+                // once ready the related setup code can then be called.
+                // NOTE - This is due to a very specific layout based on the original
+                // site so code like this is not needed for most apps.
+                var model = this;
+                var interval = window.setInterval(function() {
+                    var examples = document.querySelectorAll('.example-code code');
+                    if (examples.length === 0) {
+                        // User navigated away while page was loading
+                        clearInterval(interval);
+                        return;
+                    }
+                    for (var n = 0; n < examples.length; n++) {
+                        if (examples[n].offsetWidth === 0) {
+                            return; // Still waiting
+                        }
+                    }
+                    // Content is ready, call setup code
+                    clearInterval(interval);
+                    model.setupExamples();
+                }, 100); // Check every 1/10th of a second
+            }
         },
     };
+
+    /**
+     * This page is shared between several different versions of the site.
+     * The original version uses the standard DataFormsJS Framework so it will
+     * use the standard Page Object if <url-router> does not exist on the page
+     * while the Web Component Version will use global functions that reference
+     * shared code from the original page object.
+     */
+    if (document.querySelector('url-router')) {
+        usingWebComponents = true;
+        window.setupHomePage = function() {
+            homePage.onRendered.apply(homePage.model);
+        };
+        return;
+    }
 
     /**
      * Add as a Page to the app object
