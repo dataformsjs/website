@@ -35,7 +35,7 @@
             data-page="jsonData"
             data-url="https://www.dataformsjs.com/data/geonames/countries"
             data-load-only-once
-            data-lazy-load="jsonData, filter, sort, data_table, clickToHighlight, dataBind">
+            data-lazy-load="jsonData, filter, sort, data_table, clickToHighlight, dataBind, format, jsTemplate">
 
             <div class="is-loading" data-template-id="loading-screen"></div>
             <div class="has-error" data-template-id="error-screen"></div>
@@ -50,12 +50,23 @@
                     placeholder="[[i18n countries_enter_filer]]">
                 
                 <data-table 
-                    data-source="countries"
+                    data-bind="countries"
                     data-labels="[[i18n countries_field_list]]"
-                    class="click-to-highlight"
-                    data-sort
-                    data-sort-class-odd="row-odd"
-                    data-sort-class-even="row-even">
+                    data-col-class="2=text-right, 3=text-right"
+                    data-table-attr="
+                        class=click-to-highlight,
+                        data-sort
+                        data-sort-class-odd=row-odd,
+                        data-sort-class-even=row-even">
+                    <script type="text/x-template">
+                        <tr>
+                            <td>${iso}</td>
+                            <td>${country}</td>
+                            <td class="text-right" data-value="${area_km}">${format.number(area_km)}</td>
+                            <td class="text-right" data-value="${population}">${format.number(population)}</td>
+                            <td>${continent}</td>
+                        </tr>
+                    </script>
                 </data-table>
             </div>
         </template>
@@ -64,16 +75,18 @@
             DataFormsJS
             https://www.dataformsjs.com
         -->
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/DataFormsJS.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/navLinks.min.js"></script>
+        <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/DataFormsJS.js"></script>
+        <script src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/navLinks.js"></script>
         <script>
             app.lazyLoad = {
-                jsonData: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/pages/jsonData.min.js',
-                filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/filter.min.js',
-                sort: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/sort.min.js',
-                data_table: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/controls/data-table.min.js',
-                clickToHighlight: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/clickToHighlight.min.js',
-                dataBind: 'https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/plugins/dataBind.min.js',
+                jsonData: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/pages/jsonData.js',
+                filter: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/filter.js',
+                sort: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/sort.js',
+                data_table: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/controls/data-table.js',
+                clickToHighlight: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/clickToHighlight.js',
+                dataBind: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/plugins/dataBind.js',
+                format: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/extensions/format.js',
+                jsTemplate: 'https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/extensions/jsTemplate.js',
             };
             app.settings.lazyTemplateSelector = '#loading-screen';
         </script>

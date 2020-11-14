@@ -28,7 +28,6 @@
     "prod_latest": "Prod Mais Recente:",
     "prod_specific": "Versão específica do produto:",
     "comment_old_browsers": "Navegadores mais antigos (IE, Dispositivos Móveis mais antigos, etc) verão um alerta",
-    "comment_nav_links": "Atualizar os links de Nav quando uma página e lida ou modificada",
     "jsxloader_line_1": "O [jsxLoader.js] compila e converte rapidamente JSX em JS para navegadores modernos e,",
     "jsxloader_line_2": "para navegadores mais antigos, ele baixa e usa o Babel Standalone de uma CDN."
 }

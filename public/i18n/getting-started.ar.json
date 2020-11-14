@@ -28,7 +28,6 @@
     "prod_latest": "أحدث الإنتاج:",
     "prod_specific": "Specific Prod Version:",
     "comment_old_browsers": "سوف ترى المتصفحات الأقدم (IE ، أجهزة المحمول الأقدم ، إلخ) تحذيرًا",
-    "comment_nav_links": "قم بتحديث ارتباطات التنقل عندما يتم تحميل الصفحة أو تغييرها",
     "jsxloader_line_1": "[jsxLoader.js] will quickly compile and convert JSX to JS for modern browsers,",
     "jsxloader_line_2": "and for older browsers it will download and use Babel Standalone from a CDN."
 }

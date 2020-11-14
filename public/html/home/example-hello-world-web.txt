@@ -21,6 +21,6 @@
         </url-router>
         
         <script type="module" src="js/web-components/url-router.js"></script>
-        <script nomodule src="js/web-components/old-browser-warning.js"></script>        
+        <script nomodule src="js/web-components/polyfill.js"></script>        
     </body>
 </html>

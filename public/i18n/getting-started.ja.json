@@ -28,7 +28,6 @@
     "prod_latest": "最新の製品：",
     "prod_specific": "特定の製品バージョン：",
     "comment_old_browsers": "古いブラウザ（IE、古いモバイルデバイスなど）には警告が表示されます",
-    "comment_nav_links": "ページがロードまたは変更されたときにナビゲーションリンクを更新する",
     "jsxloader_line_1": "[jsxLoader.js]は、最新のブラウザー用にJSXをすばやくコンパイルしてJSに変換します。",
     "jsxloader_line_2": "古いブラウザーでは、CDNからBabel Standaloneをダウンロードして使用します。"
 }

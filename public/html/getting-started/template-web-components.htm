@@ -15,7 +15,7 @@
     </head>
     <body>
         <header>
-            <nav>
+            <nav is="spa-links">
                 <a class="active" href="#/">[[i18n Home]]</a>
                 <a href="#/data">[[i18n data_example]]</a>
             </nav>
@@ -23,14 +23,14 @@
 
         <main id="view" class="container"></main>
 
-        <url-hash-router view-selector="#view">
-            <url-hash-route path="/">
+        <url-router view-selector="#view">
+            <url-route path="/">
                 <template>
                     <h1>[[i18n tmpl_web_title]]</h1>
                 </template>
-            </url-hash-route>
+            </url-route>
 
-            <url-hash-route path="/data">
+            <url-route path="/data">
                 <template>
                     <h1>[[i18n Countries]]</h1>
 
@@ -55,54 +55,56 @@
                             <data-table
                                 data-bind="countries"
                                 labels="[[i18n countries_field_list]]"
+                                col-class="2=text-right, 3=text-right"
+                                highlight-class="highlight"
                                 table-attr="is=sortable-table,
                                             data-sort-class-odd=row-odd,
                                             data-sort-class-even=row-even">
+                                <script type="text/x-template">
+                                    <tr>
+                                        <td>${iso}</td>
+                                        <td>${country}</td>
+                                        <td class="text-right" data-value="${area_km}">${format.number(area_km)}</td>
+                                        <td class="text-right" data-value="${population}">${format.number(population)}</td>
+                                        <td>${continent}</td>
+                                    </tr>
+                                </script>
                             </data-table>
                         </is-loaded>
                     </json-data>
                 </template>
-            </url-hash-route>
-        </url-hash-router>
+            </url-route>
+        </url-router>
 
         <!--
             [[i18n tmpl_web_title]]
             https://www.dataformsjs.com
         -->
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/url-hash-router.min.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/json-data.min.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/data-table.min.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/input-filter.min.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/sortable-table.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/url-router.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/data-table.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/json-data.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/input-filter.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/sortable-table.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/spa-links.min.js"></script>
+        <script nomodule src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/polyfill.min.js"></script>
 
         <!--
             Additional Components:
         -->
         <!--
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/url-router.min.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/data-list.min.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/leaflet-map.min.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/image-gallery.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/data-list.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/data-view.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/html-import-service.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/i18n-service.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/image-gallery.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/keydown-action-service.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/leaflet-map.min.js"></script>
+        <script type="module" src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/show-errors-service.min.js"></script>
         -->
 
         <!-- [[i18n comment_old_browsers]] -->
-        <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/safari-nomodule.min.js"></script>
-        <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/web-components/old-browser-warning.min.js"></script>
-
-        <!-- [[i18n comment_nav_links]] -->
-        <script type="module">
-            const router = document.querySelector('url-hash-router');
-            router.addEventListener('contentLoaded', updateNavLinks);
-            updateNavLinks();
-
-            function updateNavLinks() {
-                const navLinks = document.querySelectorAll('nav a');
-                const hash = window.location.hash;
-                for (const link of navLinks) {
-                    const href = link.getAttribute('href');
-                    link.className = (hash === href || (hash === '' && href === '#/') ? 'active' : '');
-                }
-            }
-        </script>
+        <!--
+        <script nomodule src="https://dataformsjs.s3-us-west-1.amazonaws.com/js/pre-release/5.0.0/web-components/old-browser-warning.min.js"></script>
+        -->
     </body>
 </html>
