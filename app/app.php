@@ -159,11 +159,15 @@ $app_html = function($lang) use ($use_i18n, $app, $is_localhost) {
     $use_i18n();
     I18N::langFile('_', $lang);
 
-    // Return the main web page [index.htm]. A web component version of the main
-    // site is available but it doesn't not contain all features of the live site.
+    // The main site has 3 different versions of the same site. Most custom JavaScript
+    // code is shared between the same version, all CSS, and the HTML is similar so
+    // having 3 versions shows different options for using DataFormsJS.
     //
-    $page = 'index-web.htm'; // TODO - still being developed, multiple versions of the site will be available once complete
-    // $page = 'index.htm';
+    // $page = 'index.htm';       // DataFormsJS Framework without Templating (Handlebars, Vue, etc)
+    // $page = 'index-hbs.htm';   // DataFormsJS Framework using Handlebars
+    $page = 'index-web.htm';      // DataFormsJS Web Components
+
+    // Set no cache Response headers and return the main page
     $app->noCache();
     return file_get_contents(__DIR__ . '/Views/' . $page);
 };

@@ -128,19 +128,17 @@
             <p data-i18n="footer_license"></p>
         </footer>
 
-        <!--
-            Define HTML Controls (Shared Templates)
-        -->
         <template id="loading-screen">
             <div class="loading">Loading...</div>
         </template>
 
-        <template id="error-screen">
-            <div class="error" data-bind="errorMessage"></div>
-        </template>
+        <script type="text/x-template" data-engine="handlebars" id="error-screen">
+            <div class="error">{{errorMessage}}</div>
+        </script>
 
         <!--
-            Define Routes
+            [home-page.htm] and [getting-started.htm] use <template> rather
+            than Handlebars to prevent nested code templates from being rendered.
         -->
         <template
             data-route="/:lang/"
@@ -151,13 +149,15 @@
             data-i18n-file="home-page">
         </template>
 
-        <template
+        <script
+            type="text/x-template"
+            data-engine="handlebars"
             data-route="/:lang/playground"
-            data-src="/html/playground.htm"
+            data-src="/html/playground-hbs.htm"
             data-page="playground"
             data-lazy-load="codemirrorCss, codemirrorJs, jshint, playgroundCss, playgroundPage"
             data-i18n-file="playground">
-        </template>
+        </script>
 
         <template
             data-route="/:lang/getting-started"
@@ -167,29 +167,24 @@
             data-i18n-file="getting-started">
         </template>
 
-        <template
+        <script type="text/x-template"
+            data-engine="handlebars"
             data-page="jsonData"
             data-route="/:lang/quick-reference"
             data-url="/docs/:lang/quick-reference"
             data-load-only-once
-            data-src="/html/quick-ref.htm"
-            data-lazy-load="jsonData, filter, data_list, jsTemplate"
+            data-src="/html/quick-ref-hbs.htm"
+            data-lazy-load="jsonData, filter"
             data-i18n-file="quick-ref">
-        </template>
+        </script>
 
-        <template
+        <script
+            type="text/x-template"
+            data-engine="handlebars"
             data-route="/:lang/examples"
-            data-src="/html/examples.htm"
+            data-src="/html/examples-hbs.htm"
             data-i18n-file="examples">
-        </template>
-
-        <!--
-            *** IMPORANT ***
-            This file and related files are currently out of sync with the main site (2020-10),
-            and are expected to remain out of sync for several weeks or longer while development
-            updates are being made. The difference is this version does not use Handlebars while
-            the previous code did and this version points to a pre-release of DataFormsJS.
-        -->
+        </script>
 
         <!-- DataFormsJS -->
         <!--
@@ -202,14 +197,11 @@
         <script src="/js/plugins/i18n.js"></script>
         <script src="/js/plugins/navLinks.js"></script>
         <script src="/js/plugins/prism.js"></script>
-        <script src="/js/plugins/dataBind.js"></script>
         <script>
             app.lazyLoad = {
                 // DataFormsJS Framework Objects
                 jsonData: '/js/pages/jsonData.js',
                 filter: '/js/plugins/filter.js',
-                data_list: '/js/controls/data-list.js',
-                jsTemplate: '/js/extensions/jsTemplate.js',
                 // Site Files
                 homePage: '/js/page-home-page.20201113.min.js',
                 gettingStarted: '/js/page-getting-started.20201113.min.js',
@@ -353,6 +345,11 @@
         </script>
 
         <!-- JS Libraries -->
+        <!--
+            For local development with Handlebars create a [vendor] dir and modify the URL, example:
+                <script src="vendor/handlebars.min.js"></script>
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.6/dist/handlebars.min.js"></script>
         <script src="/js/prism-1.17.1/prism.modified.min.js"></script>
     </body>
 </html>

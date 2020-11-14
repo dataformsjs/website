@@ -1,0 +1,25 @@
+{{#if isLoading}}<div data-template-id="loading-screen"></div>{{/if}}
+{{#if hasError}}<div data-template-id="error-screen"></div>{{/if}}
+{{#if isLoaded}}
+    <section class="page quick-ref">
+        <h1>{{i18n 'Quick Reference'}}</h1>
+
+        <div class="filter">
+            <input
+                data-filter-selector=".example"
+                data-filter-results-text-selector=".example-count"
+                data-filter-results-text-all="{{i18n 'quick_ref_all'}}"
+                data-filter-results-text-filtered="{{i18n 'quick_ref_filtered'}}"
+                placeholder="{{i18n 'quick_ref_placeholder'}}">
+            
+            <div class="example-count"></div>
+        </div>
+
+        {{#each code}}
+            <div class="example" data-filter-search-text="{{title}}">
+                <h2>{{title}}</h2>
+                <pre><code class="language-{{lang}}">{{code}}</code>
+            </div>
+        {{/each}}
+    </section>
+{{/if}}

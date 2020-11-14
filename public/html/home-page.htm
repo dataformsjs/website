@@ -139,7 +139,7 @@
     <section class="example-code" data-example="helloWorld">
         <h2 data-i18n="hello_world_example"></h2>
         <div class="examples">
-            <div class="example-pages">
+            <div class="example-pages" role="tablist">
                 <img class="example-page active"
                     data-page="/html/home/example-hello-world-hbs.htm"
                     data-class="language-handlebars"
@@ -147,7 +147,10 @@
                     data-description="hello_world_hbs_desc"
                     data-i18n-attr="data-description"
                     src="/img/DataFormsJS.svg"
-                    alt="Handlebars">
+                    alt="Handlebars"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="hello-world-example">
                 <img class="example-page"
                     data-page="/html/home/example-hello-world-js.htm"
                     data-class="language-html"
@@ -155,7 +158,9 @@
                     data-description="hello_world_js_desc"
                     data-i18n-attr="data-description"
                     src="/img/logos/javascript.svg"
-                    alt="Javascript">
+                    alt="Javascript"
+                    role="tab"
+                    aria-controls="hello-world-example">
                 <img class="example-page"
                     data-page="/html/home/example-hello-world-react.htm"
                     data-class="language-html"
@@ -163,7 +168,9 @@
                     data-description="hello_world_react_desc"
                     data-i18n-attr="data-description"
                     src="/img/logos/react.svg"
-                    alt="React">
+                    alt="React"
+                    role="tab"
+                    aria-controls="hello-world-example">
                 <img class="example-page"
                     data-page="/html/home/example-hello-world-web.htm"
                     data-class="language-html"
@@ -171,7 +178,9 @@
                     data-description="hello_world_web_desc"
                     data-i18n-attr="data-description"
                     src="/img/icons/web-components.svg"
-                    alt="Web Components">
+                    alt="Web Components"
+                    role="tab"
+                    aria-controls="hello-world-example">
             </div>
             <div class="example-links">
                 <a data-no-pushstate href="/examples/hello-world/[locale]/hbs.htm" id="hello-world-hbs" target="_blank" data-i18n-locales="en,ja,es,pt-BR,ar,fr,zh-CN" data-i18n="view_sample"></a>
@@ -183,6 +192,8 @@
         <p class="description" data-i18n="hello_world_hbs_desc"></p>
         <div class="example">
             <pre><code
+                id="hello-world-example"
+                role="tabpanel"
                 class="language-handlebars"
                 data-template-url="/html/home/example-hello-world-hbs.htm"
                 data-i18n-replace-text></code></pre>
@@ -192,7 +203,7 @@
     <section class="example-code" data-example="jsonData">
         <h2 data-i18n="json_data_example"></h2>
         <div class="examples">
-            <div class="example-pages">
+            <div class="example-pages" role="tablist">
                 <img class="example-page active"
                     data-page="/html/home/example-json-data-hbs.htm"
                     data-class="language-handlebars"
@@ -200,7 +211,10 @@
                     data-description="json_data_hbs_desc"
                     data-i18n-attr="data-description"
                     src="/img/logos/handlebars_32x32.png"
-                    alt="Handlebars">
+                    alt="Handlebars"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="places-demo">
                 <img class="example-page"
                     data-page="/html/home/example-json-data-vue.htm"
                     data-class="language-html"
@@ -208,7 +222,9 @@
                     data-description="json_data_vue_desc"
                     data-i18n-attr="data-description"
                     src="/img/logos/vue.svg"
-                    alt="Vue">
+                    alt="Vue"
+                    role="tab"
+                    aria-controls="places-demo">
                 <img class="example-page"
                     data-page="/html/home/example-json-data-react.htm"
                     data-class="language-jsx"
@@ -216,7 +232,9 @@
                     data-description="json_data_react_desc"
                     data-i18n-attr="data-description"
                     src="/img/logos/react.svg"
-                    alt="React">
+                    alt="React"
+                    role="tab"
+                    aria-controls="places-demo">
                 <img class="example-page"
                     data-page="/html/home/example-json-data-graphql.htm"
                     data-class="language-handlebars"
@@ -224,7 +242,9 @@
                     data-description="json_data_graphql_desc"
                     data-i18n-attr="data-description"
                     src="/img/logos/graphql.svg"
-                    alt="GraphQL">
+                    alt="GraphQL"
+                    role="tab"
+                    aria-controls="places-demo">
                 <img class="example-page"
                     data-page="/html/home/example-json-data-web.htm"
                     data-class="language-html"
@@ -232,7 +252,9 @@
                     data-description="json_data_web_desc"
                     data-i18n-attr="data-description"
                     src="/img/icons/web-components.svg"
-                    alt="Web Components">
+                    alt="Web Components"
+                    role="tab"
+                    aria-controls="places-demo">
             </div>
             <div class="example-links">
                 <a data-no-pushstate href="/examples/places-demo-hbs.htm#/[locale]/" id="json-data-hbs" target="_blank" data-i18n-locales="en,ja,es,pt-BR,ar,fr,zh-CN" data-i18n="view_sample"></a>
@@ -245,6 +267,8 @@
         <p class="description" data-i18n="json_data_hbs_desc"></p>
         <div class="example">
             <pre><code
+                id="places-demo"
+                role="tabpanel"
                 class="language-handlebars"
                 data-template-url="/html/home/example-json-data-hbs.htm"
                 data-i18n-replace-text></code></pre>

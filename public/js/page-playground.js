@@ -16,6 +16,10 @@
  * Additionally the server-side PHP template was easy to quick to replace with handlebars
  * as PHP i18n keys were swapped out with Handlebars using Find/Replace. Later the site was
  * switched from handlebars to no-templating (JS Only) and the additional change was quick as well.
+ * 
+ * Updating the build of this file:
+ *     See full comments in [page-home-page.js], most recent build:
+ *     uglifyjs page-playground.js -o page-playground.20201113.min.js -c -m
  *
  * @link     https://www.dataformsjs.com
  * @author   Conrad Sollitt (https://conradsollitt.com)

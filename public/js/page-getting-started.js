@@ -3,6 +3,10 @@
  *
  * The getting started page uses <template> rather than Hanldebars or other
  * rendering engines so that example code is display rather than rendered.
+ * 
+ * Updating the build of this file:
+ *     See full comments in [page-home-page.js], most recent build:
+ *     uglifyjs page-getting-started.js -o page-getting-started.20201113.min.js -c -m
  */
 
 /* Validates with both [jshint] and [eslint] */
@@ -76,8 +80,10 @@
                     var allPages = document.querySelectorAll('.template-page');
                     Array.prototype.forEach.call(allPages, function(page) {
                         page.classList.remove('active');
+                        page.setAttribute('aria-selected', 'false');
                     });
                     selectedTmpl.classList.add('active');
+                    selectedTmpl.setAttribute('aria-selected', 'true');
 
                     // Save template language so it appears when page is loaded
                     model.activeTemplate = selectedTmpl.getAttribute('data-lang');

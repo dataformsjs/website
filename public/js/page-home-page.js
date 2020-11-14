@@ -23,7 +23,7 @@
  * Updating the build of this file:
  *     npm install uglify-js -g
  *     uglifyjs page-home-page.js -o page-home-page{YYYYMMDD}.min.js -c -m
- *     uglifyjs page-home-page.js -o page-home-page.2020316.min.js -c -m
+ *     uglifyjs page-home-page.js -o page-home-page.20201113.min.js -c -m
  *     # Then update [website\app\Views\index.htm] with the new file
  */
 
@@ -251,8 +251,10 @@ Steps used to create (or re-create the computer graphic)
                     var allPages = parent.querySelectorAll('.example-page');
                     Array.prototype.forEach.call(allPages, function(page) {
                         page.classList.remove('active');
+                        page.setAttribute('aria-selected', 'false');
                     });
                     selectedExample.classList.add('active');
+                    selectedExample.setAttribute('aria-selected', 'true');
 
                     // Save template language so it appears when page is loaded
                     model.activeExamples[parent.getAttribute('data-example')] = selectedExample.getAttribute('data-link');
@@ -646,12 +648,6 @@ Steps used to create (or re-create the computer graphic)
                 // once ready the related setup code can then be called.
                 // NOTE - This is due to a very specific layout based on the original
                 // site design so code like this is not needed for most apps.
-                // ** If IE and Older Browser support is not included the layout
-                // could likely be handled in CSS using:
-                //     .home.page .example-code .description { max-width: fit-content; }
-                // However a lot of testing would be needed to confirm.
-                // TODO - test and see if this can be removed, IE will always be using
-                //  the Framework so element width can be set in related code for IE.
                 var model = this;
                 var interval = window.setInterval(function() {
                     var examples = document.querySelectorAll('.example-code code');

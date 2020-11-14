@@ -1,23 +1,5 @@
 <!doctype html>
-<!--
-    TODO - new test file - in active development
-        A full working version of the main site may or may not be created.
-        At a minimum the code in current state helps confirm new Web Components and features.
-
-        If this ends up fully working and working (along with polyfill well) then
-        it may be used instead of the main framework. That is a long term goal at least.
-
-        Currently there is one known major outstanding issue:
-            * Quick ref page is taking a long time (~5 seconds) to display data
-            * This happens almost instantly with the main framework
-            * Also when clicking back code is not highlighted
-            * Issue may be due to many different service web components running in async order
-
-        Additionally before this file can be considered ready it must be tested extensively
-        in a range of browsers and devices. All commented JS code at the bottom of this
-        file still needs to be handled (will use the 'app:routeChanged' event and basic functions).
--->
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -163,7 +145,7 @@
         <html-import-service></html-import-service>
         <show-errors-service></show-errors-service>
         <prism-service></prism-service>
-        
+
         <!--
             Define Routes
         -->
@@ -229,11 +211,10 @@
                 data_list: { module: '/js/web-components/data-list.js' },
                 input_filter: { module: '/js/web-components/input-filter.js' },
                 // Site Files
-                // homePage: '/js/page-home-page.2020316.min.js',
-                homePage: '/js/page-home-page.js',
-                gettingStarted: '/js/page-getting-started.js',
+                homePage: '/js/page-home-page.20201113.min.js',
+                gettingStarted: '/js/page-getting-started.20201113.min.js',
                 playgroundCss: '/css/playground.css',
-                playgroundPage: '/js/page-playground.js',
+                playgroundPage: '/js/page-playground.20201113.min.js',
                 // Third-party
                 codemirrorCss: '/js/codemirror/codemirror-5.48.0.css',
                 codemirrorJs: '/js/codemirror/codemirror-5.48.0.min.js',
@@ -270,83 +251,19 @@
                     i18nUL.style.display = '';
                 };
 
-                /*
                 // Add CSS Variable Support to IE and older Browsers
-                var supportsCssVars = (window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)'));
-                var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
-                app.loadScript(supportsCssVars, polyfillUrl, function() {
-                    if (window.cssVars) {
-                        cssVars({ include:'link[href^="/css/site"]' });
+                function addCssPolyfill() {
+                    if (window.app === undefined) {
+                        return; // Using Modern Browser so [polyfill.js] is not loaded
                     }
-                });
-
-                // Custom Site Plugin to update GitHub Links
-                app.addPlugin('github', function() {
-                    var links = document.querySelectorAll('nav a.github');
-                    var url = 'https://github.com/dataformsjs/dataformsjs';
-                    switch (app.plugins.i18n.currentLocale) {
-                        case 'es':
-                        case 'pt-BR':
-                        case 'ja':
-                        case 'zh-CN':
-                            url = 'https://github.com/dataformsjs/dataformsjs/blob/master/docs/i18n-readme/README.' + app.plugins.i18n.currentLocale + '.md';
-                            break;
-                    }
-                    Array.prototype.forEach.call(links, function(link) {
-                        link.href = url;
+                    var supportsCssVars = (window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)'));
+                    var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
+                    app.loadScript(supportsCssVars, polyfillUrl, function() {
+                        if (window.cssVars) {
+                            cssVars({ include:'link[href^="/css/site"]' });
+                        }
                     });
-                });
-
-                // Custom Site Plugin for right-to-left languages (example: Arabic, Persian, Hebrew).
-                // The [site.css] file also contains query selectors starting with "html[dir='rtl']"
-                // to handle the layout.
-                app.addPlugin('htmlDir', {
-                    onRouteLoad: function(next) {
-                        if (app.plugins.i18n.currentLocale === 'ar') {
-                            document.documentElement.setAttribute('dir', 'rtl');
-                        } else {
-                            if (document.documentElement.hasAttribute('dir')) {
-                                document.documentElement.removeAttribute('dir');
-                                // The code below is a hack for iOS 11 with Safari.
-                                // If changing languages from ltr to rtl and back
-                                // the nav menu will appear out of order.
-                                // Example: ('en' -> 'ar' -> 'en')
-                                document.documentElement.style.direction = 'ltr';
-                                window.setTimeout(function() {
-                                    document.documentElement.style.direction = '';
-                                }, 100);
-                            }
-                        }
-                        next();
-                    },
-                });
-
-                // Custom Site Plugin to add or remove the <meta name="Description" content="{content}">
-                // tag. It only is included on the home page and removed from other pages.
-                app.addPlugin('metaDescription', {
-                    onRouteLoad: function(next) {
-                        var element = document.querySelector('meta[name="Description"]');
-                        var text = null;
-                        if (app.activeController && app.activeController.path === '/:lang/') {
-                            text = app.plugins.i18n.getText('overview_1');
-                        }
-                        if (text === null) {
-                            if (element !== null) {
-                                element.parentNode.removeChild(element);
-                            }
-                        } else {
-                            if (element === null) {
-                                element = document.createElement('meta');
-                                element.name = 'Description';
-                                element.content = 'DataFormsJS - ' + text;
-                                document.querySelector('head').appendChild(element);
-                            } else {
-                                element.content = 'DataFormsJS - ' + text;
-                            }
-                        }
-                        next();
-                    },
-                });
+                }
 
                 // The site was originally published using #hash URL's. If the
                 // page loaded uses a hash URL then navigate to the path.
@@ -355,13 +272,101 @@
                 //     https://www.dataformsjs.com/#/en/quick-reference
                 // Becomes:
                 //     https://www.dataformsjs.com/en/quick-reference
-                if (window.location.hash) {
-                    var path = window.location.hash.substring(1);
-                    document.addEventListener('DOMContentLoaded', function() {
-                        app.changeRoute(path);
+                //
+                // When this happens there will be several redirects over
+                // the course of a second. The reason is because the original
+                // Framework version of the site has a predictable order while
+                // other code runs first when using Web Components.
+                //
+                var startingHash = window.location.hash;
+                function checkPageHash() {
+                    if (startingHash) {
+                        var path = startingHash.substring(1);
+                        document.querySelector('url-router').changeRoute(path);
+                    }
+                }
+
+                // Update GitHub Links
+                function updateGitHubLinks() {
+                    var links = document.querySelectorAll('nav a.github');
+                    var url = 'https://github.com/dataformsjs/dataformsjs';
+                    switch (window.i18n_Locale) {
+                        case 'es':
+                        case 'pt-BR':
+                        case 'ja':
+                        case 'zh-CN':
+                            url = 'https://github.com/dataformsjs/dataformsjs/blob/master/docs/i18n-readme/README.' + window.i18n_Locale + '.md';
+                            break;
+                    }
+                    Array.prototype.forEach.call(links, function(link) {
+                        link.href = url;
                     });
                 }
-                */
+
+                // Handle right-to-left languages (example: Arabic, Persian, Hebrew).
+                // The [site.css] file also contains query selectors starting with "html[dir='rtl']"
+                // to handle the layout.
+                function handleDirRtl() {
+                    if (window.i18n_Locale === 'ar') {
+                        document.documentElement.setAttribute('dir', 'rtl');
+                    } else {
+                        if (document.documentElement.hasAttribute('dir')) {
+                            document.documentElement.removeAttribute('dir');
+                            // The code below is a hack for iOS 11 with Safari.
+                            // If changing languages from ltr to rtl and back
+                            // the nav menu will appear out of order.
+                            // Example: ('en' -> 'ar' -> 'en')
+                            document.documentElement.style.direction = 'ltr';
+                            window.setTimeout(function() {
+                                document.documentElement.style.direction = '';
+                            }, 100);
+                        }
+                    }
+                }
+
+                // Custom Site Plugin to add or remove the <meta name="Description" content="{content}">
+                // tag. It only is included on the home page and removed from other pages.
+                function updateMetaDescription() {
+                    var element = document.querySelector('meta[name="Description"]');
+                    var text = null;
+                    var router = document.querySelector('url-router');
+                    // `path` will equal null on initial page load
+                    var path = (router.currentRoute && router.currentRoute.path ? router.currentRoute.path : null);
+                    if (path === null || path === '/:lang/') {
+                        text = window.i18nText('overview_1');
+                    }
+                    if (text === null) {
+                        if (element !== null) {
+                            element.parentNode.removeChild(element);
+                        }
+                    } else {
+                        if (element === null) {
+                            element = document.createElement('meta');
+                            element.name = 'Description';
+                            element.content = 'DataFormsJS - ' + text;
+                            document.querySelector('head').appendChild(element);
+                        } else {
+                            element.content = 'DataFormsJS - ' + text;
+                        }
+                    }
+                }
+
+                // Call app specific code after each page change
+                var checkedPath = false;
+                document.addEventListener('app:routeChanged', function() {
+                    if (checkedPath) {
+                        return;
+                    }
+                    checkedPath = true;
+                    // These functions only need to run one time when the page is first ready
+                    addCssPolyfill();
+                    checkPageHash();
+                });
+                document.addEventListener('app:i18nLoaded', function() {
+                    updateGitHubLinks();
+                    handleDirRtl();
+                    updateMetaDescription();
+                });
 
                 // Update footer
                 document.querySelector('footer .year').textContent = (new Date()).getFullYear();
