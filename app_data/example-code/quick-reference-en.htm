@@ -1159,7 +1159,7 @@ LANG: JavaScript
 
 /**
  * Import a Tagged Template Literal function to safely escape values for HTML.
- * 
+ *
  * The function can be imported directly from CDN when using modern browsers,
  * however to use zero dependencies for this template the import is commented
  * out and the needed functions are included here.
@@ -1212,9 +1212,12 @@ class HelloWorld extends HTMLElement {
             name: null,
             color: 'red',
         };
+    }
+
+    connectedCallback() {
         this.render();
     }
-    
+
     // [observedAttributes] and [attributeChangedCallback] are used
     // to handle HTML attribute changes.
     static get observedAttributes() {
@@ -1230,7 +1233,7 @@ class HelloWorld extends HTMLElement {
                 break;
         }
     }
-    
+
     // Define [name] and [color] properties for JavaScript
     // Example usage:
     //   document.querySelector('hello-world').name = 'John Doe';
@@ -1243,7 +1246,7 @@ class HelloWorld extends HTMLElement {
         this.state.name = newValue;
         this.render();
     }
-    
+
     get color() {
         return this.state.color;
     }
@@ -1252,7 +1255,7 @@ class HelloWorld extends HTMLElement {
         this.state.color = newValue;
         this.render();
     }
-    
+
     // Update the element contents
     render() {
         const name = (this.state.name ? this.state.name : 'World');

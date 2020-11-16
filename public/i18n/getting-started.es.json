@@ -27,7 +27,7 @@
     "dev_specific": "Versión de Desarrollo específica:",
     "prod_latest": "Producto más reciente:",
     "prod_specific": "Versión de producto específica:",
-    "comment_old_browsers": "Los navegadores más antiguos (IE, dispositivos móviles más antiguos, etc.) mostrarán una advertencia",
+    "comment_old_browsers": "Opcional: muestra una advertencia para los navegadores más antiguos (IE, dispositivos móviles más antiguos, etc.)",
     "jsxloader_line_1": "[jsxLoader.js] compilará y convertirá rápidamente JSX a JS para navegadores modernos,",
     "jsxloader_line_2": "y para navegadores más antiguos descargará y usará Babel Standalone desde un CDN."
 }
