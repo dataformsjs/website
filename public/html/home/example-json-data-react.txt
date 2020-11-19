@@ -12,11 +12,8 @@
         <script src="js/jsxLoader.jsx"></script>
 
         <!-- DataFormsJS React Components -->
-        <script type="text/babel" src="js/es6/ErrorBoundary.js"></script>
-        <script type="text/babel" src="js/es6/JsonData.js"></script>
-        <script type="text/babel" src="js/es6/InputFilter.js"></script>
-        <script type="text/babel" src="js/es6/SortableTable.js"></script>
-        <script type="text/babel" src="js/es6/Format.js"></script>
+        <script type="module" src="js/es6/DataFormsJS.min.js"></script>
+        <script nomodule src="js/es5/DataFormsJS.min.js"></script>
 
         <script type="text/babel">
             const format = new Format();
