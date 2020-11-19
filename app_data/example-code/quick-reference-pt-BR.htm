@@ -188,30 +188,16 @@ LANG: JSX
 */}
 
 // Importe componentes do arquivo rais do DataFormsJS
-import { ErrorBoundary, JsonData } from 'dataformsjs/js/react/es6/DataFormsJS.js';
+import { ErrorBoundary, JsonData } from 'dataformsjs/js/react/es6/DataFormsJS';
 
 // Importe o Namespace padrão DataFormsJS
 // Você podem então utilizar o seguinte para JSX:
 //     <DataFormsJS.JsonData>
-import DataFormsJS from 'dataformsjs/js/react/es6/DataFormsJS.js';
+import DataFormsJS from 'dataformsjs/js/react/es6/DataFormsJS';
 
 // Importe Componentes Individuais:
-import JsonData from 'dataformsjs/js/react/es6/JsonData.js';
-import ErrorBoundary from 'dataformsjs/js/react/es6/ErrorBoundary.js';
-
-/* Ambos os diretórios [es6] e [es5] funcionam com [create-react-app]. A versão
-[es5] dos arquivos já é compilada utilizando Babel, entretanto, você
-prefira utilizar a versão [es6] para que os componentes sejam compilados com as
-configurações padrão ou a de seu projeto.
-
-Componentes [es5] são projetados para Desenvolvimento em Navegador. Para
-todos os componentes individuais, você pode simplesmente mudar o caminho do
-diretório de [es6] para [es5] e para o namespace padrão há uma sutil mudança
-na sintaxe utilizando [import { DataFormsJS } from ...]. */
-import { ErrorBoundary, JsonData } from 'dataformsjs/js/react/es5/DataFormsJS.js';
-import { DataFormsJS } from 'dataformsjs/js/react/es5/DataFormsJS.js';
-import JsonData from 'dataformsjs/js/react/es5/JsonData.js';
-import ErrorBoundary from 'dataformsjs/js/react/es5/ErrorBoundary.js';
+import JsonData from 'dataformsjs/js/react/es6/JsonData';
+import ErrorBoundary from 'dataformsjs/js/react/es6/ErrorBoundary';
 </script>
 <!-- EXAMPLE_CODE_END -->
 
