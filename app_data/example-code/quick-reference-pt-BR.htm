@@ -2,14 +2,6 @@
 TITLE: DataFormsJS Framework JavaScript Files
 -->
 <!--
-    ************************************
-    **** IMPORTANT ****
-    Most Documents here refer to links from DataFormsJS 4.8.0.
-    Version 5.0.0 was published on Thursday, November 29, 2020
-    so some topics included here will be updated later today
-    (particularly around Web Components and React Components).
-    ************************************
-
     DataFormsJS Core Framework Files
 
     Este framework JavaScript funciona com engines de templating e visualização
@@ -118,7 +110,7 @@ TITLE: DataFormsJS Framework JavaScript Files
 
 <!-- ********************************************************************** -->
 <!-- EXAMPLE_CODE_START
-TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
+TITLE: Componentes DataFormsJS React
 -->
 <!--
     DataFormsJS JSX Loader
@@ -130,35 +122,50 @@ TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/jsxLoader.min.js"></script>
 
 <!--
-    Componentes Individuais de React e Classes JavaScript para Desenvolvimento Web com JSX Loader
+    DataFormsJS React Components
+
+    The core [DataFormsJS.min.js] file includes DataFormsJS React Components
+    [JsonData, ErrorBoundary, LazyLoad, InputFilter, SortableTable] and Classes
+    [Cache, Format]. All React Components are also compatible with Preact when
+    using jsxLoader.
+
+    Additional Components [ImageGallery, LeafletMap] and Class [I18n]
+    need to be included seperatly.
 -->
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/ErrorBoundary.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/DataFormsJS.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/DataFormsJS.min.js"></script>
+<!--
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/I18n.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/ImageGallery.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/LeafletMap.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/I18n.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/ImageGallery.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/LeafletMap.min.js"></script>
+-->
+
+<!--
+    Each React Component or Class for React has 4 versions:
+
+    1) [react/es6/{Class}.js]
+        Source file which includes "import React from 'react';" so it can be used
+        with `webpack`, `create-react-app`, etc. However this will not load in a browser
+        by default unless using Babel Standlone or jsxLoader with [type="text/babel"].
+    2) [react/es6/{Class}.min.js]
+        Minimized source file that works with modern browsers.
+    3) [react/es5/{Class}.js]
+        ES5 Version of the source file that works with all browsers.
+    4) [react/es5/{Class}.min.js]
+        Minimized ES5 Version of the source file that works with all browsers.
+
+    The recommended method for including files is to use include both minimized
+    files - one for modern browsers and one for legacy browsers (IE, older mobile devices, etc):
+        <script type="module" src="dataformsjs/js/react/es6/JsonData.min.js"></script>
+        <script nomodule src="dataformsjs/js/react/es5/JsonData.min.js"></script>
+-->
 <script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/JsonData.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/LazyLoad.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/InputFilter.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/SortableTable.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/I18n.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/Format.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/LeafletMap.js"></script>
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/ImageGallery.js"></script>
-
-<!--
-    Todos arquivos [es6] também têm uma versão [es5] que pode ser usada num navegador sem o Babel
--->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/JsonData.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/JsonData.min.js"></script>
-
-<!--
-    ES5 compilado com a maioria os React Components e Classes pode ser utilizado no Navegador sem o Babel.
-    Using this file or individual [es5] component files is recommended for most browser based apps.
--->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/DataFormsJS.min.js"></script>
-
-<!--
-    To use the ES5 build of <ImageGallery> the component script must be included
-    separately because <ImageGallery> is not included in [DataFormsJS.min.js].
--->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/ImageGallery.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es6/JsonData.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/JsonData.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/react/es5/JsonData.min.js"></script>
 
 <!--
     Plugins padrão para Framework são suportados com o React quado utilizando uma API do [jsPlugins.js]
@@ -168,14 +175,14 @@ TITLE: Componentes DataFormsJS React Para Desenvolvimento Web
 <!--
     Incluir React
 -->
-<script src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17.0.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js"></script>
 
 <!--
     Os componentes React do DataFormsJS podem ser utilizados com React Router para SPAs
 -->
-<script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
-<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://unpkg.com/react-router@5.2.0/umd/react-router.min.js"></script>
+<script src="https://unpkg.com/react-router-dom@5.2.0/umd/react-router-dom.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -215,28 +222,51 @@ import ErrorBoundary from 'dataformsjs/js/react/es6/ErrorBoundary';
 TITLE: Web Components do DataFormsJS
 -->
 <!--
-    Componentes Web
-    É requisito a inclusão de [type="module"] para scripts Web Components.
+    Web Components
+    Including [type="module"] is required for Web Components because they
+    use import statements for shared utility functions.
+
+    All DataFormsJS Web Components have can be polyfilled for old browsers by
+    including the [nomodule] polyfill script:
+        <script nomodule src="dataformsjs/js/web-components/polyfill.min.js"></script>
+
+    [polyfill.js] does not provide polyfills for [window.customElements] or any
+    Web Component APIs; rather it downloads and uses the DataFormsJS Framework to
+    replicate the needed functionality for DataFormsJS Web Components to work.
 -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/url-router.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/json-data.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/data-list.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/data-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/data-view.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/input-filter.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/sortable-table.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/leaflet-map.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/image-gallery.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/leaflet-map.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/html-import-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/i18n-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/keydown-action-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/prism-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/show-errors-service.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/polyfill.min.js"></script>
 
 <!--
-    Scripts [nomodule] estão disponíveis para prover uma mensagem amigável para
-    usuários informando que o site não funcionará se estiverem utilizando IE ou
-    dispositivos móveis e navegadores antigos.
+    [nomodule] Scripts are available to provide users with a friendly message for
+    the site will not work if they are using IE or older mobile devices and browsers.
+
+    In general only [old-browser-warning.min.js] needs to be included because users have
+    the ability to close the message alert if it occurs on older modern browsers that run
+    both [type="module"] and [nomodule] scripts.
+
+    [safari-nomodule.min.js] targets specific versions of Safari (10.#) that run both
+    [type="module"] and [nomodule] scripts. In general this file is no longer needed
+    for most sites.
 -->
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/safari-nomodule.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/old-browser-warning.min.js"></script>
 
 <!--
-    Plugins padrão do framework são suportados com Web Components ao utilizar uma API de [jsPlugins.js]
+    Standard Framework Plugins are supported with Web Components when using an API from [jsPlugins.js]
 -->
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/jsPlugins.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
@@ -250,10 +280,13 @@ TITLE: Todos os Arquivos do Framework
 
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/controls/data-list.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/controls/data-table.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/controls/data-view.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/controls/json-data.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/extensions/events.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/extensions/format.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/extensions/handlebars-helpers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/extensions/jsTemplate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/extensions/validation.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/extensions/vue-directives.min.js"></script>
 
@@ -273,9 +306,10 @@ TITLE: Todos os Arquivos do Framework
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/keydownAction.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/leaflet.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/listEditor.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/modalAlert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/navLinks.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/navList.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/onePageSite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/pickadate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/prism.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/plugins/sort.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
@@ -783,6 +817,7 @@ TITLE: Web Components - Filtrando e classificando
 -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/input-filter.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/sortable-table.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.0.1/js/web-components/polyfill.min.js"></script>
 
 <!--
     O componente [input-filter.js] é herdado de um elemento padrão <input>.

@@ -172,7 +172,7 @@
                     // https://ourcodeworld.com/articles/read/682/what-does-the-not-allowed-to-navigate-top-frame-to-data-url-javascript-exception-means-in-google-chrome
                     var code = document.querySelector('.template code').textContent;
                     var url = 'data:text/html,' + encodeURIComponent(code);
-                    var iframe = '<!doctype html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
+                    var iframe = '<!doctype html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">';
                     iframe += '<style>*{margin:0;padding:0}</style></head><body><iframe src="' + url  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:99vh;" allowfullscreen></iframe></body></html>';
                     var win = window.open();
                     win.document.write(iframe);

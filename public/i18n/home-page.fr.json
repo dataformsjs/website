@@ -3,7 +3,7 @@
     "user_name": "Nom d'utilisateur",
     "password": "Mot de passe",
     "login": "S'identifier",
-    "overview_1": "Un framework JavaScript minimal et des composants autonomes pour le développement de sites Web et d'applications de page unique de haute qualité.",
+    "overview_1": "Un framework JavaScript minimal et des composants React et Web autonomes pour le développement rapide de sites Web de haute qualité et d'applications d'une seule page.",
     "overview_2": "DataFormsJS fonctionne avec les moteurs de vue et de modèle courants et gère la logique du contrôleur et l'état du modèle.",
     "works_with": "Marche avec",
     "and_more": "et plus!",
