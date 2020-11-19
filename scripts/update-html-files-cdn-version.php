@@ -15,8 +15,8 @@
 // instead to sync all changes from GitHub.
 
 const CDN = 'https://cdn.jsdelivr.net/npm/dataformsjs@';
-const PREV_VER = '4.7.1';
-const NEW_VER = '4.8.0';
+const PREV_VER = '4.8.0';
+const NEW_VER = '5.0.0';
 const SEARCH_TEXT = CDN . PREV_VER;
 const REPLACE_TEXT = CDN . NEW_VER;
 
