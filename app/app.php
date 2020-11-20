@@ -163,9 +163,9 @@ $app_html = function($lang) use ($use_i18n, $app, $is_localhost) {
     // code is shared between the same version, all CSS, and the HTML is similar so
     // having 3 versions shows different options for using DataFormsJS.
     //
-    // $page = 'index.htm';       // DataFormsJS Framework without Templating (Handlebars, Vue, etc)
-    // $page = 'index-hbs.htm';   // DataFormsJS Framework using Handlebars
-    $page = 'index-web.htm';      // DataFormsJS Web Components
+    $page = 'index.htm';         // DataFormsJS Framework without Templating (Handlebars, Vue, etc)
+    // $page = 'index-hbs.htm';  // DataFormsJS Framework using Handlebars
+    // $page = 'index-web.htm';  // DataFormsJS Web Components
 
     // Set no cache Response headers and return the main page
     $app->noCache();

@@ -18,6 +18,12 @@ body {
 }
 
 /* Nav */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 nav a { padding:10px 20px; }
 nav a.active { background-color:#efefef; }
 

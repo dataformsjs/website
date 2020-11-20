@@ -3,7 +3,7 @@
  *
  * The initial playground page was created for FastSitePHP [https://www.fastsitephp.com]
  * (same license and author as DataFormsJS). Re-using the existing JS Code for the
- * DataFormsJS framework was quick and easy. Bascially rather than calling
+ * DataFormsJS framework was quick and easy. Basically rather than calling
  * [document.addEventListener('DOMContentLoaded', ...] a minimal [app.addPage('playground',...]
  * is used near the bottom of this file. An additional Web Component version of the site
  * shares this code and also requires minimal changes.
@@ -19,7 +19,7 @@
  * 
  * Updating the build of this file:
  *     See full comments in [page-home-page.js], most recent build:
- *     uglifyjs page-playground.js -o page-playground.20201113.min.js -c -m
+ *     uglifyjs page-playground.js -o page-playground.20201120.min.js -c -m
  *
  * @link     https://www.dataformsjs.com
  * @author   Conrad Sollitt (https://conradsollitt.com)
@@ -199,6 +199,21 @@
         });
     }
 
+    // Depending on if mobile or not show a different message
+    // when a narrow screen (mobile layout) is used.
+    function updateMobileMessage() {
+        var mobileMessage = document.querySelector('.mobile-message p');
+        if (!mobileMessage) {
+            // Due to timing issues with the Web Components version
+            // of the main site this may run when content is not on screen.
+            return;
+        }
+        var ua = window.navigator.userAgent.toLowerCase();
+        var isMobile = (ua.indexOf('android') > -1 || ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1);
+        var attr = (isMobile ? 'data-mobile-screen' : 'data-narrow-screen');
+        mobileMessage.textContent = mobileMessage.getAttribute(attr);
+    }
+
     function setupControls() {
         var createButtons = document.querySelectorAll('.btn.create-site');
         if (createButtons.length === 0) {
@@ -218,13 +233,7 @@
             document.querySelector('.content.error-message').style.display = 'none';
         };
 
-        // Depending on if mobile or not show a different message
-        // when a narrow screen (mobile layout) is used.
-        var ua = window.navigator.userAgent.toLowerCase();
-        var isMobile = (ua.indexOf('android') > -1 || ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1);
-        var mobileMessage = document.querySelector('.mobile-message p');
-        var attr = (isMobile ? 'data-mobile-screen' : 'data-narrow-screen');
-        mobileMessage.textContent = mobileMessage.getAttribute(attr);
+        updateMobileMessage();
 
         var fileType = document.getElementById('file-type');
         fileType.onchange = function() {
@@ -1004,6 +1013,7 @@
         window.setupPlayground = function() {
             setup();
             document.querySelector('footer').style.display = 'none';
+            document.addEventListener('app:i18nLoaded', updateMobileMessage);
         };
         window.unloadPlayground = function() {
             if (state.countdownInterval !== null) {
@@ -1012,6 +1022,7 @@
             }
             document.querySelector('footer').style.display = '';
             document.onkeydown = null;
+            document.removeEventListener('app:i18nLoaded', updateMobileMessage);
         };
         return;
     }
