@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\LoremIpsum;
 use App\Models\WebServiceResult;
 use App\Middleware\Databases;
 use FastSitePHP\Web\Response;
@@ -71,3 +72,42 @@ $app->post('/data/ai-ml/predict/:model', 'AI_ML.predict');
 $app->get('/data/ai-ml/sample-data/:model', 'AI_ML.sampleData');
 $app->get('/data/ai-ml/categories/:model', 'AI_ML.categories');
 $app->get('/data/ai-ml/sample-training-data/:model', 'AI_ML.sampleTrainingData');
+
+// JSON Service
+// Return a markdown content and a list of random markdown using Lorem Ipsum
+$app->get('/data/random/markdown', function () {
+    $list = [];
+    $all_text = [];
+    for ($n = 0; $n < rand(10, 20); $n++) {
+        $text = LoremIpsum::text();
+        switch (rand(0, 6)) {
+            case 0:
+                $text = '# ' . $text;
+                break;
+            case 1:
+                $text = '## ' . $text;
+                break;
+            case 2:
+                $text = '### ' . $text;
+                break;
+            case 3:
+                $text = '**' . $text . '**';
+                break;
+            case 4:
+                $text = '_' . $text . '_';
+                break;
+            case 5:
+                $text = '`' . $text . '`';
+                break;
+            case 6:
+                $text = '* ' . $text . "\n" . '* ' . LoremIpsum::text();
+                break;
+        }
+        $all_text[] = $text;
+        $list[] = [ 'content' => $text ];
+    }
+    return [ 
+        'content' => implode("\n", $all_text),
+        'list' => $list
+    ];
+});

@@ -60,7 +60,7 @@ $is_localhost = function() {
 // Some routes use server-side I18N functions.
 // Use FastSitePHP's i18n API for this.
 // It uses the same format '_.{lang}.json' as DataFormsJS.
-// This is in a seperate function to avoid unnecessary [is_dir()]
+// This is in a separate function to avoid unnecessary [is_dir()]
 // calls for routes that do not need server-side i18n.
 $use_i18n = function() use ($app) {
     $dir = __DIR__ . '/../html/i18n';
