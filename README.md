@@ -1,4 +1,4 @@
-# :star2: Welcome to DataFormsJS!
+# 🌟 Welcome to DataFormsJS!
 
 **Thanks for visiting!** 🌠👍
 
@@ -24,7 +24,7 @@
   </tbody>
 </table>
 
-## :rocket: Getting Started
+## 🚀 Getting Started
 
 While the main DataFormsJS repository uses Node for server code, the main web site uses PHP with FastSitePHP so you need to have PHP installed in order to run it.
 
@@ -64,11 +64,11 @@ For local setup of the GeoNames database used in the Places demo see comments in
 * [scripts/geonames.py](scripts/geonames.py)
 * [scripts/geonames.rb](scripts/geonames.rb)
 
-## :handshake: Contributing and Translations
+## 🤝 Contributing and Translations
 
 **All contributions are welcome.** Please see comments in the main DataFormsJS repository. 
 
-## :question: FAQ
+## ❓ FAQ
 
 **Why was the main site developed with PHP instead of Node or another Language?**
 
@@ -82,7 +82,7 @@ The main site is actually a SPA that also includes web services. In the future t
 
 SQLite is used for the Places Demo App and the Entry Form Demo. The plan is to use SQLite as long as there are no issues with too many concurrent users. If needed a memory caching database (Memcached, Redis, etc.) would be used with the Places demos before moving to a larger database.
 
-## :memo: License
+## 📝 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
