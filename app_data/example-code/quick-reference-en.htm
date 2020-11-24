@@ -124,17 +124,19 @@ TITLE: DataFormsJS JSX Loader and React Components
     [Cache, Format]. All React Components are also compatible with Preact when
     using jsxLoader.
 
-    Additional Components [ImageGallery, LeafletMap] and Class [I18n]
-    need to be included seperatly.
+    Additional Components [ImageGallery, Markdown, LeafletMap] and Class [I18n]
+    need to be included separately.
 -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es6/DataFormsJS.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es5/DataFormsJS.min.js"></script>
 <!--
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es6/I18n.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es6/ImageGallery.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es6/Markdown.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es6/LeafletMap.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es5/I18n.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es5/ImageGallery.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es5/Markdown.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/react/es5/LeafletMap.min.js"></script>
 -->
 
@@ -144,7 +146,7 @@ TITLE: DataFormsJS JSX Loader and React Components
     1) [react/es6/{Class}.js]
         Source file which includes "import React from 'react';" so it can be used
         with `webpack`, `create-react-app`, etc. However this will not load in a browser
-        by default unless using Babel Standlone or jsxLoader with [type="text/babel"].
+        by default unless using Babel Standalone or jsxLoader with [type="text/babel"].
     2) [react/es6/{Class}.min.js]
         Minimized source file that works with modern browsers.
     3) [react/es5/{Class}.js]
@@ -236,6 +238,7 @@ TITLE: DataFormsJS Web Components
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/web-components/input-filter.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/web-components/sortable-table.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/web-components/image-gallery.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/web-components/markdown-content.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/web-components/leaflet-map.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/web-components/html-import-service.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/web-components/i18n-service.min.js"></script>
@@ -276,6 +279,7 @@ TITLE: All Framework Files
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/controls/data-table.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/controls/data-view.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/controls/json-data.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/controls/markdown-content.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/extensions/events.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.3.0/js/extensions/format.min.js"></script>
