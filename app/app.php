@@ -232,8 +232,9 @@ $app->get('/*', function() use ($app) {
     // When using localhost with IE DataFormsJS will use cache busting
     // so that some requests have timestamp like this [home-page.htm?_=1602289678421].
     // If found then remove from the URL otherwise `$app->requestedPath()`
-    // will return the query string.
-    // NOTE - this should actuall be corrected in FastSitePHP then the changes merged back here.
+    // will return the query string. NOTE - this was fixed in FastSitePHP however not
+    // until late 2020 so this code is being kept to avoid issues for developers
+    // who installed a local build of DataFormsJS prior to the fix.
     //   https://github.com/fastsitephp/fastsitephp/blob/master/src/Application.php#L2022
     if (strpos($path, '?') !== false) {
         $path = strtok($path, '?');
