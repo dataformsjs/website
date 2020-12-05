@@ -629,6 +629,7 @@ html[dir='rtl'] .btn.create-site .arrow {
     box-shadow: var(--shadow);
     border: 1px solid var(--lighter-color-1);
     position: relative;
+    text-decoration: none;
 }
 
 .getting-started .view-template::after,

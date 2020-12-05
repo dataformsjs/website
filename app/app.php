@@ -106,6 +106,7 @@ $app->mount('/unit-testing', 'routes-test.php');
  */
 $app->get('/docs/:lang/quick-reference', 'QuickReference');
 $app->get('/examples/hello-world/:lang/:file', 'HelloWorld');
+$app->get('/getting-started/:lang/:file', 'GettingStarted');
 $app->get('/examples/hello-world/en-js.htm', function() use ($app) {
     // Redirect for previously published URL
     return $app->redirect('/examples/hello-world/en/js.htm');

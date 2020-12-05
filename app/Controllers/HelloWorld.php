@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use FastSitePHP\Application;
+use FastSitePHP\FileSystem\Security;
 use FastSitePHP\Lang\I18N;
 use FastSitePHP\Web\Response;
 
@@ -10,10 +11,10 @@ class HelloWorld
 {
     /**
      * Return Hello World Example Pages.
-     * 
+     *
      * To keep hello world files simple (when viewing source from a browser)
      * the js plugin [i18n] is not used, rather the content of the file is updated
-     * using find/replace with i18n key values before sending to the client. 
+     * using find/replace with i18n key values before sending to the client.
      */
     public function get(Application $app, $lang, $file)
     {
@@ -23,13 +24,13 @@ class HelloWorld
             $root = __DIR__ . '/../../../dataformsjs/examples/hello-world'; // Local development
         }
 
-        // Get file type and make sure file exists
-        $is_html_file = (strpos($file, '.htm') !== false);
-        $file_path = $root . '/' . $file;
-        if (!is_file($file_path)) {
+        // Make sure file exists and get file type
+        if (!Security::dirContainsFile($root, $file)) {
             return $app->pageNotFound();
         }
-        
+        $is_html_file = (strpos($file, '.htm') !== false);
+        $file_path = $root . '/' . $file;
+
         // CSS or SVG file
         if (!$is_html_file) {
             $res = new Response($app);

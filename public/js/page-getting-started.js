@@ -3,10 +3,10 @@
  *
  * The getting started page uses <template> rather than Handlebars or other
  * rendering engines so that example code is display rather than rendered.
- * 
+ *
  * Updating the build of this file:
  *     See full comments in [page-home-page.js], most recent build:
- *     uglifyjs page-getting-started.js -o page-getting-started.20201113.min.js -c -m
+ *     uglifyjs page-getting-started.js -o page-getting-started.20201205.min.js -c -m
  */
 
 /* Validates with both [jshint] and [eslint] */
@@ -50,8 +50,8 @@
                     e.stopPropagation();
                 }
 
-                // Update links
-                document.querySelector('.view-template').href = page;
+                // Update view template link
+                model.setupViewLink(page);
 
                 // Update HTML Control - <code data-template-url="url">
                 var code = document.querySelector('.template code');
@@ -120,12 +120,11 @@
                 Array.prototype.forEach.call(allPages, function(page) {
                     page.onclick = model.changeTemplate.bind(model);
                 });
-                model.setupViewLink();
                 model.setupDownloadLink();
 
                 // Escape key to hide drop-down
                 document.onkeydown = function (e) {
-                    if (e.keyCode === 27) {
+                    if (e.key === 'Escape' || e.key === 'Esc') {
                         model.hideDropDown();
                     }
                 };
@@ -143,40 +142,11 @@
                 }
             },
 
-            setupViewLink: function() {
-                // IE partially works when using [win.document.write(code);]
-                // However the user has to press [F5] to refresh the page.
-                // Until a more reliable solution is found the buttin is simply
-                // hidden from IE.
-                var isIE = (navigator.userAgent.indexOf('Trident/') !== -1);
-                if (isIE) {
-                    return;
-                }
-
-                // Assume modern browser if not IE
+            setupViewLink: function(page) {
                 var viewTemplate = document.querySelector('.view-template');
+                var path = page.replace('/html/getting-started/', '/getting-started/' + window.i18n_Locale + '/');
                 viewTemplate.style.display = '';
-                viewTemplate.onclick = function() {
-                    // As of late 2019 this method works to dynamically write the template
-                    // to another tab by using an <iframe> with "data:" url. Because Browsers
-                    // may change security rules for new tabs in the future this could break
-                    // at any time but for now it works. The reason that content is written
-                    // to the tab is because the i18n strings need to be updated before
-                    // displaying the page and that happens in the browser.
-                    //
-                    // A possible future alternative option would be to render the templates
-                    // server side using PHP.
-                    //    <a class="view-template" href="{url_lang}" target="_blank" data-i18n="view_tmpl"></a>
-                    //
-                    // Code modified from:
-                    // https://ourcodeworld.com/articles/read/682/what-does-the-not-allowed-to-navigate-top-frame-to-data-url-javascript-exception-means-in-google-chrome
-                    var code = document.querySelector('.template code').textContent;
-                    var url = 'data:text/html,' + encodeURIComponent(code);
-                    var iframe = '<!doctype html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">';
-                    iframe += '<style>*{margin:0;padding:0}</style></head><body><iframe src="' + url  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:99vh;" allowfullscreen></iframe></body></html>';
-                    var win = window.open();
-                    win.document.write(iframe);
-                };
+                viewTemplate.setAttribute('href', path);
             },
 
             setupDownloadLink: function() {
