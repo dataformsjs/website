@@ -2,7 +2,9 @@
     Prism has been upgraded to 1.22.0 on the site.
     This version will be kept for some time in case users who have previously
     viewed the site or a page that links to it still see it and so all references
-    can be removed.
+    can be removed. For developers who downloaded an older copy of the site
+    this will still be linked too so it will probably be a while before it
+    should be deleted.
 
     Switched to [1.22.0] on 2020-12-05
 **
