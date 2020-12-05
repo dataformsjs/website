@@ -179,7 +179,7 @@ $app->get('/:lang/examples', $app_html);
 
 /**
  * Allow static resources on the server to be downloaded using CORS.
- * For example this allows sites like CodePen to access HTML Temlates
+ * For example this allows sites like CodePen to access HTML Templates
  * from the Example Apps.
  */
 $app->get('/examples/cors/:dir/:file', function($dir, $file) use ($app) {

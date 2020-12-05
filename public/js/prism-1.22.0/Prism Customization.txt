@@ -1,12 +1,3 @@
-**
-    Prism has been upgraded to 1.22.0 on the site.
-    This version will be kept for some time in case users who have previously
-    viewed the site or a page that links to it still see it and so all references
-    can be removed.
-
-    Switched to [1.22.0] on 2020-12-05
-**
-
 This project is using a custom version of Prism to prevent contents of:
     <script type="text/x-template">
 from being highlighted as JavaScript. The actual update is expected to change with
@@ -15,6 +6,15 @@ different versions of prism so any update requires verification of all example c
 
 Related starting point to find JavaScript update:
     https://github.com/PrismJS/prism/blob/master/components/prism-javascript.js
+
+
+Updating the build of this file:
+    npm install uglify-js -g
+    uglifyjs prism.modified.js -o prism.modified.min.js -c -m
+
+
+Update for Prism 1.22.0 is similar to 1.17.0.
+Use diff program to see the differences.
 
 
 Update for Prism Version 1.17.0:

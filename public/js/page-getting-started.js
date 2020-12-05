@@ -1,7 +1,7 @@
 /**
  * Getting Started Page
  *
- * The getting started page uses <template> rather than Hanldebars or other
+ * The getting started page uses <template> rather than Handlebars or other
  * rendering engines so that example code is display rather than rendered.
  * 
  * Updating the build of this file:
