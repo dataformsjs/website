@@ -42,7 +42,7 @@
             using jsxLoader.
 
             Additional Components [ImageGallery, LeafletMap] and Class [I18n]
-            need to be included seperatly.
+            need to be included separately.
         -->
         <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/DataFormsJS.min.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/DataFormsJS.min.js"></script>
@@ -77,7 +77,7 @@
 
             function ShowCountries(props) {
                 return (
-                    <React.Fragment>
+                    <>
                         <h1>Countries</h1>
                         <InputFilter
                             filter-selector="table"
@@ -112,7 +112,7 @@
                                 })}
                             </tbody>
                         </SortableTable>
-                    </React.Fragment>
+                    </>
                 )
             }
 
