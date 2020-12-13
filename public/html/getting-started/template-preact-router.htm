@@ -220,7 +220,7 @@
             window.preactRouter.subscribers.push(setActiveNavLink);
 
             // Set on first load by assuming `preact.render` runs in 1/10 of a second.
-            // If needed `window.setTimeout` could be used to make nav links are defined.
+            // If needed `window.setInterval` could be used to make sure nav links are defined.
             window.setTimeout(setActiveNavLink, 100);
         </script>
     </body>
