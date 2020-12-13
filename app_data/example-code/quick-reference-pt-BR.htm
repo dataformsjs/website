@@ -11,8 +11,8 @@ TITLE: DataFormsJS Framework JavaScript Files
 
     [pages/jsonData.js] é opcional mas será incluída na marioria dos apps.
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/DataFormsJS.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/pages/jsonData.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/DataFormsJS.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/pages/jsonData.min.js"></script>
 
 <!--
     Para visualizar o fonte completo de qualquer arquivo, substitua [.min.js]
@@ -20,7 +20,7 @@ TITLE: DataFormsJS Framework JavaScript Files
     fácil utlização.
     Todos os arquivos sendo tão pequenos torna fácil depurá-los.
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/DataFormsJS.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/DataFormsJS.js"></script>
 
 <!--
     Arquivos JavaScript só podem ser carregados quando usando [app.lazyLoad]
@@ -32,9 +32,9 @@ TITLE: DataFormsJS Framework JavaScript Files
 -->
 <script>
     app.lazyLoad = {
-        entryForm: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/pages/entryForm.min.js',
-        filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/filter.min.js',
-        sort: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/sort.min.js',
+        entryForm: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/pages/entryForm.min.js',
+        filter: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/filter.min.js',
+        sort: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/sort.min.js',
         // Todos os scripts lazyLoad são baixandos the forma assíncrona ao mesmo
         // tempo, no entanto quando um array é utilizado os scripts relacionados
         // serão baixados na ordem especificada.
@@ -43,7 +43,7 @@ TITLE: DataFormsJS Framework JavaScript Files
             'https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.css',
             'https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js',
         ],
-        chosenPlugin: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/chosen.js',
+        chosenPlugin: 'https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/chosen.js',
     };
 
     // A loading screen <template> can displayed while scripts are loading in-between
@@ -68,8 +68,8 @@ TITLE: DataFormsJS Framework JavaScript Files
     Vue Directives work without DataFormsJS for Vue 2
     but require DataFormsJS for Vue 3 due to Vue API changes.
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/handlebars-helpers.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/vue-directives.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/handlebars-helpers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/vue-directives.min.js"></script>
 
 <!--
     URL relativa é recomendada se os arquivos estiverem hospedados localmente.
@@ -119,7 +119,7 @@ TITLE: Componentes DataFormsJS React
     modernos,  e para navegadores antigos baixará e utilizará o Babel Standalone
     de um CDN.
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/jsxLoader.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/jsxLoader.min.js"></script>
 
 <!--
     DataFormsJS React Components
@@ -132,17 +132,17 @@ TITLE: Componentes DataFormsJS React
     Additional Components [ImageGallery, Markdown, LeafletMap] and Class [I18n]
     need to be included separately.
 -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/DataFormsJS.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/DataFormsJS.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es6/DataFormsJS.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es5/DataFormsJS.min.js"></script>
 <!--
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/I18n.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/ImageGallery.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/Markdown.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/LeafletMap.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/I18n.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/ImageGallery.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/Markdown.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/LeafletMap.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es6/I18n.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es6/ImageGallery.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es6/Markdown.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es6/LeafletMap.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es5/I18n.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es5/ImageGallery.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es5/Markdown.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es5/LeafletMap.min.js"></script>
 -->
 
 <!--
@@ -164,15 +164,15 @@ TITLE: Componentes DataFormsJS React
         <script type="module" src="dataformsjs/js/react/es6/JsonData.min.js"></script>
         <script nomodule src="dataformsjs/js/react/es5/JsonData.min.js"></script>
 -->
-<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/JsonData.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es6/JsonData.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/JsonData.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/es5/JsonData.min.js"></script>
+<script type="text/babel" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es6/JsonData.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es6/JsonData.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es5/JsonData.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/es5/JsonData.min.js"></script>
 
 <!--
     Plugins padrão para Framework são suportados com o React quado utilizando uma API do [jsPlugins.js]
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/react/jsPlugins.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/react/jsPlugins.min.js"></script>
 
 <!--
     Incluir React
@@ -236,22 +236,22 @@ TITLE: Web Components do DataFormsJS
     Web Component APIs; rather it downloads and uses the DataFormsJS Framework to
     replicate the needed functionality for DataFormsJS Web Components to work.
 -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/url-router.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/json-data.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/data-list.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/data-table.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/data-view.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/input-filter.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/sortable-table.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/image-gallery.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/markdown-content.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/leaflet-map.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/html-import-service.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/i18n-service.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/keydown-action-service.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/prism-service.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/show-errors-service.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/polyfill.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/url-router.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/json-data.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/data-list.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/data-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/data-view.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/input-filter.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/sortable-table.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/image-gallery.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/markdown-content.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/leaflet-map.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/html-import-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/i18n-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/keydown-action-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/prism-service.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/show-errors-service.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/polyfill.min.js"></script>
 
 <!--
     [nomodule] Scripts are available to provide users with a friendly message for
@@ -265,13 +265,13 @@ TITLE: Web Components do DataFormsJS
     [type="module"] and [nomodule] scripts. In general this file is no longer needed
     for most sites.
 -->
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/safari-nomodule.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/old-browser-warning.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/safari-nomodule.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/old-browser-warning.min.js"></script>
 
 <!--
     Standard Framework Plugins are supported with Web Components when using an API from [jsPlugins.js]
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/jsPlugins.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/jsPlugins.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -279,43 +279,43 @@ TITLE: Web Components do DataFormsJS
 <!-- EXAMPLE_CODE_START
 TITLE: Todos os Arquivos do Framework
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/DataFormsJS.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/DataFormsJS.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/controls/data-list.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/controls/data-table.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/controls/data-view.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/controls/json-data.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/controls/markdown-content.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/controls/data-list.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/controls/data-table.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/controls/data-view.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/controls/json-data.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/controls/markdown-content.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/events.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/format.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/handlebars-helpers.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/jsTemplate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/validation.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/extensions/vue-directives.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/events.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/format.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/handlebars-helpers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/jsTemplate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/validation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/extensions/vue-directives.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/pages/jsonData.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/pages/entryForm.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/pages/jsonData.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/pages/entryForm.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/chosen.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/clickToHighlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/clickUrlAction.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/codemirror.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/dataBind.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/exportToCsv.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/filter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/highlighter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/i18n.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/imageGallery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/keydownAction.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/leaflet.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/listEditor.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/modalAlert.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/navLinks.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/onePageSite.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/pickadate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/prism.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/sort.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/chosen.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/clickToHighlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/clickUrlAction.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/dataBind.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/exportToCsv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/filter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/highlighter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/i18n.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/imageGallery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/keydownAction.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/listEditor.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/modalAlert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/navLinks.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/onePageSite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/pickadate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/sort.min.js"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -740,8 +740,8 @@ TITLE: Plugins do Framework - Filtrando e classificando
     O framework fornece vários plugins; dois comumente utilizados permitem que
     o usuário final trabalhe com dados em um página são [filter.js].
 -->
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/filter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/plugins/sort.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/filter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/plugins/sort.min.js"></script>
 <script
     type="text/x-template"
     data-engine="underscore"
@@ -819,9 +819,9 @@ TITLE: Web Components - Filtrando e classificando
     Dois Web Components fornecem funcionalidade similar à do framework [filter.js]
     e [sort.js].
 -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/input-filter.min.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/sortable-table.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/polyfill.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/input-filter.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/sortable-table.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/polyfill.min.js"></script>
 
 <!--
     O componente [input-filter.js] é herdado de um elemento padrão <input>.
@@ -1229,7 +1229,7 @@ LANG: JavaScript
  * out and the needed functions are included here.
  */
 
-// import { render } from 'https://cdn.jsdelivr.net/npm/dataformsjs@5.4.1/js/web-components/utils.min.js';
+// import { render } from 'https://cdn.jsdelivr.net/npm/dataformsjs@5.5.0/js/web-components/utils.min.js';
 
 function escapeHtml(text) {
     if (text === undefined || text === null || typeof text === 'number') {
