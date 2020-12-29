@@ -654,6 +654,22 @@ html[dir='rtl'] .btn.create-site .arrow {
     background-image:url('../img/buttons/save-hover.svg');
 }
 
+
+/* Updates for IE */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    .getting-started .template-menu img {
+        width: 32px;
+    }
+    .getting-started .active-template::after {
+        position: relative;
+        top: 16px;
+    }
+    .getting-started .download-template::after {
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+    }
+}
+
 .getting-started .template {
     width: 100%;
     max-width: 1000px;

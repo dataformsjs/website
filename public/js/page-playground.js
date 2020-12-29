@@ -16,10 +16,10 @@
  * Additionally the server-side PHP template was easy to quick to replace with handlebars
  * as PHP i18n keys were swapped out with Handlebars using Find/Replace. Later the site was
  * switched from handlebars to no-templating (JS Only) and the additional change was quick as well.
- * 
+ *
  * Updating the build of this file:
  *     See full comments in [page-home-page.js], most recent build:
- *     uglifyjs page-playground.js -o page-playground.20201120.min.js -c -m
+ *     uglifyjs page-playground.js -o page-playground.20201228.min.js -c -m
  *
  * @link     https://www.dataformsjs.com
  * @author   Conrad Sollitt (https://conradsollitt.com)
@@ -722,7 +722,7 @@
 
         if (state.cm !== null) {
             // Manually remove previous editors from the screen if they still exist.
-            // This can happen if clicking on and off the pageground page very fast
+            // This can happen if clicking on and off the playground page very fast
             // while the service to download images or other resources is slow.
             var editors = document.querySelectorAll('.CodeMirror.cm-s-default');
             if (editors) {
@@ -991,7 +991,14 @@
         // Re-create the CodeMirror plugin on any file change. This prevents issues
         // with the vertical scrollbar and allows for custom options per language.
         if (state.cm !== null) {
-            state.cm.toTextArea();
+            try {
+                state.cm.toTextArea();
+            } catch (e) {
+                // Errors that can be ignored happen with IE 11 if clicking between
+                // pages fast when using the Web Component Version of the site.
+                console.warn('Error calling: state.cm.toTextArea()');
+                console.info(e);
+            }
             state.cm = null;
         }
         document.getElementById('code-editor').value = data.content;
