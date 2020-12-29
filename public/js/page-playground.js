@@ -19,7 +19,7 @@
  *
  * Updating the build of this file:
  *     See full comments in [page-home-page.js], most recent build:
- *     uglifyjs page-playground.js -o page-playground.20201228.min.js -c -m
+ *     uglifyjs page-playground.js -o page-playground.20201228.b.min.js -c -m
  *
  * @link     https://www.dataformsjs.com
  * @author   Conrad Sollitt (https://conradsollitt.com)
@@ -197,6 +197,18 @@
                 }, 100);
             }
         });
+    }
+
+    // Depending on the version of the site used some content gets updated
+    // based on HTML Attributes that can change from i18n language changes.
+    // When using the Web Component Version of this site this will be called
+    // multiple times on the initial page load (first for route change, then
+    // once i18n content is updated). 
+    function updateAttrContent() {
+        updateMobileMessage();
+        if (state.siteKey) {
+            showCountdown();
+        }
     }
 
     // Depending on if mobile or not show a different message
@@ -997,7 +1009,7 @@
                 // Errors that can be ignored happen with IE 11 if clicking between
                 // pages fast when using the Web Component Version of the site.
                 console.warn('Error calling: state.cm.toTextArea()');
-                console.info(e);
+                console.warn(e);
             }
             state.cm = null;
         }
@@ -1020,7 +1032,7 @@
         window.setupPlayground = function() {
             setup();
             document.querySelector('footer').style.display = 'none';
-            document.addEventListener('app:i18nLoaded', updateMobileMessage);
+            document.addEventListener('app:i18nLoaded', updateAttrContent);
         };
         window.unloadPlayground = function() {
             if (state.countdownInterval !== null) {
@@ -1029,7 +1041,7 @@
             }
             document.querySelector('footer').style.display = '';
             document.onkeydown = null;
-            document.removeEventListener('app:i18nLoaded', updateMobileMessage);
+            document.removeEventListener('app:i18nLoaded', updateAttrContent);
         };
         return;
     }
