@@ -20,7 +20,7 @@
         <link rel="icon" sizes="196x196" href="/img/favicons/DataFormsJS-196x196.png">
         <link type="text/plain" rel="author" href="/humans.txt" />
         <link href="/js/prism-1.22.0/prism.css" rel="stylesheet" />
-        <link href="/css/site.20201228.css" rel="stylesheet" />
+        <link href="/css/site.20201228.css" rel="stylesheet" data-css-vars-ponyfill />
     </head>
     <body>
         <header>
@@ -248,15 +248,6 @@
                     i18nUL.style.display = '';
                 };
 
-                // Add CSS Variable Support to IE and older Browsers
-                var supportsCssVars = (window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)'));
-                var polyfillUrl = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2.1.1/dist/css-vars-ponyfill.min.js';
-                app.loadScript(supportsCssVars, polyfillUrl, function() {
-                    if (window.cssVars) {
-                        cssVars({ include:'link[href^="/css/site"]' });
-                    }
-                });
-
                 // Custom Site Plugin to update GitHub Links
                 app.addPlugin('github', function() {
                     var links = document.querySelectorAll('nav a.github');
@@ -325,7 +316,7 @@
                     },
                 });
 
-                // The site was orignally published using #hash URL's. If the
+                // The site was originally published using #hash URL's. If the
                 // page loaded uses a hash URL then navigate to the path.
                 //
                 // Example:
