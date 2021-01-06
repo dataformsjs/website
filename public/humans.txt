@@ -18,7 +18,7 @@
 	IDE:
 		Visual Studio Code:    https://code.visualstudio.com/
 		Panic Inc, Coda 2:     https://panic.com/coda/
-		Microsoftr WebMatrix:  https://en.wikipedia.org/wiki/Microsoft_WebMatrix
+		Microsoft WebMatrix:   https://en.wikipedia.org/wiki/Microsoft_WebMatrix
 	Design:
 		https://www.sketch.com/
 		https://www.getpaint.net/
