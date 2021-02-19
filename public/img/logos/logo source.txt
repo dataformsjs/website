@@ -46,3 +46,8 @@ https://github.com/alibaba/rax
 
 hyperapp-logo-v2.10d2f4a5.svg
 https://hyperapp.dev/hyperapp-logo-v2.10d2f4a5.svg
+
+web-components.svg
+https://camo.githubusercontent.com/20091716adcebf86499a1b4e8768ea6f348a8a07a318be3b10279c08cbc5caa7/68747470733a2f2f7765622d636f6d706f6e656e74732d7265736f75726365732e61707073706f742e636f6d2f7374617469632f6c6f676f2e737667
+# Refer to comments from:
+https://github.com/w3c/webcomponents-cg/issues/4#issuecomment-780808322
