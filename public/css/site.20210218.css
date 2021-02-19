@@ -481,6 +481,35 @@ html[dir='rtl'] .btn.create-site .arrow {
     border-left: 16px solid var(--lighter-color-1);
 }
 
+/* Home Page  Animation triggered by IntersectionObserver from JavaScript */
+
+.home.page .works-with .tech { opacity: 0; }
+.home.page .works-with .tech.show-and-scale-1 { animation: show-and-scale .5s ease-in-out forwards; }
+.home.page .works-with .tech.show-and-scale-2 { animation: show-and-scale .5s ease-in-out .2s 1 forwards; }
+.home.page .works-with .tech.show-and-scale-3 { animation: show-and-scale .5s ease-in-out .4s 1 forwards; }
+.home.page .works-with .tech.show-and-scale-4 { animation: show-and-scale .5s ease-in-out .6s 1 forwards; }
+.home.page .works-with .tech.show-and-scale-5 { animation: show-and-scale .5s ease-in-out .8s 1 forwards; }
+
+[data-animate="move-from-right"] { transform: translateX(100px); }
+[data-animate].move-from-right { animation: move-from-right .5s ease-in-out forwards; }
+[data-animate="move-from-bottom"] { transform: translateY(50px); }
+[data-animate].move-from-bottom { animation: move-from-bottom .5s ease-in-out 1s 1 forwards; }
+
+@keyframes show-and-scale {
+    from { opacity: 0; transform: scale(.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes move-from-right {
+    from { transform: translateX(100px); }
+    to { transform: translateX(0); }
+}
+
+@keyframes move-from-bottom {
+    from { transform: translateY(50px); }
+    to { transform: translateX(0); }
+}
+
 /*****  Getting Started Page  *****/
 
 .getting-started { direction:ltr; }

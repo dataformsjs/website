@@ -23,7 +23,7 @@
  * Updating the build of this file:
  *     npm install uglify-js -g
  *     uglifyjs page-home-page.js -o page-home-page{YYYYMMDD}.min.js -c -m
- *     uglifyjs page-home-page.js -o page-home-page.20201113.min.js -c -m
+ *     uglifyjs page-home-page.js -o page-home-page.20210218.min.js -c -m
  *     # Then update [website\app\Views\index.htm] with the new file
  */
 
@@ -624,6 +624,31 @@ Steps used to create (or re-create the computer graphic)
                     //     break;
                 }
             },
+
+            /**
+             * Use IntersectionObserver to handle elements with [data-animate].
+             * The site CSS contains the needed CSS animations that get called
+             * once the element is in view.
+             */
+            setupIntersectionObserver: function () {
+                var hasObserver = (window.IntersectionObserver !== undefined);
+                var url = 'https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver';
+                app.loadScript(hasObserver, url, function() {
+                    var animationObserver = new IntersectionObserver(function(entries, observer) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                var className = entry.target.getAttribute('data-animate');
+                                entry.target.classList.add(className);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    });
+                    var elements = document.querySelectorAll('[data-animate]');
+                    Array.prototype.forEach.call(elements, function(element) {
+                        animationObserver.observe(element);
+                    });
+                });
+            },
         },
 
         /**
@@ -634,6 +659,7 @@ Steps used to create (or re-create the computer graphic)
             // Animation
             this.setupAnimation();
             this.startAnimation();
+            this.setupIntersectionObserver();
 
             // Example Code Buttons
             if (!usingWebComponents) {
