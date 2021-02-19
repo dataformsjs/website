@@ -1,7 +1,37 @@
+/*
+    https://www.dataformsjs.com/
+    Getting Started CSS Template
+    License: MIT
+*/
+
 /* Reset */
 * { margin:0; padding:0; }
-html { font-family: Arial, Helvetica, sans-serif; }
-a { color:black; }
+html { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+
+/* CSS Variables */
+:root {
+    --color-main: #000;
+    --color-table-header: #cfcfcf;
+    --color-row-odd: #fff;
+    --color-row-even: #efefef;
+    --color-highlight: #ff0;
+}
+
+/* IE */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    /* Hide embedded <template> elements while page is loaded */
+    template { display:none; }
+
+    /* CSS Variables Fallback */
+    a { color:#000; }
+    th { background-color: #cfcfcf; }
+    th, td { padding:8px 16px; border:1px solid #000; }
+    table tbody tr:nth-child(odd) { background-color: #fff; }
+    table tbody tr:nth-child(even) { background-color: #efefef; }
+    table tbody tr.row-odd { background-color: #fff; }
+    table tbody tr.row-even { background-color: #efefef; }
+    table tbody tr.highlight { background-color: #ff0; }
+}
 
 /* Main elements */
 header { padding:20px; }
@@ -11,11 +41,7 @@ body {
     flex-direction:column;
 }
 #view { padding:40px; }
-
-/* IE - hide embedded <template> elements while page is loaded */
-@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
-    template { display:none; }
-}
+a { color:var(--color-main); }
 
 /* Nav */
 nav {
@@ -62,14 +88,33 @@ input {
 
 /* Table */
 table { border-collapse:collapse; text-align:left; margin:40px auto; }
-th, td { padding:8px 16px; border:1px solid black; }
-table tbody tr:nth-child(odd) { background-color: #efefef; }
-table tbody tr:nth-child(even) { background-color: #fff; }
+th { background-color: var(--color-table-header); }
+th, td { padding:8px 16px; border:1px solid var(--color-main); }
+table tbody tr:nth-child(odd) { background-color: var(--color-row-odd); }
+table tbody tr:nth-child(even) { background-color: var(--color-row-even); }
 
 /* [sort] and [filter] plugins add classes to each row based on element
-    display and sort order which override [:nth-child()] */ 
-table tbody tr.row-odd { background-color: #efefef; }
-table tbody tr.row-even { background-color: #fff; }
+    display and sort order which override [:nth-child()] */
+table tbody tr.row-odd { background-color: var(--color-row-odd); }
+table tbody tr.row-even { background-color: var(--color-row-even); }
 
 /* Color for [clickToHighlight] plugin */
-table tbody tr.highlight { background-color:#ff0; }
+table tbody tr.highlight { background-color: var(--color-highlight); }
+
+/* Table Sticky Header and First Column */
+table { position: relative; }
+th { position:sticky; top:-1px; z-index:2; }
+table thead tr th:first-child { z-index: 3; left: 0; }
+table tbody tr td:first-child { position: sticky; left:0; z-index:1; }
+table tbody tr:nth-child(odd) td:first-child { background-color: var(--color-row-odd); }
+table tbody tr:nth-child(even) td:first-child { background-color: var(--color-row-even); }
+table tbody tr.highlight td:first-child { background-color: var(--color-highlight); }
+
+/*
+    In Firefox (as of early 2021) the sticky cells function but do not look good so the
+    sticky first column is turned off. For options to work-around this issue see:
+    https://stackoverflow.com/questions/57166162/table-headers-positionsticky-and-border-issue/57170489
+*/
+@-moz-document url-prefix() {
+    table tbody tr td:first-child { position: initial; }
+}
