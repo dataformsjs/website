@@ -483,7 +483,7 @@ html[dir='rtl'] .btn.create-site .arrow {
 
 /* Home Page  Animation triggered by IntersectionObserver from JavaScript */
 
-.home.page .works-with .tech { opacity: 0; }
+.home.page .works-with .tech { opacity: 0; transform: scale(.5); }
 .home.page .works-with .tech.show-and-scale-1 { animation: show-and-scale .5s ease-in-out forwards; }
 .home.page .works-with .tech.show-and-scale-2 { animation: show-and-scale .5s ease-in-out .2s 1 forwards; }
 .home.page .works-with .tech.show-and-scale-3 { animation: show-and-scale .5s ease-in-out .4s 1 forwards; }
