@@ -492,8 +492,6 @@ html[dir='rtl'] .btn.create-site .arrow {
 
 [data-animate="move-from-right"] { transform: translateX(100px); }
 [data-animate].move-from-right { animation: move-from-right .5s ease-in-out forwards; }
-[data-animate="move-from-bottom"] { transform: translateY(50px); }
-[data-animate].move-from-bottom { animation: move-from-bottom .5s ease-in-out 1s 1 forwards; }
 
 @keyframes show-and-scale {
     from { opacity: 0; transform: scale(.5); }
@@ -502,11 +500,6 @@ html[dir='rtl'] .btn.create-site .arrow {
 
 @keyframes move-from-right {
     from { transform: translateX(100px); }
-    to { transform: translateX(0); }
-}
-
-@keyframes move-from-bottom {
-    from { transform: translateY(50px); }
     to { transform: translateX(0); }
 }
 
