@@ -815,7 +815,7 @@
         }
 
         // Exit if new name and file already exists. User likely would trigger this with
-        // [Ctrl/Cmd + s] while 'File already exists'or another message is showing.
+        // [Ctrl/Cmd + s] while 'File already exists' or another message is showing.
         if ((isNewFile || nameHasChanged) && fileAlreadyExists(file)) {
             return;
         } else if (nameHasChanged && reachedFileLimit()) {
