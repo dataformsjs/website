@@ -24,8 +24,10 @@ $app->route('/graphql', function() {
         // Submit GraphQL Request
         if ($req->method() === 'GET') {
             $url .= '?query=' . urlencode($req->queryString('query'));
-            $url .= '&variables=' . urlencode($req->queryString('variables'));
-            $url .= '&operationName=' . urlencode($req->queryString('operationName'));
+            $variables = $req->queryString('variables');
+            $url .= ($variables === null ? '' : '&variables=' . urlencode($variables));
+            $op_name = $req->queryString('operationName');
+            $url .= ($op_name === null ? '' : '&operationName=' . urlencode($op_name));
             $res = HttpClient::get($url, $headers);
         } else {
             $res = HttpClient::postJson(

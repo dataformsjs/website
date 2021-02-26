@@ -10,7 +10,7 @@
  *     scripts/geonames.rb
  *
  * Installing Node Dependencies:
- *     npm i express graphql express-graphql sqlite
+ *     npm i express graphql express-graphql better-sqlite3
  */
 
 // Node Libraries
@@ -18,9 +18,9 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const app = express();
-const graphqlHTTP = require('express-graphql');
+const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
-const sqlite = require('sqlite');
+const sqlite = require('better-sqlite3');
 
 // Config, the database can be in either [../app_data] or [../../geonames]
 const port = 4000;
@@ -35,7 +35,7 @@ if (!fs.existsSync(dbPath)) {
     process.exitCode = 1;
     return;
 }
-const dbPromise = sqlite.open(dbPath, { Promise });
+const db = sqlite(dbPath);
 
 // Build GraphQL Schema
 // Note - additional fields exist in the db for [type Country]
@@ -86,7 +86,7 @@ var schema = buildSchema(`
 
 // Functions for GraphQL
 const root = {
-    countries: async function({orderBy}) {
+    countries: function({orderBy}) {
         const sortOrder = (orderBy === 'country' ? 'country' : 'population DESC, country');
         const sql = `
             SELECT
@@ -107,11 +107,10 @@ const root = {
             FROM countries
             ORDER BY
                 ${sortOrder}`;
-        const db = await dbPromise;
-        return await db.all(sql);
+        return db.prepare(sql).all();
     },
 
-    regions: async function({country}) {
+    regions: function({country}) {
         const sql = `
             SELECT *
             FROM geonames
@@ -123,12 +122,11 @@ const root = {
                 country_code,
                 name
         `;
-        const db = await dbPromise;
-        return await db.all(sql, country);
+        return db.prepare(sql).all(country);
     },
 
     // City List is limited to the 20 largest cities in a region
-    cities: async function({country, region}) {
+    cities: function({country, region}) {
         const sql = `
             SELECT *
             FROM geonames
@@ -142,14 +140,12 @@ const root = {
                 name
             LIMIT 20
         `;
-        const db = await dbPromise;
-        return await db.all(sql, country, region);
+        return db.prepare(sql).all(country, region);
     },
 
-    place: async function({id}) {
+    place: function({id}) {
         const sql = 'SELECT * FROM geonames WHERE geonames_id = ?';
-        const db = await dbPromise;
-        const place = await db.get(sql, id);
+        const place = db.prepare(sql).get(id);
         if (place.alternate_names) {
             place.alternate_names = place.alternate_names.split(',');
         } else {
@@ -159,7 +155,7 @@ const root = {
     },
 
     // Search is limited to the 100 largest matching cities
-    search: async function({country, city}) {
+    search: function({country, city}) {
         // Build Where Clause and Params
         let where;
         let params = [];
@@ -186,8 +182,7 @@ const root = {
             LIMIT 100
         `;
 
-        const db = await dbPromise;
-        return await db.all(sql, params);
+        return db.prepare(sql).all(params);
     },
 };
 
