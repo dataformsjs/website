@@ -25,6 +25,7 @@ Author: Conrad Sollitt
 """
 import os
 import pickle
+import json
 import warnings
 import numpy as np
 import pandas as pd
@@ -49,7 +50,28 @@ SCORING = None # Default of 'accuracy'
 LOOP_COUNT = 1
 # LOOP_COUNT = 100
 # LOOP_COUNT = 20000
+
+# Save Format - either Pickle or JSON - see comments in [ai-ml-pima-indians-diabetes-convert-model.py]
+SAVE_AS_JSON = True
 # =================================================
+
+def save_model_as_json(model_path, model):
+    """
+    Convert Model to Plain Dictionary and save file in JSON format.
+    sklearn attributes end with "_" but not "__" (example: "coef_") so this
+    script is designed to be generic and handle all (or many) sklearn classes.
+    """
+    model2 = {
+        'class': type(model).__name__,
+        'params': model.get_params(),
+    }
+    attrs = [attr for attr in dir(model) if attr.endswith('_') and not attr.endswith('__')]
+    for attr in attrs:
+        model2[attr] = getattr(model, attr).tolist()
+
+    save_path = model_path.replace('.sklearn', '.json')
+    with open(save_path, 'w') as f:
+        f.write(json.dumps(model2, indent=4))
 
 # [sklearn] can generate many FutureWarning statements so hide them
 warnings.filterwarnings('ignore')
@@ -149,8 +171,11 @@ for count in range(LOOP_COUNT):
         print(f'Evalulated {count} models at {datetime.now()}')
     if acc > max_model:
         max_model = acc
-        with open(model_path, 'wb') as file:
-            pickle.dump(clf, file)
+        if SAVE_AS_JSON:
+            save_model_as_json(model_path, clf)
+        else:
+            with open(model_path, 'wb') as file:
+                pickle.dump(clf, file)
         print('Saved new model with accuracy: %.2f%%' % (100 * acc))
         print(clf.coef_)
 

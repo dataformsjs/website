@@ -2,58 +2,65 @@
 # ------------------------------------------------------------------------------------
 #
 #   This file describes the process for setting up the Python Server
-#   for AI/ML Web Services. This assumes that the server [Ubuntu 18.04 LTS]
-#   is used. This can be done entirely through a Web Browser if using
-#   AWS Lightsail and the browser-based Linux Console.
+#   for AI/ML Web Services. This assumes that the server [Ubuntu 20.04 LTS]
+#   is used (also previously used 18.04). This can be done entirely through
+#   a Web Browser if using AWS Lightsail and the browser-based Linux Console.
 #
-#   The Webserver file [app.py] will work on any OS that supports 
+#   The Webserver file [app.py] will work on any OS that supports
 #   Python, Keras, TensorFlow, etc. It can be run directly from Python
 #   when using Windows or Mac.
 #
-#   Related Files needed for Setup: 
+#   Related Files needed for Setup:
 #     Website\app\app.py
 #     Website\app\Views\ai-ml-demo.htm
 #
 #   Server Overview
 #   nginx -> Gunicorn -> flask -> [keras, tensorflow, sklearn]
 #
-#   At the time of development sepcific versions of Keras and Tensorflow
-#   are required for this to work. The bug with the latest version of Keras
-#   and TensorFlow will likely be fixed in the future. Based on:
-#   https://github.com/keras-team/keras/issues/13336#issuecomment-533181636
-#
 # ------------------------------------------------------------------------------------
 
 # Dependencies
-sudo apt-get update
-sudo apt-get install python3-pip
-pip3 install numpy keras==2.2.4 tensorflow==1.13.1 flask flask-cors Pillow scikit-learn
-    # or install one at a time
+#
+# NOTE - For TensorFlow [--no-cache-dir] is used because the production
+# server is a small 1 GB memory ($5 USD) server on AWS Lightsail.
+# Due to the small server size the most recent tested version of TensorFlow
+# cannot be installed using default settings. On a larger server the option
+# is not needed.
+#
+sudo apt update
+sudo apt install -y python3-pip
+pip3 install numpy keras flask flask-cors Pillow scikit-learn
+pip3 install --no-cache-dir tensorflow
+    # Or install one at a time (and specific versions if needed).
+    # Versions below are from the most recent tested install.
     pip3 install numpy
-    pip3 install keras==2.2.4
-    pip3 install tensorflow==1.13.1
+    pip3 install keras
+    pip3 install keras==2.4.3
+    pip3 install tensorflow
+    pip3 install tensorflow==2.4.1
     pip3 install flask
     pip3 install flask-cors
     pip3 install Pillow
     pip3 install scikit-learn
-sudo apt-get install gunicorn3
+    pip3 install scikit-learn==0.24.1
+sudo apt install -y gunicorn
 
 # Download files for app and demo and the pre-built model for the Binary Classification Demo
 wget https://raw.githubusercontent.com/dataformsjs/website/master/app/app.py
 wget https://raw.githubusercontent.com/dataformsjs/website/master/app/Views/ai-ml-demo.htm
-wget https://github.com/dataformsjs/static-files/raw/master/ai_ml/models/pima-indians-diabetes.sklearn
+wget https://github.com/dataformsjs/static-files/raw/master/ai_ml/models/pima-indians-diabetes.json
 
 # The model was built from the following script:
 #   https://github.com/dataformsjs/website/blob/master/scripts/ai-ml-pima-indians-diabetes-build.py
 
 # Commands to manually run Gunicorn
 # ** These commands can be skipped for a server setup.
-# Because Keras/TensorFlow is used the service will generate 
+# Because Keras/TensorFlow is used the service will generate
 # many 500 errors if more than 1 worker is used.
-gunicorn3 --workers 1 --bind 0.0.0.0:5000 app:app
-gunicorn3 -w 1 -b 0.0.0.0:5000 app:app
-sudo gunicorn3 -w 1 -b 0.0.0.0:80 app:app
-sudo killall gunicorn3
+gunicorn --workers 1 --bind 0.0.0.0:5000 app:app
+gunicorn -w 1 -b 0.0.0.0:5000 app:app
+sudo gunicorn -w 1 -b 0.0.0.0:80 app:app
+sudo killall gunicorn
 
 # Create Gunicorn Service
 sudo nano /etc/systemd/system/gunicorn3.service
@@ -65,20 +72,20 @@ sudo systemctl start gunicorn3.service
 # [gunicorn3.service] file:
 # ---------------------------------------
 [Unit]
-Description=gunicorn3 webserver
+Description=gunicorn webserver
 After=network.target
 
 [Service]
 User=ubuntu
 WorkingDirectory=/home/ubuntu
-ExecStart=/usr/bin/gunicorn3 -w 1 -b 127.0.0.1:5000 app:app
+ExecStart=/usr/bin/gunicorn -w 1 -b 127.0.0.1:5000 app:app
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
 # ---------------------------------------
-# For public access without nginx use:
-ExecStart=/usr/bin/gunicorn3 -w 1 -b 0.0.0.0:5000 app:app
+# For public access without nginx and only gunicorn use:
+# ExecStart=/usr/bin/gunicorn -w 1 -b 0.0.0.0:5000 app:app
 # =================================================================
 
 # Other Commands for Gunicorn if needed
@@ -89,7 +96,7 @@ sudo systemctl restart gunicorn3.service
 sudo rm /etc/systemd/system/gunicorn3.service
 
 # Install and configure nginx
-sudo apt install nginx
+sudo apt install -y nginx
 sudo ufw allow 'Nginx HTTP'
 sudo nano /etc/nginx/sites-available/default
     # under the block
@@ -110,7 +117,6 @@ cd /var/www/html
 sudo wget https://raw.githubusercontent.com/dataformsjs/website/master/public/favicon.ico
 
 # View the site and test
-# http://44.228.52.245/
 
 # To test with larger images add
 sudo nano /etc/nginx/sites-available/default
@@ -148,7 +154,7 @@ sudo mv ai-ml-index.htm index.html
 # Additional Steps performed for the live site
 https://ai-ml.dataformsjs.com/
 
-# 1) Created Static IP in AWS Lightsail for the Sever: 44.228.52.245
+# 1) Created Static IP in AWS Lightsail for the Sever
 # 2) GoDaddy - Added an A Record for 'ai-ml' that points to the IP
 # 3) Update AWS to allow HTTPS in the Firewall on the Networking Tab
 # 4) Installed HTTPS Certificate using certbot:

@@ -42,6 +42,7 @@ import tensorflow as tf
 from keras.applications.resnet50 import ResNet50
 from keras.preprocessing import image
 from keras.applications.resnet50 import preprocess_input, decode_predictions
+from sklearn.linear_model import LogisticRegression
 
 # ------------------------------------------------------------------
 # App Setup
@@ -61,33 +62,42 @@ print(f'Loading Model at {start}')
 model_resnet50 = ResNet50(weights='imagenet')
 end = datetime.now()
 seconds = (end - start).total_seconds()
-print(f'Model Loaded at {end} in {seconds} seconds')
+print(f'ResNet50 Model Loaded at {end} in {seconds} seconds')
 
 # When using a Webserver (Gunicorn, waitress, etc) the requests will be
 # multi-threaded so the following line along with [with graph.as_default():]
 # is needed in order for the service to work when using TensorFlow.
-#
-# If running locally and you receive and error set `USE_GRAPH = False`.
-# By default this script is configured for the production web server.
-#
-USE_GRAPH = True
+# This applies to older versions of Tensorflow such as `1.13.1`.
+USE_GRAPH = False
 if USE_GRAPH:
     graph = tf.get_default_graph()
 
 # Load model for the Binary Classification Demo.
-# Model was created by [Website\scripts\ai-ml-pima-indians-diabetes-build.py]
+# Model was created by [website\scripts\ai-ml-pima-indians-diabetes-build.py]
 # Loading this requires [sklearn] to be installed but it doesn't have
 # to be imported at the top of this file. If you are testing locally
 # then generate the model first or download from CDN to this directory.
 # This will also work if the [static-files] repository is downloaded
 # for full local setup. See additional info in server setup docs.
+# The model is available in two formats. JSON is used with recent versions
+# of sklearn, see comments in: [website\scripts\ai-ml-pima-indians-diabetes-convert-model.py]
+USE_JSON_FILE = True
 cur_dir = os.path.dirname(os.path.abspath(__file__))
-file_name = 'pima-indians-diabetes.sklearn'
+file_name = 'pima-indians-diabetes.json' if USE_JSON_FILE else 'pima-indians-diabetes.sklearn'
 model_path = os.path.join(cur_dir, file_name)
 if not os.path.exists(model_path):
     model_path = os.path.join(cur_dir, '../../static-files/ai_ml/models', file_name)
-with open(model_path, 'rb') as file:
-    model_pima = pickle.load(file)
+if USE_JSON_FILE:
+    with open(model_path, 'r') as file:
+        data = json.load(file)
+    model_pima = LogisticRegression(data['params'])
+    for name, value in data.items():
+        if name.endswith('_'):
+            setattr(model_pima, name, np.array(value))
+else:
+    with open(model_path, 'rb') as file:
+        model_pima = pickle.load(file)
+print(f'sklearn Model Loaded from file: ' + model_path)
 
 # ----------------------------------------------------------------------------
 # General Helper Functions
