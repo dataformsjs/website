@@ -145,7 +145,7 @@ sudo wget https://raw.githubusercontent.com/dataformsjs/website/master/app/Views
 sudo rm index.html
 sudo mv ai-ml-index.htm index.html
 
-# Additional Steps performmed for the live site
+# Additional Steps performed for the live site
 https://ai-ml.dataformsjs.com/
 
 # 1) Created Static IP in AWS Lightsail for the Sever: 44.228.52.245
