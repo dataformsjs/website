@@ -3,8 +3,9 @@
 #
 #   This file describes the process for setting up the Python Server
 #   for AI/ML Web Services. This assumes that the server [Ubuntu 20.04 LTS]
-#   is used (also previously used 18.04). This can be done entirely through
-#   a Web Browser if using AWS Lightsail and the browser-based Linux Console.
+#   is used. Older OS versions such as 18.04 have worked in the past and
+#   could likely be used. This can be done entirely through a Web Browser
+#   if using AWS Lightsail and the browser-based Linux Console.
 #
 #   The Webserver file [app.py] will work on any OS that supports
 #   Python, Keras, TensorFlow, etc. It can be run directly from Python
@@ -19,7 +20,10 @@
 #
 # ------------------------------------------------------------------------------------
 
-# Dependencies
+# Update Server
+sudo apt update
+
+# Python Dependencies
 #
 # NOTE - For TensorFlow [--no-cache-dir] is used because the production
 # server is a small 1 GB memory ($5 USD) server on AWS Lightsail.
@@ -27,9 +31,12 @@
 # cannot be installed using default settings. On a larger server the option
 # is not needed.
 #
-sudo apt update
-sudo apt install -y python3-pip
-pip3 install numpy keras flask flask-cors Pillow scikit-learn
+sudo apt install -y python3-pip python3-venv
+python3 -m venv env
+source env/bin/activate
+# confirm Virtual Environment shows "/home/ubuntu/env/bin/python"
+    which python
+pip3 install numpy keras flask flask-cors Pillow scikit-learn Gunicorn
 pip3 install --no-cache-dir tensorflow
     # Or install one at a time (and specific versions if needed).
     # Versions below are from the most recent tested install.
@@ -43,7 +50,7 @@ pip3 install --no-cache-dir tensorflow
     pip3 install Pillow
     pip3 install scikit-learn
     pip3 install scikit-learn==0.24.1
-sudo apt install -y gunicorn
+    pip3 install Gunicorn
 
 # Download files for app and demo and the pre-built model for the Binary Classification Demo
 wget https://raw.githubusercontent.com/dataformsjs/website/master/app/app.py
@@ -53,23 +60,30 @@ wget https://github.com/dataformsjs/static-files/raw/master/ai_ml/models/pima-in
 # The model was built from the following script:
 #   https://github.com/dataformsjs/website/blob/master/scripts/ai-ml-pima-indians-diabetes-build.py
 
-# Commands to manually run Gunicorn
+# Install Gunicorn (it's installed both from apt and pip3)
+sudo apt install -y gunicorn
+
+# Leave Python Virtual Environment
+deactivate
+
+# Commands to manually run Gunicorn (for Virtual Environment the full path is needed)
 # ** These commands can be skipped for a server setup.
 # Because Keras/TensorFlow is used the service will generate
 # many 500 errors if more than 1 worker is used.
-gunicorn --workers 1 --bind 0.0.0.0:5000 app:app
+#
+/home/ubuntu/env/bin/gunicorn --workers 1 --bind 0.0.0.0:5000 app:app
 gunicorn -w 1 -b 0.0.0.0:5000 app:app
 sudo gunicorn -w 1 -b 0.0.0.0:80 app:app
 sudo killall gunicorn
 
 # Create Gunicorn Service
-sudo nano /etc/systemd/system/gunicorn3.service
+sudo nano /etc/systemd/system/gunicorn.service
 # copy file contents form below
-sudo systemctl enable gunicorn3.service
-sudo systemctl start gunicorn3.service
+sudo systemctl enable gunicorn.service
+sudo systemctl start gunicorn.service
 
 # =================================================================
-# [gunicorn3.service] file:
+# [gunicorn.service] file:
 # ---------------------------------------
 [Unit]
 Description=gunicorn webserver
@@ -78,22 +92,23 @@ After=network.target
 [Service]
 User=ubuntu
 WorkingDirectory=/home/ubuntu
-ExecStart=/usr/bin/gunicorn -w 1 -b 127.0.0.1:5000 app:app
+Environment="PATH=/home/ubuntu/env/bin"
+ExecStart=/home/ubuntu/env/bin/gunicorn -w 1 -b 127.0.0.1:5000 app:app
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
 # ---------------------------------------
 # For public access without nginx and only gunicorn use:
-# ExecStart=/usr/bin/gunicorn -w 1 -b 0.0.0.0:5000 app:app
+# ExecStart=/home/ubuntu/env/bin/gunicorn -w 1 -b 0.0.0.0:5000 app:app
 # =================================================================
 
 # Other Commands for Gunicorn if needed
-sudo systemctl status gunicorn3.service
-sudo systemctl stop gunicorn3.service
-sudo systemctl disable gunicorn3.service
-sudo systemctl restart gunicorn3.service
-sudo rm /etc/systemd/system/gunicorn3.service
+sudo systemctl status gunicorn.service
+sudo systemctl stop gunicorn.service
+sudo systemctl disable gunicorn.service
+sudo systemctl restart gunicorn.service
+sudo rm /etc/systemd/system/gunicorn.service
 
 # Install and configure nginx
 sudo apt install -y nginx
