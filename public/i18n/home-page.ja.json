@@ -28,7 +28,7 @@
     "json_data_example": "WebサービスからJSONデータを表示する",
     "json_data_hbs_desc": "DataFormsJSでは、マークアップ（HTMLおよびテンプレート）のみを使用してWebサービスからデータを表示できます。 [data-page]で指定されたさまざまなページオブジェクトを開発して、コントローラーロジックとモデルの状態を処理できます。 組み込みのページオブジェクト[jsonData]により、リクエストの状態[isLoading、isLoaded、hasError]に基づいてレンダリングするHTMLを制御できます。 この例では、属性[data-filter-selector]および[data-sort]がプラグインによって使用され、ユーザーがデータテーブルと対話できるようにします。 ページテンプレートは、一致するルートの[src]属性に基づいてダウンロードおよびキャッシュされます。",
     "json_data_vue_desc": "DataFormsJSは、アプリがJavaScriptを記述することなくVueを使用してデータを表示できるレンダリングエンジンとしてVueをサポートします。 各ルートには独自のVueインスタンスモデルが割り当てられ、組み込みページオブジェクトを使用する場合、[jsonData]は[isLoading、isLoaded、hasError]を使用して表示内容を制御できます。 この例では、[data-countries]と[data-regions]がルート上で定義され、Vueウォッチャーのインスタンスプロパティ[countries]と[regions]としても設定されます。 両方のプロパティは、ダウンロードされたWebサービスからのデータを表します。DataFormsJSは、Vue 2とVue 3の両方で動作します。",
-    "json_data_react_desc": "DataFormsJSは、標準フレームワークに同様の機能を提供するために使用できるReactコンポーネント（JSXおよびJS）のセットも提供します。 Reactコンポーネントはサイズが小さく、Webサービスデータの表示、エラー処理、テーブルの並べ替え、フィルターコントロール、言語翻訳、データの書式設定などの機能が含まれています。",
+    "json_data_react_desc": "DataFormsJSは、標準フレームワークと同様の機能を提供するために使用できる一連のReactコンポーネントも提供します。 Reactコンポーネントはサイズが小さく、Webサービスデータの表示、エラー処理、テーブルの並べ替え、フィルターコントロール、国際化（i18n）/翻訳、データフォーマットなどの機能が含まれています。",
     "json_data_graphql_desc": "DataFormsJSは、GraphQLの組み込みサポートを提供します。 この例では、Handlebarsを使用してGraphQLサービスからのデータを表示します。 GraphQLは、ページ上の全体のルートと個々の要素に割り当てることができ、ページに直接埋め込むか、使用時にダウンロードできます。",
     "json_data_web_desc": "Reactコンポーネントと同様に、DataFormsJSは、同様の機能を標準フレームワークに提供するために使用できるWeb Componentsのセットも提供します。 Web Componentsはサイズが小さく、Web Componentsを使用するアプリまたはサイトの出発点として適しています。 SPAの場合、<url-route>コンポーネントは、[src]属性に基づいて使用されるとテンプレートをダウンロードしてキャッシュします。 <json-data>コンポーネントは、[data-bind]およびその他のオプションを使用して、Webサービスから子要素にデータを渡します。",
     "create_site": "プレイグラウンドでインスタントサイトを作成してください！"
