@@ -260,7 +260,7 @@ $app->get('/*', function() use ($app) {
 
     // Security check since [$path] comes from User Input. Although
     // this only runs in localhost using secure code is good practice.
-    if (!Security::dirContainsPath($root, $path)) {
+    if (!is_dir($root) || !Security::dirContainsPath($root, $path)) {
         // Site is likely running with the PHP built-in server using [index.php] as
         // the router. All requests will go here so check for public site files.
         $root = __DIR__ . '/../public';
