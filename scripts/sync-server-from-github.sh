@@ -7,7 +7,7 @@
 #  the author once published changes are confirmed.
 #
 #  To run:
-#      bash /var/www/scripts/sync-server-from-github.sh
+#      bash /var/www/dataformsjs-site/scripts/sync-server-from-github.sh
 #
 #  For testing with [rsync] use [-n = --dry-run]
 #  Example:
@@ -41,10 +41,10 @@ rm ~/public/unit-testing/server.js
 rm ~/public/unit-testing/favicon.ico
 
 # Sync
-rsync -rcv --delete --exclude node_modules ~/website-master/app/ /var/www/app
-rsync -rcv --delete --exclude geonames.sqlite ~/website-master/app_data/ /var/www/app_data
-rsync -rcv --delete ~/website-master/scripts/ /var/www/scripts
-rsync -rcv --delete ~/public/ /var/www/html
+rsync -rcv --delete --exclude node_modules ~/website-master/app/ /var/www/dataformsjs-site/app
+rsync -rcv --delete --exclude geonames.sqlite ~/website-master/app_data/ /var/www/dataformsjs-site/app_data
+rsync -rcv --delete ~/website-master/scripts/ /var/www/dataformsjs-site/scripts
+rsync -rcv --delete ~/public/ /var/www/dataformsjs-site/public
 
 # FastSitePHP Framework Updates are manual only if needed:
 # wget https://github.com/fastsitephp/fastsitephp/archive/master.zip -O ~/master.zip
