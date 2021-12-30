@@ -8,6 +8,18 @@
 #
 # ------------------------------------------------------------------------------------
 
+# ------------------------------------------------------------------------------------
+#
+#            ** Setup for New Server (December 30th, 2021) **
+#
+# This site is now hosted with several open source sites. See the new version of setup
+# commands at the link below. The commands described in this file are still relevant
+# because they provide more detailed comments on the purpose of each command.
+#
+# https://github.com/fastsitephp/fastsitephp/blob/master/docs/server-setup/server-setup.sh
+#
+# ------------------------------------------------------------------------------------
+
 # ----------------------------------------------------
 # New Easy Setup for Apache, PHP, and needed Files
 # ----------------------------------------------------
