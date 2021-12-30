@@ -41,7 +41,7 @@ rm ~/public/unit-testing/server.js
 rm ~/public/unit-testing/favicon.ico
 
 # Sync
-rsync -rcv --delete --exclude node_modules ~/website-master/app/ /var/www/dataformsjs-site/app
+rsync -rcv --delete --exclude node_modules --exclude package.json --exclude package-lock.json ~/website-master/app/ /var/www/dataformsjs-site/app
 rsync -rcv --delete --exclude geonames.sqlite ~/website-master/app_data/ /var/www/dataformsjs-site/app_data
 rsync -rcv --delete ~/website-master/scripts/ /var/www/dataformsjs-site/scripts
 rsync -rcv --delete ~/public/ /var/www/dataformsjs-site/public
