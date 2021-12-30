@@ -6,8 +6,12 @@ use FastSitePHP\Web\Request;
 /**
  * Run GraphQL Queries from a NodeJS service on localhost.
  * This requires node to be setup and for [app.js] to be running.
+ * 
+ * On the Production Server the Node Service now runs directly
+ * and the GraphiQL IDE is available.
  *
  * Example URL's:
+ *   https://www.dataformsjs.com/graphql
  *   https://www.dataformsjs.com/graphql?query={countries{iso,country}}
  *   https://www.dataformsjs.com/graphql?query=query($country:String!){regions(country:$country){name}}&variables={"country":"US"}
  */
