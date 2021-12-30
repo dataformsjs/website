@@ -28,7 +28,7 @@ $app->get('/unit-testing', function() {
 
 $app->get('/unit-testing/:view', function($view) use ($app) {
     // Production Server location
-    $dir = '/var/www/html/unit-testing/views';
+    $dir = '/var/www/dataformsjs-site/public/unit-testing/views';
     if (!is_dir($dir)) {
         // Local development
         $dir = __DIR__ . '/../../dataformsjs/test/views';
