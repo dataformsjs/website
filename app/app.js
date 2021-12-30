@@ -10,17 +10,21 @@
  *     scripts/geonames.rb
  *
  * Installing Node Dependencies:
- *     npm i express graphql express-graphql better-sqlite3
+ *     npm i express graphql express-graphql better-sqlite3 cors
  */
 
 // Node Libraries
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const sqlite = require('better-sqlite3');
+
+// Allow CORS (any site can access this service)
+app.use(cors());
 
 // Config, the database can be in either [../app_data] or [../../geonames]
 const port = 4000;

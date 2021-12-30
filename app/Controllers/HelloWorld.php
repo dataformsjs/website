@@ -19,7 +19,7 @@ class HelloWorld
     public function get(Application $app, $lang, $file)
     {
         // Get Root Path for Examples
-        $root = __DIR__ . '/../../html/examples/hello-world'; // Server
+        $root = __DIR__ . '/../../public/examples/hello-world'; // Server
         if (!is_dir($root)) {
             $root = __DIR__ . '/../../../dataformsjs/examples/hello-world'; // Local development
         }

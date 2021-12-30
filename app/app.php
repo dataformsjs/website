@@ -185,7 +185,7 @@ $app->get('/:lang/examples', $app_html);
  */
 $app->get('/examples/cors/:dir/:file', function($dir, $file) use ($app) {
     // Get Directory, first check if running from production server (Ubuntu)
-    $root = __DIR__ . '/../html/examples';
+    $root = __DIR__ . '/../public/examples';
     if (!is_dir($root)) {
         // Local Dev Path
         $root = __DIR__ . '/../../dataformsjs/examples';
