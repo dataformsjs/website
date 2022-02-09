@@ -202,7 +202,7 @@
             // is used instead.
             function setActiveNavLink() {
                 const links = document.querySelectorAll('nav a');
-                const path = window.location.hash.substr(1);
+                const path = window.location.hash.substring(1);
                 let linkWasFound = false;
                 Array.prototype.forEach.call(links, function(link) {
                     if (link.getAttribute('href') === path) {

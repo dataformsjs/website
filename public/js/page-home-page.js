@@ -23,7 +23,7 @@
  * Updating the build of this file:
  *     npm install uglify-js -g
  *     uglifyjs page-home-page.js -o page-home-page{YYYYMMDD}.min.js -c -m
- *     uglifyjs page-home-page.js -o page-home-page.20210902.min.js -c -m
+ *     uglifyjs page-home-page.js -o page-home-page.20220208.min.js -c -m
  *     # Then update [website\app\Views\index.htm] with the new file
  */
 
@@ -163,8 +163,8 @@ Steps used to create (or re-create the computer graphic)
             for (var x = 0, y = attributes.length; x < y; x++) {
                 var attr = attributes[x].trim();
                 var pos = attr.indexOf('=');
-                var name = attr.substr(0, pos);
-                var value = attr.substr(pos+2, attr.length-name.length-3);
+                var name = attr.substring(0, pos);
+                var value = attr.substring(pos+2, attr.length-name.length-3);
                 if (animation.consoleOutput) {
                     console.log(name + ' = ' + value);
                 }
