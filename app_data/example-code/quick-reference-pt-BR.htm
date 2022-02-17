@@ -104,7 +104,7 @@ TITLE: DataFormsJS Framework JavaScript Files
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
 <!-- Vue 3 -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.30/dist/vue.global.prod.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.30/dist/vue.global.prod.js"></script>
 <!-- EXAMPLE_CODE_END -->
 
 
@@ -228,21 +228,18 @@ TITLE: Web Components do DataFormsJS
     Including [type="module"] is required for Web Components because they
     use import statements for shared utility functions.
 
-    All DataFormsJS Web Components have can be polyfilled for old browsers by
-    including the [nomodule] polyfill script:
-        <script nomodule src="dataformsjs/js/web-components/polyfill.min.js"></script>
-
-    [polyfill.js] does not provide polyfills for [window.customElements] or any
-    Web Component APIs; rather it downloads and uses the DataFormsJS Framework to
-    replicate the needed functionality for DataFormsJS Web Components to work.
+    In most Single Page Apps (SPA) Web Components <url-router> and <json-data> will
+    along with one or more of [data-list, data-table, data-view] will be included.
+    Specific functionally is provided through additional Web Components.
 -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/url-router.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/json-data.min.js"></script>
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/animation-service.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/data-list.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/data-table.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/data-view.min.js"></script>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/animation-service.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/export-to-csv-service.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/export-to-excel-service.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/filter-service.min.js"></script>
@@ -258,15 +255,21 @@ TITLE: Web Components do DataFormsJS
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/show-errors-service.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/sortable-table.min.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/spa-links.min.js"></script>
+
+<!--
+    All DataFormsJS Web Components have can be polyfilled for old browsers by
+    including the [nomodule] polyfill script:
+        <script nomodule src="dataformsjs/js/web-components/polyfill.min.js"></script>
+
+    [polyfill.js] does not provide polyfills for [window.customElements] or any
+    Web Component APIs; rather it downloads and uses the DataFormsJS Framework to
+    replicate the needed functionality for DataFormsJS Web Components to work.
+-->
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/polyfill.min.js"></script>
 
 <!--
-    [nomodule] Scripts are available to provide users with a friendly message for
+    A [nomodule] script is available to provide users with a friendly message for
     the site will not work if they are using IE or older mobile devices and browsers.
-
-    In general only [old-browser-warning.min.js] needs to be included because users have
-    the ability to close the message alert if it occurs on older modern browsers that run
-    both [type="module"] and [nomodule] scripts.
 -->
 <script nomodule src="https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/old-browser-warning.min.js"></script>
 
@@ -427,7 +430,7 @@ TITLE: Rotas do Framework
     única página com o conteúdo relacionado pode ser hospedada no AWS S3.
 
     A API History do HTML5 pode ser utilizado para definir rotas sem uma hash
-    (“/page” ao invés de “/page”). Tipicamente, ao utiliza este método, o código
+    (“/page” ao invés de “#/page”). Tipicamente, ao utiliza este método, o código
     do servidor será utilizdo, assim, uma página 404 pode ser retornada para o
     usuário para rotas inexistentes. Se o código de servidor não for utilizado,
     então o DataFormsJS redirecionará para a rota padrão quando houver uma URL
@@ -1085,6 +1088,67 @@ LANG: JavaScript
 
 <!-- ********************************************************************** -->
 <!-- EXAMPLE_CODE_START
+TITLE: JavaScript Template - Create a Framework Plugin Class
+LANG: JavaScript
+-->
+<script>
+class MyPlugin {
+    /**
+     * Event that runs only once per hash change and before the view is
+     * rendered. Plugins that use [onRouteLoad()] run only one function
+     * at a time. This event would typically be used to download resources
+     * needed by the page that are not part of the page's controller. Since
+     * this blocks the view from updating is should only be used with very
+     * fast web services, for example downloading simple JSON files.
+     *
+     * If calling [next(false)] then the route will not be loaded; this should
+     * only be used if the plugin changes the URL - [window.location = 'new_url'].
+     *
+     * @param {function} next
+     */
+    onRouteLoad(next) {
+        console.log('plugin.onRouteLoad');
+        next();
+    }
+
+    /**
+     * Event called before the current view is rendered
+     */
+    onBeforeRender() {
+        console.log('plugin.onBeforeRender');
+    }
+
+    /**
+     * Event called after the HTML is rendered and before the page's controller
+     * [onRendered()] function runs. Defining and using [element] is optional and
+     * only passed when certain functions such as [app.refreshHtmlControl()] are called.
+     *
+     * @param {undefined|HTMLElement}
+     */
+    onRendered(element) {
+        console.log('plugin.onRendered');
+        console.log(element === undefined ? document : element);
+    }
+
+    /**
+     * Event called only once per hash change or page refresh
+     * and occurs before the current page is unloaded.
+     */
+    onRouteUnload() {
+        console.log('plugin.onRouteUnload');
+    }
+}
+
+/**
+ * Add Plugin to DataFormsJS
+ */
+app.addPlugin('pluginName', MyPlugin);
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
 TITLE: Modelo JavaScript - Criar um Objeto Página para o Framework
 LANG: JavaScript
 -->
@@ -1142,6 +1206,78 @@ LANG: JavaScript
     // Adiciona page ao app
     app.addPage('pageName', page);
 })();
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: JavaScript Template - Create a Framework Page Class
+LANG: JavaScript
+-->
+<script>
+class Page {
+    constructor() {
+        // ...
+    }
+
+    logFuncHash(func) {
+        console.log('Page.' + func + ': ' + window.location.hash);
+    }
+
+    /**
+     * Controller function that is called once before the route
+     * will be loaded. This is useful for calling web services
+     * before any rendering happens. For example, see usage on the
+     * core [pages/jsonData.js] file.
+     *
+     * When using Vue this will be called from the Vue instance
+     * [mounted()] function.
+     */
+    onRouteLoad() {
+        this.logFuncHash('onRouteLoad');
+    }
+
+    /**
+     * Define the Controller [onBeforeRender()] function.
+     * This gets called each time the view is redrawn before
+     * the the HTML is rendered.
+     *
+     * When using Vue this function will not be called so instead
+     * use [onRouteLoad()] to handle early controller logic.
+     */
+    onBeforeRender() {
+        this.logFuncHash('onBeforeRender');
+    }
+
+    /**
+     * Define the Controller [onRendered()] function.
+     * This gets called each time the view is redrawn.
+     */
+    onRendered() {
+        this.logFuncHash('onRendered');
+    }
+
+    /**
+     * Define the Controller [onRouteUnload()] function.
+     * This event gets called only once per hash change when
+     * the current route is unloaded. It can be used to call
+     * [window.clearTimeout()] for page timers or cleanup
+     * for other resources.
+     *
+     * When using Vue this will be called from the Vue instance
+     * [beforeDestroy()] function.
+     */
+    onRouteUnload() {
+        this.logFuncHash('onRouteUnload');
+    }
+}
+
+/**
+ * Add page to app
+ * The name defined here can be used with [data-page] from HTML
+ */
+app.addPage('pageName', Page);
 </script>
 <!-- EXAMPLE_CODE_END -->
 
@@ -1208,6 +1344,73 @@ LANG: JavaScript
 
 <!-- ********************************************************************** -->
 <!-- EXAMPLE_CODE_START
+TITLE: JavaScript Template - Create a Framework Page Class based on [jsonData]
+LANG: JavaScript
+-->
+<script>
+// When creating page classes based on other page classes load order is important:
+// Load this file first:
+//     <script src="js/pages/classes/JsonData.js">
+// Then load your custom file:
+//     <script src="js/customPage.js">
+class CustomPage extends JsonData {
+    constructor() {
+        super();
+        this.property1 = 'Example Property';
+        this.property2 = null;
+        this.property3 = 123;
+    }
+
+    // The [JsonData] page provides model event functions [onFetch] and [onError],
+    // however they would not commonly be used. For most pages handle custom page logic
+    // using the controller function [page.onRendered] which is defined after the model.
+    onFetch(data) {
+        console.log('Data returned from [onFetch()]');
+        console.log(data);
+    }
+
+    onError() {
+        console.log('%cjsonData.onError()', 'color:red; font-weight:bold;');
+    }
+
+    logInfo() {
+        console.log('Called [logInfo()] from a custom page based on [JsonData]');
+        // These two properties come from the JsonData class
+        console.log(this.url);
+        console.log(this.submittedFetchUrl);
+        // Example property from this class
+        console.log(this.property1);
+    }
+
+    setupView() {
+        this.logInfo();
+    }
+
+    /**
+     * Define the Controller onRendered() function.
+     * This gets called each time the view is redrawn.
+     */
+    onRendered() {
+        console.log('page.onRendered(isLoaded = ' + this.isLoaded + ')');
+
+        // Only call custom functions for the view
+        // once data has loaded from the web service.
+        if (this.isLoaded) {
+            this.setupView();
+        }
+    }
+}
+
+/**
+ * Add page to the app
+ */
+app.addPage('customPage', CustomPage);
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
 TITLE: Modelo JavaScript - Create a custom JavaScript Web Component (Custom HTML Element)
 LANG: JavaScript
 -->
@@ -1221,10 +1424,6 @@ LANG: JavaScript
  *     <hello-world></hello-world>
  *     <hello-world name="Mars" color="blue"></hello-world>
  */
-
-/* Validates with both [jshint] and [eslint] */
-/* jshint esversion:8 */
-/* eslint-env browser, es6 */
 
 /**
  * Import a Tagged Template Literal function to safely escape values for HTML.
@@ -1333,6 +1532,50 @@ class HelloWorld extends HTMLElement {
                 Hello ${name}!
             <div>`;
         this.innerHTML = html;
+    }
+}
+
+/**
+ * Add <hello-world> element to the page
+ */
+window.customElements.define('hello-world', HelloWorld);
+</script>
+<!-- EXAMPLE_CODE_END -->
+
+
+<!-- ********************************************************************** -->
+<!-- EXAMPLE_CODE_START
+TITLE: JavaScript Template - Create a custom JavaScript Web Component by extending Component
+LANG: JavaScript
+-->
+<script type="module">
+import { Component, html } from 'https://cdn.jsdelivr.net/npm/dataformsjs@5/js/web-components/Component.min.js';
+
+/**
+ * Define class for the <hello-world> element
+ */
+class HelloWorld extends Component {
+    static get css() {
+        return ':host { padding:.5em; }';
+    }
+
+    // Props end up being assigned to both HTML observable attributes
+    // and JavaScript properties. Example usage:
+    //    document.querySelector('hello-world').name = 'Name';
+    //    document.querySelector('hello-world').setAttribute('color', '#888');
+    static get props() {
+        return {
+            name: 'World',
+            color: 'red',
+        }
+    }
+
+    render() {
+        return html`
+            <div style="color:${this.color};">
+                Hello ${this.name}!
+            </div>
+        `;
     }
 }
 
