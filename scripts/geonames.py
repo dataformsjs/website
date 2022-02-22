@@ -39,7 +39,7 @@ CUR_DIR = os.path.dirname(__file__)
 PLACES_FILE = 'allCountries.txt'
 COUNTRIES_FILE = 'countryInfo.txt'
 
-# Save to a sperate [app_data] dir or simply hard-code a different location
+# Save to a separate [app_data] dir or simply hard-code a different location
 SAVE_DIR = os.path.realpath(os.path.join(CUR_DIR, '..', 'app_data'))
 # SAVE_DIR = r'C:\Users\Administrator\Documents\Temp\Geonames'
 # SAVE_DIR = '/Users/conrad/Sites/geonames'
