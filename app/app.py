@@ -1,11 +1,22 @@
 """
 This is a Python Web Service using Flask that returns results for AI/ML Web Services
 using TensorFlow, Keras, and scikit-learn. Both TensorFlow and Keras uses a lot of
-CPU so these services are installed on another server to avoid using to many resources
-on the main server.
+CPU so originally these services were installed on another server to avoid using to
+many resources on the main server. As of 2022 it was migrated to the main server
+along with several other URLs because it does not get enough traffic to justify
+a separate server.
 
-Server Setup Docs:
+Server and Examples:
+    https://ai-ml.dataformsjs.com/
+    https://www.dataformsjs.com/examples/image-classification-vue.htm#/en/
+    https://www.dataformsjs.com/examples/binary-classification-vue.htm#/en/
+
+Server Setup Docs for running as a Standalone Server:
     Website\docs\Python Webserver Setup for AI_ML Functions.txt
+    https://github.com/dataformsjs/website/blob/master/docs/Python%20Webserver%20Setup%20for%20AI_ML%20Functions.txt
+
+Production Server Setup (shared with at least 4 other servers):
+    https://github.com/fastsitephp/fastsitephp/blob/master/docs/server-setup/server-setup.sh
 
 Build Script for model file [pima-indians-diabetes.sklearn]:
     Website\scripts\ai-ml-pima-indians-diabetes-build.py
@@ -24,7 +35,6 @@ Rate Limiting and Memory Caching results of predictions that might be repeated.
 import os
 import sys
 import traceback
-import time
 import tempfile
 import json
 import pickle

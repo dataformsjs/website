@@ -1,8 +1,14 @@
 /**
  * NodeJS Express/GraphQL Web Service.
- * This gets called from PHP using HttpClient, or if developing
- * locally this can run from localhost using GraphiQL. If calling from
- * PHP then the node service must already be started.
+ * 
+ * Depending on setup this gets called directly from a node server or
+ * the node server can run on a local port and be called from PHP using
+ * and HttpClient class at the file [website/app/routes-graphql.php].
+ * 
+ * To run the GraphiQL interface on the production URL use the following:
+ *     https://www.dataformsjs.com/graphql
+ * Example Query:
+ *      {countries {iso country area_km population continent}}
  *
  * To use this Geonames database it must first be created locally
  * using one of the following scripts:
