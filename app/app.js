@@ -43,7 +43,7 @@ if (!fs.existsSync(dbPath)) {
 if (!fs.existsSync(dbPath)) {
     console.error('Error - Geonames Database file must be created first: ' + dbPath);
     process.exitCode = 1;
-    return;
+    process.exit();
 }
 const db = sqlite(dbPath);
 
