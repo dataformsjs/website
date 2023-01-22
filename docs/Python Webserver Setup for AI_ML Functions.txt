@@ -49,19 +49,21 @@ source env/bin/activate
 # confirm Virtual Environment shows "/home/ubuntu/env/bin/python"
     which python
 pip3 install numpy keras flask flask-cors Pillow scikit-learn Gunicorn
-pip3 install --no-cache-dir tensorflow
+pip3 install --no-cache-dir tensorflow-cpu
+# Or if using GPU:
+# pip3 install --no-cache-dir tensorflow
     # Or install one at a time (and specific versions if needed).
     # Versions below are from the most recent tested install.
     pip3 install numpy
+    pip3 install numpy=1.21
     pip3 install keras
-    pip3 install keras==2.4.3
-    pip3 install tensorflow
-    pip3 install tensorflow==2.4.1
+    pip3 install keras==2.11.0
+    pip3 install tensorflow-cpu
+    pip3 install tensorflow-cpu==2.11.0
     pip3 install flask
     pip3 install flask-cors
     pip3 install Pillow
     pip3 install scikit-learn
-    pip3 install scikit-learn==0.24.1
     pip3 install Gunicorn
 
 # Download files for app and demo and the pre-built model for the Binary Classification Demo
