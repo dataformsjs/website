@@ -1,10 +1,13 @@
 """
 This is a Python Web Service using Flask that returns results for AI/ML Web Services
-using TensorFlow, Keras, and scikit-learn. Both TensorFlow and Keras uses a lot of
-CPU so originally these services were installed on another server to avoid using to
-many resources on the main server. As of 2022 it was migrated to the main server
+using either PyTorch or (TensorFlow, Keras), and scikit-learn. Both TensorFlow and Keras
+uses a lot of CPU so originally these services were installed on another server to avoid
+using to many resources on the main server. As of 2022 it was migrated to the main server
 along with several other URLs because it does not get enough traffic to justify
-a separate server.
+a separate server. Once migrated to the main server the server started hanging at times
+(likely due to the memory requirements from TensorFlow) so this file was updated to
+use PyTorch on 4/30/2023. An option near the top of this file allows the site to code
+between PyTorch or TensorFlow.
 
 Server and Examples:
     https://ai-ml.dataformsjs.com/
@@ -30,6 +33,15 @@ This app is intended for as a free demo on and runs from a single server. If usi
 code for a large site with many simultaneous users you would likely want to run many
 servers (GPU instead of CPU) behind a load balancer and consider scenarios such as
 Rate Limiting and Memory Caching results of predictions that might be repeated.
+
+Install (if using PyTorch):
+    python3 -m pip install flask flask_cors numpy torchvision
+
+Install (if using TensorFlow):
+    python3 install numpy==1.21 keras==2.11.0 flask flask-cors Pillow scikit-learn
+    # Depending on Machine:
+    python3 install tensorflow
+    python3 install tensorflow-cpu
 """
 # System Imports
 import os
@@ -46,13 +58,20 @@ from functools import wraps
 from flask import Flask, request, send_file, Response
 from flask_cors import CORS
 
+USE_PYTORCH = True
+
 # Data and Machine Learning Libraries
 import numpy as np
-import tensorflow as tf
-from tensorflow.keras.applications.resnet50 import ResNet50
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 from sklearn.linear_model import LogisticRegression
+if USE_PYTORCH:
+    import torch
+    from torchvision import models, transforms
+    from PIL import Image
+else:
+    import tensorflow as tf
+    from tensorflow.keras.applications.resnet50 import ResNet50
+    from tensorflow.keras.preprocessing import image
+    from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 
 # ------------------------------------------------------------------
 # App Setup
@@ -69,7 +88,18 @@ CORS(app)
 # and saved to the local computer on first use.
 start = datetime.now()
 print(f'Loading Model at {start}')
-model_resnet50 = ResNet50(weights='imagenet')
+device = None
+weights = None
+if USE_PYTORCH:
+    if torch.cuda.is_available():
+        device = torch.device('cuda')
+    else:
+        device = torch.device('cpu')
+    weights = models.ResNet50_Weights.DEFAULT
+    model_resnet50 = models.resnet50(weights=weights).to(device)
+    model_resnet50.eval()
+else:
+    model_resnet50 = ResNet50(weights='imagenet')
 end = datetime.now()
 seconds = (end - start).total_seconds()
 print(f'ResNet50 Model Loaded at {end} in {seconds} seconds')
@@ -79,8 +109,9 @@ print(f'ResNet50 Model Loaded at {end} in {seconds} seconds')
 # is needed in order for the service to work when using TensorFlow.
 # This applies to older versions of Tensorflow such as `1.13.1`.
 USE_GRAPH = False
-if USE_GRAPH:
-    graph = tf.get_default_graph()
+if not USE_PYTORCH:
+    if USE_GRAPH:
+        graph = tf.get_default_graph()
 
 # Load model for the Binary Classification Demo.
 # Model was created by [website\scripts\ai-ml-pima-indians-diabetes-build.py]
@@ -118,7 +149,7 @@ def json_encoder(obj):
     JSON encoder for objects not handled by default
     """
     if isinstance(obj, np.generic):
-        return np.asscalar(obj)
+        return np.asarray(obj).item()
     # The following are not used by this app but commonly used by db apps.
     # For Decimal [from decimal import Decimal] at the top of the file.
     #
@@ -153,25 +184,53 @@ def resnet50_prediction(model, file_path):
     Image Classification using Keras and TensorFlow. The first result
     and all labels with a probability 10% or higher are returned.
     """
-    img = image.load_img(file_path, target_size=(224, 224))
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
-    if USE_GRAPH:
-        with graph.as_default():
-            preds = model.predict(x)
+    if USE_PYTORCH:
+        # https://pytorch.org/vision/main/models.html
+        # https://pytorch.org/TensorRT/_notebooks/Resnet50-example.html
+        # https://pytorch.org/blog/how-to-train-state-of-the-art-models-using-torchvision-latest-primitives/
+        img = Image.open(file_path).convert('RGB')
+        preprocess = transforms.Compose([
+            transforms.Resize(256),
+            transforms.CenterCrop(224),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+        img = preprocess(img)
+        img = img.unsqueeze(0).to(device)
+        with torch.no_grad():
+            predictions = model_resnet50(img)
+        probabilities, indices = torch.topk(predictions, 5)
+        probabilities = probabilities.squeeze().softmax(0).tolist()
+        indices = indices.squeeze().tolist()
+        results = []
+        for index, probability in enumerate(probabilities):
+            if index == 0 or probability >= 0.1:
+                class_id = indices[index]
+                results.append({
+                    'label': weights.meta['categories'][class_id],
+                    'probability': probability,
+                })
+        return results
     else:
-        preds = model.predict(x)
-    predictions = decode_predictions(preds, top=5)[0]
-    results = []
-    for (index, (wordnet, label, probability)) in enumerate(predictions):
-        if index == 0 or probability >= 0.1:
-            results.append({
-                'wordnet': wordnet,
-                'label': label,
-                'probability': probability,
-            })
-    return results
+        img = image.load_img(file_path, target_size=(224, 224))
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = preprocess_input(x)
+        if USE_GRAPH:
+            with graph.as_default():
+                preds = model.predict(x)
+        else:
+            preds = model.predict(x)
+        predictions = decode_predictions(preds, top=5)[0]
+        results = []
+        for index, (wordnet, label, probability) in enumerate(predictions):
+            if index == 0 or probability >= 0.1:
+                results.append({
+                    'wordnet': wordnet,
+                    'label': label,
+                    'probability': probability,
+                })
+        return results
 
 # ----------------------------------------------------------------------------
 # Routes
