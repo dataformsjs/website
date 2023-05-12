@@ -8,15 +8,15 @@
 #   if using AWS Lightsail and the browser-based Linux Console.
 #
 #   The Webserver file [app.py] will work on any OS that supports
-#   Python, Keras, TensorFlow, etc. It can be run directly from Python
-#   when using Windows or Mac.
+#   Python, PyTorch (or Keras, TensorFlow), etc. It can be run directly
+#   from Python when using Windows or Mac.
 #
 #   Related Files needed for Setup:
 #     Website\app\app.py
 #     Website\app\Views\ai-ml-demo.htm
 #
 #   Server Overview
-#   nginx -> Gunicorn -> flask -> [keras, tensorflow, sklearn]
+#   nginx -> Gunicorn -> flask -> [PyTorch, sklearn]
 #
 # ------------------------------------------------------------------------------------
 

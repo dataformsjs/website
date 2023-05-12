@@ -9,7 +9,7 @@
     "entry_form_desc": "Aplicación de formulario de inscripción de demostración que utiliza Autenticación, [entryForm.js], [listEditor.js] y otras características. Todas las características del formulario de entrada se definen a través de HTML y plantillas, mientras que la autenticación utiliza un complemento de JavaScript personalizado.",
 
     "image_class_title": "AI/ML - Clasificación de Imagen",
-    "image_class_desc": "Aplicación de Demostración que llama a un servicio web TensorFlow para clasificar las imágenes cargadas. Estas aplicaciones demuestran cómo usar [jsonData.js] y <JsonData> con código JavaScript personalizado.",
+    "image_class_desc": "Aplicación de Demostración que llama a un servicio web PyTorch para clasificar las imágenes cargadas. Estas aplicaciones demuestran cómo usar [jsonData.js] y <JsonData> con código JavaScript personalizado.",
 
     "binary_class_title": "AI/ML - Clasificación Binaria",
     "binary_class_desc": "Aplicación de demostración que llama a un servicio web [scikit-learn] para hacer una predicción de diabetes basada en los datos ingresados del paciente y muestra cómo usar [entryForm.js] con un código JavaScript personalizado.",

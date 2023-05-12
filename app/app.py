@@ -6,8 +6,9 @@ using to many resources on the main server. As of 2022 it was migrated to the ma
 along with several other URLs because it does not get enough traffic to justify
 a separate server. Once migrated to the main server the server started hanging at times
 (likely due to the memory requirements from TensorFlow) so this file was updated to
-use PyTorch on 4/20/2023. An option near the top of this file allows the site to code
-between PyTorch or TensorFlow.
+use PyTorch on 4/20/2023. As of 5/11/2023 the server is still running without a reboot
+and previously with TensorFlow the server needed to be rebooted often. An option near
+the top of this file allows the site to code between PyTorch or TensorFlow.
 
 Server and Examples:
     https://ai-ml.dataformsjs.com/

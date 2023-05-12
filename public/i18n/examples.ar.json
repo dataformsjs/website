@@ -9,7 +9,7 @@
     "entry_form_desc": "تطبيق نموذج إدخال تجريبي يستخدم المصادقة و [entryForm.js] و [listEditor.js] وغيرها من الميزات.يتم تعريف جميع ميزات نموذج الإدخال من خلال HTML و Templating بينما تستخدم المصادقة مكون JavaScript إضافي مخصص.",
 
     "image_class_title": "AI/ML - تصنيف الصور",
-    "image_class_desc": "التطبيق التجريبي الذي يستدعي خدمة ويب TensorFlow لتصنيف الصور التي تم تحميلها.توضح هذه التطبيقات كيفية استخدام [jsonData.js] و <JsonData> برمز JavaScript المخصص.",
+    "image_class_desc": "التطبيق التجريبي الذي يستدعي خدمة ويب PyTorch لتصنيف الصور التي تم تحميلها.توضح هذه التطبيقات كيفية استخدام [jsonData.js] و <JsonData> برمز JavaScript المخصص.",
 
     "binary_class_title": "AI/ML - التصنيف الثنائي",
     "binary_class_desc": "تطبيق تجريبي يستدعي خدمة ويب [scikit-Learn] لإجراء تنبؤ لمرض السكري استنادًا إلى بيانات المريض التي تم إدخالها ويوضح كيفية استخدام [entryForm.js] برمز JavaScript مخصص.",

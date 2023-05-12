@@ -9,7 +9,7 @@
     "entry_form_desc": "使用身份验证, [entryForm.js], [listEditor.js]和其他功能的软件来演示报名. 所有条目表单功能都是通过HTML和模板定义的，而身份验证使用一个自定义的JavaScript插件.",
 
     "image_class_title": "AI/ML - 图片分类",
-    "image_class_desc": "调用TensorFlow web服务对上传图像进行分类.这些应用展示了如何利用[jsonData.js]和使用了自定义JavaScript code的<JsonData>.",
+    "image_class_desc": "调用PyTorch web服务对上传图像进行分类.这些应用展示了如何利用[jsonData.js]和使用了自定义JavaScript code的<JsonData>.",
 
     "binary_class_title": "AI/ML - 二元分类",
     "binary_class_desc": "调用[scikit learn]web服务根据输入的患者数据进行糖尿病预测，并演示了如何将[entryForm.js]与自定义JavaScript代码一起使用.",

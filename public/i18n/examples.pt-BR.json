@@ -9,7 +9,7 @@
     "entry_form_desc": "App exemplo de um formulário de entrada de dados que utiliza autenticação, [entryForm.js], [listEditor.js] e outras funcionalidades. Todas as funcionalidades são definidas através de HTML e modelos, enquanto a autenticação utiliza um plugin JavaScript.",
 
     "image_class_title": "AI/ML - Classificação de Imagens",
-    "image_class_desc": "Aplicativo exemplo que chama um serviço web TensorFlow para classificar imagens enviadas. Esses aplicativos demonstram como usar [jsonData.js] and <JsonData> com código JavaScript personalizado.",
+    "image_class_desc": "Aplicativo exemplo que chama um serviço web PyTorch para classificar imagens enviadas. Esses aplicativos demonstram como usar [jsonData.js] and <JsonData> com código JavaScript personalizado.",
 
     "binary_class_title": "AI/ML - Classificação Binária",
     "binary_class_desc": "Aplicativo exemplo que chama um serviço web [scikit-learn] para fazer uma previsão baseada nos dados fornecidos e mostra como usar [entryForm.js] com código JavaScript personalizado.",

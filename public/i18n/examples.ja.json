@@ -9,7 +9,7 @@
     "entry_form_desc": "認証、[entryForm.js]、[listEditor.js]およびその他の機能を使用するデモエントリフォームアプリ。 すべてのエントリフォーム機能は、認証がカスタムJavaScriptプラグインを使用している間、HTMLおよびテンプレートを通じて定義されます。",
 
     "image_class_title": "AI / ML-画像分類",
-    "image_class_desc": "TensorFlow Webサービスを呼び出して、アップロードされた画像を分類するデモアプリ。 これらのアプリは、カスタムJavaScriptコードで[jsonData.js]および<JsonData>を使用する方法を示します。",
+    "image_class_desc": "PyTorch Webサービスを呼び出して、アップロードされた画像を分類するデモアプリ。 これらのアプリは、カスタムJavaScriptコードで[jsonData.js]および<JsonData>を使用する方法を示します。",
 
     "binary_class_title": "AI / ML-バイナリ分類",
     "binary_class_desc": "[scikit-learn] Webサービスを呼び出して、入力された患者データに基づいて糖尿病の予測を行い、カスタムJavaScriptコードで[entryForm.js]を使用する方法を示すデモアプリ。",
