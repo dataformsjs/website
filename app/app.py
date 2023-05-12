@@ -182,8 +182,8 @@ def json_response(func):
 
 def resnet50_prediction(model, file_path):
     """
-    Image Classification using Keras and TensorFlow. The first result
-    and all labels with a probability 10% or higher are returned.
+    Image Classification using PyTorch (or Keras and TensorFlow). The first
+    result and all labels with a probability 10% or higher are returned.
     """
     if USE_PYTORCH:
         # https://pytorch.org/vision/main/models.html
