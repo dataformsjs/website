@@ -24,7 +24,7 @@ class AI_ML
     const ERROR_UNKNOWN_MODEL = 'Requested model is not handled by this web service.';
 
     /**
-     * Return a sample data for the inital page. Values are simply hard-coded based
+     * Return a sample data for the initial page. Values are simply hard-coded based
      * on the predicted result if testing manually.
      * 
      * URL: '/data/ai-ml/sample-data/:model'
