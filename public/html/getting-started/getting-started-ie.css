@@ -1,0 +1,15 @@
+/* IE */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    /* Hide embedded <template> elements while page is loaded */
+    template { display:none; }
+
+    /* CSS Variables Fallback */
+    a { color:#000; }
+    th { background-color: #cfcfcf; }
+    th, td { padding:8px 16px; border:1px solid #000; }
+    table tbody tr:nth-child(odd) { background-color: #fff; }
+    table tbody tr:nth-child(even) { background-color: #efefef; }
+    table tbody tr.row-odd { background-color: #fff; }
+    table tbody tr.row-even { background-color: #efefef; }
+    table tbody tr.highlight { background-color: #ff0; }
+}
