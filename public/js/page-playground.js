@@ -19,7 +19,7 @@
  *
  * Updating the build of this file:
  *     See full comments in [page-home-page.js], most recent build:
- *     uglifyjs page-playground.js -o page-playground.20201228.b.min.js -c -m
+ *     uglifyjs page-playground.js -o page-playground.20241203.min.js -c -m
  *
  * @link     https://www.dataformsjs.com
  * @author   Conrad Sollitt (https://conradsollitt.com)
@@ -993,6 +993,9 @@
                 mode = 'application/xml';
                 break;
             case 'graphql':
+                mode = 'text/plain';
+                break;
+            case 'txt':
                 mode = 'text/plain';
                 break;
             default:

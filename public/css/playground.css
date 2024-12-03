@@ -165,6 +165,7 @@
 .page.playground .files ul li.css::before { content:'{ }'; background-color:#214ce5; }
 .page.playground .files ul li.svg::before { content:'○'; background-color:#ff9a00; }
 .page.playground .files ul li.graphql::before { content:'GQL'; background-color:rgb(225, 0, 152); }
+.page.playground .files ul li.txt::before { content:'txt'; background-color:white; color:black; }
 
 .page.playground .files ul li.active {
     background-color: hsla(210, 33%, 76%, 1);
